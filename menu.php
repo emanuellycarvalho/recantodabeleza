@@ -46,27 +46,31 @@
                         <!-- menu -->
                         <ul class='main-menu'>
                             <li><a href='index.php'>Home</a></li>
-                            <li><a href='#'>Women</a></li>
-                            <li><a href='#'>Men</a></li>
-                            <li><a href='#'>Jewelry
-                                <span class='new'>New</span>
-                            </a></li>
-                            <li><a href='#'>Shoes</a>
+                            <li><a href='#'>Produtos</a>
                                 <ul class='sub-menu'>
-                                    <li><a href='#'>Sneakers</a></li>
-                                    <li><a href='#'>Sandals</a></li>
-                                    <li><a href='#'>Formal Shoes</a></li>
-                                    <li><a href='#'>Boots</a></li>
-                                    <li><a href='#'>Flip Flops</a></li>
+                                    <li><a href='#'>Kit capilar</a></li>
+                                    <li><a href='#'>Cremes de massagem</a></li>
+                                    <li><a href='#'>Cuidados para unhas</a></li>
+                                    <li><a href='#'>Cuidados para o rosto</a></li>
                                 </ul>
                             </li>
-                            <li><a href='#'>Pages</a>
+                            <li><a href='#'>Serviços</a>
                                 <ul class='sub-menu'>
-                                    <li><a href='./product.html'>Product Page</a></li>
-                                    <li><a href='./category.html'>Category Page</a></li>
-                                    <li><a href='./cart.html'>Cart Page</a></li>
-                                    <li><a href='./checkout.html'>Checkout Page</a></li>
-                                    <li><a href='./contact.html'>Contact Page</a></li>
+                                    <li><a href='#'>Unhas</a></li>
+                                    <li><a href='#'>Cabelos</a></li>
+                                    <li><a href='#'>Estética facial</a></li>
+                                    <li><a href='#'>Estética corporal</a></li>
+                                </ul>
+                            </li>
+                            <li><a href='#'>Novidades
+                                <span class='new'>New</span>
+                            </a></li>
+                            <li><a href='#'>Sorteios</a></li>
+                            <li><a href='#'>Nossos funcionários</a>
+                                <ul class='sub-menu'>
+                                    <li><a href='#'>Fulano</a></li>
+                                    <li><a href='#'>Beltrano</a></li>
+                                    <li><a href='#'>Ciclano</a></li>
                                 </ul>
                             </li>
                             <li><a href='#'>Blog</a></li>
