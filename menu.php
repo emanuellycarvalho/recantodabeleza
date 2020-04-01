@@ -1,6 +1,5 @@
 <?php 
     function menu($page){
-        $p = $page;
         
         echo "<!-- Page Preloder -->
             <div id='preloder'>
@@ -75,19 +74,6 @@
                     </div>
                 </nav>
             </header>
-            <!-- Header section end -->
-    
-    
-            <!-- Page info -->
-            <div class='page-top-info'>
-                <div class='container'>
-                    <h4>" . $p . "</h4>
-                    <div class='site-pagination'>
-                        <a href='index.php'>Home</a> /
-                        <a href=''>" . $p . "</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Page info end -->";
+            <!-- Header section end -->";
     }
 ?>
