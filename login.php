@@ -55,9 +55,9 @@
 						<input type='email' name='email' id='email' placeholder='E-mail'>
 						<label for='senha'>Senha</label>
 						<input type='password' name='senha' id='senha'>
-						<div class='row'><p>. </p></div>
+						</p>Ainda não tem uma conta? <a href='cadastroCliente.php'>Cadastre-se</a>!</p>					
 						<button class='site-btn'>ENTRAR</button>
-                        <div class='row'><p>. </p></div>
+						<div class='row'><p>. </p></div>
                     </form>
 				</div>
 			</div>

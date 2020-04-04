@@ -103,8 +103,7 @@
 						<input type='password' name='senha' id='senha'>
 						<label for='senha2'>Confirme sua senha*</label>
 						<input type='password' name='senha2' id='senha2'>
-						
-						<div class='row'><p>. </p></div>
+						</p>Ja possui uma conta? <a href='login.php'>Faça o login</a>!</p>
 						<button class='site-btn'>CADASTRE-SE</button>
 						<div class='row'><p>. </p></div>
 					</form>

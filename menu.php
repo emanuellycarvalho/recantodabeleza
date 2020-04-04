@@ -26,12 +26,12 @@
                             <div class='col-xl-4 col-lg-5'>
                                 <div class='user-panel'>
                                     <div class='up-item'>
-                                        <i class='flaticon-profile'></i>
-                                        <a href='login.php'>Entre</a> ou <a href='cadastroCliente.php'>Cadastre-se</a>
+                                        <img src='img/icons/user.png' alt=''>
+                                        <a href='login.php'>Entre ou Cadastre-se</a>
                                     </div>
                                     <div class='up-item'>
                                         <div class='shopping-card'>
-                                            <i class='flaticon-bag'></i>
+                                            <img src='img/icons/cart.png' alt=''>
                                             <span>0</span>
                                         </div>
                                         <a href='carrinho.php'>Carrinho de compras</a>
@@ -66,7 +66,7 @@
                                 <span class='new'>New</span>
                             </a></li>
                             <li><a href='#'>Sorteios</a></li>
-                            <li><a href='#'>Nossos funcionários</a>
+                            <li><a href='#'>Nossos profissionais</a>
                                 <ul class='sub-menu'>
                                     <li><a href='#'>Fulano</a></li>
                                     <li><a href='#'>Beltrano</a></li>
