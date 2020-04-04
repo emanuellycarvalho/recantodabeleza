@@ -1,5 +1,5 @@
 <?php 
-    echo "	<!-- Footer section -->
+    echo "<!-- Footer section -->
 	<section class='footer-section'>
 		<div class='container'>
 			<div class='footer-logo text-center'>

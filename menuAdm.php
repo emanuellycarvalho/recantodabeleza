@@ -1,5 +1,4 @@
 <?php 
-
     function menu($page){
         echo "<!-- Page Preloder -->
             <section class='footer-section'>
@@ -19,7 +18,8 @@
                                     <li><a href='index.php'>Home</a></li>
                                     <li><a href='#'>Produtos</a></li>
                                     <li><a href='#'>Serviços</a></li>
-                                    <li><a href='#'>Funcionários</a></li>
+                                    <li><a href='clientes.php'>Clientes</a></li>
+                                    <li><a href='funcionarios.php'>Funcionários</a></li>
                                     <li><a href='#'>Fornecedores</a></li>
                                     <li><a href='#'>Extratos</a></li>
                                     <li><a href='#'>Outros</a></li>

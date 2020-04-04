@@ -82,6 +82,9 @@ ol {
 	margin: 0;
 }
 
+.active {
+	color: #f51167;
+}
 /*---------------------
   Helper CSS
 -----------------------*/
@@ -1007,7 +1010,7 @@ ol {
 	background: #282828;
 	padding-top: 60px;
 }
-
+s
 .footer-logo {
 	padding-bottom: 60px;
 }
@@ -2240,6 +2243,7 @@ ol {
 	.main-menu li a {
 		margin-right: 30px;
 	}
+
 	.hero-slider .slider-nav-warp {
 		max-width: 690px;
 	}

@@ -1,5 +1,4 @@
 <?php
-	// colocar Feminino pra estar selecionado quando carregar a pagina no radio do Sexo
 	// achar um artificio mais sofisticado pra dar espaço ente as áreas do form que "<div class='row'><p>. </p></div>"
 	require_once('menu.php');
 ?>
@@ -37,7 +36,7 @@
 	<!-- Page info -->
 	<div class='page-top-info'>
         <div class='container'>
-            <h4>Cadastre-se</h4>
+            <h4>Faça seu cadastro</h4>
             <div class='site-pagination'>
                 <a href='index.php'>Home</a> /
                 <a href=''>Cadastre-se</a>
@@ -56,8 +55,7 @@
 						<label for='nmCliente'>Nome completo*</label>
 						<input type='text' name='nmCliente' id='nmCliente' placeholder='Nome'>
 						<label for='sexo'>Sexo</label>
-						<div class='cf-radio-btns address-rb'> 
-							<!-- tirar "address-rb" pra colocar um por linha -->
+						<div class='cf-radio-btns'> 
 							<div class='col-md-12'>
 								<div class='cfr-item'>
 									<input type='radio' name='sexo' id='feminino'>
