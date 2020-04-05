@@ -178,6 +178,7 @@
 	</section>
 	<!-- Contact section end -->
 	<?php 
+		require_once('banner.php'); 
 		require_once('rodape.php');
 	?>
 	<!--====== Javascripts & Jquery ======-->

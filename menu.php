@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <nav class='main-navbar'>
-                    <div class='container'>
+                    <div class='container text-center'>
                         <!-- menu -->
                         <ul class='main-menu'>
                             <li :active><a href='index.php'>Home</a></li>

@@ -510,7 +510,7 @@ ol {
 
 .hero-slider .hs-item {
 	position: relative;
-	height: 720px;
+	height: 500px;
 }
 
 .hero-slider .hs-item span {
@@ -969,6 +969,7 @@ ol {
 	padding: 50px 34px 47px;
 	position: relative;
 	margin-bottom: 70px;
+	margin-top: 70px;
 }
 
 .banner .tag-new {
@@ -992,6 +993,7 @@ ol {
 	letter-spacing: 3px;
 	margin-bottom: 5px;
 	display: block;
+	color: #e6e6e6;
 }
 
 .banner h2 {
@@ -999,7 +1001,7 @@ ol {
 	text-transform: uppercase;
 	font-weight: 700;
 	margin-bottom: 10px;
-	color: #282828;
+	color: #f51167;
 }
 
 /* ----------------
@@ -1013,6 +1015,7 @@ ol {
 s
 .footer-logo {
 	padding-bottom: 60px;
+	margin-bottom: 60px;
 }
 
 .footer-widget {
@@ -1241,6 +1244,14 @@ s
 	color: #414141;
 	text-transform: uppercase;
 	margin-bottom: 45px;
+}
+
+.filter-widget .fw-title-pink {
+	font-size: 18px;
+	font-weight: 700;
+	color: #f51167;
+	text-transform: uppercase;
+	margin-top: 35px;
 }
 
 .category-menu {

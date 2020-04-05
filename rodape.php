@@ -8,49 +8,47 @@
 			<div class='row'>
 				<div class='col-lg-3 col-sm-6'>
 					<div class='footer-widget about-widget'>
-						<h2>About</h2>
-						<p>Donec vitae purus nunc. Morbi faucibus erat sit amet congue mattis. Nullam frin-gilla faucibus urna, id dapibus erat iaculis ut. Integer ac sem.</p>
+						<h2>SOBRE NÓS</h2>
+						<p>Este é um sistema desenvolvido para fins didáticos por dois alunos do terceiro ano do 
+						curso de Desenvolvimento de Sistemas sob a orientação da professora Deisymar Botega.</p>
 						<img src='img/cards.png' alt=''>
 					</div>
 				</div>
 				<div class='col-lg-3 col-sm-6'>
 					<div class='footer-widget about-widget'>
-						<h2>Questions</h2>
+						<h2>MAIS</h2>
 						<ul>
-							<li><a href=''>About Us</a></li>
-							<li><a href=''>Track Orders</a></li>
-							<li><a href=''>Returns</a></li>
-							<li><a href=''>Jobs</a></li>
-							<li><a href=''>Shipping</a></li>
-							<li><a href=''>Blog</a></li>
+							<li><a href=''>Sobre nós</a></li>
+							<li><a href=''>Horários</a></li>
+							<li><a href=''>Pedidos</a></li>
+							<li><a href=''>Produtos</a></li>
 						</ul>
 						<ul>
-							<li><a href=''>Partners</a></li>
-							<li><a href=''>Bloggers</a></li>
-							<li><a href=''>Support</a></li>
-							<li><a href=''>Terms of Use</a></li>
-							<li><a href=''>Press</a></li>
+							<li><a href=''>Parceiros</a></li>
+							<li><a href=''>Contato</a></li>
+							<li><a href=''>Trabalhe conosco</a></li>
+							<li><a href=''>Localize no mapa</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class='col-lg-3 col-sm-6'>
 					<div class='footer-widget about-widget'>
-						<h2>Questions</h2>
+						<h2>PERGUNTAS FREQUENTES</h2>
 						<div class='fw-latest-post-widget'>
 							<div class='lp-item'>
-								<div class='lp-thumb set-bg' data-setbg='img/blog-thumbs/1.jpg'></div>
+								<div class='lp-thumb set-bg' data-setbg='img/blog-thumbs/1.png'></div>
 								<div class='lp-content'>
-									<h6>what shoes to wear</h6>
-									<span>Oct 21, 2018</span>
-									<a href='#' class='readmore'>Read More</a>
+									<h6>onde envio meu currículo?</h6>
+									<span>21 Out, 2018</span>
+									<a href='#' class='readmore'>Ler Mais</a>
 								</div>
 							</div>
 							<div class='lp-item'>
-								<div class='lp-thumb set-bg' data-setbg='img/blog-thumbs/2.jpg'></div>
+								<div class='lp-thumb set-bg' data-setbg='img/blog-thumbs/2.png'></div>
 								<div class='lp-content'>
-									<h6>trends this year</h6>
-									<span>Oct 21, 2018</span>
-									<a href='#' class='readmore'>Read More</a>
+									<h6>onde localizo meu pedido?</h6>
+									<span>31 jan, 2019</span>
+									<a href='#' class='readmore'>Ler Mais</a>
 								</div>
 							</div>
 						</div>
@@ -58,22 +56,26 @@
 				</div>
 				<div class='col-lg-3 col-sm-6'>
 					<div class='footer-widget contact-widget'>
-						<h2>Questions</h2>
+						<h2>CONTATO</h2>
 						<div class='con-info'>
 							<span>C.</span>
-							<p>Your Company Ltd </p>
-						</div>
-						<div class='con-info'>
-							<span>B.</span>
-							<p>1481 Creekside Lane  Avila Beach, CA 93424, P.O. BOX 68 </p>
-						</div>
-						<div class='con-info'>
-							<span>T.</span>
-							<p>+53 345 7953 32453</p>
+							<p>Recanto da Beleza</p>
 						</div>
 						<div class='con-info'>
 							<span>E.</span>
-							<p>office@youremail.com</p>
+							<p>R. Dezenove de Novembro, 121 - Centro, Timóteo - MG</p>
+						</div>
+						<div class='con-info'>
+							<span>T.</span>
+							<p>+55 31 3842 3245</p>
+						</div>
+						<div class='con-info'>
+							<span>C.</span>
+							<p>+55 31 97953 3245</p>
+						</div>
+						<div class='con-info'>
+							<span>E.</span>
+							<p>recantodabeleza@contato.com</p>
 						</div>
 					</div>
 				</div>
