@@ -45,7 +45,7 @@
                     <div class='container'>
                         <!-- menu -->
                         <ul class='main-menu'>
-                            <li><a href='index.php'>Home</a></li>
+                            <li :active><a href='index.php'>Home</a></li>
                             <li><a href='#'>Produtos</a>
                                 <ul class='sub-menu'>
                                     <li><a href='#'>Kit capilar</a></li>

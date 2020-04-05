@@ -1957,7 +1957,8 @@ s
 	font-size: 16px;
 	color: #414141;
 	margin-bottom: 0;
-	padding-left: 30px;
+	padding-left: 15px;
+	padding-right: 20px;
 	position: relative;
 	cursor: pointer;
 }

@@ -7,7 +7,7 @@
                         <div class='loader'></div>
                     </div>
                     <div class='footer-logo text-center'>
-                        <a href='index.html'><img src='img/logo-light.png' alt=''></a>
+                        <a href='index.php'><img src='img/logo-light.png' alt=''></a>
                     </div>
                     <!-- Header section -->
                     <header class='header-section'>

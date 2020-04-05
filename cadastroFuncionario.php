@@ -35,7 +35,7 @@
 	<!-- Contact section -->
 	<section class='contact-section'>
 		<div class='container'>
-			<div class="col-lg-6 col-xs-12">
+			<div class='col-lg-10 offset-md-1'>
 				<form class='contact-form' name='cadastroPessoa' action='act/cadastrarFuncionario.php'>
 					<div class='cf-title'><h4>Dados pessoais</h4></div>
 					
@@ -53,7 +53,7 @@
 								<label for='sexo'>Sexo</label>
 								<div class='cf-radio-btns address-rb'> 
 									<!-- tirar "address-rb" pra colocar um por linha -->
-									<div class='col-md-12'>
+									<div class='col-md-4'>
 										<div class='cfr-item'>
 											<input type='radio' name='sexo' id='feminino'>
 											<label for='feminino'>Feminino</label>
@@ -149,17 +149,21 @@
 					
 					<div class='row'><p>. </p></div>
 
-					<div class='cf-title'><h4>Login</h4></div>
-					<label for='email'>Email*</label>
-					<input type='email' name='email' id='email' placeholder='E-mail'>
-					<label for='senha'>Senha*</label>
-					<input type='password' name='senha' id='senha'>
-					<label for='senha2'>Confirmar senha*</label>
-					<input type='password' name='senha2' id='senha2'>
+					<div class='col-md-6 offset-md-3'>
+						<div class='cf-title'><h4>Login</h4></div>
+						<label for='email'>Email*</label>
+						<input type='email' name='email' id='email' placeholder='E-mail'>
+						<label for='senha'>Senha*</label>
+						<input type='password' name='senha' id='senha'>
+						<label for='senha2'>Confirmar senha*</label>
+						<input type='password' name='senha2' id='senha2'>
+					</div>
 					
-					<div class='row'><p>. </p></div>
-					<button class='site-btn'>CADASTRAR</button>
-					<div class='row'><p>. </p></div>
+					<div class='col-md-2 offset-md-5'>
+						<div class='row'><p>. </p></div>
+						<button class='site-btn'>CADASTRAR</button>
+						<div class='row'><p>. </p></div>
+					</div>
 				</form>
 			</div>	
 		</div>
