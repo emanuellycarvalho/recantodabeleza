@@ -158,11 +158,14 @@
 					<div class='row'><p>. </p></div>
 
 					<div class='col-md-6 offset-md-3'>
-						<div class='cf-title'><h4>Login</h4></div>
+						<div class='cf-title'><h4>Dados de acesso</h4></div>
 						<label for='email'>Email*</label>
 						<input type='email' name='email' id='email' placeholder='E-mail'>
 						<label for='senha'>Senha*</label>
 						<input type='password' name='senha' id='senha'>
+						<small class='form-text text-muted'>
+  						Sua senha deve ter no mínimo seis caracteres.
+						</small>
 						<label for='senha2'>Confirmar senha*</label>
 						<input type='password' name='senha2' id='senha2'>
 					</div>

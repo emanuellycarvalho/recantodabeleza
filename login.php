@@ -35,10 +35,10 @@
     <!-- Page info -->
     <div class='page-top-info'>
         <div class='container'>
-            <h4>Login</h4>
+            <h4>Acesse sua conta</h4>
             <div class='site-pagination'>
                 <a href='index.php'>Home</a> /
-                <a href=''>Login</a>
+                <a href=''>Entrar</a>
             </div>
         </div>
     </div>
@@ -50,7 +50,7 @@
 			<div class='row'>
 				<div class="col-lg-6 contact-info">
 					<form class='contact-form' name='cadastroPessoa' action='act/logar.php'>
-						<div class='cf-title'><h4>Login</h4></div>
+						<div class='cf-title'><h4>Dados de acesso</h4></div>
 						<label for='email'>Email</label>
 						<input type='email' name='email' id='email' placeholder='E-mail'>
 						<label for='senha'>Senha</label>

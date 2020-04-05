@@ -1,5 +1,5 @@
 <?php
-	require_once('menuAdm.php');
+	require_once('menu.php');
 ?>
 <!DOCTYPE html>
 <html lang='zxx'>
@@ -10,21 +10,21 @@
 	<meta name='keywords' content='divisima, eCommerce, creative, html'>
 	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 	<!-- Favicon -->
-	<link href='img/faviconAdm.png' rel='shortcut icon'/>
+	<link href='../img/faviconAdm.png' rel='shortcut icon'/>
 
 	<!-- Google Font -->
 	<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i' rel='stylesheet'>
 
 
 	<!-- Stylesheets -->
-	<link rel='stylesheet' href='css/bootstrap.min.css'/>
-	<link rel='stylesheet' href='css/font-awesome.min.css'/>
-	<link rel='stylesheet' href='css/flaticon.css'/>
-	<link rel='stylesheet' href='css/slicknav.min.css'/>
-	<link rel='stylesheet' href='css/jquery-ui.min.css'/>
-	<link rel='stylesheet' href='css/owl.carousel.min.css'/>
-	<link rel='stylesheet' href='css/animate.css'/>
-	<link rel='stylesheet' href='css/style.css'/>
+	<link rel='stylesheet' href='../css/bootstrap.min.css'/>
+	<link rel='stylesheet' href='../css/font-awesome.min.css'/>
+	<link rel='stylesheet' href='../css/flaticon.css'/>
+	<link rel='stylesheet' href='../css/slicknav.min.css'/>
+	<link rel='stylesheet' href='../css/jquery-ui.min.css'/>
+	<link rel='stylesheet' href='../css/owl.carousel.min.css'/>
+	<link rel='stylesheet' href='../css/animate.css'/>
+	<link rel='stylesheet' href='../css/style.css'/>
 
 </head>
 <body>
@@ -36,7 +36,7 @@
 	<section class='contact-section'>
 		<div class='container'>
 			<div class='col-lg-10 offset-md-1'>
-				<form class='contact-form' name='cadastroPessoa' action='act/cadastrarFuncionario.php'>
+				<form class='contact-form' name='cadastroPessoa' action='../act/cadastrarFuncionario.php'>
 					<div class='cf-title'><h4>Dados pessoais</h4></div>
 					
 					<div class='row'> <!-- grupo de inputs referente aos dados pessoais -->
@@ -176,15 +176,15 @@
 		require_once('rodape.php');
 	?>
 	<!--====== Javascripts & Jquery ======-->
-	<script src='js/jquery-3.2.1.min.js'></script>
-	<script src='js/bootstrap.min.js'></script>
-	<script src='js/jquery.slicknav.min.js'></script>
-	<script src='js/owl.carousel.min.js'></script>
-	<script src='js/jquery.nicescroll.min.js'></script>
-	<script src='js/jquery.zoom.min.js'></script>
-	<script src='js/jquery-ui.min.js'></script>
-	<script src='js/main.js'></script>
-	<script src='js/projeto.js'></script>
+	<script src='../js/jquery-3.2.1.min.js'></script>
+	<script src='../js/bootstrap.min.js'></script>
+	<script src='../js/jquery.slicknav.min.js'></script>
+	<script src='../js/owl.carousel.min.js'></script>
+	<script src='../js/jquery.nicescroll.min.js'></script>
+	<script src='../js/jquery.zoom.min.js'></script>
+	<script src='../js/jquery-ui.min.js'></script>
+	<script src='../js/main.js'></script>
+	<script src='../js/projeto.js'></script>
 
 	</body>
 </html>

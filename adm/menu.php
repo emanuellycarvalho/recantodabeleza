@@ -15,7 +15,7 @@
                             <div class='container text-center'>
                                 <!-- menu -->
                                 <ul class='main-menu'>
-                                    <li><a href='indexAdm.php'>Home</a></li>
+                                    <li><a href='index.php'>Home</a></li>
                                     <li><a href='#'>Produtos</a></li>
                                     <li><a href='#'>Serviços</a></li>
                                     <li><a href='clientes.php'>Clientes</a></li>
@@ -38,7 +38,7 @@
                         <div class='col-md-0 p-0 feature'></div>
                         <div class='col-md-8 p-0 feature'>
                             <div class='feature-inner'>
-                                <h2>Administração</h2>
+                                <h2>" . $page . "</h2>
                             </div>
                         </div>
                         <div class='col-md-4 p-0 feature'>
