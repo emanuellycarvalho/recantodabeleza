@@ -53,7 +53,7 @@
 								<label for='sexo'>Sexo</label>
 								<div class='cf-radio-btns address-rb'> 
 									<!-- tirar "address-rb" pra colocar um por linha -->
-									<div class='col-md-4'>
+									<div class='col-md-5'>
 										<div class='cfr-item'>
 											<input type='radio' name='sexo' id='feminino'>
 											<label for='feminino'>Feminino</label>
@@ -91,13 +91,16 @@
 								<input type='text' name='telefone' id='telefone' placeholder='(00) 00000-0000'>
 							</div>
 						</div>
+					</div>
 
-						<label for='sexo'>Tipo*</label> <!-- deixei assim pq nao sei o que eh isso -->
+					<div class='cf-title'><h4>Tipo</h4></div>
+
+					<div class="row">  <!-- input referente ao tipo de funcionario -->
 						<div class='cf-radio-btns address-rb'>
 							<!-- prenchimento via banco -->
 						</div>
 					</div>
-													
+
 					<div class='row'><p>. </p></div>
 					
 					<div class='cf-title'><h4>Endereço</h4></div>
