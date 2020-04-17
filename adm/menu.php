@@ -7,7 +7,7 @@
                         <div class='loader'></div>
                     </div>
                     <div class='footer-logo text-center'>
-                        <a href='index.php'><img src='img/logo-light.png' alt=''></a>
+                        <a href='index.php'><img src='../img/logo-light.png' alt=''></a>
                     </div>
                     <!-- Header section -->
                     <header class='header-section'>
@@ -21,7 +21,7 @@
                                     <li><a href='clientes.php'>Clientes</a></li>
                                     <li><a href='funcionarios.php'>Funcionários</a></li>
                                     <li><a href='#'>Fornecedores</a></li>
-                                    <li><a href='#'>Extratos</a></li>
+                                    <li><a href='#'>Relatorios</a></li>
                                     <li><a href='#'>Outros</a></li>
                                 </ul>
                             </div>

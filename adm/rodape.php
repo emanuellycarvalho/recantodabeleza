@@ -3,7 +3,7 @@
 	<section class='footer-section'>
 		<div class='container'>
 			<div class='footer-logo text-center'>
-				<a href='index.html'><img src='img/logo-light.png' alt=''></a>
+				<a href='index.html'><img src='../img/logo-light.png' alt=''></a>
 			</div>
 			<div class='row'>
 				<div class='col-lg-3 col-sm-6'>
@@ -11,7 +11,7 @@
 						<h2>SOBRE NÓS</h2>
 						<p>Este é um sistema desenvolvido para fins didáticos por dois alunos do terceiro ano do 
 						curso de Desenvolvimento de Sistemas sob a orientação da professora Deisymar Botega.</p>
-						<img src='img/cards.png' alt=''>
+						<img src='../img/cards.png' alt=''>
 					</div>
 				</div>
 				<div class='col-lg-3 col-sm-6'>
@@ -36,7 +36,7 @@
 						<h2>PERGUNTAS FREQUENTES</h2>
 						<div class='fw-latest-post-widget'>
 							<div class='lp-item'>
-								<div class='lp-thumb set-bg' data-setbg='img/blog-thumbs/1.png'></div>
+								<div class='lp-thumb set-bg' data-setbg='../img/blog-thumbs/1.png'></div>
 								<div class='lp-content'>
 									<h6>onde envio meu currículo?</h6>
 									<span>21 Out, 2018</span>
@@ -44,7 +44,7 @@
 								</div>
 							</div>
 							<div class='lp-item'>
-								<div class='lp-thumb set-bg' data-setbg='img/blog-thumbs/2.png'></div>
+								<div class='lp-thumb set-bg' data-setbg='../img/blog-thumbs/2.png'></div>
 								<div class='lp-content'>
 									<h6>onde localizo meu pedido?</h6>
 									<span>31 jan, 2019</span>
