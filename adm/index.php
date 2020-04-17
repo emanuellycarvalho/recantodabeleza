@@ -37,6 +37,7 @@
 	<!-- Clients section -->
     <section class='cart-section spad'>
 		<div class='container'>
+
 			<div class='row'>
 				<div class='col-md-4 offset-md-3'>
 					<a href='registroServico.php' class='site-btn'>Novo débito</a>
@@ -126,6 +127,7 @@
 				</div>
 			</div>
 			<hr>
+
 			<div class='row'>
 				<div class='col-lg-5 order-2 order-lg-0'>
 					<div class='section-title'>
@@ -159,6 +161,7 @@
 					</div>
 				</div>
 			</div>
+			
 		</div>
 	</section>
 	<!-- Clients section end -->

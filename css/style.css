@@ -1779,12 +1779,22 @@ s
 	text-align: left;
 }
 
+.table table tr th.product-th {
+	text-align: left;
+	color: #ec105a;
+}
+
 .cart-table table tr th.size-th {
 	padding-right: 70px;
 }
 
 .cart-table table tr th.quy-th {
 	padding-right: 20px;
+}
+
+.table table tr th.quy-th {
+	padding-right: 20px;
+	color: #ec105a;
 }
 
 .cart-table .product-col {
