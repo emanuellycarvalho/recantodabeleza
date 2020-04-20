@@ -38,7 +38,7 @@
     <section class='cart-section spad'>
 		<div class='container'>
 			<div class='col-md-3 offset-md-8'>
-				<a href='../cadastroCliente.php' class='site-btn'>Clientes</a>
+				<a href='../clientes.php' class='site-btn'>Clientes</a>
 			</div>
 			<div class='row justify-content-center'>
 				<div class='col-lg-9'>
