@@ -86,7 +86,9 @@
 							</tbody>
 						</table>
                         </div>
-                        <div class='total-cost'></div>
+                        <div class='total-cost'>
+							<h6>Exibindo <input type='number' value ='10'> de 123</h6>
+						</div>
 					</div>
 				</div>
 			</div>

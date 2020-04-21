@@ -26,8 +26,10 @@
                             <div class='col-xl-4 col-lg-5'>
                                 <div class='user-panel'>
                                     <div class='up-item'>
-                                        <img src='img/icons/user.png' alt=''>
-                                        <a href='login.php'>Entre ou Cadastre-se</a>
+                                        <a href='login.php'>
+                                            <img src='img/icons/user.png' alt=''>
+                                            Entre ou Cadastre-se
+                                        </a>
                                     </div>
                                     <div class='up-item'>
                                         <div class='shopping-card'>

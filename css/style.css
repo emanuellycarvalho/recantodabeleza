@@ -239,6 +239,10 @@ ol {
 	border-radius: 10px;
 }
 
+.light{
+	color: #e1e1e1;
+}
+
 .elements-section {
 	padding-top: 100px;
 }
@@ -1887,6 +1891,17 @@ s
 
 .cart-table .total-cost h6 span {
 	margin-left: 38px;
+}
+
+.cart-table .total-cost input{
+	width: 10%;
+	height: 30px;
+	border: none;
+	padding: 0 18px;
+	background: #f0f0f0;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	font-size: 14px;
 }
 
 .card-right .site-btn {
