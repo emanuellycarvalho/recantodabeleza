@@ -29,14 +29,14 @@
 </head>
 <body>
 	<?php
-		menu('Funcionários');
+		menu('Funcionários', 'employee');
 	?>
 	
 	<!-- Clients section -->
     <section class='cart-section spad'>
 		<div class='container'>
-			<div class='col-md-3 offset-md-7'>
-				<a href='cadastroFuncionario.php' class='site-btn'>Novo Funcionário</a>
+			<div class='col-md-3 offset-md-9'>
+				<a href='cadastroFuncionario.php'><img src='../img/icons/newEmployee.png' width='70px'></a>
 			</div>
 			<div class='row justify-content-center'>
 				<div class='col-lg-9'>
@@ -50,7 +50,7 @@
 									<th class='quy-th'>Acumulado</th>
 									<th class='quy-th'>Excluir</th>
                                     <th class='quy-th'>Editar</th>
-                                    <th class='quy-th'>Selecionar</th>
+                                    <th class='quy-th'>Ver mais</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -66,16 +66,14 @@
 									<td class='quy-col'>
                                             <center><h4>150,00</h4></center>
 									</td>
-									<td class='quy-col'><center><a href='excluirUsuario.php'><img src='../img/icons/delete.png' height='35px'></a></center></td>
-                                    <td class='quy-col'><center><h4><a href='editarUsuario.php'><img src='../img/icons/edit.png' height='30px'></a></h4></center></td>
-                                    <td class='quy-th'><center></center></td>
+									<td class='quy-col'><center><a href=''><img src='../img/icons/deleteEmployee.png' height='35px'></a></center></td>
+                                    <td class='quy-col'><center><a href=''><img src='../img/icons/editEmployee.png' height='35px'></a></center></td>
+                                    <td class='quy-th'><center><a href=''><img src='../img/icons/seeEmployee.png' height='35px'></a></center></td>
 								</tr>
 							</tbody>
 						</table>
                         </div>
-                        <div class='total-cost'>
-                        <a href='excluirUsuarios.php' class='site-btn sb-dark'>Excluir funcionários selecionados</a>
-						</div>
+                        <div class='total-cost'></div>
 					</div>
 				</div>
 			</div>

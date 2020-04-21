@@ -31,15 +31,12 @@
 </head>
 <body>
 	<?php
-		menu('cliente');
+		menu('Cliente', 'client');
 	?>
 	
 	<!-- Client section -->
     <section class='cart-section spad'>
 		<div class='container'>
-			<div class='col-md-3 offset-md-8'>
-				<a href='../clientes.php' class='site-btn'>Clientes</a>
-			</div>
 			<div class='row justify-content-center'>
 				<div class='col-lg-9'>
 					<div class='cart-table'>
@@ -59,7 +56,8 @@
                             </div>
                         </div>
                         <div class='total-cost'>
-                        <a href='../cadastroCliente.php' class='site-btn sb-dark'>Editar</a>
+                        	<a href='clientes.php' class='site-btn sb-dark'>Voltar</a>	
+                        	<a href='../cadastroCliente.php' class='site-btn sb-dark'>Editar</a>
                         </div>
 					</div>
 				</div>

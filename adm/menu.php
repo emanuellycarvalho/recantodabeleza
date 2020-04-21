@@ -1,5 +1,5 @@
 <?php 
-    function menu($page){
+    function menu($page, $icon){
         echo "<!-- Page Preloder -->
             <section class='footer-section'>
                 <div class='container'>
@@ -36,19 +36,21 @@
                 <div class='container-fluid'>
                     <div class='row'>
                         <div class='col-md-0 p-0 feature'></div>
-                        <div class='col-md-8 p-0 feature'>
+                        <div class='col-md-12 p-0 feature'>
                             <div class='feature-inner'>
-                                <h2>" . $page . "</h2>
-                            </div>
-                        </div>
-                        <div class='col-md-4 p-0 feature'>
-                            <div class='feature-inner'>
-                                <h2>Não se esqueça do logoff</h2>
+                                " . icon($icon) . "
+                                <h2> ". $page . " </h2>  
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
             <!-- Page info end -->";
+    }
+
+    function icon ($i){
+        if ($i != null){
+            return "<img src='../img/icons/" . $i  . ".png' width='35px'>";
+        }
     }
 ?>

@@ -31,7 +31,7 @@
 </head>
 <body>
 	<?php
-		menu('Administração');
+		menu('Administração', NULL);
     ?>
 	
 	<!-- Clients section -->

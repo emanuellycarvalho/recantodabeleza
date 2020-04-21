@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang='zxx'>
 <head>
-	<title>Novo funcionário</title>
+	<title>Novo Cliente</title>
 	<meta charset='UTF-8'>
 	<meta name='description' content=' Divisima | eCommerce Template'>
 	<meta name='keywords' content='divisima, eCommerce, creative, html'>
@@ -29,7 +29,7 @@
 </head>
 <body>
 	<?php
-		menu('Novo funcionário', 'newEmployee-light');
+		menu('Novo Cliente', 'newClient-light');
 	?>
 	
 	<!-- Contact section -->
@@ -41,11 +41,18 @@
 					
 					<div class='row'> <!-- grupo de inputs referente aos dados pessoais -->
 						
-						<div class='col-md-6 col-xs-12'>
+						<div class='col-md-12 col-xs-12'>
 							<div class='form-group'>
 								<label for='nmFunc'>Nome completo*</label>
 								<input type='text' name='nmFunc' id='nmFunc' placeholder='Nome'>
 							</div>
+						</div>
+						
+						<div class='col-md-6 col-xs-12'>
+                            <div class='form-group'>
+                                <label for='telefone'>Telefone*</label>
+                                <input type='text' name='telefone' id='telefone' placeholder='(00) 00000-0000'>
+                            </div>
 						</div>
 						
 						<div class='col-md-6 col-xs-12'>
@@ -75,23 +82,6 @@
 
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
-								<label for='sexo'>Tipo</label>
-								<!-- preenchimento via banco com os tipos de funcionário -->
-								<select name='tipo' id='tipo'>
-									<option value='0' disable>Selecione</option>
-								</select>
-							</div>
-						</div>
-
-						<div class='col-md-6 col-xs-12'>
-							<div class='form-group'>
-								<label for='telefone'>Telefone*</label>
-								<input type='text' name='telefone' id='telefone' placeholder='(00) 00000-0000'>
-							</div>
-						</div>
-
-						<div class='col-md-6 col-xs-12'>
-							<div class='form-group'>
 								<label for='dtNasc'>Data de nascimento</label>
 								<input type='text' name='dtNasc' id='dtNasc' placeholder='00/00/00' >
 							</div>
@@ -113,7 +103,7 @@
 							<label for='senha'>Senha*</label>
 							<input type='password' name='senha' id='senha'>
 							<small class='form-text text-muted'>
-							Sua senha deve ter no mínimo seis caracteres.
+							A senha deve ter no mínimo seis caracteres.
 							</small>
 						</div>
 						<div class='col-md-6 col-xs-12'>

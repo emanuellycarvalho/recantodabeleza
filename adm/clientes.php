@@ -29,28 +29,42 @@
 </head>
 <body>
 	<?php
-		menu('clientes');
+		menu('Clientes', 'client');
 	?>
 	
 	<!-- Clients section -->
     <section class='cart-section spad'>
 		<div class='container'>
-			<div class='col-md-3 offset-md-8'>
-				<a href='../cadastroCliente.php' class='site-btn'>Novo Cliente</a>
-			</div>
 			<div class='row justify-content-center'>
+				<div class='col-md-9'>
+					<div class='row'>
+						<div class='col-xl-1 col-lg-5'>
+							<a href='cadastroCliente.php'><img src='../img/icons/filter.png' width='70px'></a>
+						</div>
+						<div class='col-xl-10 col-lg-5'>
+							<form class='header-search-form'>
+								<input type='text' placeholder='Encontre na página'>
+								<button><i class='flaticon-search'></i></button>
+							</form>
+						</div>
+						<div class='col-xl-1 col-lg-5'>
+							<a href='cadastroCliente.php'><img src='../img/icons/newClient.png' width='70px'></a>
+						</div>
+					</div>
+				</div>
 				<div class='col-lg-9'>
+					<hr>
 					<div class='cart-table'>
-						<h3>Nossos clientes</h3>
 						<div class='cart-table-warp'>
 							<table>
 							<thead>
 								<tr>
 									<th class='product-th'>Nome</th>
-									<th class='quy-th'>Saldo</th>
+									<th class='quy-th'>CPF</th>
+									<th class='quy-th'>Telefone</th>
 									<th class='quy-th'>Excluir</th>
                                     <th class='quy-th'>Editar</th>
-                                    <th class='quy-th'>Selecionar</th>
+                                    <th class='quy-th'>Ver mais</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -58,24 +72,21 @@
 									<td class='quy-col'>
                                         <a href='cliente.php'>
                                             <div class='pc-title'>
-                                                <h4>Fulano</h4>
-                                                <p>(31) 00000-0000</p>
+                                                <h4>Fulano	</h4>
+												<p>fulano@yahoo.com.br</p>
                                             </div>
                                         </a>
 									</td>
-									<td class='quy-col'>
-                                            <center><h4>10,00</h4></center>
-									</td>
-									<td class='quy-col'><center><a href='excluirUsuario.php'><img src='../img/icons/delete.png' height='35px'></a></center></td>
-                                    <td class='quy-col'><center><h4><a href='editarUsuario.php'><img src='../img/icons/edit.png' height='30px'></a></h4></center></td>
-                                    <td class='quy-th'><center></center></td>
+									<td class='quy-col'><center>127.234.223-30</center></td>
+									<td class='quy-col'><center>(31) 98873-3308</center></td>
+									<td class='quy-col'><center><a href=''><img src='../img/icons/deleteClient.png' height='35px'></a></center></td>
+                                    <td class='quy-col'><center><a href=''><img src='../img/icons/editClient.png' height='35px'></a></center></td>
+                                    <td class='quy-col'><center><a href='cliente.php'><img src='../img/icons/seeClient.png' height='35px'></a></center></td>
 								</tr>
 							</tbody>
 						</table>
                         </div>
-                        <div class='total-cost'>
-                        <a href='excluirUsuarios.php' class='site-btn sb-dark'>Excluir clientes selecionados</a>
-						</div>
+                        <div class='total-cost'></div>
 					</div>
 				</div>
 			</div>
