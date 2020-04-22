@@ -243,6 +243,10 @@ ol {
 	color: #e1e1e1;
 }
 
+.pink{
+	color: #ec105a;
+}
+
 .elements-section {
 	padding-top: 100px;
 }
@@ -2331,6 +2335,7 @@ s
 	.social-links a span {
 		display: none;
 	}
+
 	.cart-table,
 	.checkout-cart,
 	.product-thumbs {

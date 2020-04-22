@@ -65,6 +65,7 @@
 									<th class='quy-th'>Excluir</th>
                                     <th class='quy-th'>Editar</th>
                                     <th class='quy-th'>Ver mais</th>
+                                    <th class='quy-th'>Relatórios</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -82,12 +83,13 @@
 									<td class='quy-col'><center><a href=''><img src='../img/icons/deleteClient.png' height='35px'></a></center></td>
                                     <td class='quy-col'><center><a href=''><img src='../img/icons/editClient.png' height='35px'></a></center></td>
                                     <td class='quy-col'><center><a href='cliente.php'><img src='../img/icons/seeClient.png' height='35px'></a></center></td>
+									<td class='quy-col'><center><a href='relatoriosCliente.php'><img src='../img/icons/actionsClient.png' height='35px'></a></center></td>
 								</tr>
 							</tbody>
 						</table>
                         </div>
                         <div class='total-cost'>
-							<h6>Exibindo <input type='number' value ='10'> de 123</h6>
+							<h6>Exibindo <input type='number' value ='1'> de 123</h6>
 						</div>
 					</div>
 				</div>
