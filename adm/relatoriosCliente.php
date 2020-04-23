@@ -26,7 +26,7 @@
 	<link rel='stylesheet' href='../css/animate.css'/>
 	<link rel='stylesheet' href='../css/style.css'/>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
 
 </head>
 <body>
@@ -42,36 +42,44 @@
             <b class='pink'>Telefone: </b> (31) 98873-3308 |
             <b class='pink'>E-mail: </b> fulano@yahoo.com.br |
             <b class='pink'>Endereço: </b> Praça dos Três Poderes - Brasília, DF 
-			<div class='row'>
+			<div class='row justify-content-center'>
+				<script type='text/javascript'>
+					google.charts.load('current', {packages:['corechart']});
+					google.charts.setOnLoadCallback(drawChart);
+					function drawChart() {
+						var data = google.visualization.arrayToDataTable([
+							['Serviço', 'Vezes'],
+							['Cauterização', 2],
+							['M. corporal', 4],
+							['M. capilar', 4],
+							['Limpeza de pele', 3],
+							['Escova', 2]
+						]);
+
+					var options = {
+						legend: {position: 'right', 
+								textStyle: {
+									fontName: 'Josefin Sans', 
+									fontSize: 16	
+								}},
+						pieSliceText: 'label',
+						title: 'Serviços mais solicitados',
+						titleTextStyle: {
+							color: 'black',
+							fontName: 'Josefin Sans', 
+							fontSize: 30	
+						},
+						colors: ['#ec105a', '#ff8f8f', '#f44336', '#f3b49f', '#f57f80', '#fad7d7'],
+					};
+
+						var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+						chart.draw(data, options);
+					}
+				</script>
+				<div id='piechart' style='width: 900px; height: 400px;'></div>
+            </div>
+            <div class='row'>
 				<div class='col-lg-6 order-2 order-lg-0'>
-					<script type="text/javascript">
-						google.charts.load("current", {packages:["corechart"]});
-						google.charts.setOnLoadCallback(drawChart);
-						function drawChart() {
-							var data = google.visualization.arrayToDataTable([
-								['Serviço', 'Vezes'],
-								['Cauterização', 2],
-								['M. corporal', 4],
-								['M. capilar', 4],
-								['Limpeza de pele', 3],
-								['Escova', 2]
-							]);
-
-						var options = {
-							legend: 'none',
-							pieSliceText: 'label',
-							title: 'Serviços mais solicitados',
-							colors: ['#ec105a', '#ff8f8f', '#f44336', '#f3b49f', '#f57f80', '#fad7d7'],
-						};
-
-							var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-							chart.draw(data, options);
-						}
-					</script>
-					<div id="piechart" style="width: 700px; height: 450px;"></div>
-				</div>
-				<div class='col-lg-6 order-2 order-lg-1'>
-					<br><br>
 					<div class='cart-table'>
 						<h3>Últimos serviços</h3>
 						<div class='cart-table-warp'>
@@ -145,9 +153,7 @@
 						</div>
 					</div>
                 </div>
-            </div>
-            <div class='row'>
-                <div class='col-md-6'>
+                <div class='col-lg-6 order-2 order-lg-1'>
 					<div class='row justify-content-center'>
 						<div class='cart-table'>
 							<h3>Últimas compras</h3>
