@@ -3,5 +3,6 @@
 - 'Encontre na página'
 - Botão de voltar
 - input de imagem no cadCliente
+- logo maior
 
 1) Excluir

@@ -25,13 +25,14 @@
 	<link rel='stylesheet' href='../css/owl.carousel.min.css'/>
 	<link rel='stylesheet' href='../css/animate.css'/>
 	<link rel='stylesheet' href='../css/style.css'/>
+	<link rel='stylesheet' href='../css/theme.default.css'/>
 
     <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
 
 </head>
 <body>
 	<?php
-		menu('Relatórios', 'client');
+		menu('Relatórios', 'actionsClient-light');
 	?>
 	
 	<!-- Client section -->
@@ -39,9 +40,9 @@
 		<div class='container'>
             <h3>Fulano da Silva</h3>
             <hr>
-            <b class='pink'>Telefone: </b> (31) 98873-3308 |
-            <b class='pink'>E-mail: </b> fulano@yahoo.com.br |
-            <b class='pink'>Endereço: </b> Praça dos Três Poderes - Brasília, DF 
+            <b >Telefone: </b> (31) 98873-3308 |
+            <b >E-mail: </b> fulano@yahoo.com.br |
+            <b >Endereço: </b> Praça dos Três Poderes - Brasília, DF 
 			<div class='row justify-content-center'>
 				<script type='text/javascript'>
 					google.charts.load('current', {packages:['corechart']});
@@ -83,7 +84,7 @@
 					<div class='cart-table'>
 						<h3>Últimos serviços</h3>
 						<div class='cart-table-warp'>
-							<table>
+							<table id='table' class='tablesorter'>
 								<thead>
 									<tr>
 										<th class='product-th'>Nome</th>
@@ -113,16 +114,16 @@
 									</tr>
 									<tr>
 										<td class='quy-col'>
-											<h5 class='pink'>Corte de cabelo</h5>
+											<h5 >Corte de cabelo</h5>
 										</td>
 										<td class='quy-col'>
-											<h5 class='pink'>Bochecha</h5>
+											<h5 >Bochecha</h5>
 										</td>
 										<td class='quy-col'>
-											<h5 class='pink'>19,99</h5>
+											<h5 >19,99</h5>
 										</td>
 										<td class='quy-col'>
-											<h5 class='pink'>20/02/20</h5>
+											<h5 >20/02/20</h5>
 										</td>
 										<td class='quy-col'>
 											<img src='../img/icons/v.png' width='25px'>
@@ -142,7 +143,7 @@
 											<h5>20/02/20</h5>
 										</td>
 										<td class='quy-col'>
-											<a href='registrarPagamento.php'><img src='../img/icons/empty.png' width='25px'></a>
+											<a href='registrarPagamento.php' title='Registrar pagamento'><img src='../img/icons/empty.png' width='25px'></a>
 										</td>
 									</tr>
 								</tbody>
@@ -158,7 +159,7 @@
 						<div class='cart-table'>
 							<h3>Últimas compras</h3>
 							<div class='cart-table-warp'>
-								<table>
+								<table id='table' class='tablesorter'>
 									<thead>
 										<tr>
 											<th class='product-th'>Nome</th>
@@ -202,6 +203,7 @@
 	<script src='../js/jquery-ui.min.js'></script>
 	<script src='../js/main.js'></script>
 	<script src='../js/projeto.js'></script>
+	<script src='../js/jquery.tablesorter.min.js'></script>
 
 	</body>
 </html>

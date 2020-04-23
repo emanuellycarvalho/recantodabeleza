@@ -43,10 +43,10 @@
 							<a href='' title='Filtrar resultados'><img src='../img/icons/filter.png' width='70px'></a>
 						</div>
 						<div class='col-xl-10 col-lg-5'>
-							<form class='header-search-form'>
-								<input type='search' placeholder='Encontre na página'>
+							<div class='search'>
+								<input type='text' name='search' id='seacrh' placeholder='Encontre na página'>
 								<button><i class='flaticon-search'></i></button>
-							</form>
+							</div>
 						</div>
 						<div class='col-xl-1 col-lg-5'>
 							<a href='cadastroCliente.php' title='Novo cliente'><img src='../img/icons/newClient.png' width='70px'></a>
@@ -70,7 +70,7 @@
                                     <th class='quy-th'>Relatórios</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id='tbody'>
 								<tr>
 									<td class='quy-col'>
                                         <a href='cliente.php' title='Visualizar cliente'>
@@ -109,9 +109,6 @@
 							</table>
                         </div>
                         <div class='total-cost-free'>
-							<div class='col-lg-6 order-lg-0'>
-								<h6>Exibindo <input type='number' value ='1'> de 123</h6>
-							</div>
 						</div>
 					</div>
 				</div>
