@@ -129,7 +129,7 @@
 						
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
-								<label for='rua'>Rua</label>
+								<label for='rua'>Rua*</label>
 								<input type='text' name='rua' id='rua'>
 							</div>
 						</div>
