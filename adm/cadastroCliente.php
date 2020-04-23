@@ -37,7 +37,7 @@
 		<div class='container'>
 			<div class='col-lg-10 offset-md-1'>
 				<form class='contact-form' name='cadastroPessoa' action='act/cadastrarFuncionario.php'>
-					<div class='cf-title'><h4>Dados pessoais</h4></div>
+					<div class='cf-title'><h4>Dados pessoais</h4></div><br>
 					
 					<div class='row'> <!-- grupo de inputs referente aos dados pessoais -->
 						
@@ -72,7 +72,7 @@
 											</div>
 											<div class='cfr-item'>
 												<input type='radio' name='sexo' id='outro'>
-												<label for='outro'>Outro</label>
+												<label for='outro'>Prefere não identificar</label>
 											</div>
 										</div>
 									</div>
@@ -114,9 +114,9 @@
 
 					</div>
 													
-					<hr>
+					<hr class='pink'>
 					
-					<div class='cf-title'><h4>Endereço</h4></div>
+					<div class='cf-title'><h4>Endereço</h4></div><br>
 
 					<div class='row'>  <!-- grupo de inputs referente aos dados de endereço -->
 						
@@ -163,10 +163,13 @@
 						</div>
 					</div>
 										
-					<div class='col-md-2 offset-md-5'>
-						<div class='row'><p>. </p></div>
-						<button class='site-btn'>CADASTRAR</button>
-						<div class='row'><p>. </p></div>
+					<div class='col-md-12'>
+						<div class='row'><p><br></p></div>
+						<div class='row justify-content-end'>
+							<a href='clientes.php' class='site-btn sb-dark'>Cancelar</a>
+							<button class='site-btn'>CADASTRAR</button>	
+						</div>
+						<div class='row'><p><br></p></div>
 					</div>
 				</form>
 			</div>	

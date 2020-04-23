@@ -1,0 +1,19 @@
+- Paginação
+- Resultados/página
+- Mais de um registro
+- Hints
+- Separar as ações
+- 'Encontre na página'
+- Ordenação da tabela
+- Padronizar título do gráfico
+- Redistribuir as tabelas no visualizar
+- Distância do título
+- <hr> mais escura
+- Botão de cancelar
+- Limpar os campos
+- Botão de voltar
+- Rua obrigatório
+- Alinhar o user logado
+- input de imagem no cadCliente
+
+1) Excluir

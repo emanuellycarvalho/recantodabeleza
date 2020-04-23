@@ -8,7 +8,7 @@
                     </div>
                     <div class='footer-logo text-center'>
                         <a href='index.php'><img src='../img/logo-light.png' alt=''></a>                    
-                        <div class='col-md-3 offset-md-9'>
+                        <div class='col-md-2 offset-md-11'>
                             <a href=''><img src='../img/icons/user-light.png' alt=''></a>
                             <a href=''><img src='../img/icons/logoff-light.png' alt=''></a>
                             <p class='light'>Fulano de tal - Secretário</p>
