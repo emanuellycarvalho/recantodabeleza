@@ -173,10 +173,13 @@
 						</div>
 					</div>
 										
-					<div class='col-md-2 offset-md-5'>
-						<div class='row'><p>. </p></div>
-						<button class='site-btn'>CADASTRAR</button>
-						<div class='row'><p>. </p></div>
+					<div class='col-md-12'>
+						<div class='row'><p><br></p></div>
+						<div class='row justify-content-end'>
+							<a href='clientes.php' class='site-btn sb-dark'>Cancelar</a>
+							<button class='site-btn'>CADASTRAR</button>	
+						</div>
+						<div class='row'><p><br></p></div>
 					</div>
 				</form>
 			</div>	

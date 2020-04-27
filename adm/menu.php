@@ -25,7 +25,7 @@
                                     <li><a href='#'>Serviços</a></li>
                                     <li><a href='clientes.php'>Clientes</a></li>
                                     <li><a href='funcionarios.php'>Funcionários</a></li>
-                                    <li><a href='#'>Fornecedores</a></li>
+                                    <li><a href='fornecedores.php'>Fornecedores</a></li>
                                     <li><a href='#'>Relatorios</a></li>
                                     <li><a href='#'>Outros</a></li>
                                 </ul>
