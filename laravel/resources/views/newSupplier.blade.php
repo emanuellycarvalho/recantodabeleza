@@ -10,6 +10,13 @@
 <section class='contact-section'>
 		<div class='container'>
 			<div class='col-lg-10 offset-md-1'>
+				<div class='text-center mb-5 alert-danger'>
+					@if(isset($errors) && count($errors) > 0) 
+						@foreach($errors->all() as $error)
+							{{$error}} <br>							
+						@endforeach
+					@endif
+				</div>
 				<form class='contact-form' name='cadastroPessoa' method='post' action='{{url("adm/supplier")}}'>
 					@csrf
 					<div class='row'>
@@ -17,7 +24,7 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='nmFornecedor'>Nome*</label>
-								<input type='text' name='nmFornecedor' id='nmFornecedor' placeholder='Nome'>
+								<input required type='text' name='nmFornecedor' id='nmFornecedor' placeholder='Nome'>
 							</div>
 						</div>
 						
@@ -25,7 +32,7 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='telefone'>Telefone*</label>
-								<input type='text' name='telefone' id='telefone' placeholder='(00) 00000-0000'>
+								<input required type='text' name='telefone' id='telefone' placeholder='(00) 00000-0000'>
 							</div>
 						</div>
                     </div>
@@ -35,7 +42,7 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='cnpj'>CNPJ*</label>
-								<input type='text' name='cnpj' id='cnpj'>
+								<input required type='text' name='cnpj' id='cnpj'>
 							</div>
 						</div>
 

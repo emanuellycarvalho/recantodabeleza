@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\SupplierRequest;
 use App\Models\ModelSupplier;
 
 class SupplierController extends Controller
@@ -24,7 +25,7 @@ class SupplierController extends Controller
         return view('newSupplier');
     }
   
-    public function store(Request $request)
+    public function store(SupplierRequest $request)
     {
         if ($this->objSupplier->create([
             'nmFornecedor' => $request->nmFornecedor,
@@ -56,7 +57,7 @@ class SupplierController extends Controller
         return view('suppliers.edit',compact('supplier'));
     }
   
-    public function update(supplierRequest $request, $id)
+    public function update(SupplierRequest $request, $id)
     {
         $supplier = supplier::findOrFail($id);
         $supplier->name        = $request->name;
