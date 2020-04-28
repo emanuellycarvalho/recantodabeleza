@@ -55,7 +55,7 @@
 									<td class='quy-col'><center>{{$sup->telefone}}</center></td>
 									<td class='quy-col'><img scr='{{url("/img/blog-thumbs/line.png")}}' width='35px'></td>
 									<td class='quy-col'><center><a href='' title='Excluir fornecedor'><img src='{{url("/img/icons/deleteSupplier.png")}}' height='35px'></a></center></td>
-                                    <td class='quy-col'><center><a href='' title='Editar fornecedor'><img src='{{url("/img/icons/editSupplier.png")}}' height='35px'></a></center></td>
+                                    <td class='quy-col'><center><a href='{{url("/adm/supplier/$sup->cdFornecedor/edit")}}' title='Editar fornecedor'><img src='{{url("/img/icons/editSupplier.png")}}' height='35px'></a></center></td>
                                     <td class='quy-col'><center><a href='fornecedor.php' title='Visualizar fornecedor'><img src='{{url("/img/icons/seeSupplier.png")}}' height='35px'></a></center></td>
 									<td class='quy-col'><center><a href='relatoriosfornecedor.php' title='Relatórios do fornecedor'><img src='{{url("/img/icons/actionsSupplier.png")}}' height='35px'></a></center></td>
 								</tr>

@@ -50,9 +50,9 @@
                             <li><a href='{{url("../resources/views/index.blade.php")}}'>Home</a></li>
                             <li><a href='{{url("/")}}'>Produtos</a></li>
                             <li><a href='{{url("/")}}'>Serviços</a></li>
-                            <li><a href='{{url("client")}}'>Clientes</a></li>
+                            <li><a href='{{url("adm/client")}}'>Clientes</a></li>
                             <li><a href='{{url("/")}}'>Funcionários</a></li>
-                            <li><a href='{{url("supplier")}}'>Fornecedores</a></li>
+                            <li><a href='{{url("/adm/supplier")}}'>Fornecedores</a></li>
                             <li><a href='{{url("/")}}'>Relatorios</a></li>
                             <li><a href='{{url("/")}}'>Outros</a></li>
                         </ul>

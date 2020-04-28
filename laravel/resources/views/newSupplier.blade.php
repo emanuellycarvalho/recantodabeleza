@@ -1,8 +1,12 @@
 @extends('templates.adm')
 
-@section('title') Novo Fornecedor @endsection('title')
-
-@section('icon') <img src='{{url("/img/icons/newSupplier-light.png")}}' width='35px'> @endsection('icon')
+@if(isset($supplier)) 
+	@section('title') Editar Fornecedor @endsection('title')
+	@section('icon') <img src='{{url("/img/icons/editSupplier-light.png")}}' width='35px'> @endsection('icon')
+@else
+	@section('title') Novo Fornecedor @endsection('title')
+	@section('icon') <img src='{{url("/img/icons/newSupplier-light.png")}}' width='35px'> @endsection('icon')
+@endif
 
 @section('content')
 
@@ -17,14 +21,19 @@
 						@endforeach
 					@endif
 				</div>
-				<form class='contact-form' name='cadastroPessoa' method='post' action='{{url("adm/supplier")}}'>
+				@if(isset($supplier)) 
+					<form class='contact-form' name='cadastroPessoa' method='post' action='{{url("adm/supplier/$supplier->cdFornecedor")}}'>
+					@method('PUT')				
+				@else
+					<form class='contact-form' name='cadastroPessoa' method='post' action='{{url("adm/supplier")}}'>
+				@endif
 					@csrf
 					<div class='row'>
 						
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='nmFornecedor'>Nome*</label>
-								<input required type='text' name='nmFornecedor' id='nmFornecedor' placeholder='Nome'>
+								<input required type='text' name='nmFornecedor' id='nmFornecedor' placeholder='Nome' value='{{$supplier->nmFornecedor ?? ""}}'>
 							</div>
 						</div>
 						
@@ -32,7 +41,7 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='telefone'>Telefone*</label>
-								<input required type='text' name='telefone' id='telefone' placeholder='(00) 00000-0000'>
+								<input required type='text' name='telefone' id='telefone' value='{{$supplier->telefone ?? ""}}' placeholder='(00) 00000-0000'>
 							</div>
 						</div>
                     </div>
@@ -42,13 +51,13 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='cnpj'>CNPJ*</label>
-								<input required type='text' name='cnpj' id='cnpj'>
+								<input required type='text' name='cnpj' value='{{$supplier->cnpj ?? ""}}' id='cnpj'>
 							</div>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
 							<label for='email'>Email</label>
-							<input type='email' name='email' id='email' placeholder='E-mail'>
+							<input type='email' name='email' id='email' value='{{$supplier->email ?? ""}}' placeholder='E-mail'>
 						</div>
 
 					</div>
@@ -57,7 +66,7 @@
 						<div class='row'><p><br></p></div>
 						<div class='row justify-content-end'>
 							<a href='{{url("adm/supplier")}}' class='site-btn sb-dark'>Cancelar</a>
-							<button type='submit' class='site-btn'>CADASTRAR</button>	
+							<button type='submit' class='site-btn'>Salvar</button>	
 						</div>
 						<div class='row'><p><br></p></div>
 					</div>
