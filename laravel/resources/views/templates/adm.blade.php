@@ -91,7 +91,7 @@
 	<script src='{{url("/assets/js/jquery-ui.min.js")}}'></script>
 	<script src='{{url("/assets/js/main.js")}}'></script>
 	<script src='{{url("/assets/js/projeto.js")}}'></script>
-	<script src='{{url("/assets/js/jquery.tablesorter-min.js")}}'></script>
+	<script src='{{url("/assets/js/jquery.tablesorter.min.js")}}'></script>
 
 </body>
 </html>

@@ -21,7 +21,7 @@
 							</div>
 						</div>
 						<div class='col-xl-1 col-lg-5'>
-							<a href='{{url("supplier/create")}}' title='Novo fornecedor'><img src='{{url("/img/icons/newSupplier.png")}}' width='70px'></a>
+							<a href='{{url("adm/supplier/create")}}' title='Novo fornecedor'><img src='{{url("/img/icons/newSupplier.png")}}' width='70px'></a>
 						</div>
 					</div>
 				</div>
@@ -42,38 +42,24 @@
 								</tr>
 							</thead>
 							<tbody id='tbody'>
+								@foreach($suppliers as $sup)
 								<tr>
 									<td class='quy-col'>
                                         <a href='fornecedor.php' title='Visualizar fornecedor'>
                                             <div class='pc-title'>
-                                                <h4>Fulano</h4>
-												<p>fulano@yahoo.com.br</p>
+                                                <h4>{{$sup->nmFornecedor}}</h4>
+												<p>{{$sup->email}}</p>
                                             </div>
                                         </a>
 									</td>
-									<td class='quy-col'><center>(31) 98873-3308</center></td>
+									<td class='quy-col'><center>{{$sup->telefone}}</center></td>
 									<td class='quy-col'><img scr='{{url("/img/blog-thumbs/line.png")}}' width='35px'></td>
 									<td class='quy-col'><center><a href='' title='Excluir fornecedor'><img src='{{url("/img/icons/deleteSupplier.png")}}' height='35px'></a></center></td>
                                     <td class='quy-col'><center><a href='' title='Editar fornecedor'><img src='{{url("/img/icons/editSupplier.png")}}' height='35px'></a></center></td>
                                     <td class='quy-col'><center><a href='fornecedor.php' title='Visualizar fornecedor'><img src='{{url("/img/icons/seeSupplier.png")}}' height='35px'></a></center></td>
 									<td class='quy-col'><center><a href='relatoriosfornecedor.php' title='Relatórios do fornecedor'><img src='{{url("/img/icons/actionsSupplier.png")}}' height='35px'></a></center></td>
 								</tr>
-								<tr>
-									<td class='quy-col'>
-                                        <a href='fornecedor.php' title='Visualizar fornecedor'>
-                                            <div class='pc-title'>
-                                                <h4>Ciclano	</h4>
-												<p>ciclano@yahoo.com.br</p>
-                                            </div>
-                                        </a>
-									</td>
-									<td class='quy-col'><center>(31) 98773-3308</center></td>
-									<td class='quy-col'><img scr='{{url("/img/blog-thumbs/line.png")}}' width='35px'></td>
-									<td class='quy-col'><center><a href='' title='Excluir fornecedor'><img src='{{url("/img/icons/deleteSupplier.png")}}' height='35px'></a></center></td>
-                                    <td class='quy-col'><center><a href='' title='Editar fornecedor'><img src='{{url("/img/icons/editSupplier.png")}}' height='35px'></a></center></td>
-                                    <td class='quy-col'><center><a href='fornecedor.php' title='Visualizar fornecedor'><img src='{{url("/img/icons/seeSupplier.png")}}' height='35px'></a></center></td>
-									<td class='quy-col'><center><a href='relatoriosfornecedor.php' title='Relatórios do fornecedor'><img src='{{url("/img/icons/actionsSupplier.png")}}' height='35px'></a></center></td>
-								</tr>
+								@endforeach
 							</tbody>
 							</table>
                         </div>

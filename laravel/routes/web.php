@@ -16,5 +16,4 @@ use Illuminate\Support\Facades\Route;
 /*
 Route::get('/', 'ClientController@index');
 */
-Route::resource('/adm', 'EmployeeController');
-Route::resource('/supplier', 'SupplierController');
+Route::resource('adm/supplier', 'SupplierController');

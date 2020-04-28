@@ -24,8 +24,17 @@ class SupplierController extends Controller
         return view('newSupplier');
     }
   
-    public function store(SupplierRequest $request)
+    public function store(Request $request)
     {
+        if ($this->objSupplier->create([
+            'nmFornecedor' => $request->nmFornecedor,
+            'cnpj' => $request->cnpj,
+            'telefone'  => $request->telefone,
+            'email' => $request->email
+            ])){
+                return redirect('adm/supplier');
+            }
+        /*
         $supplier = new Supplier;
         $supplier->nmFornecedor = $request->nmFornecedor;
         $supplier->cnpj = $request->cnjp;
@@ -33,6 +42,7 @@ class SupplierController extends Controller
         $supplier->email = $request->email;
         $supplier->save();
         return redirect()->route('suppliers.index')->with('message', 'supplier created successfully!');
+        */
     }
   
     public function show($id)
