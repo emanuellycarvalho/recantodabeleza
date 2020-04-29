@@ -56,8 +56,8 @@
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
-							<label for='email'>Email</label>
-							<input type='email' name='email' id='email' value='{{$supplier->email ?? ""}}' placeholder='E-mail'>
+							<label for='email'>Email*</label>
+							<input required type='email' name='email' id='email' value='{{$supplier->email ?? ""}}' placeholder='E-mail'>
 						</div>
 
 					</div>

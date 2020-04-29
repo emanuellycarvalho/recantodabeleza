@@ -16,7 +16,7 @@ class CreateSuppliersTable extends Migration
         Schema::create('TbFornecedor', function (Blueprint $table) {
             $table->increments('cdFornecedor');
             $table->string('nmFornecedor');
-            $table->string('email');
+            $table->string('email')>nullable(true)->change();
             $table->string('cnpj');
             $table->string('telefone');
             $table->timestamps();

@@ -27,6 +27,9 @@ class SupplierController extends Controller
   
     public function store(SupplierRequest $request)
     {
+        if (!isset($request->email)){
+            $request->email = NULL;
+        }
         if ($this->objSupplier->create([
             'nmFornecedor' => $request->nmFornecedor,
             'cnpj' => $request->cnpj,
@@ -48,7 +51,8 @@ class SupplierController extends Controller
   
     public function show($id)
     {
-        //
+        $sup = $this->objSupplier->where('cdFornecedor', $id)->first();
+        return view('showSupplier', compact('sup'));
     }
   
     public function edit($id)
@@ -81,9 +85,13 @@ class SupplierController extends Controller
   
     public function destroy($id)
     {
+
+        $del = $this->objSupplier->where('cdFornecedor', $id)->delete();
+        /*
         $supplier = SupplierController::findOrFail($id);
         $supplier->delete();
         return redirect()->route('suppliers.index')->with('alert-success','supplier hasbeen deleted!');
+        */
     }
     
 }

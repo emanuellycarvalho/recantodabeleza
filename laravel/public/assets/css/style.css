@@ -31,6 +31,20 @@ hr.black {
 	height: 1px;
 }
 
+.modal {
+	border-radius: 20px;
+}
+
+.modal .modal-header {
+	background-color: #f51167;
+}
+
+.modal .modal-header .modal-title{
+	color: #ececec;
+	font-size: 25px;
+}
+
+
 .search {
 	width: 100%;
 	position: relative;
@@ -1814,6 +1828,11 @@ s
 	font-weight: 700;
 	margin-bottom: 37px;
 }
+
+.cart-table .sup h3 {
+	font-weight: 700;
+	margin-bottom: 3px;
+} 
 
 .cart-table table {
 	width: 100%;
