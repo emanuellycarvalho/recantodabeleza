@@ -18,7 +18,6 @@ body {
 	font-smoothing: antialiased;
 }
 
-
 hr.pink {
 	color:#f51167;
 	background-color: #f51167;
@@ -43,7 +42,6 @@ hr.black {
 	color: #ececec;
 	font-size: 25px;
 }
-
 
 .search {
 	width: 100%;
@@ -72,6 +70,33 @@ hr.black {
 	cursor: pointer;
 	background-color: transparent;
 }
+
+.exhibit-title {
+	text-align: center;
+	margin: 5px;
+}
+
+.exhibit-title hr {
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+#pagination {
+	margin-right: 20px;
+}
+
+a.page-link{
+	color: #f51167;
+}
+
+ul.pagination li.page-item :hover{
+	color: #cf024f;
+}
+
+#pagination ul.pagination li.page-item.active{
+	background-color: #f96790;
+}
+
 
 h1,
 h2,

@@ -16,7 +16,7 @@ class SupplierController extends Controller
     }
     public function index()
     {
-        $suppliers = $this->objSupplier->all()->sortBy('cdFornecedor');
+        $suppliers = $this->objSupplier->paginate(5);
         return view('suppliers',['suppliers' => $suppliers]);
     }
   

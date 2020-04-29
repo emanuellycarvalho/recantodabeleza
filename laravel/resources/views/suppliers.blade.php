@@ -25,8 +25,10 @@
 						</div>
 					</div>
 				</div>
-				<div class='col-lg-9'>
-					<hr>
+				<div class='col-lg-9'>  
+					<div class='exhibit-title'>
+						<hr> Exibindo {{$suppliers->count()}} de {{$suppliers->total()}}  <hr>
+					</div>
 					<div class='cart-table'>
 						<div class='cart-table-warp'>
 							@csrf
@@ -54,15 +56,18 @@
 									</td>
 									<td class='quy-col'>{{$sup->telefone}}</td>
 									<td class='quy-col'><img scr='{{url("/img/blog-thumbs/line.png")}}' width='35px'></td>
-                                    <td class='quy-col'><a href='{{url("adm/supplier/$sup->cdFornecedor")}}' title='Visualizar fornecedor'><img src='{{url("/img/icons/seeSupplier.png")}}' height='35px'></a></td>
-                                    <td class='quy-col'><a href='{{url("/adm/supplier/$sup->cdFornecedor/edit")}}' title='Editar fornecedor'><img src='{{url("/img/icons/editSupplier.png")}}' height='35px'></a></td>
-									<td class='quy-col'><a href='{{url("adm/supplier/$sup->cdFornecedor")}}' title='Excluir fornecedor' class='js-del'><img src='{{url("/img/icons/deleteSupplier.png")}}' height='35px'></a></td>
+                                    <td class='quy-col'><center><a href='{{url("adm/supplier/$sup->cdFornecedor")}}' title='Visualizar fornecedor'><img src='{{url("/img/icons/seeSupplier.png")}}' height='35px'></a></center></td>
+                                    <td class='quy-col'><center><a href='{{url("/adm/supplier/$sup->cdFornecedor/edit")}}' title='Editar fornecedor'><img src='{{url("/img/icons/editSupplier.png")}}' height='35px'></a></center></td>
+									<td class='quy-col'><center><a href='{{url("adm/supplier/$sup->cdFornecedor")}}' title='Excluir fornecedor' class='js-del'><img src='{{url("/img/icons/deleteSupplier.png")}}' height='35px'></a></center></td>
 								</tr>
 								@endforeach
 							</tbody>
 							</table>
                         </div>
                         <div class='total-cost-free'>
+							<div class='row justify-content-end' id='pagination'>
+						   		{{$suppliers->links()}}
+							</div>
 						</div>
 					</div>
 				</div>
