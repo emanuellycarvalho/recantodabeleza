@@ -22,10 +22,10 @@
 					@endif
 				</div>
 				@if(isset($supplier)) 
-					<form class='contact-form' name='cadastroPessoa' method='post' action='{{url("adm/supplier/$supplier->cdFornecedor")}}'>
+					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/supplier/$supplier->cdFornecedor")}}'>
 					@method('PUT')				
 				@else
-					<form class='contact-form' name='cadastroPessoa' method='post' action='{{url("adm/supplier")}}'>
+					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/supplier")}}'>
 				@endif
 					@csrf
 					<div class='row'>
@@ -51,7 +51,7 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='cnpj'>CNPJ*</label>
-								<input required type='text' name='cnpj' value='{{$supplier->cnpj ?? ""}}' id='cnpj'>
+								<input required type='text' name='cnpj' id='cnpj' value='{{$supplier->cnpj ?? ""}}'>
 							</div>
 						</div>
 

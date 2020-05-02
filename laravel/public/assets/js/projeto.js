@@ -1,7 +1,22 @@
+//MÁSCARAS
+$(document).ready(function(){
+  $('#dtNasc').mask('00/00/0000');
+  $('#cep').mask('00000-000', {reverse: true});
+  $('#telefone').mask('(00) 00000-0000');
+  $('#cpf').mask('000.000.000-00', {reverse: true});
+  $('#cnpj').mask('00.000.000/0000-00', {reverse: true});
+});
 
 //DELETE
 (function(win, doc){
   'use strict';
+
+  if (doc.querySelector('.js-del')){
+    let btn = doc.querySelectorAll('.js-del');
+    for (let i = 0; i < btn.length; i++){
+      btn[i].addEventListener('click', confirmDel, false);
+    }
+  }
 
   function confirmDel(event){
     event.preventDefault();
@@ -27,27 +42,6 @@
         ajax.send();
       
     });
-  }
-
-  if (doc.querySelector('.js-del')){
-    let btn = doc.querySelectorAll('.js-del');
-    for (let i = 0; i < btn.length; i++){
-      btn[i].addEventListener('click', confirmDel, false);
-    }
-  }
-
-  
-  function showModal(){
-    $('#confirmModal').modal({
-      show: true,
-    });
-    let btnC = doc.querySelector('#del');
-    console.log(btnC);
-    btnC.addEventListener('click', confirm, false);
-  }
-
-  function confirm(){
-    return true;
   }
   
 })(window, document);

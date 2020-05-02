@@ -27,9 +27,6 @@ class SupplierController extends Controller
   
     public function store(SupplierRequest $request)
     {
-        if (!isset($request->email)){
-            $request->email = NULL;
-        }
         if ($this->objSupplier->create([
             'nmFornecedor' => $request->nmFornecedor,
             'cnpj' => $request->cnpj,
