@@ -1,11 +1,11 @@
 @extends('templates.adm')
 
-@section('title') Fornecedores @endsection('title')
+@section('title') Funcionários @endsection('title')
 
-@section('icon') <img src='{{url("/img/icons/supplier-light.png")}}' width='35px'> @endsection('icon')
+@section('icon') <img src='{{url("/img/icons/employee.png")}}' width='35px'> @endsection('icon')
 
 @section('content')
-    <!-- Suppliers section -->
+    <!-- Employees section -->
     <section class='cart-section spad'>
 		<div class='container'>
 			<div class='row justify-content-center'>
@@ -21,13 +21,13 @@
 							</div>
 						</div>
 						<div class='col-xl-1 col-lg-5'>
-							<a href='{{url("adm/supplier/create")}}' title='Novo fornecedor'><img src='{{url("/img/icons/newSupplier.png")}}' width='70px'></a>
+							<a href='{{url("adm/employee/create")}}' title='Novo funcionário'><img src='{{url("/img/icons/newEmployee.png")}}' width='70px'></a>
 						</div>
 					</div>
 				</div>
 				<div class='col-lg-9'>  
 					<div class='exhibit-title'>
-						<hr> Exibindo {{$suppliers->count()}} de {{$suppliers->total()}}  <hr>
+						<hr> Exibindo {{$employees->count()}} de {{$employees->total()}}  <hr>
 					</div>
 					<div class='cart-table'>
 						<div class='cart-table-warp'>
@@ -36,7 +36,7 @@
 							<thead>
 								<tr>
 									<th class='product-th'>Nome</th>
-									<th class='quy-th'>Telefone</th>
+									<th class='quy-th'>Tipo</th>
 									<th class='quy-th'></th>
                                     <th class='quy-th'>Ver mais</th>
                                     <th class='quy-th'>Editar</th>
@@ -44,21 +44,24 @@
 								</tr>
 							</thead>
 							<tbody id='tbody'>
-								@foreach($suppliers as $sup)
+								@foreach($employees as $emp)
+                                    @php    
+                                        $tipo = $emp->where('cdFuncionário', $emp->cdFuncionário)->relEmployeeType;
+                                    @endphp
 								<tr>
 									<td class='quy-col'>
-                                        <a href='{{url("adm/supplier/$sup->cdFornecedor")}}' title='Visualizar fornecedor'>
+                                        <a href='{{url("adm/employee/$emp->cdFuncionário")}}' title='Visualizar funcionário'>
                                             <div class='pc-title'>
-                                                <h4>{{$sup->nmFornecedor}}</h4>
-												<p>{{$sup->email}}</p>
+                                                <h4>{{$emp->nmFuncionário}}</h4>
+												<p>{{$emp->telefone}}</p>
                                             </div>
                                         </a>
 									</td>
-									<td class='quy-col'><center>{{$sup->telefone}}</center></td>
+									<td class='quy-col'><center>{{$tipo->nmFuncao}}</center></td>
 									<td class='quy-col'><img scr='{{url("/img/blog-thumbs/line.png")}}' width='35px'></td>
-                                    <td class='quy-col'><center><a href='{{url("adm/supplier/$sup->cdFornecedor")}}' title='Visualizar fornecedor'><img src='{{url("/img/icons/seeSupplier.png")}}' height='35px'></a></center></td>
-                                    <td class='quy-col'><center><a href='{{url("/adm/supplier/$sup->cdFornecedor/edit")}}' title='Editar fornecedor'><img src='{{url("/img/icons/editSupplier.png")}}' height='35px'></a></center></td>
-									<td class='quy-col'><center><a href='{{url("adm/supplier/$sup->cdFornecedor")}}' title='Excluir fornecedor' class='js-del'><img src='{{url("/img/icons/deleteSupplier.png")}}' height='35px'></a></center></td>
+                                    <td class='quy-col'><center><a href='{{url("adm/employee/$emp->cdFuncionário")}}' title='Visualizar funcionário'><img src='{{url("/img/icons/seeEmployee.png")}}' height='35px'></a></center></td>
+                                    <td class='quy-col'><center><a href='{{url("/adm/employee/$emp->cdFuncionário/edit")}}' title='Editar funcionário'><img src='{{url("/img/icons/editEmployee.png")}}' height='35px'></a></center></td>
+									<td class='quy-col'><center><a href='{{url("adm/employee/$emp->cdFuncionário")}}' title='Excluir funcionário' class='js-del'><img src='{{url("/img/icons/deleteEmployee.png")}}' height='35px'></a></center></td>
 								</tr>
 								@endforeach
 							</tbody>
@@ -66,7 +69,7 @@
                         </div>
                         <div class='total-cost-free'>
 							<div class='row justify-content-end' id='pagination'>
-						   		{{$suppliers->links()}}
+						   		{{$employees->links()}}
 							</div>
 						</div>
 					</div>
@@ -74,7 +77,7 @@
 			</div>
 		</div>
 	</section>
-    <!-- Suppliers section end -->
+    <!-- Employees section end -->
 
     <!-- Modal section -->
 	<div id='confirmModal' class='modal' tabindex='-1' role='dialog'>

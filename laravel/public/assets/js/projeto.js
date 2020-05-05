@@ -27,7 +27,7 @@ $(document).ready(function(){
     let token = doc.getElementsByName('_token')[0].value;
     $('#del').on('click', function () {
         let href = $(this).href;
-        console.log(href);
+        //console.log(href);
         let ajax = new XMLHttpRequest();
         ajax.open('DELETE', event.target.parentNode.href);
         ajax.setRequestHeader('X-CSRF-TOKEN', token);
@@ -52,23 +52,28 @@ $(function() {
   $('#table').tablesorter();
 });
   
-  /*
   var tbody = document.getElementById('tbody');
   var tr = tbody.childNodes;
-
-  document.getElementById('seacrh').addEventListener('keyup', function(){
-    var src = document.getElementById('seacrh').value.toLowerCase();
-    for (var i = 0; i < tbody.childNodes.length; i++) {
+  //console.log(tr);
+  document.getElementById('search').addEventListener('keyup', function(){
+    var src = document.getElementById('search').value.toLowerCase();
+    //console.log(src);
+    for (var i = 1; i < tbody.childNodes.length; i++) {
+      //console.log(tbody.childNodes.length);
+      //console.log(i);
       var found = false;
       var tr = tbody.childNodes[i];
-      console.log(i, tbody.childNodes[i]);
+      //console.log(tr);
       var td = tr.childNodes;
-      
+      //console.log(td[1].childNodes[1].innerText);
       for (var j = 0; j < td.length; j++) {
-        var value = td[j].childNodes[0].nodeValue.toLowerCase();
-        
+        //console.log(td[j].childNodes[1].childNodes[1].childNodes[1].childNodes[0].nodeValue);
+        //console.log(j);
+        var value = td[j].childNodes[1].childNodes[1].childNodes[1].childNodes[0].nodeValue.toLowerCase();
+        console.log(value);
         if (value.indexOf(src) >= 0) {
           found = true;
+          console.log(found);
         }
       }
 
@@ -78,4 +83,4 @@ $(function() {
       tr.style.display = 'none';
     } 
   }
-}) */
+}) 
