@@ -29,7 +29,7 @@ class EmployeeController extends Controller
         return view('newEmployee', compact('etypes'));
     }
 
-    public function store(SupplierRequest $request)
+    public function store(EmployeeRequest $request)
     {
         if ($this->objSupplier->create([
             'nmFornecedor' => $request->nmFornecedor,
