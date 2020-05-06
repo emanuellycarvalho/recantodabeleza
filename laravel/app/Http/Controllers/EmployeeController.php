@@ -20,7 +20,8 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = $this->objEmployee->paginate(5);
-        return view('employees',['employees' => $employees]);
+        $etypes = $this->objEmployeeType->all();
+        return view('employees', compact('employees'), compact('etypes'));
     }
 
     public function create()
@@ -30,15 +31,55 @@ class EmployeeController extends Controller
     }
 
     public function store(EmployeeRequest $request)
-    {
-        if ($this->objSupplier->create([
-            'nmFornecedor' => $request->nmFornecedor,
-            'cnpj' => $request->cnpj,
-            'telefone'  => $request->telefone,
-            'email' => $request->email
+    {   
+        $cepResponse = cep($request->cep);
+        if ($cepResponse->isOk()){
+            $data = $cepResponse->getCepModel();
+            //return $data;
+        } else {
+            $errorCEP = "O CEP informado é inválido!";  
+            $etypes = $this->objEmployeeType->all();
+            return view('newEmployee', compact('errorCEP'), compact('etypes'));
+        }
+        
+        $dtNasc = NULL;
+
+        if (isset($request->dtNasc)){
+            $dtNasc = explode( '/' , $request->dtNasc);
+            $dtNasc = $dtNasc[2] . '-' . $dtNasc[1] . '-' . $dtNasc[0];
+        }
+        //return $dtNasc;
+
+        if ($this->objEmployee->create([
+            'nmFuncionario' => $request->nmFunc,
+            'sexo' => $request->sexo,
+            'dtNasc' => $dtNasc,
+            'cpf' => $request->cpf,
+            'telefone' => $request->telefone,
+            'email' => $request->email,
+            'senha' => $request->senha,
+            'numero' => $request->numero,
+            'cep' => $data->cep,
+            'rua' => $data->logradouro,
+            'bairro' => $data->bairro,
+            'cidade' => $data->localidade,
+            'complemento' => $request->complemento ?? NULL,
+            'cdTipoFuncionario' => $request->tipo
+            /*
+            'cep' => $request->cep,
+            'rua' => $request->rua,
+            'bairro' => $request->bairro,
+            'cidade' => $request->cidade,
+            */
             ])){
-                return redirect('adm/supplier');
-            }
+                return redirect('adm/employee');
+            } 
+    }
+
+    public function show($id)
+    {
+        $emp = $this->objEmployee->where('cdFuncionario', $id)->first();
+        return view('showEmployee', compact('emp'));
     }
   
 }

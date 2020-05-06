@@ -24,14 +24,14 @@ class EmployeeRequest extends FormRequest
     public function rules()
     {
         return [
-            'nmFuncionario' => 'required',
+            'nmFunc' => 'required',
             'sexo' => 'required',
             'cpf' => 'required|cpf|formato_cpf', 
             'telefone' => 'required',
             'email' => 'required',
             'senha' => 'required',
             'senha2' => 'required|same:senha',
-            'cep' => 'required|cep|formato_cep',
+            'cep' => 'required',
             'rua' => 'required',
             'numero' => 'required',
             'bairro' => 'required',
@@ -54,8 +54,6 @@ class EmployeeRequest extends FormRequest
             'senha2.required' => 'Confirme sua senha',
             'senha2.same' => 'As senhas não conferem',
             'cep.required' => 'O campo "CEP" é obrigatório.',
-            'cep.cep' => 'O campo "CEP" não é válido.',
-            'cep.formato_cep' => 'O campo "CEP" não é válido.',
             'rua.required' => 'O campo "Rua" é obrigatório.',
             'numero.required' => 'O campo "Número" é obrigatório.',
             'bairro.required' => 'O campo "Bairro" é obrigatório.',

@@ -18,10 +18,8 @@
                                 <div class='row'>
                                     <div class='col-lg-12 order-2 order-lg-1'>
                                     <b> Telefone </b> {{$sup->telefone}} 
-                                    @if($sup->email != '')
                                     <b class='pink'> | </b> <br>
                                     <b>E-mail </b> {{$sup->email}}
-                                    @endif
                                     </div>
                                 </div>
                             </div>

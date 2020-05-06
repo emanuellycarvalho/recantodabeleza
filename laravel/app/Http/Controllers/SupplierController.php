@@ -61,13 +61,15 @@ class SupplierController extends Controller
   
     public function update(SupplierRequest $request, $id)
     {
-        $this->objSupplier->where('cdFornecedor', $id)->update([
+        if ($this->objSupplier->where('cdFornecedor', $id)->update([
             'nmFornecedor' => $request->nmFornecedor,
             'cnpj' => $request->cnpj,
             'telefone'  => $request->telefone,
             'email' => $request->email
-        ]);
-        return redirect('adm/supplier');
+        ])){
+            return redirect('adm/supplier');
+        } 
+       
 
         /*
         $supplier = SupplierController::findOrFail($id);

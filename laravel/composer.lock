@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fec38bc290bbae29901ee3ac262a80bc",
+    "content-hash": "9c1d83db92c398d1e557a6321b4dbd32",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -102,6 +102,51 @@
                 "math"
             ],
             "time": "2020-02-17T13:57:43+00:00"
+        },
+        {
+            "name": "canducci/cep",
+            "version": "v3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/netdragoon/canduccicep.git",
+                "reference": "5e25a90a8444314c561e21708b04fdde1ffd04b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/netdragoon/canduccicep/zipball/5e25a90a8444314c561e21708b04fdde1ffd04b1",
+                "reference": "5e25a90a8444314c561e21708b04fdde1ffd04b1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.7"
+            },
+            "require-dev": {
+                "illuminate/support": "7.x-dev",
+                "phpspec/phpspec": "6.1.1",
+                "phpunit/phpunit": "8.5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Canducci\\Cep\\": "src/Canducci/Cep/"
+                },
+                "files": [
+                    "src/Canducci/Cep/Helpers/cep_helper.php",
+                    "src/Canducci/Cep/Helpers/uf_helper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fulvio",
+                    "email": "fulviocanducci@hotmail.com"
+                }
+            ],
+            "description": "CEP do Brasil Web Service ViaCep (https://viacep.com.br)",
+            "time": "2020-03-12T14:24:10+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

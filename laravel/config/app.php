@@ -174,6 +174,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Canducci\Cep\Providers\CepServiceProvider::class,
 
     ],
 
@@ -226,6 +227,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Cep' => Canducci\Cep\Facades\Cep::class,
+        'Endereco' => Canducci\Cep\Facades\Endereco::class,
 
     ],
 

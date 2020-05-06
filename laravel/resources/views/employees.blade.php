@@ -37,6 +37,7 @@
 								<tr>
 									<th class='product-th'>Nome</th>
 									<th class='quy-th'>Tipo</th>
+									<th class='quy-th'>Telefone</th>
 									<th class='quy-th'></th>
                                     <th class='quy-th'>Ver mais</th>
                                     <th class='quy-th'>Editar</th>
@@ -46,22 +47,27 @@
 							<tbody id='tbody'>
 								@foreach($employees as $emp)
                                     @php    
-                                        $tipo = $emp->where('cdFuncionário', $emp->cdFuncionário)->relEmployeeType;
+										foreach($etypes as $type){
+											if ($type->cdTipoFuncionario == $emp->cdFuncionario){
+												$tipo = $type;
+											}
+										}
                                     @endphp
 								<tr>
 									<td class='quy-col'>
-                                        <a href='{{url("adm/employee/$emp->cdFuncionário")}}' title='Visualizar funcionário'>
+                                        <a href='{{url("adm/employee/$emp->cdFuncionario")}}' title='Visualizar funcionário'>
                                             <div class='pc-title'>
-                                                <h4>{{$emp->nmFuncionário}}</h4>
-												<p>{{$emp->telefone}}</p>
+                                                <h4>{{$emp->nmFuncionario}}</h4>
+												<p>{{$emp->email}}</p>
                                             </div>
                                         </a>
 									</td>
-									<td class='quy-col'><center>{{$tipo->nmFuncao}}</center></td>
+									<td><center>{{$tipo->nmFuncao}}</center></td>
+									<td class='quy-col'><center>{{$emp->telefone}}</center></td>
 									<td class='quy-col'><img scr='{{url("/img/blog-thumbs/line.png")}}' width='35px'></td>
-                                    <td class='quy-col'><center><a href='{{url("adm/employee/$emp->cdFuncionário")}}' title='Visualizar funcionário'><img src='{{url("/img/icons/seeEmployee.png")}}' height='35px'></a></center></td>
-                                    <td class='quy-col'><center><a href='{{url("/adm/employee/$emp->cdFuncionário/edit")}}' title='Editar funcionário'><img src='{{url("/img/icons/editEmployee.png")}}' height='35px'></a></center></td>
-									<td class='quy-col'><center><a href='{{url("adm/employee/$emp->cdFuncionário")}}' title='Excluir funcionário' class='js-del'><img src='{{url("/img/icons/deleteEmployee.png")}}' height='35px'></a></center></td>
+                                    <td class='quy-col'><center><a href='{{url("adm/employee/$emp->cdFuncionario")}}' title='Visualizar funcionário'><img src='{{url("/img/icons/seeEmployee.png")}}' height='35px'></a></center></td>
+                                    <td class='quy-col'><center><a href='{{url("/adm/employee/$emp->cdFuncionario/edit")}}' title='Editar funcionário'><img src='{{url("/img/icons/editEmployee.png")}}' height='35px'></a></center></td>
+									<td class='quy-col'><center><a href='{{url("adm/employee/$emp->cdFuncionario")}}' title='Excluir funcionário' class='js-del'><img src='{{url("/img/icons/deleteEmployee.png")}}' height='35px'></a></center></td>
 								</tr>
 								@endforeach
 							</tbody>

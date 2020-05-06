@@ -18,3 +18,15 @@ Route::get('/', 'ClientController@index');
 */
 Route::resource('adm/supplier', 'SupplierController');
 Route::resource('adm/employee', 'EmployeeController');
+
+Route::get('/cep', function(){
+    $cepResponse = cep('01010000');
+    $data = $cepResponse->getCepModel();
+    return response()->json($data);
+ });
+ 
+ Route::get('/endereco', function(){
+     $enderecoResponse = endereco('sp','são paulo','ave');
+     $data = $enderecoResponse->getCepModels();        
+     return response()->json($data);
+  });

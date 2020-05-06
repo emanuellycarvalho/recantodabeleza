@@ -20,6 +20,9 @@
 							{{$error}} <br>							
 						@endforeach
 					@endif
+					@if(isset($errorCEP)) 
+						{{$errorCEP}}
+					@endif
 				</div>
 				@if(isset($employee)) 
 					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/employee/$employee->cdFuncionario")}}'>
@@ -47,15 +50,15 @@
 										<!-- tirar 'address-rb' pra colocar um por linha -->
 										<div class='col-md-12'>
 											<div class='cfr-item'>
-												<input type='radio' name='sexo' id='feminino'>
+												<input type='radio' name='sexo' id='feminino' value='Feminino'>
 												<label for='feminino'>Feminino</label>
 											</div>
 											<div class='cfr-item'>
-												<input type='radio' name='sexo' id='masculino'>
+												<input type='radio' name='sexo' id='masculino' value='Masculino'>
 												<label for='masculino'>Masculino</label>
 											</div>
 											<div class='cfr-item'>
-												<input type='radio' name='sexo' id='outro'>
+												<input type='radio' name='sexo' id='outro' value='Outro'>
 												<label for='outro'>Outro</label>
 											</div>
 										</div>
