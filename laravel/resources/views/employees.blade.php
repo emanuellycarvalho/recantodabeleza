@@ -7,7 +7,7 @@
 @section('content')
     <!-- Employees section -->
     <section class='cart-section spad'>
-		<div class='container'>
+		<div class='container'>	
 			<div class='row justify-content-center'>
 				<div class='col-md-9'>
 					<div class='row'>
@@ -35,13 +35,13 @@
 							<table id='table' class='tablesorter'>
 							<thead>
 								<tr>
-									<th class='product-th'>Nome</th>
-									<th class='quy-th'>Tipo</th>
-									<th class='quy-th'>Telefone</th>
-									<th class='quy-th'></th>
-                                    <th class='quy-th'>Ver mais</th>
-                                    <th class='quy-th'>Editar</th>
-									<th class='quy-th'>Excluir</th>
+									<th class='product-th'><br>Nome</th>
+									<th class='quy-th'><a href='{{url("adm/employeeType")}}' class='pink'>Ver tipos</a> <br>Tipo</th>
+									<th class='quy-th'><br>Telefone</th>
+									<th class='quy-th'><br></th>
+                                    <th class='quy-th'><br>Ver mais</th>
+                                    <th class='quy-th'><br>Editar</th>
+									<th class='quy-th'><br>Excluir</th>
 								</tr>
 							</thead>
 							<tbody id='tbody'>

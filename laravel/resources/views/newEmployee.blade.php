@@ -216,6 +216,7 @@
 			</div>
 			<div class='modal-body'>
 				<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/employeeType")}}'>
+					@csrf
 					<div class='row'>	
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>

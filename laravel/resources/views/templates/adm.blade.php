@@ -39,7 +39,7 @@
                     <a href='' title='Seu perfil'><img src='{{url("/img/icons/user-light.png")}}' alt=''></a>
                     <a href='' title='Sair'><img src='{{url("/img/icons/logoff-light.png")}}' alt=''></a>
                     <p class='light'>Fulano de tal - Secretário</p>
-                </div>
+                </div> 
             </div>
             <!-- Header section -->
             <header class='header-section'>

@@ -62,6 +62,7 @@
 							</table>
                         </div>
                         <div class='total-cost-free'>
+                            <a href='{{url("adm/employee")}}' class='site-btn sb-dark ml-4'>Voltar</a>
 							<div class='row justify-content-end' id='pagination'>
 						   		{{$etypes->links()}}
 							</div>

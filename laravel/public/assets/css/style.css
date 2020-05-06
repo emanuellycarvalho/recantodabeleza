@@ -24,6 +24,10 @@ hr.pink {
 	height: 0.5px;
 }
 
+a.pink:hover {
+	color: #960b3f;
+}
+
 hr.black {
 	color: black;
 	background-color: black;
@@ -1121,7 +1125,7 @@ ol {
 	background: #282828;
 	padding-top: 60px;
 }
-s
+
 .footer-logo {
 	padding-bottom: 60px;
 	margin-bottom: 60px;
@@ -1192,6 +1196,7 @@ s
 	top: 6px;
 	background: #ec105a;
 }
+
 
 .fw-latest-post-widget .lp-item {
 	margin-bottom: 30px;
