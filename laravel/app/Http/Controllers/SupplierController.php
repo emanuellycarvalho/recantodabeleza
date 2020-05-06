@@ -54,9 +54,9 @@ class SupplierController extends Controller
   
     public function edit($id)
     {
-        $supplier = $this->objSupplier->where('cdFornecedor', $id)->first();
+        $sup = $this->objSupplier->where('cdFornecedor', $id)->first();
         //$suppliers = SupplierController::findOrFail($id);
-        return view('newSupplier',compact('supplier'));
+        return view('newSupplier',compact('sup'));
     }
   
     public function update(SupplierRequest $request, $id)

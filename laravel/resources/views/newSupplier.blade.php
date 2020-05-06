@@ -21,8 +21,8 @@
 						@endforeach
 					@endif
 				</div>
-				@if(isset($supplier)) 
-					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/supplier/$supplier->cdFornecedor")}}'>
+				@if(isset($sup)) 
+					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/supplier/$sup->cdFornecedor")}}'>
 					@method('PUT')				
 				@else
 					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/supplier")}}'>
@@ -33,7 +33,7 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='nmFornecedor'>Nome*</label>
-								<input required type='text' name='nmFornecedor' id='nmFornecedor' placeholder='Nome' value='{{$supplier->nmFornecedor ?? ""}}'>
+								<input required type='text' name='nmFornecedor' id='nmFornecedor' placeholder='Nome' value='{{$sup->nmFornecedor ?? ""}}'>
 							</div>
 						</div>
 						
@@ -41,7 +41,7 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='telefone'>Telefone*</label>
-								<input required type='text' name='telefone' id='telefone' value='{{$supplier->telefone ?? ""}}' placeholder='(00) 00000-0000'>
+								<input required type='text' name='telefone' id='telefone' value='{{$sup->telefone ?? ""}}' placeholder='(00) 00000-0000'>
 							</div>
 						</div>
                     </div>
@@ -51,13 +51,13 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='cnpj'>CNPJ*</label>
-								<input required type='text' name='cnpj' id='cnpj' value='{{$supplier->cnpj ?? ""}}'>
+								<input required type='text' name='cnpj' id='cnpj' value='{{$sup->cnpj ?? ""}}'>
 							</div>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
 							<label for='email'>Email*</label>
-							<input required type='email' name='email' id='email' value='{{$supplier->email ?? ""}}' placeholder='E-mail'>
+							<input required type='email' name='email' id='email' value='{{$sup->email ?? ""}}' placeholder='E-mail'>
 						</div>
 
 					</div>

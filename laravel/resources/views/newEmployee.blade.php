@@ -1,6 +1,6 @@
 @extends('templates.adm')
 
-@if(isset($employee)) 
+@if(isset($emp)) 
 	@section('title') Editar Funcionário @endsection('title')
 	@section('icon') <img src='{{url("/img/icons/editEmployee-light.png")}}' width='35px'> @endsection('icon')
 @else
@@ -24,8 +24,8 @@
 						{{$errorCEP}}
 					@endif
 				</div>
-				@if(isset($employee)) 
-					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/employee/$employee->cdFuncionario")}}'>
+				@if(isset($emp)) 
+					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/employee/$emp->cdFuncionario")}}'>
 					@method('PUT')				
 				@else
 					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/employee")}}'>
@@ -38,7 +38,7 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='nmFunc'>Nome completo*</label>
-								<input type='text' name='nmFunc' id='nmFunc' placeholder='Nome'>
+								<input type='text' name='nmFunc' id='nmFunc' placeholder='Nome' value='{{$emp->nmFuncionario ?? ""}}'>
 							</div>
 						</div>
 						
@@ -66,7 +66,7 @@
 								</div>
 							</div>
 						</div>
-
+		
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='sexo'>Tipo</label>
@@ -74,7 +74,12 @@
 								<select name='tipo' id='tipo'>
 									<option value='0' disable>Selecione</option>
                                     @foreach($etypes as $type)
-                                        <option value='{{$type->cdTipoFuncionario}}'>{{$type->nmFuncao}}</option>
+										{{$v = $emp->cdTipoFuncionario ?? 0}}
+										@if($type->cdTipoFuncionario == $v)
+	                                        <option value='{{$type->cdTipoFuncionario}}' selected>{{$type->nmFuncao}}</option>
+										@else
+    	                                    <option value='{{$type->cdTipoFuncionario}}'>{{$type->nmFuncao}}</option>
+										@endif
                                     @endforeach
 								</select>
 							</div>
@@ -83,29 +88,30 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='telefone'>Telefone*</label>
-								<input type='text' name='telefone' id='telefone' placeholder='(00) 00000-0000'>
+								<input type='text' name='telefone' id='telefone' placeholder='(00) 00000-0000' value='{{$emp->telefone ?? ""}}'>
 							</div>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='dtNasc'>Data de nascimento</label>
-								<input type='text' name='dtNasc' id='dtNasc' placeholder='00/00/00' >
+								<input type='text' name='dtNasc' id='dtNasc' placeholder='00/00/00' value='{{$emp->dtNasc()}}' >
 							</div>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='cpf'>CPF*</label>
-								<input type='text' name='cpf' id='cpf'>
+								<input type='text' name='cpf' id='cpf' value='{{$emp->cpf ?? ""}}'>
 							</div>
 						</div>
 
 						<div class='col-md-12 col-xs-12'>
 							<label for='email'>Email*</label>
-							<input type='email' name='email' id='email' placeholder='E-mail'>
+							<input type='email' name='email' id='email' placeholder='E-mail' value='{{$emp->email ?? ""}}'>
 						</div>
 
+						@if(!isset($emp))
 						<div class='col-md-6 col-xs-12'>
 							<label for='senha'>Senha*</label>
 							<input type='password' name='senha' id='senha'>
@@ -113,9 +119,19 @@
 							Sua senha deve ter no mínimo seis caracteres.
 							</small>
 						</div>
+						@else 
+						<div class='col-md-6 col-xs-12'>
+							<input type='hidden' name='senha' id='senha' value='{{$emp->senha}}' readonly>
+						</div>
+						@endif
 						<div class='col-md-6 col-xs-12'>
 							<label for='senha2'>Confirmar senha*</label>
 							<input type='password' name='senha2' id='senha2'>
+							@if(isset($emp))
+								<small class='form-text text-muted'>
+									Sua senha atual.
+								</small>
+							@endif
 						</div>
 
 
@@ -130,42 +146,42 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='cep'>CEP</label>
-								<input type='text' name='cep' id='cep' placeholder='00000-000'>
+								<input type='text' name='cep' id='cep' placeholder='00000-000' value='{{$emp->cep ?? ""}}'>
 							</div>
 						</div>
 						
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='rua'>Rua</label>
-								<input type='text' name='rua' id='rua'>
+								<input type='text' name='rua' id='rua' value='{{$emp->rua ?? ""}}'>
 							</div>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='bairro'>Bairro*</label>
-								<input type='text' name='bairro' id='bairro'>
+								<input type='text' name='bairro' id='bairro' value='{{$emp->bairro ?? ""}}'>
 							</div>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='cidade'>Cidade*</label>
-								<input type='text' name='cidade' id='cidade'>
+								<input type='text' name='cidade' id='cidade' value='{{$emp->cidade ?? ""}}'>
 							</div>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='numero'>Número</label>
-								<input type='text' name='numero' id='numero'>
+								<input type='text' name='numero' id='numero' value='{{$emp->numero ?? ""}}'>
 							</div>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='complemento'>Complemento</label>
-								<input type='text' name='complemento' id='complemento' placeholder='Ex.: Apartamento'>
+								<input type='text' name='complemento' id='complemento' placeholder='Ex.: Apartamento' value='{{$emp->complemento ?? ""}}'>
 							</div>
 						</div>
 					</div>

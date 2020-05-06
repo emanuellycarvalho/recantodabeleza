@@ -13,7 +13,10 @@
 					<div class='cart-table'>
 						<div class='sup'>
                             <h3>{{$emp->nmFuncionario}}</h3> 
-                            <b>CPF: </b> {{$emp->cpf}} <b class='pink'> | </b> {{$emp->sexo}} <b class='pink'> | </b> Função <br><br>
+                            <b>CPF: </b> {{$emp->cpf}} <b class='pink'> | </b> 
+                            {{$emp->sexo}} <b class='pink'> | </b> 
+                            {{$emp->where('cdFuncionario', $emp->cdFuncionario)->first()->relEmployeeType->nmFuncao}} 
+                            <br><br>
                             <div class='cart-table-warp mb-3'>
                                 <div class='row'> <!-- Contato -->
                                     <div class='col-lg-6 order-2 order-lg-0'><br>
