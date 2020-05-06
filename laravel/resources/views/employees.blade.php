@@ -108,3 +108,5 @@
     <!-- Modal section end -->
 
 @endsection('content')
+
+@section('del') employee @endsection('del')

@@ -102,7 +102,7 @@ class EmployeeController extends Controller
         }
         
         $dtNasc = NULL;
-        
+
         if (isset($request->dtNasc)){
             $dtNasc = explode( '/' , $request->dtNasc);
             $dtNasc = $dtNasc[2] . '-' . $dtNasc[1] . '-' . $dtNasc[0];
@@ -130,7 +130,6 @@ class EmployeeController extends Controller
   
     public function destroy($id)
     {
-
         $del = $this->objEmployee->where('cdFuncionario', $id)->delete();
     }
   

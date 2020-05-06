@@ -10,6 +10,9 @@
 		<div class='container'>
 			<div class='row justify-content-center'>
 				<div class='col-md-9'>
+					<div class='text-center mb-5 alert-success' id='success' hidden>
+						Fornecedor excluído do sistema.
+					</div>
 					<div class='row'>
 						<div class='col-xl-1 col-lg-5'>
 							<a href='' title='Filtrar resultados'><img src='{{url("/img/icons/filter.png")}}' width='70px'></a>
@@ -99,3 +102,5 @@
     <!-- Modal section end -->
 
 @endsection('content')
+
+@section('del') supplier @endsection('del')

@@ -95,7 +95,7 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='dtNasc'>Data de nascimento</label>
-								<input type='text' name='dtNasc' id='dtNasc' placeholder='00/00/00' value='{{$emp->dtNasc()}}' >
+								<input type='text' name='dtNasc' id='dtNasc' placeholder='00/00/00' @if(isset($emp)) value='{{$emp->dtNasc()}}' @endif >
 							</div>
 						</div>
 
