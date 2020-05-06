@@ -67,7 +67,7 @@
 							</div>
 						</div>
 		
-						<div class='col-md-6 col-xs-12'>
+						<div class='col-md-5 col-xs-12'>
 							<div class='form-group'>
 								<label for='sexo'>Tipo</label>
 								<!-- preenchimento via banco com os tipos de funcionário -->
@@ -83,6 +83,10 @@
                                     @endforeach
 								</select>
 							</div>
+						</div>
+
+						<div class='col-md-1 col-xs-12'>
+							<button type='button' class='plus-btn' data-toggle='modal' data-target='#newTypeModal'> + </button>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
@@ -199,5 +203,43 @@
 		</div>
 	</section>
 	<!-- Contact section end -->
+
+	<!-- New type section -->
+	<div class='modal fade' id='newTypeModal' tabindex='-1' role='dialog' aria-labelledby='newTypeModalLabel' aria-hidden='true'>
+		<div class='modal-dialog' role='document'>
+			<div class='modal-content'>
+			<div class='modal-header'>
+				<h5 class='modal-title' id='newTypeModalLabel'>Novo tipo de funcionário</h5>
+				<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+				<span aria-hidden='true'>&times;</span>
+				</button>
+			</div>
+			<div class='modal-body'>
+				<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/employeeType")}}'>
+					<div class='row'>	
+						<div class='col-md-6 col-xs-12'>
+							<div class='form-group'>
+								<label for='nmFuncao'>Função*</label>
+								<input type='text' name='nmFuncao' id='nmFuncao' placeholder='Nome'>
+							</div>
+						</div>
+						
+						<div class='col-md-6 col-xs-12'>
+							<div class='form-group'>
+								<label for='salarioBase'>Salário Base*</label>
+								<input type='text' name='salarioBase' id='salarioBase' placeholder='Nome'>
+							</div>
+						</div>
+					</div>
+					<div class='row justify-content-end'>
+						<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
+						<button type='submit' class='site-btn'>Adicionar</button>
+					</div>
+				</form>
+			</div>
+			</div>
+		</div>
+	</div>
+	<!-- New type section end -->
 
 @endsection('content')

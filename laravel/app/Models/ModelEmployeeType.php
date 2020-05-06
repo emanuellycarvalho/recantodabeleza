@@ -12,4 +12,8 @@ class ModelEmployeeType extends Model
     public function relEmployee(){
         return $this->hasMany('App\Models\ModelEmployee', 'cdTipoFuncionario');
     }
+
+    public function salarioBase(){
+        return number_format($this->salarioBase, 2, ',' , '.'); 
+    }
 }

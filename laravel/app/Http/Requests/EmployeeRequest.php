@@ -43,7 +43,7 @@ class EmployeeRequest extends FormRequest
     public function messages(){
 
         return [
-            'nmFuncionario.required' => 'O campo "Nome" é obrigatório.',
+            'nmFunc.required' => 'O campo "Nome" é obrigatório.',
             'sexo.required' => 'O campo "Sexo" é obrigatório.',
             'cpf.required' => 'O campo "CPF" é obrigatório.',
             'cpf.cpf' => 'O CPF não é válido',

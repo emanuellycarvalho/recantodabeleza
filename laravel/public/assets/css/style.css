@@ -207,6 +207,22 @@ ol {
 
 /* buttons */
 
+.plus-btn {
+	display: inline-block;
+	border: none;
+	font-size: 14px;
+	font-weight: 600;
+	padding: 15px 20px 15px;
+	margin-top: 32px;
+	border-radius: 10px;
+	text-transform: uppercase;
+	background: #f51167;
+	color: #fff;
+	line-height: normal;
+	cursor: pointer;
+	text-align: center;
+}
+
 .site-btn {
 	display: inline-block;
 	border: none;
