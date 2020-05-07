@@ -93,6 +93,8 @@
 	<script src='{{url("/assets/js/main.js")}}'></script>
 	<script src='{{url("/assets/js/projeto.js")}}'></script>
 	<script src='{{url("/assets/js/jquery.tablesorter.min.js")}}'></script>
+    <script src='{{url("/assets/js/jquery.quicksearch.js")}}'></script>
+
     <script>
         //DELETE
         (function(win, doc){

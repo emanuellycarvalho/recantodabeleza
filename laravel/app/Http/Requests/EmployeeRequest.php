@@ -29,7 +29,7 @@ class EmployeeRequest extends FormRequest
             'cpf' => 'required|cpf|formato_cpf|unique:TbFuncionario,cpf', 
             'telefone' => 'required',
             'email' => 'required|unique:TbFuncionario,email',
-            'senha' => 'required',
+            'senha' => 'required|string|min:6',
             'senha2' => 'required|same:senha',
             'cep' => 'required',
             'rua' => 'required',
@@ -43,24 +43,25 @@ class EmployeeRequest extends FormRequest
     public function messages(){
 
         return [
-            'nmFunc.required' => 'O campo "Nome" é obrigatório.',
-            'sexo.required' => 'O campo "Sexo" é obrigatório.',
-            'cpf.required' => 'O campo "CPF" é obrigatório.',
+            'nmFunc.required' => 'O campo Nome é obrigatório.',
+            'sexo.required' => 'O campo Sexo é obrigatório.',
+            'cpf.required' => 'O campo CPF é obrigatório.',
             'cpf.cpf' => 'O CPF não é válido',
             'cpf.formato_cpf' => 'O CPF não é válido',
             'cpf.unique' => 'CPF já cadastrado',
-            'telefone.required' => 'O campo "Telefone" é obrigatório.',
-            'email.required' => 'O campo "Email" é obrigatório.',
+            'telefone.required' => 'O campo Telefone é obrigatório.',
+            'email.required' => 'O campo Email é obrigatório.',
             'email.unique' => 'Email já cadastrado',
-            'senha.required' => 'O campo "Senha" é obrigatório.',
+            'senha.required' => 'O campo Senha é obrigatório.',
+            'senha.min' => 'Sua senha deve ter no mínimo seis caracteres.',
             'senha2.required' => 'Confirme sua senha',
             'senha2.same' => 'As senhas não conferem',
-            'cep.required' => 'O campo "CEP" é obrigatório.',
-            'rua.required' => 'O campo "Rua" é obrigatório.',
-            'numero.required' => 'O campo "Número" é obrigatório.',
-            'bairro.required' => 'O campo "Bairro" é obrigatório.',
-            'cidade.required' => 'O campo "Cidade" é obrigatório.',
-            'tipo.min' => 'O campo "Tipo" é obrigatório.'
+            'cep.required' => 'O campo CEP é obrigatório.',
+            'rua.required' => 'O campo Rua é obrigatório.',
+            'numero.required' => 'O campo Número é obrigatório.',
+            'bairro.required' => 'O campo Bairro é obrigatório.',
+            'cidade.required' => 'O campo Cidade é obrigatório.',
+            'tipo.min' => 'O campo Tipo é obrigatório.'
         ];
     }
 }
