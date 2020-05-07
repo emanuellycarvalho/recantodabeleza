@@ -48,7 +48,7 @@
 								@foreach($employees as $emp)
                                     @php    
 										foreach($etypes as $type){
-											if ($type->cdTipoFuncionario == $emp->cdFuncionario){
+											if ($type->cdTipoFuncionario == $emp->cdTipoFuncionario){
 												$tipo = $type;
 											}
 										}

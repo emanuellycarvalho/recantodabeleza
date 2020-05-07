@@ -151,12 +151,15 @@
 							<div class='form-group'>
 								<label for='cep'>CEP</label>
 								<input type='text' name='cep' id='cep' placeholder='00000-000' value='{{$emp->cep ?? ""}}'>
+								<small  class='form-text text-muted'>
+									Não sabe seu CEP? <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target='_blank'> Clique aqui. </a>
+								</small>
 							</div>
 						</div>
 						
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
-								<label for='rua'>Rua</label>
+								<label for='rua'>Rua*</label>
 								<input type='text' name='rua' id='rua' value='{{$emp->rua ?? ""}}'>
 							</div>
 						</div>
@@ -177,7 +180,7 @@
 
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
-								<label for='numero'>Número</label>
+								<label for='numero'>Número*</label>
 								<input type='text' name='numero' id='numero' value='{{$emp->numero ?? ""}}'>
 							</div>
 						</div>

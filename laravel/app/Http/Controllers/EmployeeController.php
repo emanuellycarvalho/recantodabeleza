@@ -117,9 +117,9 @@ class EmployeeController extends Controller
             'email' => $request->email,
             'senha' => $request->senha,
             'numero' => $request->numero,
-            'cep' => $data->cep,
-            'rua' => $data->logradouro,
-            'bairro' => $data->bairro,
+            'cep' => $request->cep,
+            'rua' => $request->logradouro,
+            'bairro' => $request->bairro,
             'cidade' => $data->localidade,
             'complemento' => $request->complemento ?? NULL,
             'cdTipoFuncionario' => $request->tipo
