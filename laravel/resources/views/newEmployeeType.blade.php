@@ -41,7 +41,7 @@
                     <div class='col-md-6 col-xs-12'>
                         <div class='form-group'>
                             <label for='salarioBase'>Salário Base*</label>
-                            <input type='text' name='salarioBase' id='salarioBase' placeholder='Nome' @if(isset($etype)) value='{{$etype->salarioBase()}}' @endif>
+                            <input type='text' name='salarioBase' id='salarioBase' placeholder='R$ 0 000,00' @if(isset($etype)) value='{{$etype->salarioBase()}}' @endif>
                         </div>
                     </div>
 					<div class='row justify-content-end'>

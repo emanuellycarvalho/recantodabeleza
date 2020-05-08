@@ -48,7 +48,7 @@
                         <!-- menu -->
                         <ul class='main-menu'>
                             <li><a href='{{url("../resources/views/index.blade.php")}}'>Home</a></li>
-                            <li><a href='{{url("/")}}'>Produtos</a></li>
+                            <li><a href='{{url("adm/product")}}'>Produtos</a></li>
                             <li><a href='{{url("/")}}'>Serviços</a></li>
                             <li><a href='{{url("adm/client")}}'>Clientes</a></li>
                             <li><a href='{{url("/adm/employee")}}'>Funcionários</a></li>

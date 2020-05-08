@@ -85,7 +85,7 @@
 	</section>
     <!-- Employees section end -->
 
-    <!-- Modal section -->
+    <!-- Confirm modal section -->
 	<div id='confirmModal' class='modal' tabindex='-1' role='dialog'>
 		<div class='modal-dialog' role='document'>
 			<div class='modal-content'>
@@ -105,7 +105,7 @@
 			</div>
 		</div>
 	</div>
-    <!-- Modal section end -->
+    <!-- Confirm modal section end -->
 
 @endsection('content')
 
