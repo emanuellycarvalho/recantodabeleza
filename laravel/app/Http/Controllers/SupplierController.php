@@ -28,7 +28,7 @@ class SupplierController extends Controller
     public function store(SupplierRequest $request)
     {
         if ($this->objSupplier->create([
-            'nmFornecedor' => $request->nmFornecedor,
+            'nmFornecedor' => $request->nome,
             'cnpj' => $request->cnpj,
             'telefone'  => $request->telefone,
             'email' => $request->email
@@ -37,7 +37,7 @@ class SupplierController extends Controller
             }
         /*
         $supplier = new Supplier;
-        $supplier->nmFornecedor = $request->nmFornecedor;
+        $supplier->nome = $request->nome;
         $supplier->cnpj = $request->cnjp;
         $supplier->telefone = $request->telefone;
         $supplier->email = $request->email;
@@ -62,7 +62,7 @@ class SupplierController extends Controller
     public function update(SupplierRequest $request, $id)
     {
         if ($this->objSupplier->where('cdFornecedor', $id)->update([
-            'nmFornecedor' => $request->nmFornecedor,
+            'nmFornecedor' => $request->nome,
             'cnpj' => $request->cnpj,
             'telefone'  => $request->telefone,
             'email' => $request->email

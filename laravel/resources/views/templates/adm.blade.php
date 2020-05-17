@@ -33,8 +33,8 @@
             <div id='preloder'>
                 <div class='loader'></div>
             </div>
-            <div class='footer-logo text-center'>
-                <a href='index.php'><img src='{{url("/img/logo-light.png")}}' alt=''></a>                    
+            <div class='text-center'>
+                <a href='{{url("/adm")}}'><img src='{{url("/img/logo-light.png")}}' alt=''></a>                    
                 <div class='col-md-2 offset-md-11'>
                     <a href='' title='Seu perfil'><img src='{{url("/img/icons/user-light.png")}}' alt=''></a>
                     <a href='' title='Sair'><img src='{{url("/img/icons/logoff-light.png")}}' alt=''></a>
@@ -47,14 +47,14 @@
                     <div class='container text-center'>
                         <!-- menu -->
                         <ul class='main-menu'>
-                            <li><a href='{{url("../resources/views/index.blade.php")}}'>Home</a></li>
+                            <li><a href='{{url("/adm")}}'>Home</a></li>
                             <li><a href='{{url("adm/product")}}'>Produtos</a></li>
-                            <li><a href='{{url("/")}}'>Serviços</a></li>
-                            <li><a href='{{url("adm/client")}}'>Clientes</a></li>
+                            <li><a href=''>Serviços</a></li>
+                            <li><a href=''>Clientes</a></li>
                             <li><a href='{{url("/adm/employee")}}'>Funcionários</a></li>
                             <li><a href='{{url("/adm/supplier")}}'>Fornecedores</a></li>
-                            <li><a href='{{url("/")}}'>Relatorios</a></li>
-                            <li><a href='{{url("/")}}'>Outros</a></li>
+                            <li><a href=''>Relatorios</a></li>
+                            <li><a href=''>Outros</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -71,6 +71,7 @@
                 <div class='col-md-12 p-0 feature'>
                     <div class='feature-inner'>
                              @yield('icon')
+                             <img scr='{{url("/img/blog-thumbs/line.png")}}' width='10px'>
                         <h2> @yield('title') </h2>  
                     </div>
                 </div>
@@ -134,6 +135,13 @@
         }
         
         })(window, document);
+    </script>
+
+    <script> 
+        (function confirmarCancelar(){
+            $('#confirmCancelModal').modal();
+            $("#white").on("click", win.location.href= '@yield("del")'); 
+        });
     </script>
 
 

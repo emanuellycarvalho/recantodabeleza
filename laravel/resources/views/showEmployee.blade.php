@@ -1,6 +1,6 @@
 @extends('templates.adm')
 
-@section('title') Visualizar @endsection('title')
+@section('title') Visualizar Funcionário @endsection('title')
 
 @section('icon') <img src='{{url("/img/icons/seeEmployee-light.png")}}' width='35px'> @endsection('icon')
 

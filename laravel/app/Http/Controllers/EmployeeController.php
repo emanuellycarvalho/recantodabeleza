@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\EmployeeRequest;
 use App\Models\ModelEmployee;
-use App\Models\ModelEmployeeType;
+use App\Models\ModelEmployeeType; 
 
 class EmployeeController extends Controller
 {
@@ -51,7 +51,7 @@ class EmployeeController extends Controller
         //return $dtNasc;
 
         if ($this->objEmployee->create([
-            'nmFuncionario' => $request->nmFunc,
+            'nmFuncionario' => $request->nome,
             'sexo' => $request->sexo,
             'dtNasc' => $dtNasc,
             'cpf' => $request->cpf,
@@ -109,7 +109,7 @@ class EmployeeController extends Controller
         }
 
         if ($this->objEmployee->where('cdFuncionario', $id)->update([
-            'nmFuncionario' => $request->nmFunc,
+            'nmFuncionario' => $request->nome,
             'sexo' => $request->sexo,
             'dtNasc' => $dtNasc,
             'cpf' => $request->cpf,

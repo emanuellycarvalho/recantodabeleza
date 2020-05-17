@@ -23,6 +23,14 @@ class ModelEmployee extends Model
 
         return "";
     }
+
+    public function verifyEmail($email){
+        $found = null;
+        if ($email != null){
+            $found = $this->find('email', '{$email}')->first();
+        }
+        return $found;
+    }
 }
 
 ?>

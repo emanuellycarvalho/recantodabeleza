@@ -30,7 +30,7 @@ class ProductController extends Controller
     {   
         $preco = str_replace(',', '.', $request->preco);
         if ($this->objProduct->create([
-            'nmProduto' => $request->nmFunc,
+            'nmProduto' => $request->nome,
             'marca' => $request->marca,
             'descricao' => $request->desc ?? NULL,
             'qtd' => $request->qtd,
@@ -59,7 +59,7 @@ class ProductController extends Controller
     {
         $preco = str_replace(',', '.', $request->preco);
         if ($this->objProduct->where('cdProduto', $id)->update([
-            'nmProduto' => $request->nmFunc,
+            'nmProduto' => $request->nome,
             'marca' => $request->marca,
             'qtd' => $request->qtd,
             'preco' => $preco,

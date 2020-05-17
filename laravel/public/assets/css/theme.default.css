@@ -31,6 +31,10 @@ Default Theme
 	padding: 4px 20px 4px 4px;
 }
 
+#none {
+	cursor:auto;
+}
+
 .tablesorter-default thead .headerSortUp,
 .tablesorter-default thead .tablesorter-headerSortUp,
 .tablesorter-default thead .tablesorter-headerAsc {

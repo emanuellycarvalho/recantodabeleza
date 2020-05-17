@@ -6,16 +6,71 @@
  ====================================*/
 
 
-/*----------------------------------------*/
-/* Template default CSS
-/*----------------------------------------*/
-
 html,
 body {
 	height: 100%;
 	font-family: 'Josefin Sans', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
+}
+
+
+#cus5omRadio .custom-control-input {
+	margin-bottom: 15px;
+}
+
+#customRadio .custom-control-label {
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+
+#customRadio label {
+	display: block;
+	font-size: 16px;
+	color: #414141;
+	margin-bottom: 0;
+	padding-left: 15px;
+	padding-right: 20px;
+	position: relative;
+	cursor: pointer;
+}
+
+#customRadio label:after {
+	position: absolute;
+	content: "";
+	width: 7px;
+	height: 7px;
+	left: 4px;
+	top: 8px;
+	background: #414141;
+	border-radius: 50%;
+	opacity: 0;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+#customRadio label:before {
+	position: absolute;
+	content: "";
+	width: 15px;
+	height: 15px;
+	left: 0;
+	top: 4px;
+	border: 2px solid #e1e1e1;
+}
+
+#customRadio .custom-control-input:hover{
+	background-color: #717171;
+}
+
+#customRadio input[type=radio]:checked+label:after { /*bolinha*/
+	background-color: #f8f7f7;
+	opacity: 1;
+}
+
+#customRadio input[type=radio]:checked { /*bolao*/
+	background-color: #f51167;
 }
 
 hr.pink {
@@ -26,6 +81,10 @@ hr.pink {
 
 a.pink:hover {
 	color: #960b3f;
+}
+
+a#white{
+	color: #ececec;
 }
 
 hr.black {
@@ -46,6 +105,7 @@ hr.black {
 	color: #ececec;
 	font-size: 25px;
 }
+
 
 .search {
 	width: 100%;
@@ -101,6 +161,19 @@ ul.pagination li.page-item :hover{
 	background-color: #f96790;
 }
 
+.border {
+	border-color: #585858;
+	border-radius: 10px;
+}
+
+
+.light{
+	color: #e1e1e1;
+}
+
+.pink{
+	color: #ec105a;
+}
 
 h1,
 h2,
@@ -334,18 +407,6 @@ ol {
 	}
 }
 
-.border {
-	border-color: #585858;
-	border-radius: 10px;
-}
-
-.light{
-	color: #e1e1e1;
-}
-
-.pink{
-	color: #ec105a;
-}
 
 .elements-section {
 	padding-top: 100px;
@@ -2340,7 +2401,7 @@ ol {
 	font-size: 14px;
 }
 
-.contact-form option {
+.contact-form select option {
 	width: 100%;
 	height: 44px;
 	border: none;
@@ -2366,6 +2427,10 @@ ol {
 	border-radius: 18px;
 	height: 175px;
 	margin-bottom: 32px;
+}
+
+.contact-form label{
+	margin-bottom: 0px;
 }
 
 .map {

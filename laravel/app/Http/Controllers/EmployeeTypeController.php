@@ -30,7 +30,7 @@ class EmployeeTypeController extends Controller
         $salario = str_replace(',', '.', $request->salarioBase);
         
         if ($this->objEmployeeType->create([
-            'nmFuncao' => $request->nmFuncao,
+            'nmFuncao' => $request->nome,
             'salarioBase' => $salario
             ])){
                 return redirect('adm/employeeType');
@@ -54,7 +54,7 @@ class EmployeeTypeController extends Controller
         $salario = str_replace(',', '.', $request->salarioBase);
 
         if ($this->objEmployeeType->where('cdTipoFuncionario', $id)->update([
-            'nmFuncao' => $request->nmFuncao,
+            'nmFuncao' => $request->nome,
             'salarioBase' => $salario
             ])){
                 return redirect('adm/employeeType');

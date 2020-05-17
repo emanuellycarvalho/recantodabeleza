@@ -4,7 +4,7 @@
 	@section('title') Editar Tipo de Funcionário @endsection('title')
 	@section('icon') <img src='{{url("/img/icons/editEmployeeType-light.png")}}' width='35px'> @endsection('icon')
 @else
-	@section('title') Novo Tipo de Funcionário @endsection('title')
+	@section('title') Adicionar Tipo de Funcionário @endsection('title')
 	@section('icon') <img src='{{url("/img/icons/newEmployeeType-light.png")}}' width='35px'> @endsection('icon')
 @endif
 
@@ -33,8 +33,8 @@
 					@csrf
                     <div class='col-md-6 col-xs-12'>
                         <div class='form-group'>
-                            <label for='nmFuncao'>Função*</label>
-                            <input type='text' name='nmFuncao' id='nmFuncao' placeholder='Nome' value='{{$etype->nmFuncao ?? "" }}'>
+                            <label for='nome'>Função*</label>
+                            <input type='text' name='nome' id='nome' placeholder='Nome' value='{{$etype->nmFuncao ?? "" }}' autofocus>
                         </div>
                     </div>
                     
@@ -45,7 +45,7 @@
                         </div>
                     </div>
 					<div class='row justify-content-end'>
-						<a href='{{url("adm/employeeType")}}' class='site-btn sb-dark'>Cancelar</a>
+						<a onClick='confirmarCancelar()' class='site-btn sb-dark' id='white'>Cancelar</a>
 						<button type='submit' class='site-btn'>Salvar</button>
 					</div>
 				</form>
@@ -53,4 +53,27 @@
 		</div>
 	</section>
 	<!-- Contact section end -->
+
+	<!-- Confirm cancel section -->
+	<div class='modal fade' id='confirmCancelModal' tabindex='-1' role='dialog' aria-labelledby='confirmCancelLabel' aria-hidden='true'>
+		<div class='modal-dialog' role='document'>
+			<div class='modal-content'>
+				<div class='modal-header'>
+					<h5 class='modal-title' id='confirmCancelLabel'>Confirmar</h5>
+					<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+					<span aria-hidden='true'>&times;</span>
+					</button>
+				</div>
+				<div class='modal-body'>
+					<h5>Deseja voltar para a tabela de tipos?</h5>
+					Se confirmar vai perder todos os dados inseridos na tabela.
+				</div>
+				<div class='modal-footer'>
+					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
+					<a href='{{url("adm/employee")}}' class='site-btn' id='white'>Confirmar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Confirm cancel section end -->
 @endsection('content')

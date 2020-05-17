@@ -39,9 +39,9 @@
 									<th class='quy-th'><a href='{{url("adm/employeeType")}}' class='pink'>Ver tipos</a> <br>Tipo</th>
 									<th class='quy-th'><br>Telefone</th>
 									<th class='quy-th'><br></th>
-                                    <th class='quy-th'><br>Ver mais</th>
-                                    <th class='quy-th'><br>Editar</th>
-									<th class='quy-th'><br>Excluir</th>
+                                    <th class='quy-th' id='none'><br>Ver mais</th>
+                                    <th class='quy-th' id='none'><br>Editar</th>
+									<th class='quy-th' id='none'><br>Excluir</th>
 								</tr>
 							</thead>
 							<tbody id='tbody'>
@@ -90,7 +90,7 @@
 		<div class='modal-dialog' role='document'>
 			<div class='modal-content'>
 			<div class='modal-header'>
-				<h5 class='modal-title'>Confirmar exclusão</h5>
+				<h5 class='modal-title'>Excluir funcionário</h5>
 				<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
 				<span aria-hidden='true'>&times;</span>
 				</button>
