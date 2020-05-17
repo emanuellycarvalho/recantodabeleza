@@ -37,8 +37,8 @@
 						
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
-								<label for='nmFunc'>Nome completo*</label>
-								<input type='text' name='nmFunc' id='nmFunc' placeholder='Nome' value='{{$emp->nmFuncionario ?? ""}}' autofocus>
+								<label for='nome'>Nome completo*</label>
+								<input type='text' name='nome' id='nome' placeholder='Nome' value='{{$emp->nmFuncionario ?? old("nome")}}' autofocus>
 							</div>
 						</div>
 						
@@ -73,9 +73,9 @@
                                     @foreach($etypes as $type)
 										{{$v = $emp->cdTipoFuncionario ?? 0}}
 										@if($type->cdTipoFuncionario == $v)
-	                                        <option value='{{$type->cdTipoFuncionario}}' selected>{{$type->nmFuncao}}</option>
+	                                        <option value='{{$type->cdTipoFuncionario}}' selected>{{$type->nomeao}}</option>
 										@else
-    	                                    <option value='{{$type->cdTipoFuncionario}}'>{{$type->nmFuncao}}</option>
+    	                                    <option value='{{$type->cdTipoFuncionario}}'>{{$type->nomeao}}</option>
 										@endif
                                     @endforeach
 								</select>
@@ -89,7 +89,7 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='telefone'>Telefone*</label>
-								<input type='text' name='telefone' id='telefone' placeholder='(00) 00000-0000' value='{{$emp->telefone ?? ""}}'>
+								<input type='text' name='telefone' id='telefone' placeholder='(00) 00000-0000' value='{{$emp->telefone ?? old("telefone")}}'>
 							</div>
 						</div>
 
@@ -103,13 +103,13 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='cpf'>CPF*</label>
-								<input type='text' name='cpf' id='cpf' value='{{$emp->cpf ?? ""}}'>
+								<input type='text' name='cpf' id='cpf' value='{{$emp->cpf ?? old("cpf")}}'>
 							</div>
 						</div>
 
 						<div class='col-md-12 col-xs-12'>
 							<label for='email'>Email*</label>
-							<input type='email' name='email' id='email' placeholder='E-mail' value='{{$emp->email ?? ""}}'>
+							<input type='email' name='email' id='email' placeholder='E-mail' value='{{$emp->email ?? old("email")}}'>
 						</div>
 
 						@if(!isset($emp))
@@ -147,7 +147,7 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='cep'>CEP</label>
-								<input type='text' name='cep' id='cep' placeholder='00000-000' value='{{$emp->cep ?? ""}}'>
+								<input type='text' name='cep' id='cep' placeholder='00000-000' value='{{$emp->cep ?? old("cep")}}'>
 								<small  class='form-text text-muted'>
 									Não sabe seu CEP? <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target='_blank'> Clique aqui. </a>
 								</small>
@@ -157,35 +157,35 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='rua'>Rua*</label>
-								<input type='text' name='rua' id='rua' value='{{$emp->rua ?? ""}}'>
+								<input type='text' name='rua' id='rua' value='{{$emp->rua ?? old("rua")}}'>
 							</div>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='bairro'>Bairro*</label>
-								<input type='text' name='bairro' id='bairro' value='{{$emp->bairro ?? ""}}'>
+								<input type='text' name='bairro' id='bairro' value='{{$emp->bairro ?? old("bairro")}}'>
 							</div>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='cidade'>Cidade*</label>
-								<input type='text' name='cidade' id='cidade' value='{{$emp->cidade ?? ""}}'>
+								<input type='text' name='cidade' id='cidade' value='{{$emp->cidade ?? old("cidade")}}'>
 							</div>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='numero'>Número*</label>
-								<input type='text' name='numero' id='numero' value='{{$emp->numero ?? ""}}'>
+								<input type='text' name='numero' id='numero' value='{{$emp->numero ?? old("numero")}}'>
 							</div>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='complemento'>Complemento</label>
-								<input type='text' name='complemento' id='complemento' placeholder='Ex.: Apartamento' value='{{$emp->complemento ?? ""}}'>
+								<input type='text' name='complemento' id='complemento' placeholder='Ex.: Apartamento' value='{{$emp->complemento ?? old("complemento")}}'>
 							</div>
 						</div>
 					</div>
@@ -220,8 +220,8 @@
 					<div class='row'>	
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
-								<label for='nmFuncao'>Função*</label>
-								<input type='text' name='nmFuncao' id='nmFuncao' placeholder='Nome'>
+								<label for='nome'>Função*</label>
+								<input type='text' name='nome' id='nome' placeholder='Nome'>
 							</div>
 						</div>
 						
