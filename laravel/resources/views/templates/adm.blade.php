@@ -88,13 +88,16 @@
 	<script src='{{url("/assets/js/jquery.slicknav.min.js")}}'></script>
 	<script src='{{url("/assets/js/owl.carousel.min.js")}}'></script>
 	<script src='{{url("/assets/js/jquery.nicescroll.min.js")}}'></script>
+	<script src='{{url("/assets/js/jquery.validate.min.js")}}'></script>
 	<script src='{{url("/assets/js/jquery.zoom.min.js")}}'></script>
 	<script src='{{url("/assets/js/jquery-ui.min.js")}}'></script>
 	<script src='{{url("/assets/js/jquery.mask.min.js")}}'></script>
 	<script src='{{url("/assets/js/main.js")}}'></script>
 	<script src='{{url("/assets/js/projeto.js")}}'></script>
-	<script src='{{url("/assets/js/jquery.tablesorter.min.js")}}'></script>
+	<script src='{{url("/assets/js/projeto.js")}}'></script>
+	<script src='{{url("/assets/js/validator.min.js")}}'></script>
     <script src='{{url("/assets/js/jquery.quicksearch.js")}}'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js'></script>
 
     <script>
         //DELETE
@@ -107,7 +110,7 @@
             btn[i].addEventListener('click', confirmDel, false);
             }
         }
- 
+  
         function confirmDel(event){
             event.preventDefault();
             $('#confirmModal').modal({
@@ -136,14 +139,6 @@
         
         })(window, document);
     </script>
-
-    <script> 
-        (function confirmarCancelar(){
-            $('#confirmCancelModal').modal();
-            $("#white").on("click", win.location.href= '@yield("del")'); 
-        });
-    </script>
-
 
 </body>
 </html>

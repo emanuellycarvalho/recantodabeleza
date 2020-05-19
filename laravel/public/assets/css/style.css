@@ -14,6 +14,18 @@ body {
 	font-smoothing: antialiased;
 }
 
+.contact-form small#verificar{
+	color: red;
+}
+
+
+label.error{
+	display: none!important;
+}
+
+.error{
+	background-color: red;
+}
 
 #cus5omRadio .custom-control-input {
 	margin-bottom: 15px;
@@ -175,6 +187,11 @@ ul.pagination li.page-item :hover{
 	color: #ec105a;
 }
 
+.responsive {
+	max-width: 35px;
+	height: auto;
+}
+
 h1,
 h2,
 h3,
@@ -289,8 +306,8 @@ ol {
 	border: none;
 	font-size: 14px;
 	font-weight: 600;
-	padding: 15px 20px 15px;
-	margin-top: 32px;
+	padding: 14px 20px 14px;
+	margin-top: 23px;
 	border-radius: 10px;
 	text-transform: uppercase;
 	background: #f51167;

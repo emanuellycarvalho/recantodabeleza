@@ -33,8 +33,8 @@
 					@csrf
                     <div class='col-md-6 col-xs-12'>
                         <div class='form-group'>
-                            <label for='nome'>Função*</label>
-                            <input type='text' name='nome' id='nome' placeholder='Nome' value='{{$etype->nmFuncao ?? "" }}' autofocus>
+                            <label for='nomeFuncao'>Função*</label>
+                            <input type='text' name='nomeFuncao' id='nomeFuncao' placeholder='Nome' value='{{$etype->nmFuncao ?? "" }}' autofocus>
                         </div>
                     </div>
                     
@@ -70,10 +70,9 @@
 				</div>
 				<div class='modal-footer'>
 					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-					<a href='{{url("adm/employee")}}' class='site-btn' id='white'>Confirmar</a>
+					<a href='{{url("adm/employee")}}' class='site-btn' id='white' name='confirmar'>Confirmar</a>
 				</div>
 			</div>
 		</div>
-	</div>
 	<!-- Confirm cancel section end -->
 @endsection('content')

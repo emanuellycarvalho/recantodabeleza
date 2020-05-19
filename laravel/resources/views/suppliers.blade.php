@@ -2,7 +2,7 @@
 
 @section('title') Fornecedores @endsection('title')
 
-@section('icon') <img src='{{url("/img/icons/supplier-light.png")}}' width='35px'> @endsection('icon')
+@section('icon') <img class='responsive' src='{{url("/img/icons/supplier-light.png")}}' width='35px'> @endsection('icon')
 
 @section('content')
     <!-- Suppliers section -->
@@ -15,7 +15,7 @@
 					</div>
 					<div class='row'>
 						<div class='col-xl-1 col-lg-5'>
-							<a href='' title='Filtrar resultados'><img src='{{url("/img/icons/filter.png")}}' width='70px'></a>
+							<a href='' title='Filtrar resultados'><img class='responsive' src='{{url("/img/icons/filter.png")}}' width='70px'></a>
 						</div>
 						<div class='col-xl-10 col-lg-5'>
 							<div class='search'>
@@ -24,7 +24,7 @@
 							</div>
 						</div>
 						<div class='col-xl-1 col-lg-5'>
-							<a href='{{url("adm/supplier/create")}}' title='Novo fornecedor'><img src='{{url("/img/icons/newSupplier.png")}}' width='70px'></a>
+							<a href='{{url("adm/supplier/create")}}' title='Novo fornecedor'><img class='responsive' src='{{url("/img/icons/newSupplier.png")}}' width='70px'></a>
 						</div>
 					</div>
 				</div>
@@ -41,9 +41,9 @@
 									<th class='product-th'>Nome</th>
 									<th class='quy-th'>Telefone</th>
 									<th class='quy-th'></th>
-                                    <th class='quy-th'>Ver mais</th>
-                                    <th class='quy-th'>Editar</th>
-									<th class='quy-th'>Excluir</th>
+                                    <th class='quy-th' id='none'>Ver mais</th>
+                                    <th class='quy-th' id='none'>Editar</th>
+									<th class='quy-th' id='none'>Excluir</th>
 								</tr>
 							</thead>
 							<tbody id='tbody'>
@@ -58,10 +58,10 @@
                                         </a>
 									</td>
 									<td class='quy-col'><center>{{$sup->telefone}}</center></td>
-									<td class='quy-col'><img scr='{{url("/img/blog-thumbs/line.png")}}' width='35px'></td>
-                                    <td class='quy-col'><center><a href='{{url("adm/supplier/$sup->cdFornecedor")}}' title='Visualizar fornecedor'><img src='{{url("/img/icons/seeSupplier.png")}}' height='35px'></a></center></td>
-                                    <td class='quy-col'><center><a href='{{url("/adm/supplier/$sup->cdFornecedor/edit")}}' title='Editar fornecedor'><img src='{{url("/img/icons/editSupplier.png")}}' height='35px'></a></center></td>
-									<td class='quy-col'><center><a href='{{url("adm/supplier/$sup->cdFornecedor")}}' title='Excluir fornecedor' class='js-del'><img src='{{url("/img/icons/deleteSupplier.png")}}' height='35px'></a></center></td>
+									<td class='quy-col'><img class='responsive' scr='{{url("/img/blog-thumbs/line.png")}}' width='35px'></td>
+                                    <td class='quy-col'><center><a href='{{url("adm/supplier/$sup->cdFornecedor")}}' title='Visualizar fornecedor'><img class='responsive' src='{{url("/img/icons/seeSupplier.png")}}' height='35px'></a></center></td>
+                                    <td class='quy-col'><center><a href='{{url("/adm/supplier/$sup->cdFornecedor/edit")}}' title='Editar fornecedor'><img class='responsive' src='{{url("/img/icons/editSupplier.png")}}' height='35px'></a></center></td>
+									<td class='quy-col'><center><a href='{{url("adm/supplier/$sup->cdFornecedor")}}' title='Excluir fornecedor' class='js-del'><img class='responsive' src='{{url("/img/icons/deleteSupplier.png")}}' height='35px'></a></center></td>
 								</tr>
 								@endforeach
 							</tbody>

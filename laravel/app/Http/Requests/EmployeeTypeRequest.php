@@ -24,7 +24,7 @@ class EmployeeTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'nmFuncao' => 'required|unique:TbTipoFuncionario,nmFuncao',
+            'nomeFuncao' => 'required|unique:TbTipoFuncionario,nmFuncao',
             'salarioBase' => 'required|min:1'
         ];
     }
@@ -32,8 +32,8 @@ class EmployeeTypeRequest extends FormRequest
     public function messages(){
 
         return [
-            'nmFuncao.required' => 'O campo "Nome" é obrigatório.',
-            'nmFuncao.unique' => 'Já existe um tipo de mesmo nome.',
+            'nomeFuncao.required' => 'O campo "Nome" é obrigatório.',
+            'nomeFuncao.unique' => 'Já existe um tipo de mesmo nome.',
             'salarioBase.required' => 'O campo "Salario Base" é obrigatório',
             'salarioBase.min' => 'O valor mínimo é R$1,00'
         ];

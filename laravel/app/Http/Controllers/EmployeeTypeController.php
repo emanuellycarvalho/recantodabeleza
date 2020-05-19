@@ -27,13 +27,14 @@ class EmployeeTypeController extends Controller
 
     public function store(EmployeeTypeRequest $request)
     {   
-        $salario = str_replace(',', '.', $request->salarioBase);
+        $salario = str_replace(' ', '', $request->salarioBase);
+        $salario = str_replace(',', '.', $salario);
         
         if ($this->objEmployeeType->create([
-            'nmFuncao' => $request->nome,
+            'nmFuncao' => $request->nomeFuncao,
             'salarioBase' => $salario
             ])){
-                return redirect('adm/employeeType');
+                return redirect($this->objEmployeeType->whereToGo()); 
             } 
     }
 
@@ -51,10 +52,11 @@ class EmployeeTypeController extends Controller
   
     public function update(EmployeeTypeRequest $request, $id)
     {
-        $salario = str_replace(',', '.', $request->salarioBase);
+        $salario = str_replace(' ', '', $request->salarioBase);
+        $salario = str_replace(',', '.', $salario);
 
         if ($this->objEmployeeType->where('cdTipoFuncionario', $id)->update([
-            'nmFuncao' => $request->nome,
+            'nmFuncao' => $request->nomeFuncao,
             'salarioBase' => $salario
             ])){
                 return redirect('adm/employeeType');

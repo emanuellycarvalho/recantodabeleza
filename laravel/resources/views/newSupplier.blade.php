@@ -74,6 +74,7 @@
 			</div>	
 		</div>
 	</section>
+	<!-- Contact section end -->
 	
 	<!-- Confirm cancel section -->
 	<div class='modal fade' id='confirmCancelModal' tabindex='-1' role='dialog' aria-labelledby='confirmCancelLabel' aria-hidden='true'>
@@ -91,12 +92,35 @@
 				</div>
 				<div class='modal-footer'>
 					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-					<a href='{{url("adm/employee")}}' class='site-btn' id='white'>Confirmar</a>
+					<a href='{{url("adm/supplier")}}' class='site-btn' id='white'>Confirmar</a>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<script> 
+        window.confirmarCancelar = function(){
+            if(verificarCampos()){
+                $('#confirmCancelModal').modal();
+                $('confirmar').on('click', function(){
+                    window.location.href= '{{url("/adm/supplier")}}';
+                });
+            } else {
+                window.location.href= '{{url("/adm/supplier")}}';
+            }  
+        }
+
+        function verificarCampos(){
+			if ($('#nome').val() == '' || $('#nome').val() == null && 
+				$('#telefone').val() == '' || $('#telefone').val() == null && 
+				$('#cnjp').val() == '' || $('#cnpj').val() == null && 
+				$('#email').val() == '' || $('#email').val() == null)
+            {
+                return false;
+            }
+            return true;
+        }
+    </script>
 	<!-- Confirm cancel section end -->
-	<!-- Contact section end -->
 
 @endsection('content')

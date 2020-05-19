@@ -73,14 +73,14 @@
                                     @foreach($etypes as $type)
 										{{$v = $emp->cdTipoFuncionario ?? 0}}
 										@if($type->cdTipoFuncionario == $v)
-	                                        <option value='{{$type->cdTipoFuncionario}}' selected>{{$type->nomeao}}</option>
+	                                        <option value='{{$type->cdTipoFuncionario}}' selected>{{$type->nmFuncao}}</option>
 										@else
-    	                                    <option value='{{$type->cdTipoFuncionario}}'>{{$type->nomeao}}</option>
+    	                                    <option value='{{$type->cdTipoFuncionario}}'>{{$type->nmFuncao}}</option>
 										@endif
                                     @endforeach
 								</select>
 							</div>
-						</div>
+						</div> 
 
 						<div class='col-md-1 col-xs-12'>
 							<button type='button' class='plus-btn' data-toggle='modal' data-target='#newTypeModal'> + </button>
@@ -109,7 +109,7 @@
 
 						<div class='col-md-12 col-xs-12'>
 							<label for='email'>Email*</label>
-							<input type='email' name='email' id='email' placeholder='E-mail' value='{{$emp->email ?? old("email")}}'>
+							<input type='email' name='email' id='email' placeholder='E-mail' value='{{$emp->email ?? old("email")}}' autocomplete='off'>
 						</div>
 
 						@if(!isset($emp))
@@ -127,7 +127,10 @@
 						@endif
 						<div class='col-md-6 col-xs-12'>
 							<label for='senha2'>Confirmar senha*</label>
-							<input type='password' name='senha2' id='senha2'>
+							<input type='password' name='senha2' id='senha2' oninput='verificarSenha()' >
+							<small id='verificar'>
+								As senhas não conferem.
+							</small>
 							@if(isset($emp))
 								<small class='form-text text-muted'>
 									Sua senha atual.
@@ -193,7 +196,7 @@
 					<div class='col-md-12'>
 						<div class='row'><p><br></p></div>
 						<div class='row justify-content-end'>
-							<a onClick='confirmarCancelar()' class='site-btn sb-dark' id='white'>Cancelar</a>
+							<a onClick='confirmarCancelar();' class='site-btn sb-dark' id='white'>Cancelar</a>
 							<button class='site-btn'>Salvar</button>	
 						</div>
 						<div class='row'><p><br></p></div>
@@ -215,13 +218,13 @@
 				</button>
 			</div>
 			<div class='modal-body'>
-				<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/employeeType")}}'>
+				<form class='contact-form' name='cadastro1' id='cadastro1' method='post' action='{{url("adm/employeeType")}}'>
 					@csrf
 					<div class='row'>	
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
-								<label for='nome'>Função*</label>
-								<input type='text' name='nome' id='nome' placeholder='Nome'>
+								<label for='nomeFuncao'>Função*</label>
+								<input type='text' name='nomeFuncao' id='nomeFuncao' placeholder='Nome'>
 							</div>
 						</div>
 						
@@ -234,13 +237,44 @@
 					</div>
 					<div class='row justify-content-end'>
 						<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-						<button type='submit' class='site-btn'>Adicionar</button>
+						<button type='submit' class='site-btn' onclick='saveData()'>Adicionar</button>
 					</div>
 				</form>
 			</div>
 			</div>
 		</div>
 	</div>
+
+	<script>
+		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/employee/create'){
+			document.getElementById('nome').value = localStorage.getItem('nome');
+			document.getElementById('telefone').value = localStorage.getItem('telefone');
+			document.getElementById('dtNasc').value = localStorage.getItem('dtNasc');
+			document.getElementById('cpf').value = localStorage.getItem('cpf');
+			document.getElementById('email').value = localStorage.getItem('email');
+			document.getElementById('cep').value = localStorage.getItem('cep');
+			document.getElementById('bairro').value = localStorage.getItem('bairro');
+			document.getElementById('rua').value = localStorage.getItem('rua');
+			document.getElementById('cidade').value = localStorage.getItem('cidade');
+			document.getElementById('numero').value = localStorage.getItem('numero');
+			document.getElementById('complemento').value = localStorage.getItem('comp');
+			localStorage.clear();
+		}
+
+		function saveData(){
+			localStorage.setItem('nome', $('#nome').val());
+			localStorage.setItem('telefone', $('#telefone').val());
+			localStorage.setItem('dtNasc', $('#dtNasc').val());
+			localStorage.setItem('cpf', $('#cpf').val());
+			localStorage.setItem('email', $('#email').val());
+			localStorage.setItem('cep', $('#cep').val());
+			localStorage.setItem('bairro', $('#bairro').val());
+			localStorage.setItem('rua', $('#rua').val());
+			localStorage.setItem('cidade', $('#cidade').val());
+			localStorage.setItem('numero', $('#numero').val());
+			localStorage.setItem('comp', $('#complemento').val());
+		}
+	</script>
 	<!-- New type section end -->
 	
 
@@ -265,6 +299,31 @@
 			</div>
 		</div>
 	</div>
+
+	<script> 
+        window.confirmarCancelar = function(){
+            if(verificarCampos()){
+                $('#confirmCancelModal').modal();
+                $('confirmar').on('click', function(){
+                    window.location.href= '{{url("/adm/employee")}}';
+                });
+            } else {
+                window.location.href= '{{url("/adm/employee")}}';
+            }  
+        }
+
+        function verificarCampos(){
+            if ($('#nome').val() == '' && $('#telefone').val() == '' && $('#cpf').val() == '' && 
+                $('#email').val() == '' && $('#senha').val() == '' && $('#rua').val() == '' && 
+                $('#bairro').val() == '' && $('#cidade').val() == '' && $('#numero').val() == '' &&
+                $('#complemento').val() == '' && $('#cep').val() == '' && $('#dtNasc').val() == '')
+            {
+                return false;
+            }
+            return true;
+        }
+
+    </script>
 	<!-- Confirm cancel section end -->
 
 @endsection('content')

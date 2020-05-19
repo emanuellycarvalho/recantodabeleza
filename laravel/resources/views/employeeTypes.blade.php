@@ -2,7 +2,7 @@
 
 @section('title') Tipos de Funcionário @endsection('title')
 
-@section('icon') <img src='{{url("/img/icons/employeeType.png")}}' width='35px'> @endsection('icon')
+@section('icon') <img class='responsive' src='{{url("/img/icons/employeeType.png")}}' width='35px'> @endsection('icon')
 
 @section('content')
     <!-- EmployeeTypes section -->
@@ -12,7 +12,7 @@
 				<div class='col-md-9'>
 					<div class='row'>
 						<div class='col-xl-1 col-lg-5'>
-							<a href='' title='Filtrar resultados'><img src='{{url("/img/icons/filter.png")}}' width='70px'></a>
+							<a href='' title='Filtrar resultados'><img class='responsive' src='{{url("/img/icons/filter.png")}}' width='70px'></a>
 						</div>
 						<div class='col-xl-10 col-lg-5'>
 							<div class='search'>
@@ -21,7 +21,7 @@
 							</div>
 						</div>
 						<div class='col-xl-1 col-lg-5'>
-							<a href='{{url("adm/employeeType/create")}}' title='Novo funcionário'><img src='{{url("/img/icons/newEmployeeType.png")}}' width='70px'></a>
+							<a href='{{url("adm/employeeType/create")}}' title='Novo funcionário'><img class='responsive' src='{{url("/img/icons/newEmployeeType.png")}}' width='70px'></a>
 						</div>
 					</div>
 				</div>
@@ -36,26 +36,24 @@
 							<thead>
 								<tr>
 									<th class='product-th'>Funcao</th>
-									<th class='quy-th'>Base</th>
-									<th class='quy-th'></th>
-                                    <th class='quy-th'>Editar</th>
-									<th class='quy-th'>Excluir</th>
+									<th class='quy-th' id='none'>Base</th>
+									<th class='quy-th' id='none'></th>
+                                    <th class='quy-th' id='none'>Editar</th>
+									<th class='quy-th' id='none'>Excluir</th>
 								</tr>
 							</thead>
 							<tbody id='tbody'>
 								@foreach($etypes as $emp)
 								<tr>
 									<td class='quy-col'>
-                                        <a href='{{url("adm/employeeType/$emp->cdTipoFuncionario")}}' title='Visualizar funcionário'>
-                                            <div class='pc-title'>
-                                                <h4>{{$emp->nmFuncao}}</h4>
-                                            </div>
-                                        </a>
+										<div class='pc-title'>
+											<h4>{{$emp->nmFuncao}}</h4>
+										</div>
 									</td>
 									<td class='quy-col'><center>R${{$emp->salarioBase()}}</center></td>
-									<td class='quy-col'><img scr='{{url("/img/blog-thumbs/line.png")}}' width='35px'></td>
-                                    <td class='quy-col'><center><a href='{{url("/adm/employeeType/$emp->cdTipoFuncionario/edit")}}' title='Editar funcionário'><img src='{{url("/img/icons/editEmployeeType.png")}}' height='35px'></a></center></td>
-									<td class='quy-col'><center><a href='{{url("adm/employeeType/$emp->cdTipoFuncionario")}}' title='Excluir funcionário' class='js-del'><img src='{{url("/img/icons/deleteEmployeeType.png")}}' height='35px'></a></center></td>
+									<td class='quy-col'><img class='responsive' scr='{{url("/img/blog-thumbs/line.png")}}' width='35px'></td>
+                                    <td class='quy-col'><center><a href='{{url("/adm/employeeType/$emp->cdTipoFuncionario/edit")}}' title='Editar funcionário'><img class='responsive' src='{{url("/img/icons/editEmployeeType.png")}}' height='35px'></a></center></td>
+									<td class='quy-col'><center><a href='{{url("adm/employeeType/$emp->cdTipoFuncionario")}}' title='Excluir funcionário' class='js-del'><img class='responsive' src='{{url("/img/icons/deleteEmployeeType.png")}}' height='35px'></a></center></td>
 								</tr>
 								@endforeach
 							</tbody>

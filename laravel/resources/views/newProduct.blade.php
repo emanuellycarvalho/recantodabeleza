@@ -86,13 +86,35 @@
 					</div>
 
 					<div class='row justify-content-end'>
-						<a onClick='confirmarCancelar()' class='site-btn sb-dark' id='white'>Cancelar</a>
+						<a onClick='confirmarCancelar();' class='site-btn sb-dark' id='white'>Cancelar</a>
 						<button type='submit' class='site-btn'>Salvar</button>
 					</div>
 				</form>
 			</div>	
 		</div>
 	</section>
+
+	<script> 
+        window.confirmarCancelar = function(){
+            if(verificarCampos()){
+                $('#confirmCancelModal').modal();
+                $('confirmar').on('click', function(){
+                    window.location.href= '{{url("/adm/product")}}';
+                });
+            } else {
+                window.location.href= '{{url("/adm/product")}}';
+            }  
+        }
+
+        function verificarCampos(){
+			if ($('#nome').val() == '' && $('#marca').val() == '' && $('#preco').val() == '' && 
+				$('#qtd').val() == '' && $('#desc').val() == '' && $('#foto').val() == '')
+            {
+                return false;
+            }
+            return true;
+        }
+    </script>
 	<!-- Contact section end -->
 
 	
@@ -112,7 +134,7 @@
 				</div>
 				<div class='modal-footer'>
 					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-					<a href='{{url("adm/employee")}}' class='site-btn' id='white'>Confirmar</a>
+					<a href='{{url("adm/product")}}' class='site-btn' id='white'>Confirmar</a>
 				</div>
 			</div>
 		</div>
