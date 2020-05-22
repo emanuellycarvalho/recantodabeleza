@@ -92,12 +92,12 @@
 	<script src='{{url("/assets/js/jquery.zoom.min.js")}}'></script>
 	<script src='{{url("/assets/js/jquery-ui.min.js")}}'></script>
 	<script src='{{url("/assets/js/jquery.mask.min.js")}}'></script>
+	<script src='{{url("/assets/js/validator.min.js")}}'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js'></script>
+    <script src='{{url("/assets/js/jquery.quicksearch.js")}}'></script>
 	<script src='{{url("/assets/js/main.js")}}'></script>
 	<script src='{{url("/assets/js/projeto.js")}}'></script>
-	<script src='{{url("/assets/js/projeto.js")}}'></script>
-	<script src='{{url("/assets/js/validator.min.js")}}'></script>
-    <script src='{{url("/assets/js/jquery.quicksearch.js")}}'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js'></script>
+	<script src='{{url("/assets/js/validacao.js")}}'></script>
 
     <script>
         //DELETE

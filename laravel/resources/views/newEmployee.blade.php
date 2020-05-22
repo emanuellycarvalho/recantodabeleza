@@ -66,7 +66,7 @@
 		
 						<div class='col-md-5 col-xs-12'>
 							<div class='form-group'>
-								<label for='sexo'>Tipo</label>
+								<label for='sexo'>Tipo*</label>
 								<!-- preenchimento via banco com os tipos de funcionário -->
 								<select name='tipo' id='tipo'>
 									<option value='0' disable>Selecione</option>
