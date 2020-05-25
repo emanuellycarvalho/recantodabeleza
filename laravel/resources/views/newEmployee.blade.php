@@ -128,7 +128,7 @@
 						<div class='col-md-6 col-xs-12'>
 							<label for='senha2'>Confirmar senha*</label>
 							<input type='password' name='senha2' id='senha2' oninput='verificarSenha()' >
-							<small id='verificar'>
+							<small id='verificarSenha' class='verificar'>
 								As senhas não conferem.
 							</small>
 							@if(isset($emp))
@@ -149,8 +149,11 @@
 						
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
-								<label for='cep'>CEP</label>
+								<label for='cep'>CEP*</label>
 								<input type='text' name='cep' id='cep' placeholder='00000-000' value='{{$emp->cep ?? old("cep")}}'>
+								<small id='verificarCEP' class='verificar'>
+									CEP não encontrado.
+								</small>
 								<small  class='form-text text-muted'>
 									Não sabe seu CEP? <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target='_blank'> Clique aqui. </a>
 								</small>
