@@ -15,16 +15,24 @@ body {
 }
 
 .contact-form small#verificar{
+	font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
 	color: red;
+	text-align: left;
+	box-sizing: border-box;
+	font-style: italic;
 }
 
-
-label.error{
-	display: none!important;
+.is-invalid {
+	border-color: #dc3545;
+	box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+	display: block;
+	border-color: inherit;
 }
 
-.error{
-	background-color: red;
+.error-msg{
+	color: red;
 }
 
 #cus5omRadio .custom-control-input {

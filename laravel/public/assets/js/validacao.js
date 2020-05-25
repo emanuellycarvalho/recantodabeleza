@@ -1,21 +1,80 @@
 // $('#cadastro').validator();
   
   $(document).ready(function(){
+      $('#cadastro').validate({
+        rules: {
+          nome: 'required',
+          tipo: {
+            min: 1
+          },
+          telefone: 'required',
+          dtNasc: 'date',
+          cpf: 'required',
+          cnpj: 'required',
+          senha: 'required',
+          senha2: 'required',
+          rua: 'required',
+          cidade: 'required',
+          bairro: 'required',
+          numero: 'required',
+          marca: 'required',
+          qtd:{
+            required: true,
+            min: 1
+          },
+          preco: 'required',
+          email: {
+            required: true,
+            email: true
+          },
+        },
+        messages: {
+          tipo: {
+            min: 'Por favor, selecione uma opção.'
+          },
+          email: {
+            email: 'O e-mail que você inseriu não é valido.'
+          }
+        },
+        errorElement: 'em',
+        errorPlacement: function (error, element) {
+            // Add the `invalid-feedback` class to the error element
+            error.addClass('error-msg');
+
+            if (element.prop('type') === 'checkbox') {
+                error.insertAfter(element.next('label'));
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid').removeClass('is-valid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-valid').removeClass('is-invalid');
+        }
+      });
+  });
+
+  $(document).ready(function(){
     //CONFERIR SENHAS IGUAIS
     $('#verificar').hide();
-
-    //CAMPO EM BRANCO
-    $("input").blur(function(){
-      if($(this).val() == "")
-          {
-              //$(this).css({"border" : "1px solid #F00", "padding": "2px"});
-          }
-     });
   });
   
   function verificarSenha(){
     if ($('#senha').val() != $('#senha2').val()){
       $('#verificar').show();
+      document.getElementById('senha2').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+    } else{
+      $('#verificar').hide();
+    }
+  }
+
+  function verificarPreco(){
+    var a = parseFloat($('#preco').val());
+    if (a < 1){
+      $('#verificar').show();
+      document.getElementById('preco').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
     } else{
       $('#verificar').hide();
     }
@@ -85,20 +144,26 @@
         } //end if.
     });
   });
+
   
-  $('#cadastro').validate({
-    rules: {
-      name: 'required',
-      email: {
-        required: true,
-        email: true
-      }
-    },
-    messages: {
-      name: 'O nome é obrigatório.',
-      email: {
-        required: 'O e-email é obrigatório.',
-        email: 'O e-mail que você inseriu não é valido.'
-      }
-    }
-  });
+jQuery.extend(jQuery.validator.messages, {
+    required: 'Por favor, preencha este campo.',
+    remote: 'Por favor, corrija este campo.',
+    email: 'O e-mail que você inseriu não é valido.',
+    url: 'Por favor, forne&ccedil;a uma URL v&aacute;lida.',
+    date: 'A data que você inseriu não é valida.',
+    dateISO: 'Por favor, forne&ccedil;a uma data v&aacute;lida (ISO).',
+    number: 'Por favor, forne&ccedil;a um n&uacute;mero v&aacute;lido.',
+    digits: 'Por favor, forne&ccedil;a somente d&iacute;gitos.',
+    creditcard: 'Por favor, forne&ccedil;a um cart&atilde;o de cr&eacute;dito v&aacute;lido.',
+    equalTo: 'Por favor, forne&ccedil;a o mesmo valor novamente.',
+    accept: 'Por favor, forne&ccedil;a um valor com uma extens&atilde;o v&aacute;lida.',
+    maxlength: jQuery.validator.format('Por favor, forne&ccedil;a n&atilde;o mais que {0} caracteres.'),
+    minlength: jQuery.validator.format('Por favor, forne&ccedil;a ao menos {0} caracteres.'),
+    rangelength: jQuery.validator.format('Por favor, forne&ccedil;a um valor entre {0} e {1} caracteres de comprimento.'),
+    range: jQuery.validator.format('Por favor, forne&ccedil;a um valor entre {0} e {1}.'),
+    max: jQuery.validator.format('Por favor, forne&ccedil;a um valor menor ou igual a {0}.'),
+    min: jQuery.validator.format('Por favor, forne&ccedil;a um valor maior ou igual a {0}.')
+});
+  
+  

@@ -47,7 +47,10 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='preco'>Preço*</label>
-								<input type='text' name='preco' id='preco' placeholder='R$ 0 000,00'>
+								<input type='text' name='preco' id='preco' placeholder='R$ 0 000,00' oninput='verificarPreco()'>
+								<small id='verificar'>
+									Por favor, insira um valor maior ou igual a 1.
+								</small>
 							</div>
 						</div>
 
