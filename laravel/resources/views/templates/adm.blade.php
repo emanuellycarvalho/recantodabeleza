@@ -22,7 +22,7 @@
 	<link rel='stylesheet' href='{{url("/assets/css/jquery-ui.min.css")}}'/>
 	<link rel='stylesheet' href='{{url("/assets/css/owl.carousel.min.css")}}'/>
 	<link rel='stylesheet' href='{{url("/assets/css/animate.css")}}'/>
-	<link rel='stylesheet' href='{{url("/assets/css/style.css")}}'/>
+	<link rel='stylesheet' href='{{url("/assets/css/style.css")}}'/> 
 	<link rel='stylesheet' href='{{url("/assets/css/theme.default.css")}}'/>
 
 </head>
@@ -54,7 +54,7 @@
                             <li><a href='{{url("/adm/employee")}}'>Funcionários</a></li>
                             <li><a href='{{url("/adm/supplier")}}'>Fornecedores</a></li>
                             <li><a href=''>Relatorios</a></li>
-                            <li><a href=''>Outros</a></li>
+                            <li><a href='{{url("adm/more")}}'>Mais</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -95,6 +95,7 @@
 	<script src='{{url("/assets/js/validator.min.js")}}'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js'></script>
     <script src='{{url("/assets/js/jquery.quicksearch.js")}}'></script>
+    <script src='{{url("/assets/js/jquery.tablesorter.min.js")}}'></script>
 	<script src='{{url("/assets/js/main.js")}}'></script>
 	<script src='{{url("/assets/js/projeto.js")}}'></script>
 	<script src='{{url("/assets/js/validacao.js")}}'></script>

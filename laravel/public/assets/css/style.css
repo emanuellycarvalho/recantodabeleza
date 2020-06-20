@@ -14,6 +14,11 @@ body {
 	font-smoothing: antialiased;
 }
 
+body::selection {
+    background: #960b3f;
+    color: white;
+}
+
 .contact-form small.verificar{
 	font-size: 1rem;
     font-weight: 400;
@@ -33,6 +38,10 @@ body {
 
 .error-msg{
 	color: red;
+}
+
+.cart-table a.none {
+	color:#282828;
 }
 
 #cus5omRadio .custom-control-input {
@@ -91,6 +100,26 @@ body {
 
 #customRadio input[type=radio]:checked { /*bolao*/
 	background-color: #f51167;
+}
+
+img.addOnTable{
+	max-width: 35px;
+	height: auto;
+	margin-top: 29px;
+}
+
+img.addOnTable:hover{
+	cursor: pointer;
+}
+
+img.removeFromTable{
+	max-width: 35px;
+	height: auto;
+	margin-top: 29px;
+}
+
+img.removeFromTable:hover{
+	cursor: pointer;
 }
 
 hr.pink {

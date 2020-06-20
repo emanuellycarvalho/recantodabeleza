@@ -16,11 +16,14 @@ use Illuminate\Support\Facades\Route;
 /*
 Route::get('/', 'ClientController@index');
 */
-Route::resource('adm/supplier', 'SupplierController');
-
-Route::resource('adm/employee', 'EmployeeController');
-Route::resource('adm/employeeType', 'EmployeeTypeController');
+Route::view('adm/more', 'more');
 Route::resource('adm/product', 'ProductController');
+Route::resource('adm/employee', 'EmployeeController');
+Route::resource('adm/supplier', 'SupplierController');
+Route::resource('adm/scheduling', 'SchedulingController');
+Route::resource('adm/attendance', 'AttendanceController');
+Route::resource('adm/employeeType', 'EmployeeTypeController');
+
 
 Route::get('/cep', function(){
     $cepResponse = cep('01010000');

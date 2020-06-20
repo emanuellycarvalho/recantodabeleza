@@ -97,6 +97,7 @@
     //ESCONDER SMALLS
     $('.verificar').hide();
 
+    //VALIDATE
     $('#cadastro').validate({
       rules: {
         nome: 'required',
@@ -104,7 +105,6 @@
           min: 1
         },
         telefone: 'required',
-        dtNasc: 'date',
         cep: 'required',
         cpf: 'required',
         cnpj: 'required',
@@ -148,9 +148,16 @@
           $(element).addClass('is-valid').removeClass('is-invalid');
       }
     });
+
+    $('#cadastroClienteSimples').validate({
+      rules:{
+        nome: 'required',
+        telefone: 'required'
+      }
+    });
 });
 
-
+// MENSAGENS PERSONALIZADAS
 jQuery.extend(jQuery.validator.messages, {
     required: 'Por favor, preencha este campo.',
     remote: 'Por favor, corrija este campo.',

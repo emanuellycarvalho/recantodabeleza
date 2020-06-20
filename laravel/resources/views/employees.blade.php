@@ -2,7 +2,7 @@
 
 @section('title') Funcionários @endsection('title')
 
-@section('icon') <img class='responsive' src='{{url("/img/icons/employee.png")}}' width='35px'> @endsection('icon')
+@section('icon') <img class='responsive' src='{{url("/img/icons/employee-light.png")}}' width='35px'> @endsection('icon')
 
 @section('content')
     <!-- Employees section -->
