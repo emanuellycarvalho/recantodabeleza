@@ -13,6 +13,9 @@
 	<!-- Google Font -->
 	<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i' rel='stylesheet'>
 
+    <!-- Autocomplete -->
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
 	<!-- Stylesheets -->
 	<link rel='stylesheet' href='{{url("/assets/css/bootstrap.min.css")}}'/>
@@ -83,7 +86,12 @@
     @yield('content')
 
     <!--====== Javascripts & Jquery ======-->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src='{{url("/assets/js/jquery-3.2.1.min.js")}}'></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 	<script src='{{url("/assets/js/bootstrap.min.js")}}'></script>
 	<script src='{{url("/assets/js/jquery.slicknav.min.js")}}'></script>
 	<script src='{{url("/assets/js/owl.carousel.min.js")}}'></script>
@@ -92,7 +100,8 @@
 	<script src='{{url("/assets/js/jquery.zoom.min.js")}}'></script>
 	<script src='{{url("/assets/js/jquery-ui.min.js")}}'></script>
 	<script src='{{url("/assets/js/jquery.mask.min.js")}}'></script>
-	<script src='{{url("/assets/js/validator.min.js")}}'></script>
+    <script src='{{url("/assets/js/validator.min.js")}}'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script> 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js'></script>
     <script src='{{url("/assets/js/jquery.quicksearch.js")}}'></script>
     <script src='{{url("/assets/js/jquery.tablesorter.min.js")}}'></script>

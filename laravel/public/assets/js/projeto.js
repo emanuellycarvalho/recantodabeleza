@@ -70,6 +70,15 @@ $('form').on('click', '.removeFromTable', function (){
 });
 
 /*
+//AUTOCOMPLETE
+$(jfunction (){
+  $('#funcionario').autocomplete({
+    source: "{{url('/employee/search')}}",
+  });
+});
+*/
+
+/*
 //ADICIONAR NA TABELA
 function adicionarNaTabela(){
   var func = $('#funcionario:selected').text();

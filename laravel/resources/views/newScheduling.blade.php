@@ -5,6 +5,11 @@
 @section('icon') <img class='responsive' src='{{url("/img/icons/scheduling-light.png")}}' width='35px'> @endsection('icon')
 
 @section('content')
+<script> 
+    var emp = [0, 'Selecione um funcionario'];
+    var emps = [emp];
+    sessionStorage.setItem('emps', emps);
+</script>
     <!-- Suppliers section -->
     <section class='cart-section spad'>
 		<div class='container'>
@@ -16,10 +21,11 @@
 
                             <div class='col-md-4 col-xs-12'>
                                 <div class='form-group'>
-                                    <label for='data'>Data*</label>
-                                    <input type='text' name='data' id='data' value='{{$att->date ?? date("d/m/Y") }}' autofocus>
+                                    <label for='data'>Data*</label> <br>
+                                    <input type='text' name='data' id='data' value='{{$att->date ?? date("d/m/Y") }}' autofocus> 
+                                    <small> Calendário </small>
                                 </div>
-                            </div>
+                            </div> 
                             
                             <div class='col-md-4 col-xs-12'>
                                 <div class='form-group'>
@@ -62,7 +68,7 @@
                                 <div class='col-md-5 col-xs-12'>
                                     <div class='form-group'>
                                         <label for='servico'>Servico*</label>
-                                        <select name='funcionario' id='funcionario'>
+                                        <select name='servico' id='servico'>
                                             <option value='0' disabled selected> Selecione um serviço por vez </option>
                                             <option value='2'> Massagem capilar </option>
                                             <option value='1'> Massagem corporal </option>
@@ -76,10 +82,19 @@
                                 <div class='col-md-5 col-xs-12'>
                                     <div class='form-group'>
                                         <label for='funcionario'>Funcionário*</label>
+                                        <!--
+                                        <input type='text' name='funcionario' id='funcionario' placeholder='Selecione um funcionario'>
+                                         -->
                                         <select name='funcionario' id='funcionario'>
                                             <option value='0' disabled selected> Selecione um funcionário </option>
                                             @foreach($employees as $emp)
                                                 @if($emp->cdTipoFuncionario == $id)
+                                                    <script> 
+                                                        var emps = sessionStorage.getItem('emps');
+                                                        var emp = [{{$emp->cdFuncionario}}, '{{$emp->nmFuncionario}}'];
+                                                        emps.push(emp);
+                                                        sessionStorage.setItem('emps', JSON.stringify(emps));
+                                                    </script>
                                                     <option value='{{$emp->cdFuncionario}}'> {{$emp->nmFuncionario}}</option>
                                                 @endif
                                             @endforeach

@@ -102,6 +102,11 @@ body::selection {
 	background-color: #f51167;
 }
 
+img.button-icon{
+	max-width: 35px;
+	height: auto;
+}
+
 img.addOnTable{
 	max-width: 35px;
 	height: auto;
@@ -228,6 +233,21 @@ ul.pagination li.page-item :hover{
 	max-width: 35px;
 	height: auto;
 }
+
+/* calendario */
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+    border: 1px solid #f96790;
+    background: #f96790;
+    color: #fff;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+    border: 1px solid #ec105a;
+    background: #ec105a;
+    font-weight: normal;
+    color: #fff;
+}
+
 
 h1,
 h2,

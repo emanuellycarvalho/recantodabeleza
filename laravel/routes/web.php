@@ -22,6 +22,7 @@ Route::resource('adm/employee', 'EmployeeController');
 Route::resource('adm/supplier', 'SupplierController');
 Route::resource('adm/scheduling', 'SchedulingController');
 Route::resource('adm/attendance', 'AttendanceController');
+Route::get('employee/search', 'EmployeeController@search');
 Route::resource('adm/employeeType', 'EmployeeTypeController');
 
 
