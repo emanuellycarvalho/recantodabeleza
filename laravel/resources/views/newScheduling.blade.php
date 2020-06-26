@@ -21,7 +21,7 @@
                             <div class='col-md-4 col-xs-12'>
                                 <div class='form-group'>
                                     <label for='data'>Data*</label> <br>
-                                    <input type='text' name='data' id='data' value='{{$att->date ?? date("d/m/Y") }}' autofocus> 
+                                    <input type='text' name='data' id='data' class='calendar' value='{{$att->date ?? date("d/m/Y") }}' autofocus> 
                                     <small> Calendário </small>
                                 </div>
                             </div> 
@@ -161,6 +161,7 @@
 	</div>
 
 	<script>
+        //PREENCHER INPUTS
 		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/employee/create'){
 			document.getElementById('data').value = localStorage.getItem('data');
 			document.getElementById('inicio').value = localStorage.getItem('inicio');
