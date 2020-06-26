@@ -6,8 +6,7 @@
 
 @section('content')
 <script> 
-    var emp = [0, 'Selecione um funcionario'];
-    var emps = [emp];
+    var emps = "0-Selecione um funcionario;";
     sessionStorage.setItem('emps', emps);
 </script>
     <!-- Suppliers section -->
@@ -91,9 +90,8 @@
                                                 @if($emp->cdTipoFuncionario == $id)
                                                     <script> 
                                                         var emps = sessionStorage.getItem('emps');
-                                                        var emp = [{{$emp->cdFuncionario}}, '{{$emp->nmFuncionario}}'];
-                                                        emps.push(emp);
-                                                        sessionStorage.setItem('emps', JSON.stringify(emps));
+                                                        emps += '{{$emp->cdFuncionario}}-{{$emp->nmFuncionario}};';
+                                                        sessionStorage.setItem('emps', emps);
                                                     </script>
                                                     <option value='{{$emp->cdFuncionario}}'> {{$emp->nmFuncionario}}</option>
                                                 @endif

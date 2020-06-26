@@ -23,7 +23,9 @@ $(function() {
 //ADICIONAR SERVIÇO 2.0
 var c = 2;
 $('#addOnTable').click(function() {
-  var novo = "<div class='row' id='campo" + c + "'>"+
+  result = options('emps');
+
+  var novo = "<div class='row' id='campo" + c + "'>"+ 
 
   "<div class='col-md-5 col-xs-12'>"+
       "<div class='form-group'>"+
@@ -43,12 +45,7 @@ $('#addOnTable').click(function() {
       "<div class='form-group'>"+
           "<label for='funcionario'>Funcionário*</label>"+
           "<select name='funcionario' id='funcionario'>"+
-              "<option value='0' disabled selected> Selecione um funcionário </option>"+
-              "@foreach($employees as $emp)"+
-                  "@if($emp->cdTipoFuncionario == $id)"+
-                    "<option value='{{$emp->cdFuncionario}}'> {{$emp->nmFuncionario}}</option>"+
-                  "@endif"+
-              "@endforeach"+
+              result +
           "</select>"+
       "</div>"+
   "</div>"+
@@ -69,6 +66,23 @@ $('form').on('click', '.removeFromTable', function (){
   $('#campo' + id + '').remove();
 });
 
+//CRIAR OPTIONS
+function options(session){
+  if (session != null){
+    var array = sessionStorage.getItem(session);
+    //string.split(separator, limit)
+    array = array.split(';');
+    if (array != null){
+      var result = '';
+      for(var i = 0; i < array.length-1; i++){
+        var a = array[i].split('-');
+        result += "<option value='" + a[0] + "'> " + a[1] + "</option>";
+      }
+      return result;
+    }
+  }
+  return null;
+}
 /*
 //AUTOCOMPLETE
 $(jfunction (){
