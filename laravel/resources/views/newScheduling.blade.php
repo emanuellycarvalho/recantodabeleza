@@ -5,10 +5,19 @@
 @section('icon') <img class='responsive' src='{{url("/img/icons/scheduling-light.png")}}' width='35px'> @endsection('icon')
 
 @section('content')
+<link href='{{url("/assets/fullcalendar/daygrid/main.css")}}' rel='stylesheet'/>
+<link href='{{url("/assets/css/fullcalendar.css")}}' rel='stylesheet'/>
+
+<script src='{{url("/assets/fullcalendar/daygrid/main.js")}}'></script>
+<script src='{{url("/assets/fullcalendar/core/main.js")}}'></script>
+<script src='{{url("/assets/fullcalendar/core/locales-all.js")}}'></script>
+<script src='{{url("/assets/js/fullcalendar.js")}}'></script>
+
 <script> 
     var emps = "0-Selecione um funcionario;";
     sessionStorage.setItem('emps', emps);
 </script>
+
     <!-- Suppliers section -->
     <section class='cart-section spad'>
 		<div class='container'>
@@ -45,6 +54,9 @@
                                     <label for='cliente'>Cliente*</label>
                                     <select name='cliente' id='cliente'>
                                         <option value='0' disabled selected> Selecione um cliente </option>
+                                            @foreach($clients as $cli)
+                                                <option value='{{$cli->cdCliente}}'> {{$cli->nmCliente}}; {{$cli->telefone}} </option>
+                                            @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -182,6 +194,7 @@
 		}
 	</script>
 	<!-- New client section end -->
+
 
 @endsection('content')
 

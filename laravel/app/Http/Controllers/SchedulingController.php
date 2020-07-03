@@ -33,12 +33,12 @@ class SchedulingController extends Controller
   
     public function create()
     {
-        //$schedule = $this->objScheduling->all();
         $employees = $this->objEmployee->all();
-        //$clients = $this->objClient->all();
-        //return view('scheduling', compact('employees'), compact('clients'), compact('schedule'), compact('id'));
+        $clients = $this->objClient->all();
         $id = $this->objEmployeeType->where('nmFuncao', 'Atendente')->first()->cdTipoFuncionario;
-        return view('newScheduling', compact('employees'), compact('id'));
+        $schedule = $this->objScheduling->all();
+        return view('newScheduling')->with(compact('employees'))->with(compact('id'))->with(compact('clients'))->with(compact('schedule')); 
+        //ith pode ser usado quantas vezes forem necessarias
     }
   
     public function store(SchedulingRequest $request)
