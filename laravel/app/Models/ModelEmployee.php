@@ -11,7 +11,11 @@ class ModelEmployee extends Model
                         'rua', 'numero', 'bairro', 'cidade', 'complemento', 'cdTipoFuncionario'];
 
     public function relEmployeeType(){
-        return $this->hasOne('App\Models\ModelEmployeeType', 'cdTipoFuncionario', 'cdFuncionario');
+        return $this->hasOne('App\Models\ModelEmployeeType', 'cdTipoFuncionario', 'cdTipoFuncionario');
+    }
+
+    public function relEmployee(){
+        return $this->hasMany('App\Models\ModelScheduling', 'cdFuncionario', 'cdFuncionario');
     }
 
     public function dtNasc(){

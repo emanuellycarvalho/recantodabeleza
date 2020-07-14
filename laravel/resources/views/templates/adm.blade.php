@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
 	<!-- Stylesheets -->
+    <link href='{{url("/assets/fullcalendar/daygrid/main.css")}}' rel='stylesheet'/>
+    <link href='{{url("/assets/css/fullcalendar.css")}}' rel='stylesheet'/>
 	<link rel='stylesheet' href='{{url("/assets/css/bootstrap.min.css")}}'/>
 	<link rel='stylesheet' href='{{url("/assets/css/font-awesome.min.css")}}'/>
 	<link rel='stylesheet' href='{{url("/assets/css/flaticon.css")}}'/>
@@ -27,6 +29,7 @@
 	<link rel='stylesheet' href='{{url("/assets/css/animate.css")}}'/>
 	<link rel='stylesheet' href='{{url("/assets/css/style.css")}}'/> 
 	<link rel='stylesheet' href='{{url("/assets/css/theme.default.css")}}'/>
+    
 
 </head>
 <body>

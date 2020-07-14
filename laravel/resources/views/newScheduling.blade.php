@@ -5,14 +5,10 @@
 @section('icon') <img class='responsive' src='{{url("/img/icons/scheduling-light.png")}}' width='35px'> @endsection('icon')
 
 @section('content')
-<link href='{{url("/assets/fullcalendar/daygrid/main.css")}}' rel='stylesheet'/>
-<link href='{{url("/assets/css/fullcalendar.css")}}' rel='stylesheet'/>
-
 <script src='{{url("/assets/fullcalendar/daygrid/main.js")}}'></script>
 <script src='{{url("/assets/fullcalendar/core/main.js")}}'></script>
 <script src='{{url("/assets/fullcalendar/core/locales-all.js")}}'></script>
 <script src='{{url("/assets/js/fullcalendar.js")}}'></script>
-
 <script> 
     var emps = "0-Selecione um funcionario;";
     sessionStorage.setItem('emps', emps);
@@ -22,6 +18,18 @@
     <section class='cart-section spad'>
 		<div class='container'>
 			<div class='row justify-content-center'>
+                <div class='col-lg-8'>
+                    <div class='text-center mb-5 alert-danger'>
+                        @if(isset($errors) && count($errors) > 0) 
+                            @foreach($errors->all() as $error)
+                                {{$error}} <br>							
+                            @endforeach
+                        @endif
+                        @if(isset($errorCEP)) 
+                            {{$errorCEP}}
+                        @endif
+                    </div>
+                </div>
                 <div class='col-lg-6'>
                     <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/scheduling")}}' enctype='multiform/form-data'>
                         @csrf
@@ -29,8 +37,11 @@
 
                             <div class='col-md-4 col-xs-12'>
                                 <div class='form-group'>
+                                    <input type='hidden' name='hoje' id='hoje' value= '@php echo date("Y-m-d") @endphp'>
+                                    <input type='hidden' name='servicos' id='servicos'>
+                                    <input type='hidden' name='funcionarios' id='funcionarios'>
                                     <label for='data'>Data*</label> <br>
-                                    <input type='text' name='data' id='data' class='calendar' value='{{$att->date ?? date("d/m/Y") }}' autofocus> 
+                                    <input type='text' name='data' id='data' class='calendar' value='{{$att->date ?? date("d/m/Y")}}' autofocus> 
                                     <small> Calendário </small>
                                 </div>
                             </div> 
@@ -55,7 +66,7 @@
                                     <select name='cliente' id='cliente'>
                                         <option value='0' disabled selected> Selecione um cliente </option>
                                             @foreach($clients as $cli)
-                                                <option value='{{$cli->cdCliente}}'> {{$cli->nmCliente}}; {{$cli->telefone}} </option>
+                                                <option value='{{$cli->cdCliente}}'> {{$cli->telefone}} | {{$cli->nmCliente}} </option>
                                             @endforeach
                                     </select>
                                 </div>
@@ -78,8 +89,8 @@
 
                                 <div class='col-md-5 col-xs-12'>
                                     <div class='form-group'>
-                                        <label for='servico'>Servico*</label>
-                                        <select name='servico' id='servico'>
+                                        <label for='servico1'>Servico*</label>
+                                        <select name='servico1' id='servico1'>
                                             <option value='0' disabled selected> Selecione um serviço por vez </option>
                                             <option value='2'> Massagem capilar </option>
                                             <option value='1'> Massagem corporal </option>
@@ -92,13 +103,13 @@
 
                                 <div class='col-md-5 col-xs-12'>
                                     <div class='form-group'>
-                                        <label for='funcionario'>Funcionário*</label>
+                                        <label for='funcionario1'>Funcionário*</label>
                                         <!--
                                         <input type='text' name='funcionario' id='funcionario' placeholder='Selecione um funcionario'>
                                          -->
-                                        <select name='funcionario' id='funcionario'>
+                                        <select name='funcionario1' id='funcionario1'>
                                             <option value='0' disabled selected> Selecione um funcionário </option>
-                                            @foreach($employees as $emp)
+                                            @foreach($employees as $emp) 
                                                 @if($emp->cdTipoFuncionario == $id)
                                                     <script> 
                                                         var emps = sessionStorage.getItem('emps');

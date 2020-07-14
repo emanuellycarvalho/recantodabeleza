@@ -38,18 +38,37 @@ class SchedulingController extends Controller
         $id = $this->objEmployeeType->where('nmFuncao', 'Atendente')->first()->cdTipoFuncionario;
         $schedule = $this->objScheduling->all();
         return view('newScheduling')->with(compact('employees'))->with(compact('id'))->with(compact('clients'))->with(compact('schedule')); 
-        //ith pode ser usado quantas vezes forem necessarias
+        //with pode ser usado quantas vezes forem necessarias
     }
   
     public function store(SchedulingRequest $request)
-    {
-        if ($this->objScheduling->create([
-            'inicio' => $request->inicio,
-            'servico' => $request->servico,
-            'cliente' => $request->cliente,
-            'funcionario' => $request->funcionario
-        ])){
-                return redirect('adm/scheduling');
+    { 
+
+        try {
+            dd('a');
+
+            $servicos = $request->servicos;
+            $funcionarios = $request->funcionarios;
+            dd('a');
+            $agendamento = $this->objScheduling->create([
+                'dtAgendamento' => $request->data,
+                'inicio' => $request->inicio, 
+                'fim' => $request->fim,
+                'valorEstimado' => $request->valor,
+                'funcionario' => $request->funcionario,
+                'cdCliente' => $request->cliente
+            ]);
+
+            dd('a');
+            
+            $dom = new DOMDocument();
+            $dom->loadHTMLFile('newScheduling.blade');
+
+            $selects = $dom->getElementsByTagName('select');
+                dd($selects);
+            
+        } catch (Exception $exception){
+            return view ('more');
         }
     }
   

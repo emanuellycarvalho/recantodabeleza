@@ -1,0 +1,8 @@
+Fernando:
+- resultados/página
+- informações no modal de excluir
+
+Manu:
+- crud registrar atendimento
+- remover selecionado do proximo select
+- opção de registrar atendimento a partir de agendamento

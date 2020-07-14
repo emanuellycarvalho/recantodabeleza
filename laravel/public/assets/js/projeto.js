@@ -10,24 +10,22 @@ $(document).ready(function(){
   $('#preco').mask('00 000,00', {reverse: true});
 });
 
-// CRIAR OPTIONS
-function options(session){
-  if (session != null){
-    var array = sessionStorage.getItem(session);
-    //string.split(separator, limit)
-    array = array.split(';');
-    if (array != null){
-      var result = '';
-      for(var i = 0; i < array.length-1; i++){
-        var a = array[i].split('-');
-        if (i == 0){
-          result += "<option value='" + a[0] + "' disabled selected> " + a[1] + "</option>";
-        } else {
-          result += "<option value='" + a[0] + "'> " + a[1] + "</option>";
-        }
+
+
+// CRIAR AS OPTIONS
+function createOptions(session){
+  if (session != null && sessionStorage.getItem(session) != null){
+    var array = sessionStorage.getItem(session).split(';');
+    var result = '';
+    for(var i = 0; i < array.length-1; i++){
+      var a = array[i].split('-');
+      if (i == 0){
+        result += "<option value='" + a[0] + "' disabled selected> " + a[1] + "</option>";
+      } else {
+        result += "<option value='" + a[0] + "'> " + a[1] + "</option>";
       }
-      return result;
     }
+    return result;
   }
   return null;
 }
@@ -35,14 +33,14 @@ function options(session){
 // ADICIONAR SERVIÇO 2.0
 var c = 2;
 $('#addOnTable').click(function() {
-  result = options('emps');
+  funcionarios = createOptions('emps');
 
   var novo = "<div class='row' id='campo" + c + "'>"+ 
 
   "<div class='col-md-5 col-xs-12'>"+
       "<div class='form-group'>"+
-          "<label for='servico'>Servico*</label>"+
-          "<select name='funcionario' id='funcionario'>"+
+          "<label for='servico" + c +"'>Servico*</label>"+
+          "<select name='servico" + c +"' id='servico" + c +"'>"+
               "<option value='0' disabled selected> Selecione um serviço por vez </option>"+
               "<option value='2'> Massagem capilar </option>"+
               "<option value='1'> Massagem corporal </option>"+
@@ -55,9 +53,9 @@ $('#addOnTable').click(function() {
 
   "<div class='col-md-5 col-xs-12'>"+
       "<div class='form-group'>"+
-          "<label for='funcionario'>Funcionário*</label>"+
-          "<select name='funcionario' id='funcionario'>"+
-              result +
+          "<label for='funcionario" + c +"'>Funcionário*</label>"+
+          "<select name='funcionario" + c +"' id='funcionario" + c +"'>"+
+            funcionarios +
           "</select>"+
       "</div>"+
   "</div>"+
@@ -67,9 +65,9 @@ $('#addOnTable').click(function() {
   "</div>"+
 
 "</div>";
-
   $('#services').append(novo);
   c++;
+
 });
 
 // REMOVER SERVIÇO
