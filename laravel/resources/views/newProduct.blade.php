@@ -1,6 +1,6 @@
 @extends('templates.adm')
 
-@if(isset($etype)) 
+@if(isset($prod)) 
 	@section('title') Editar Produto @endsection('title')
 	@section('icon') <img src='{{url("/img/icons/editProduct.png")}}' width='35px'> @endsection('icon')
 @else
@@ -21,8 +21,8 @@
 						@endforeach
 					@endif
 				</div>
-				@if(isset($etype)) 
-                <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/product/$etype->cdProduto")}}' enctype='multiform/form-data'>
+				@if(isset($prod)) 
+                <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/product/$prod->cdProduto")}}' enctype='multiform/form-data'>
 					@method('PUT')				
 				@else
                 <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/product")}}' enctype='multiform/form-data'>
@@ -33,28 +33,35 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='nome'>Nome*</label>
-								<input type='text' name='nome' id='nome' placeholder='Nome' value='{{$etype->nmProduto ?? "" }}' autofocus>
+								<input type='text' name='nmProduto' id='nmProduto' placeholder='Nome' value='{{$prod->nmProduto ?? "" }}' autofocus required>
 							</div>
 						</div>
 						
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='marca'>Marca*</label>
-								<input type='text' name='marca' id='marca' placeholder='Marca'>
+								<input type='text' name='marca' id='marca' placeholder='Marca' value='{{$prod->marca ?? "" }}' required>
 							</div>
 						</div>
 
-						<div class='col-md-6 col-xs-12'>
+						<div class='col-md-4 col-xs-12'>
 							<div class='form-group'>
 								<label for='preco'>Preço*</label>
-								<input type='text' name='preco' id='preco' placeholder='R$ 0 000,00'>
+								<input type='text' name='precoProduto' id='precoProduto' placeholder='R$ 0 000,00' value='{{$prod->precoProduto ?? "" }}' required>
 							</div>
 						</div>
 
-						<div class='col-md-6 col-xs-12'>
+                        <div class='col-md-4 col-xs-12'>
+							<div class='form-group'>
+								<label for='comissao'>Comissão*</label>
+								<input type='text' name='comissao' id='comissao' placeholder='00,00%' value='{{$prod->comissao ?? "" }}' required>
+							</div>
+						</div>
+
+						<div class='col-md-4 col-xs-12'>
 							<div class='form-group'>
 								<label for='qtd'>Estoque*</label>
-								<input type='number' name='qtd' id='qtd' placeholder='Quantidade em estoque'>
+								<input type='number' name='qtd' id='qtd' placeholder='Quantidade em estoque' value='{{$prod->qtd ?? "" }}' required>
 							</div>
 						</div>
 
@@ -64,8 +71,8 @@
 
 						<div class='col-md-12 col-xs-12'>
 							<div class='form-group'>
-								<label for='desc'>Descrição</label>
-								<textarea name='desc' id='desc' placeholder='Descrição do produto para o cliente'></textarea>
+								<label for='descricao'>Descrição</label>
+								<textarea name='descricao' id='descricao' placeholder='Descrição do produto para o cliente' value='{{$prod->descricao ?? old("descricao") }}'></textarea>
 							</div>
 						</div>
 
@@ -73,11 +80,11 @@
 
 					<div class='row'>
 
-						<div class='col-md-12 col-xs-12'>
-							<div class='form-group'>
-								<label for='foto'>Foto</label>
-								<textarea name='foto' id='foto' ></textarea>
-							</div>
+						<div class="col-md-12 col-xs-12">
+							<div class="form-group">
+								<label for="foto">Foto*</label>
+								<input class="form-control" id="foto" name="foto" type="file" value='{{$prod->foto ?? "" }}' accept="image/png, image/jpeg">
+							</div>			
 						</div>
 
 					</div>

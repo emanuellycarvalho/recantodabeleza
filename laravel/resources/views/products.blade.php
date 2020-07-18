@@ -24,13 +24,13 @@
 							</div>
 						</div>
 						<div class='col-xl-1 col-lg-5'>
-							<a href='{{url("adm/product/create")}}' title='Novo fornecedor'><img class='responsive' src='{{url("/img/icons/newProduct.png")}}' width='70px'></a>
+							<a href='{{url("adm/product/create")}}' title='Novo Produto'><img class='responsive' src='{{url("/img/icons/newProduct.png")}}' width='70px'></a>
 						</div>
 					</div>
 				</div>
 				<div class='col-lg-9'>  
 					<div class='exhibit-title'>
-						<hr> Exibindo {{$products->count()}} de {{$products->total()}}  <hr>
+						<hr> Exibindo 0 de 0  <hr>
 					</div>
 					<div class='cart-table'>
 						<div class='cart-table-warp'>
@@ -39,29 +39,29 @@
 							<thead>
 								<tr>
 									<th class='product-th'>Nome</th>
-									<th class='quy-th'>Telefone</th>
-									<th class='quy-th'></th>
+									<th class='quy-th'>Preço</th>
+                                    <th class='quy-th'>Estoque</th>
                                     <th class='quy-th' id='none'>Ver mais</th>
                                     <th class='quy-th' id='none'>Editar</th>
 									<th class='quy-th' id='none'>Excluir</th>
 								</tr>
 							</thead>
 							<tbody id='tbody'>
-								@foreach($products as $sup)
+								@foreach($products as $prod)
 								<tr>
 									<td class='quy-col'>
-                                        <a href='{{url("adm/product/$sup->cdProduto")}}' title='Visualizar fornecedor'>
+                                        <a href='' title='Visualizar produto'>
                                             <div class='pc-title'>
-                                                <h4>{{$sup->nmProduto}}</h4>
-												<p>{{$sup->email}}</p>
+                                                <h4>{{$prod->nmProduto}}</h4>
+												<p>{{$prod->marca}}</p>
                                             </div>
                                         </a>
 									</td>
-									<td class='quy-col'><center>{{$sup->telefone}}</center></td>
-									<td class='quy-col'><img class='responsive' scr='{{url("/img/blog-thumbs/line.png")}}' width='35px'></td>
-                                    <td class='quy-col'><center><a href='{{url("adm/product/$sup->cdProduto")}}' title='Visualizar fornecedor'><img class='responsive' src='{{url("/img/icons/seeProduct.png")}}' height='35px'></a></center></td>
-                                    <td class='quy-col'><center><a href='{{url("/adm/product/$sup->cdProduto/edit")}}' title='Editar fornecedor'><img class='responsive' src='{{url("/img/icons/editProduct.png")}}' height='35px'></a></center></td>
-									<td class='quy-col'><center><a href='{{url("adm/product/$sup->cdProduto")}}' title='Excluir fornecedor' class='js-del'><img class='responsive' src='{{url("/img/icons/deleteProduct.png")}}' height='35px'></a></center></td>
+									<td class='quy-col'><center>{{$prod->precoProduto}}</center></td>
+                                    <td class='quy-col'><center>{{$prod->qtd}}</center></td>
+                                    <td class='quy-col'><center><a href='{{url("adm/product/$prod->cdProduto")}}' title='Visualizar produto'><img class='responsive' src='{{url("/img/icons/seeProduct.png")}}' height='35px'></a></center></td>
+                                    <td class='quy-col'><center><a href='{{url("adm/product/$prod->cdProduto/edit")}}' title='Editar produto'><img class='responsive' src='{{url("/img/icons/editProduct.png")}}' height='35px'></a></center></td>
+									<td class='quy-col'><center><a href='{{url("adm/product/$prod->cdProduto")}}' title='Excluir produto' class='js-del'><img class='responsive' src='{{url("/img/icons/deleteProduct.png")}}' height='35px'></a></center></td>
 								</tr>
 								@endforeach
 							</tbody>
@@ -69,7 +69,6 @@
                         </div>
                         <div class='total-cost-free'>
 							<div class='row justify-content-end' id='pagination'>
-						   		{{$products->links()}}
 							</div>
 						</div>
 					</div>
