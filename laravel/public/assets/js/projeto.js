@@ -10,72 +10,6 @@ $(document).ready(function(){
   $('#preco').mask('00 000,00', {reverse: true});
 });
 
-
-
-// CRIAR AS OPTIONS
-function createOptions(session){
-  if (session != null && sessionStorage.getItem(session) != null){
-    var array = sessionStorage.getItem(session).split(';');
-    var result = '';
-    for(var i = 0; i < array.length-1; i++){
-      var a = array[i].split('-');
-      if (i == 0){
-        result += "<option value='" + a[0] + "' disabled selected> " + a[1] + "</option>";
-      } else {
-        result += "<option value='" + a[0] + "'> " + a[1] + "</option>";
-      }
-    }
-    return result;
-  }
-  return null;
-}
-
-// ADICIONAR SERVIÇO 2.0
-var c = 2;
-$('#addOnTable').click(function() {
-  funcionarios = createOptions('emps');
-
-  var novo = "<div class='row' id='campo" + c + "'>"+ 
-
-  "<div class='col-md-5 col-xs-12'>"+
-      "<div class='form-group'>"+
-          "<label for='servico" + c +"'>Servico*</label>"+
-          "<select name='servico" + c +"' id='servico" + c +"'>"+
-              "<option value='0' disabled selected> Selecione um serviço por vez </option>"+
-              "<option value='2'> Massagem capilar </option>"+
-              "<option value='1'> Massagem corporal </option>"+
-              "<option value='3'> Desing de sobrancelhas </option>"+
-              "<option value='4'> Manicure </option>"+
-              "<option value='5'> Pedicure </option>"+
-          "</select>"+
-      "</div>"+
-  "</div>"+
-
-  "<div class='col-md-5 col-xs-12'>"+
-      "<div class='form-group'>"+
-          "<label for='funcionario" + c +"'>Funcionário*</label>"+
-          "<select name='funcionario" + c +"' id='funcionario" + c +"'>"+
-            funcionarios +
-          "</select>"+
-      "</div>"+
-  "</div>"+
-
-  "<div class='col-md-2 col-xs-12'>"+    
-      "<img class='removeFromTable' src='http://localhost/BicJr/recantodabeleza/laravel/public/img/icons/removeFromTable.png' title='Adicionar' id='" + c + "'>"+
-  "</div>"+
-
-"</div>";
-  $('#services').append(novo);
-  c++;
-
-});
-
-// REMOVER SERVIÇO
-$('form').on('click', '.removeFromTable', function (){
-  var id = $(this).attr('id');
-  $('#campo' + id + '').remove();
-});
-
 //CALENDÁRIO
 $(function() {
   $('.calendar').datepicker({
@@ -100,6 +34,148 @@ $(document).ready(function(){
 //TABLE SORTER
 $(function() {
   $('#table').tablesorter();
+});
+
+$(document).ready(function () {
+  $('#addOnTable').on('click', function (event) {
+    event.preventDefault();
+
+    //armazena os dados dos selects preenchidos
+    const employee_id = $('#select-employee').val();
+    const employee_name = $('#select-employee option:selected').html();
+    
+    const service_id = $('#select-service').val();
+    const service_name = $('#select-service option:selected').html();
+    
+    if (verifyData(service_id, employee_id) == null){
+      return;
+    }
+
+    //cria os inputs com estes valores
+    createFields({id: employee_id, name: employee_name}, {id: service_id, name: service_name});
+    removeOptionsSelected(employee_id, service_id);
+
+    //coloca o primeiro select em sua posição original
+    $('#select-employee').val(0);
+    $('#select-service').val(0);
+  });
+
+  //verifica se os dois selects estão preenchidos
+  function verifyData(service_id, employee_id){
+    document.getElementById('service_error').innerHTML="";
+    
+    if(service_id == null || employee_id == null){
+      var alrt = 'Você precisa selecionar um serviço e um funcionário por vez.';
+      $('#service_error').append(alrt);
+      return null;
+    }
+    return 1;
+  }
+
+  //cria os inputs com os valores selecionados numa nova div
+  function createFields(employee, service) {
+    
+    //pega o valor do serviço
+    var option = document.querySelectorAll('option[label="' + service.id + '"]');
+    for (var item of option) {
+      var valor = item.value;
+    }
+    
+    //atualiza o campo referente ao valor final
+    addToTotal(valor);
+
+    var row = $('<div>').addClass('row selected');
+    var div = $('<div>').addClass('col-md-4 col-xs-12');
+
+    $('<input>').attr({ name: 'service_id[]', value: service.id, type: 'hidden' }).appendTo(div);
+    $('<input>').attr({ name: 'service_name[]', value: service.name, type: 'text', readonly: true }).appendTo(div);
+    div.appendTo(row);
+    
+    div = $('<div>').addClass('col-md-4 col-xs-12');
+
+    $('<input>').attr({ name: 'employee_id[]', value: employee.id, type: 'hidden' }).appendTo(div);
+    $('<input>').attr({ name: 'employee_name[]', value: employee.name, type: 'text', readonly: true }).appendTo(div);
+    div.appendTo(row);
+
+    div = $('<div>').addClass('col-md-3 col-xs-12');
+
+    $('<input>').attr({ name: 'valor[]', value: valor, type: 'text' }).appendTo(div);
+    div.appendTo(row);
+
+    div = $('<div>').addClass('col-md-1 col-xs-12');
+    $('<img>').attr({class: 'removeFromTable', src: 'http://localhost/BicJr/recantodabeleza/laravel/public/img/icons/removeFromTable.png'}).click(removeItem).appendTo(div);
+    div.appendTo(row);
+
+    row.appendTo('.services');
+  }
+
+  //remove do primeiro select as options que já foram selecionadas anteriormente
+  function removeOptionsSelected(employee_id, service_id) {
+    $('#select-employee option[value="' + employee_id + '"]').each(function () {
+      $(this).remove();
+    });
+
+    $('#select-service option[value="' + service_id + '"]').each(function () {
+      $(this).remove();
+    });
+  }
+
+  //atualiza o campo referente ao valor final
+  function addToTotal(valor){
+    if (valor != null){
+      valor = parseFloat(valor);
+      var total = document.getElementById('total').value;
+      total = total.substring(0, total.indexOf(".") + 3);
+      total = parseFloat(total) + valor;
+      document.getElementById('total').value = total;
+    }
+  }
+
+  function removeItem(event) {
+    event.preventDefault();
+    document.getElementById('service_error').innerHTML="";
+    
+    //armazena o botão que foi acionado
+    const button = $(event.currentTarget);
+
+    //pega a div mais perto do botão que foi acionado
+    const service_div = button.closest('.selected');
+
+    //pega os valores do funcionário e serviço
+    const employee_id = service_div.find("[name='employee_id[]']").val();
+    const employee_name = service_div.find("[name='employee_name[]']").val();
+
+    const service_id = service_div.find("[name='service_id[]']").val();
+    const service_name = service_div.find("[name='service_name[]']").val();
+
+    var option = document.querySelectorAll('option[label="' + service_id + '"]');
+
+    for (var item of option) {
+      var valor = item.value;
+    }
+    
+    //atualiza o campo referente ao valor final
+    removeFromTotal(valor);
+
+    //volta com eles pros primeiros selects
+    $('#select-employee').append(`<option value="${employee_id}">${employee_name}</option>`);
+    $('#select-service').append(`<option value="${service_id}">${service_name}</option>`);
+
+    //remove a div
+    service_div.remove();
+  }
+
+  //atualiza o campo referente ao valor final
+  function removeFromTotal(valor){
+    if (valor != null){
+      valor = parseFloat(valor);
+      var total = document.getElementById('total').value;
+      total = total.substring(0, total.indexOf(".") + 3);
+      total = parseFloat(total) - valor;
+      document.getElementById('total').value = total;
+    }
+  }
+
 });
 
 

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\ModelClient;
+use App\Models\ModelService;
 use App\Models\ModelSupplier;
 use App\Models\ModelEmployee;
 use App\Models\ModelEmployeeType;
@@ -122,5 +123,33 @@ class DatabaseSeeder extends Seeder
 
         factory(ModelClient::class, 3)->create();
 
+        ModelService::create([
+            'nmServico' => 'Limpeza de pele',
+            'descricao' => 'Limpeza de pele simples',
+            'valor' => 49.99,
+            'comissao' => 10
+        ]);
+
+        ModelService::create([
+            'nmServico' => 'Mascara facial (ouro)',
+            'descricao' => 'Aplicação da máscara de ouro por toda a face, recomendado após a limpeza de pele',
+            'valor' => 19.99,
+            'comissao' => 5
+        ]);
+
+        ModelService::create([
+            'nmServico' => 'Mascara facial (carvão)',
+            'descricao' => 'Aplicação da máscara de carvão aditivado por toda a face, recomendado após a limpeza de pele',
+            'valor' => 19.99,
+            'comissao' => 5
+        ]);
+
+        ModelService::create([
+            'nmServico' => 'Esfoliação corporal',
+            'descricao' => 'Esfoliação com ou sem granulação para remover célular mortas, hidratar e renovar a pele',
+            'valor' => 39.99,
+            'comissao' => 15
+        ]);
+               
     }
 }

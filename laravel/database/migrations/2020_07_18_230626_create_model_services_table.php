@@ -13,10 +13,12 @@ class CreateModelServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbAgendamentoServico', function (Blueprint $table) {
-            $table->integer('cdAgendamento');
-            $table->integer('cdServico');
-            $table->integer('cdFuncionario');
+        Schema::create('TbServico', function (Blueprint $table) {
+            $table->increments('cdServico');
+            $table->string('nmServico');
+            $table->string('descricao')->nullable();
+            $table->double('valor', 10, 2);
+            $table->integer('comissao');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateModelServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbAgendamentoServico');
+        Schema::dropIfExists('TbServico');
     }
 }

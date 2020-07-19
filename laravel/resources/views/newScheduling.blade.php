@@ -5,14 +5,12 @@
 @section('icon') <img class='responsive' src='{{url("/img/icons/scheduling-light.png")}}' width='35px'> @endsection('icon')
 
 @section('content')
+<!--
 <script src='{{url("/assets/fullcalendar/daygrid/main.js")}}'></script>
 <script src='{{url("/assets/fullcalendar/core/main.js")}}'></script>
 <script src='{{url("/assets/fullcalendar/core/locales-all.js")}}'></script>
 <script src='{{url("/assets/js/fullcalendar.js")}}'></script>
-<script> 
-    var emps = "0-Selecione um funcionario;";
-    sessionStorage.setItem('emps', emps);
-</script>
+-->     
 
     <!-- Suppliers section -->
     <section class='cart-section spad'>
@@ -44,19 +42,19 @@
                                     <input type='text' name='data' id='data' class='calendar' value='{{$att->date ?? date("d/m/Y")}}' autofocus> 
                                     <small> Calendário </small>
                                 </div>
-                            </div> 
+                            </div>  
                             
                             <div class='col-md-4 col-xs-12'>
                                 <div class='form-group'>
                                     <label for='inicio'>Início*</label>
-                                    <input type='time' name='inicio' id='inicio'>
+                                    <input type='time' name='inicio' id='inicio' >
                                 </div>
                             </div>
 
                             <div class='col-md-4 col-xs-12'>
                                 <div class='form-group'>
                                     <label for='fim'>Fim</label>
-                                    <input type='time' name='fim' id='fim'>
+                                    <input type='time' name='fim' id='fim' >
                                 </div>
                             </div>
 
@@ -85,45 +83,59 @@
                                 <hr class='pink'>
                             </div>
 
+                            <div class='text-center mb-5 alert-danger' id='service_error'>
+                            </div>
+
                             <div class='row'>
 
-                                <div class='col-md-5 col-xs-12'>
-                                    <div class='form-group'>
-                                        <label for='servico1'>Servico*</label>
-                                        <select name='servico1' id='servico1'>
-                                            <option value='0' disabled selected> Selecione um serviço por vez </option>
-                                            <option value='2'> Massagem capilar </option>
-                                            <option value='1'> Massagem corporal </option>
-                                            <option value='3'> Desing de sobrancelhas </option>
-                                            <option value='4'> Manicure </option>
-                                            <option value='5'> Pedicure </option>
-                                        </select>
-                                    </div>
+                                <div class='col-md-4 col-xs-12'>
+                                    <label for='select-service'>Servico*</label>
+                                    <select name='select-service[]' id='select-service'>
+                                        <option value='0' disabled selected> Selecione um serviço por vez </option>
+                                        @foreach($services as $svc)
+                                            <script>
+                                                var values = [];
+                                                if(sessionStorage.getItem('values') != null){
+                                                    values = sessionStorage.getItem('values');
+                                                }
+                                                var val = values + '{{$svc->valor}}';
+                                                values[{{$svc->cdServico}}] = val;
+                                                sessionStorage.setItem('values', values);
+                                            </script> 
+                                            <option value='{{$svc->cdServico}}'> {{$svc->nmServico}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
-                                <div class='col-md-5 col-xs-12'>
-                                    <div class='form-group'>
-                                        <label for='funcionario1'>Funcionário*</label>
-                                        <!--
-                                        <input type='text' name='funcionario' id='funcionario' placeholder='Selecione um funcionario'>
-                                         -->
-                                        <select name='funcionario1' id='funcionario1'>
-                                            <option value='0' disabled selected> Selecione um funcionário </option>
-                                            @foreach($employees as $emp) 
-                                                @if($emp->cdTipoFuncionario == $id)
-                                                    <script> 
-                                                        var emps = sessionStorage.getItem('emps');
-                                                        emps += '{{$emp->cdFuncionario}}-{{$emp->nmFuncionario}};';
-                                                        sessionStorage.setItem('emps', emps);
-                                                    </script>
-                                                    <option value='{{$emp->cdFuncionario}}'> {{$emp->nmFuncionario}}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                <div class='col-md-4 col-xs-12'>
+                                    <label for='select-employee'>Funcionário*</label>
+                                    <!--
+                                    <input type='text' name='funcionario' id='funcionario' placeholder='Selecione um funcionario'>
+                                        -->
+                                    <select name='select-employee' id='select-employee'>
+                                        <option value='0' disabled selected> Selecione um funcionário </option>
+                                        @foreach($employees as $emp) 
+                                            @if($emp->cdTipoFuncionario == $id)
+                                                <option value='{{$emp->cdFuncionario}}'> {{$emp->nmFuncionario}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
                                 </div>
 
-                                <div class='col-md-2 col-xs-12'>    
+                                <div class='col-md-3 col-xs-12'>
+                                    <label for='valor'>Valor</label>
+                                    <input name='valor' id='valor' placeholder= '00.00' readonly>
+                                </div>
+
+                                <div id='valores' hidden>
+                                    <select multiple name='valores' id='valores' readonly>
+                                        @foreach($services as $svc)
+                                            <option label='{{$svc->cdServico}}' value='{{$svc->valor}}'></option>
+                                        @endforeach
+                                    </select> 
+                                </div>
+
+                                <div class='col-md-1 col-xs-12'>    
                                     <img class='addOnTable' src='{{url("img/icons/addOnTable.png")}}' title='Adicionar' id='addOnTable'>
                                 </div>
 
@@ -131,7 +143,15 @@
 
                         </div>
 
+                        <div class='services'>
+                        </div>
+
                         <div class='row'>
+                            <div class='col-md-3 col-xs-12 offset-md-8'>
+                                <div class='form-group'>
+                                    <input name='total' id='total' placeholder='Total' value='0' readonly>
+                                </div>
+                            </div>
                         </div>
 
                         <div class='row justify-content-end'>
@@ -182,7 +202,7 @@
 			</div>
 		</div>
 	</div>
-
+    
 	<script>
         //PREENCHER INPUTS
 		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/employee/create'){
@@ -203,7 +223,7 @@
 			//localStorage.setItem('servico', $('#servico').val());
 			//localStorage.setItem('funcionario', $('#funcionario').val());
 		}
-	</script>
+	</script> 
 	<!-- New client section end -->
 
 

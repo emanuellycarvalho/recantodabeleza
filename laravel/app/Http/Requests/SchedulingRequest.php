@@ -24,7 +24,7 @@ class SchedulingRequest extends FormRequest
     public function rules()
     {
         return [
-            'data' => 'required|after:ontem',
+            'data' => 'required',
             'inicio' => 'required',
             'cliente'  => 'min:1',
             //'servicos'  => 'required',
@@ -35,7 +35,6 @@ class SchedulingRequest extends FormRequest
     public function messages(){
 
         return [
-            'data.after' => 'A data precisa ser posterior ou igual ao dia de hoje.',
             'data.required' => 'O campo "Data" é obrigatório.',
             'inicio.required' => 'O campo "Início" é obrigatório.',
             'cliente.min' => 'É necessário selecionar um cliente.'

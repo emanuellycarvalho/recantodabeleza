@@ -120,7 +120,7 @@ img.addOnTable:hover{
 img.removeFromTable{
 	max-width: 35px;
 	height: auto;
-	margin-top: 29px;
+	margin-top: 5px;
 }
 
 img.removeFromTable:hover{
