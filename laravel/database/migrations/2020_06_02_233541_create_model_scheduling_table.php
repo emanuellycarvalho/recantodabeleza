@@ -15,9 +15,11 @@ class CreateModelSchedulingTable extends Migration
     {
         Schema::create('TbAgendamento', function (Blueprint $table) {
             $table->increments('cdAgendamento');
-            $table->date('dtAgendamento');
-            $table->time('inicio');
-            $table->time('fim');
+            $table->string('title');
+            $table->string('telefone');
+            $table->dateTime('start');
+            $table->dateTime('end');
+            $table->string('color', 7)->nullable();
             $table->double('valorTotal', 10, 2);
             $table->integer('cdCliente')->unsigned();
             $table->integer('cdFuncionario')->unsigned();

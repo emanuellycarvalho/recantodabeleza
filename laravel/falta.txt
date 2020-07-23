@@ -3,6 +3,8 @@ Fernando:
 - informações no modal de excluir
 
 Manu:
+- agenda no index
+- modal com as informações [nome do cliente, telefone, data, inicio, fim, o que agendou e com quem] do agendamento a partir da agenda
+- criar agendamento a partir da agenda (não precisa ser modal)
 - crud registrar atendimento
-- remover selecionado do proximo select
 - opção de registrar atendimento a partir de agendamento

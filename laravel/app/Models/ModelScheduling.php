@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class ModelScheduling extends Model
 {
     protected $table = 'TbAgendamento';
-    protected $fillable = ['dtAgendamento', 'inicio', 'fim', 'valorTotal', 'cdCliente', 'cdFuncionario'];
+    protected $fillable = ['start', 'end', 'color', 'valorTotal', 'cdCliente', 'cdFuncionario'];
 
     public function relService(){
-        return $this->belongsToMany('App\Models\ModelService', 'tbAgendamentoServico', 'cdAgendamento', 'cdServico')
-                    ->as('servicos')
-                    ->withPivot('CdFuncionario', 'valorCobrado')
-                    ->withTimestamps(); 
+        return $this->belongsToMany('App\Models\ModelService', 'tbagendamentoservico', 'cdAgendamento', 'cdServico');
+                    //->as('servicos')
+                    //->withPivot('CdFuncionario', 'valorCobrado')
+                    //->withTimestamps(); 
      }
 
     public function relClient(){

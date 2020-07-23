@@ -5,6 +5,7 @@ use App\Models\ModelClient;
 use App\Models\ModelService;
 use App\Models\ModelSupplier;
 use App\Models\ModelEmployee;
+use App\Models\Event;
 use App\Models\ModelEmployeeType;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -17,60 +18,60 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run(ModelSupplier $supplier, ModelEmployee $employee, ModelEmployeeType $etype, 
-                        ModelClient $client)
+    public function run()
     {
-       
-        $supplier->create([
+        factory(ModelClient::class, 3)->create();
+
+        ModelSupplier::create([
             'nmFornecedor' => 'SkinCare',
             'cnpj' => '00.378.257/0001-88',
             'telefone'  => '(31) 3455-3243',
             'email' => 'skc@gmail.com'
         ]);
 
-        $supplier->create([
+        ModelSupplier::create([
             'nmFornecedor' => 'Brilho Capilar',
             'cnpj' => '00.378.257/0001-23',
             'telefone'  => '(31) 3334-2321',
             'email' => 'brilhoCapilar@gmail.com'
         ]);
 
-        $supplier->create([
+        ModelSupplier::create([
             'nmFornecedor' => 'Cremes da Lu',
             'cnpj' => '00.378.257/0001-82',
             'telefone'  => '(31) 3455-3212',
             'email' => 'luciana@cosmeticos.com'
         ]);
 
-        $supplier->create([
+        ModelSupplier::create([
             'nmFornecedor' => 'Beleza Rara',
             'cnpj' => '00.348.257/0001-22',
             'telefone'  => '(31) 3422-3212',
             'email' => 'belezarar@gmail.com'
         ]);
 
-        $etype->create([
+        ModelEmployeeType::create([
             'nmFuncao' => 'Gerente',
             'salarioBase' => 500
         ]);
 
-        $etype->create([
+        ModelEmployeeType::create([
             'nmFuncao' => 'Secretário(a)',
             'salarioBase' => 300
         ]);
         
-        $etype->create([
+        ModelEmployeeType::create([
             'nmFuncao' => 'Atendente',
             'salarioBase' => 200
         ]);
 
         
-        $etype->create([
+        ModelEmployeeType::create([
             'nmFuncao' => 'Serviços Gerais',
             'salarioBase' => 200
         ]);
         
-        $employee->create([
+        ModelEmployee::create([
             'nmFuncionario' => 'Emanuelly Carvalho',
             'sexo' => 'Feminino',
             'dtNasc' => '2003-02-20',
@@ -87,7 +88,7 @@ class DatabaseSeeder extends Seeder
             'cdTipoFuncionario' => 2
         ]);
 
-        $employee->create([
+        ModelEmployee::create([
             'nmFuncionario' => 'Fernando Souza',
             'sexo' => 'Masculino',
             'dtNasc' => '2002-12-12',
@@ -104,7 +105,7 @@ class DatabaseSeeder extends Seeder
             'cdTipoFuncionario' => 2
         ]);
 
-        $employee->create([
+        ModelEmployee::create([
             'nmFuncionario' => 'Lorena Souza',
             'sexo' => 'Feminino',
             'dtNasc' => '2002-02-05',
@@ -120,8 +121,6 @@ class DatabaseSeeder extends Seeder
             'complemento' => 'Na rua da igreja',
             'cdTipoFuncionario' => 2
         ]);
-
-        factory(ModelClient::class, 3)->create();
 
         ModelService::create([
             'nmServico' => 'Limpeza de pele',
@@ -149,6 +148,25 @@ class DatabaseSeeder extends Seeder
             'descricao' => 'Esfoliação com ou sem granulação para remover célular mortas, hidratar e renovar a pele',
             'valor' => 39.99,
             'comissao' => 15
+        ]);
+
+        Event::create([
+            'start' => '2020-07-20 07:30:00',
+            'end' => '2020-07-20 08:30:00',
+            'valor' => 39.99
+        ]);
+
+        Event::create([
+            'start' => '2020-07-21 07:30:00',
+            'end' => '2020-07-21 08:30:00',
+            'color' => '#7842f5',
+            'valor' => 39.99
+        ]);
+
+        Event::create([
+            'start' => '2020-07-20',
+            'end' => '2020-07-20',
+            'valor' => 39.99
         ]);
                
     }

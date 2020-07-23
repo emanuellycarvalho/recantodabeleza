@@ -8,9 +8,8 @@ use App\Models\ModelService;
 use App\Models\ModelEmployee;
 use App\Models\ModelScheduling;
 use App\Models\ModelEmployeeType;
+use App\Models\Event;
 use App\Http\Requests\SchedulingRequest;
-use DOMDocument;
-
 use Carbon\Carbon;
 
 class SchedulingController extends Controller
@@ -32,10 +31,33 @@ class SchedulingController extends Controller
     {
         //$schedule = $this->objScheduling->all();
         //$employees = $this->objEmployee->all();
-        //$clients = $this->objClient->all();
+        //$clients = $this->objC lient->all();
         //return view('scheduling', compact('employees'), compact('clients'), compact('schedule'));
     }
-  
+     
+    public function loadEvents(){
+        $schedule = Event::all();
+        return response()->json($schedule); 
+    }
+
+    public function findClient($id){
+        $client = $this->objClient->where('cdCliente', $id);
+        if ($client != null){
+            $client = [
+                'success' => true,
+                'error' => null,
+                'nome' => $client->nmCliente,
+                'telefone' => $client->telefone
+            ];
+        } else {
+            $client = [
+                'success' => false,
+                'error' => 'Desculpe-nos, ocorreu um erro ao encontrar o cliente'
+            ];
+        }
+        return $client;
+    }
+    
     public function create()
     {
         $id = $this->objEmployeeType->where('nmFuncao', 'Atendente')->first()->cdTipoFuncionario;
@@ -52,31 +74,41 @@ class SchedulingController extends Controller
     }
   
     public function store(SchedulingRequest $request)
-    { 
+    {  
         try {
 
+            $start = $request->data . ' ' . $request->inicio;
+            $end = $start = $request->data . ' ' . $request->fim;
+
+            $client = findClient($request->cliente);
+            
+            if(!$client['success']){
+                abort(401, $client['error']);
+            }
+            
             $agendamento = $this->objScheduling->create([
-                'dtAgendamento' => Carbon::createFromFormat('d/m/Y', $request->data, 'America/Sao_Paulo')->toDateString(),
-                'inicio' => $request->inicio, 
-                'fim' => $request->fim,
-                'valorTotal' => 100.00,
-                'cdFuncionario' => 3,
+                'title' => $client['nome'],
+                'telefone' => $client['telefone'],
+                'start' => Carbon::createFromFormat('d/m/Y H:i', $start , 'America/Sao_Paulo')->toDateString(),
+                'end' => Carbon::createFromFormat('d/m/Y H:i', $end , 'America/Sao_Paulo')->toDateString(),
+                'valorTotal' => $request->total,
+                'cdFuncionario' => 3, //futuramente o usuario logado
                 'cdCliente' => $request->cliente
             ]); 
             
-            $dom = new DOMDocument();
-            $back = back()->getTargetUrl();
-            libxml_use_internal_errors(true);
-            $dom->loadHTMLFile($back);
-            libxml_clear_errors();
-                
-            $selects = $dom->getElementsByTagName('select');
-            for ($i = 1; $i < sizeof($selects); $i++){
-                $select = $selects->item($i);
-                dd($select);
-                $c = $select->getAttribute('value');
-                return $c;
+            $servicos = $request->select_services;
+            $funcionarios = $request->select_employees;
+            $valores = $request->valor;
+            
+            if(is_array($servicos)){
+                for($i = 0; $i < sizeof($servicos); $i++){
+                    $agendamento->relService()->attach($servicos[$i]);
+                }
+            } else {
+                $agendamento->relService()->attach($servicos);
             }
+            
+            dd($agendamento);
             
         } catch (Exception $exception){
             dd($exception);

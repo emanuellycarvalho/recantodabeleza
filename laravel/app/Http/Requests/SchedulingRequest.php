@@ -26,9 +26,8 @@ class SchedulingRequest extends FormRequest
         return [
             'data' => 'required',
             'inicio' => 'required',
-            'cliente'  => 'min:1',
-            //'servicos'  => 'required',
-            //'funcionarios'  => 'required'
+            'cliente'  => 'required|min:1',
+            'total' => 'required|min:1',
         ];
     }
 
@@ -37,9 +36,10 @@ class SchedulingRequest extends FormRequest
         return [
             'data.required' => 'O campo "Data" é obrigatório.',
             'inicio.required' => 'O campo "Início" é obrigatório.',
-            'cliente.min' => 'É necessário selecionar um cliente.'
-            //'servicos.required' => 'É necessário selecionar ao menos um servico.',
-            //'funcionarios.required' => 'É necessário selecionar ao menos um funcionário.'
+            'cliente.min' => 'É necessário selecionar um cliente.',
+            'cliente.required' => 'É necessário selecionar um cliente.',
+            'total.required' => 'O valor não pode ficar em branco.',
+            'total.min' => 'O valor não pode ficar em branco.'
         ];
     }
 }

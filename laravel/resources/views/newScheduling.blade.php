@@ -89,8 +89,8 @@
                             <div class='row'>
 
                                 <div class='col-md-4 col-xs-12'>
-                                    <label for='select-service'>Servico*</label>
-                                    <select name='select-service[]' id='select-service'>
+                                    <label for='select_service'>Servico*</label>
+                                    <select name='select_service[]' id='select_service'>
                                         <option value='0' disabled selected> Selecione um serviço por vez </option>
                                         @foreach($services as $svc)
                                             <script>
@@ -107,12 +107,20 @@
                                     </select>
                                 </div>
 
+                                <div id='valores' hidden>
+                                    <select multiple name='valores' id='valores' readonly>
+                                        @foreach($services as $svc)
+                                            <option label='{{$svc->cdServico}}' value='{{$svc->valor}}'></option>
+                                        @endforeach
+                                    </select> 
+                                </div>
+                                
                                 <div class='col-md-4 col-xs-12'>
-                                    <label for='select-employee'>Funcionário*</label>
+                                    <label for='select_employee'>Funcionário*</label>
                                     <!--
                                     <input type='text' name='funcionario' id='funcionario' placeholder='Selecione um funcionario'>
                                         -->
-                                    <select name='select-employee' id='select-employee'>
+                                    <select name='select_employee' id='select_employee'>
                                         <option value='0' disabled selected> Selecione um funcionário </option>
                                         @foreach($employees as $emp) 
                                             @if($emp->cdTipoFuncionario == $id)
@@ -124,15 +132,7 @@
 
                                 <div class='col-md-3 col-xs-12'>
                                     <label for='valor'>Valor</label>
-                                    <input name='valor' id='valor' placeholder= '00.00' readonly>
-                                </div>
-
-                                <div id='valores' hidden>
-                                    <select multiple name='valores' id='valores' readonly>
-                                        @foreach($services as $svc)
-                                            <option label='{{$svc->cdServico}}' value='{{$svc->valor}}'></option>
-                                        @endforeach
-                                    </select> 
+                                    <input name='valor[]' id='valor' placeholder= '00.00' readonly>
                                 </div>
 
                                 <div class='col-md-1 col-xs-12'>    

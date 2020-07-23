@@ -41,11 +41,11 @@ $(document).ready(function () {
     event.preventDefault();
 
     //armazena os dados dos selects preenchidos
-    const employee_id = $('#select-employee').val();
-    const employee_name = $('#select-employee option:selected').html();
+    const employee_id = $('#select_employee').val();
+    const employee_name = $('#select_employee option:selected').html();
     
-    const service_id = $('#select-service').val();
-    const service_name = $('#select-service option:selected').html();
+    const service_id = $('#select_service').val();
+    const service_name = $('#select_service option:selected').html();
     
     if (verifyData(service_id, employee_id) == null){
       return;
@@ -56,8 +56,8 @@ $(document).ready(function () {
     removeOptionsSelected(employee_id, service_id);
 
     //coloca o primeiro select em sua posição original
-    $('#select-employee').val(0);
-    $('#select-service').val(0);
+    $('#select_employee').val(0);
+    $('#select_service').val(0);
   });
 
   //verifica se os dois selects estão preenchidos
@@ -106,16 +106,16 @@ $(document).ready(function () {
     $('<img>').attr({class: 'removeFromTable', src: 'http://localhost/BicJr/recantodabeleza/laravel/public/img/icons/removeFromTable.png'}).click(removeItem).appendTo(div);
     div.appendTo(row);
 
-    row.appendTo('.services');
+    row.prependTo('.services');
   }
 
   //remove do primeiro select as options que já foram selecionadas anteriormente
   function removeOptionsSelected(employee_id, service_id) {
-    $('#select-employee option[value="' + employee_id + '"]').each(function () {
+    $('#select_employee option[value="' + employee_id + '"]').each(function () {
       $(this).remove();
     });
 
-    $('#select-service option[value="' + service_id + '"]').each(function () {
+    $('#select_service option[value="' + service_id + '"]').each(function () {
       $(this).remove();
     });
   }
@@ -125,8 +125,9 @@ $(document).ready(function () {
     if (valor != null){
       valor = parseFloat(valor);
       var total = document.getElementById('total').value;
-      total = total.substring(0, total.indexOf(".") + 3);
       total = parseFloat(total) + valor;
+      total = total.toString();
+      total = total.substring(0, total.indexOf(".") + 3);
       document.getElementById('total').value = total;
     }
   }
@@ -158,8 +159,8 @@ $(document).ready(function () {
     removeFromTotal(valor);
 
     //volta com eles pros primeiros selects
-    $('#select-employee').append(`<option value="${employee_id}">${employee_name}</option>`);
-    $('#select-service').append(`<option value="${service_id}">${service_name}</option>`);
+    $('#select_employee').append(`<option value="${employee_id}">${employee_name}</option>`);
+    $('#select_service').append(`<option value="${service_id}">${service_name}</option>`);
 
     //remove a div
     service_div.remove();
@@ -170,8 +171,10 @@ $(document).ready(function () {
     if (valor != null){
       valor = parseFloat(valor);
       var total = document.getElementById('total').value;
-      total = total.substring(0, total.indexOf(".") + 3);
       total = parseFloat(total) - valor;
+      if(total < 0){ total = 0 }
+      total = total.toString();
+      total = total.substring(0, total.indexOf(".") + 3);
       document.getElementById('total').value = total;
     }
   }

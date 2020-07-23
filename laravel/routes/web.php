@@ -11,8 +11,10 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+*/ 
 
+Route::get('/fullc', 'FullCalendar@index')->name('calendar');
+Route::get('/load-events', 'SchedulingController@loadEvents')->name('routeLoadEvents');
 /*
 Route::get('/', 'ClientController@index');
 */
