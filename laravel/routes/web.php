@@ -21,6 +21,8 @@ Route::resource('adm/employee', 'EmployeeController');
 Route::resource('adm/employeeType', 'EmployeeTypeController');
 Route::resource('adm/service', 'ServiceController');
 Route::resource('adm/product','ProductController');
+Route::resource('adm/customer', 'CustomerController');
+
 
 Route::get('/cep', function(){
     $cepResponse = cep('01010000');

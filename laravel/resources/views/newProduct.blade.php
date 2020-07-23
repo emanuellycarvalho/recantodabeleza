@@ -89,9 +89,6 @@
 
 					</div>
 
-					<div class='row'>
-					</div>
-
 					<div class='row justify-content-end'>
 						<a onClick='confirmarCancelar();' class='site-btn sb-dark' id='white'>Cancelar</a>
 						<button type='submit' class='site-btn'>Salvar</button>

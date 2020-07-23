@@ -49,8 +49,8 @@
                         <ul class='main-menu'>
                             <li><a href='{{url("/adm")}}'>Home</a></li>
                             <li><a href='{{url("adm/product")}}'>Produtos</a></li>
-                            <li><a href=''>Serviços</a></li>
-                            <li><a href=''>Clientes</a></li>
+                            <li><a href='{{url("adm/service")}}'>Serviços</a></li>
+                            <li><a href='{{url("adm/customer")}}'>Clientes</a></li>
                             <li><a href='{{url("/adm/employee")}}'>Funcionários</a></li>
                             <li><a href='{{url("/adm/supplier")}}'>Fornecedores</a></li>
                             <li><a href=''>Relatorios</a></li>
