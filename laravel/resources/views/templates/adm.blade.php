@@ -13,13 +13,15 @@
 	<!-- Google Font -->
 	<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i' rel='stylesheet'>
 
+    <!-- Fullcalendar -->
+    <link href='{{asset("assets/fullcalendar/lib/main.css")}}' rel='stylesheet' />
+    <link href='{{asset("assets/fullcalendar/fullcalendar.css")}}' rel='stylesheet'>
+
     <!-- Autocomplete -->
      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
 	<!-- Stylesheets -->
-    <link href='{{url("/assets/fullcalendar/daygrid/main.css")}}' rel='stylesheet'/>
-    <link href='{{url("/assets/css/fullcalendar.css")}}' rel='stylesheet'/>
 	<link rel='stylesheet' href='{{url("/assets/css/bootstrap.min.css")}}'/>
 	<link rel='stylesheet' href='{{url("/assets/css/font-awesome.min.css")}}'/>
 	<link rel='stylesheet' href='{{url("/assets/css/flaticon.css")}}'/>
@@ -108,6 +110,8 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js'></script>
     <script src='{{url("/assets/js/jquery.quicksearch.js")}}'></script>
     <script src='{{url("/assets/js/jquery.tablesorter.min.js")}}'></script>
+    <script src='{{url("/assets/js/moment-with-locales.min.js")}}'></script>
+    <script src='{{url("/assets/js/locale-moment_pt-br.js")}}'></script>
 	<script src='{{url("/assets/js/main.js")}}'></script>
 	<script src='{{url("/assets/js/projeto.js")}}'></script>
 	<script src='{{url("/assets/js/validacao.js")}}'></script>

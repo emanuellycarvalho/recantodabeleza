@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class FullCalendar extends Controller
 {
     public function index(){
-        return view('teste.fullcalendar');
+        return view('index');
     } 
 }

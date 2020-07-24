@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ModelScheduling extends Model
 {
     protected $table = 'TbAgendamento';
-    protected $fillable = ['start', 'end', 'color', 'valorTotal', 'cdCliente', 'cdFuncionario'];
+    protected $fillable = ['title', 'telefone', 'start', 'end', 'color', 'valorTotal', 'cdCliente', 'cdFuncionario'];
 
     public function relService(){
         return $this->belongsToMany('App\Models\ModelService', 'tbagendamentoservico', 'cdAgendamento', 'cdServico');

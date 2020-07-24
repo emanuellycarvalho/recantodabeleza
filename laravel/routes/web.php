@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */ 
 
-Route::get('/fullc', 'FullCalendar@index')->name('calendar');
+Route::get('/adm', 'FullCalendar@index');
 Route::get('/load-events', 'SchedulingController@loadEvents')->name('routeLoadEvents');
 /*
 Route::get('/', 'ClientController@index');

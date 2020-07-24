@@ -10,20 +10,10 @@
 
 @section('content')
 
-<!-- Contact section -->
-<section class='contact-section'>
+	<!-- Contact section -->
+	<section class='contact-section'>
 		<div class='container'>
 			<div class='col-lg-10 offset-md-1'>
-				<div class='text-center mb-5 alert-danger'>
-					@if(isset($errors) && count($errors) > 0) 
-						@foreach($errors->all() as $error)
-							{{$error}} <br>							
-						@endforeach
-					@endif
-					@if(isset($errorCEP)) 
-						{{$errorCEP}}
-					@endif
-				</div>
 				@if(isset($emp)) 
 					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/employee/$emp->cdFuncionario")}}'>
 					@method('PUT')				

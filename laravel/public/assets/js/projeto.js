@@ -162,7 +162,7 @@ $(document).ready(function () {
     $('#select_employee').append(`<option value="${employee_id}">${employee_name}</option>`);
     $('#select_service').append(`<option value="${service_id}">${service_name}</option>`);
 
-    //remove a div
+    //remove a div 
     service_div.remove();
   }
 

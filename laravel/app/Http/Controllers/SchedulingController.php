@@ -36,12 +36,12 @@ class SchedulingController extends Controller
     }
      
     public function loadEvents(){
-        $schedule = Event::all();
+        $schedule = $this->objScheduling->all();
         return response()->json($schedule); 
     }
 
     public function findClient($id){
-        $client = $this->objClient->where('cdCliente', $id);
+        $client = $this->objClient->where('cdCliente', $id)->first();
         if ($client != null){
             $client = [
                 'success' => true,
@@ -50,10 +50,7 @@ class SchedulingController extends Controller
                 'telefone' => $client->telefone
             ];
         } else {
-            $client = [
-                'success' => false,
-                'error' => 'Desculpe-nos, ocorreu um erro ao encontrar o cliente'
-            ];
+            throw new \Exception('Desculpe, ocorreu um erro ao identificar o cliente.');
         }
         return $client;
     }
@@ -78,19 +75,15 @@ class SchedulingController extends Controller
         try {
 
             $start = $request->data . ' ' . $request->inicio;
-            $end = $start = $request->data . ' ' . $request->fim;
-
-            $client = findClient($request->cliente);
+            $end = $request->data . ' ' . $request->fim;
             
-            if(!$client['success']){
-                abort(401, $client['error']);
-            }
+            $client = $this->findClient($request->cliente);
             
             $agendamento = $this->objScheduling->create([
                 'title' => $client['nome'],
                 'telefone' => $client['telefone'],
-                'start' => Carbon::createFromFormat('d/m/Y H:i', $start , 'America/Sao_Paulo')->toDateString(),
-                'end' => Carbon::createFromFormat('d/m/Y H:i', $end , 'America/Sao_Paulo')->toDateString(),
+                'start' => Carbon::createFromFormat('d/m/Y H:i', $start, 'America/Sao_Paulo')->toDateTimeString(),
+                'end' => Carbon::createFromFormat('d/m/Y H:i', $end, 'America/Sao_Paulo')->toDateTimeString(),
                 'valorTotal' => $request->total,
                 'cdFuncionario' => 3, //futuramente o usuario logado
                 'cdCliente' => $request->cliente
@@ -100,18 +93,11 @@ class SchedulingController extends Controller
             $funcionarios = $request->select_employees;
             $valores = $request->valor;
             
-            if(is_array($servicos)){
-                for($i = 0; $i < sizeof($servicos); $i++){
-                    $agendamento->relService()->attach($servicos[$i]);
-                }
-            } else {
-                $agendamento->relService()->attach($servicos);
-            }
+            $agendamento->relService()->attach($servicos);
             
-            dd($agendamento);
-            
+            return redirect('adm/');
         } catch (Exception $exception){
-            dd($exception);
+            abort(401, $exception->getMessage());
         }
     }
   
