@@ -26,6 +26,7 @@ Route::resource('adm/scheduling', 'SchedulingController');
 Route::resource('adm/attendance', 'AttendanceController');
 //Route::get('employee/search', 'EmployeeController@search');
 Route::resource('adm/employeeType', 'EmployeeTypeController');
+Route::get('adm/scheduling/create/{date?}', 'SchedulingController@create');
 
 
 Route::get('/cep', function(){

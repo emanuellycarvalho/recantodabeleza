@@ -59,7 +59,11 @@
         generateModal(event, time);
 
         $('#eventModal').modal('show');
-      }
+      },
+      dateClick: function(info) {
+        var date = info.dateStr;
+        window.location = `adm/scheduling/create/${date}`
+      }    
     });
     calendar.render();
 

@@ -39,7 +39,7 @@
                                     <input type='hidden' name='servicos' id='servicos'>
                                     <input type='hidden' name='funcionarios' id='funcionarios'>
                                     <label for='data'>Data*</label> <br>
-                                    <input type='text' name='data' id='data' class='calendar' value='{{$att->date ?? date("d/m/Y")}}' autofocus> 
+                                    <input type='text' name='data' id='data' class='calendar' value='{{$date}}' autofocus> 
                                     <small> Calendário </small>
                                 </div>
                             </div>  

@@ -29,10 +29,7 @@ class SchedulingController extends Controller
 
     public function index()
     {
-        //$schedule = $this->objScheduling->all();
-        //$employees = $this->objEmployee->all();
-        //$clients = $this->objC lient->all();
-        //return view('scheduling', compact('employees'), compact('clients'), compact('schedule'));
+        return redirect('index');
     }
      
     public function loadEvents(){
@@ -55,8 +52,14 @@ class SchedulingController extends Controller
         return $client;
     }
     
-    public function create()
+    public function create($date)
     {
+        if ($date == null){
+            $date = Carbon::today()->setTimezone('America/Sao_Paulo')->format('Y-m-d')->toDateTimeString();
+        }
+
+        $date = Carbon::createFromFormat('Y-m-d', $date)->format('d/m/Y');
+
         $id = $this->objEmployeeType->where('nmFuncao', 'Atendente')->first()->cdTipoFuncionario;
         $schedule = $this->objScheduling->all();
         $employees = $this->objEmployee->all();
@@ -66,7 +69,8 @@ class SchedulingController extends Controller
                                     ->with(compact('id'))
                                     ->with(compact('clients'))
                                     ->with(compact('schedule'))
-                                    ->with(compact('services')); 
+                                    ->with(compact('services'))
+                                    ->with(compact('date')); 
         //with pode ser usado quantas vezes forem necessarias
     }
   
