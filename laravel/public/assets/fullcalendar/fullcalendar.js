@@ -8,7 +8,7 @@
       itemSelector: '.fc-event',
       eventData: function(eventEl) {
         return {
-          title: eventEl.innerText.trim()
+          title: eventEl.innerText.trim() 
         }
       }
     });
@@ -46,12 +46,21 @@
           arg.draggedEl.parentNode.removeChild(arg.draggedEl);
         }
       },
+      height: 700,
       events: document.getElementById('calendar').dataset['routeLoadEvents'] //retorna os eventos do dado
       /*,
       eventDrop: function(event){ 
         //mudar o draggable de uma data pra outra
       }, */
       ,
+      nowIndicator: true,
+      businessHours: {
+        // days of week. an array of zero-based day of week integers (0=Sunday)
+        daysOfWeek: [ 2, 3, 4, 5, 6 ], // Tuesday - Saturday
+      
+        startTime: '7:00', // a start time
+        endTime: '17:00', // an end time
+      },
       eventClick: function(element) {
         var event = element.event;
         var time = formatTime(event);
@@ -62,73 +71,16 @@
       },
       dateClick: function(info) {
         var date = info.dateStr;
+        /*document.getElementById('oldDateFormat').innerHTML= date;
+        date = moment(date).format('L');
+        document.getElementById('newEventDate').innerHTML= `<b> ${date}</b>`;
+        $('#newEventModal').modal('show'); */
         window.location = `adm/scheduling/create/${date}`
-      }    
+      }  
+        
     });
     calendar.render();
 
   });
 
-  function formatTime(event){
-    $validate = true;
-    $start = moment(event.start).format('LT');
-    $end = moment(event.end).format('LT');
   
-    $start = $start.substring(11, 0);
-    $end = $end.substring(11, 0);
-      
-    if($start == null || $start.indexOf('Invalid') !== -1){
-      $start = '??';
-      $validate = false;
-    }
-
-    if($end == null || $end.indexOf('Invalid') !== -1){
-      $end = '??';
-      $validate = false;
-    }
-
-    $date = moment(event.start).format('L');
-    $week = moment(event.start).format('LLLL');
-    $week = $week.substring (0, $week.indexOf('-') + 6);
-
-    if($validate && moment(event.start).format('L') != moment(event.end).format('L')){
-      $date = $date + ' à ' + $end.substring(0, 10);
-      $week = $week + 'à ';
-    } 
-    
-    return [$date, $week, $start, $end];
-  }
-
-  function generateModal(event, time){
-    document.getElementById('first').innerHTML='';
-    document.getElementById('second').innerHTML='';
-
-    var col6 = $('<div>').addClass('col-md-6');
-    var content = `${event.title}`;
-
-    col6 = $('<div>').addClass('col-md-6');
-    content = `${event.title}`;
-
-    col6.append(content);
-    col6.appendTo('#first');
-
-    col6 = $('<div>').addClass('col-md-6');
-    content = `${event.extendedProps.telefone}`;
-
-    col6.append(content);
-    col6.appendTo('#first');
-
-    col6 = $('<div>').addClass('col-md-6');
-    content = `${time[0]} <br> (${time[1]})`;
-
-    col6.append(content);
-    col6.appendTo('#second');
-
-    col6 = $('<div>').addClass('col-md-6');
-    content = `${time[2]} - ${time[3]}`;
-
-    col6.append(content);
-    col6.appendTo('#second');
-
-    document.getElementById('cdEvento').value = event.id;
-  }

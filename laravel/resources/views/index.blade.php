@@ -3,12 +3,11 @@
 @section('title') Administração @endsection('title')
 
 @section('content')
-
 <script src='{{asset("assets/fullcalendar/lib/main.js")}}'></script>
 <script src='{{url("assets/fullcalendar/lib/locales-all.min.js")}}'></script>
 <script src='{{asset("assets/fullcalendar/fullcalendar.js")}}'></script>
 
-  <div id='wrap'> 
+  <div id='wrap'>  
 
     <div id='external-events'>
       <h4>Draggable Events</h4>
@@ -53,9 +52,10 @@
             <h5 class='modal-title' id='eventModalLabel'>Agendamento</h5>
             <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
             <span aria-hidden='true'>&times;</span>
-            </button>
+            </button> 
           </div>
           <div class='modal-body' id='eventModalBody'>
+            <div hidden id='cdEvento'></div>
             <center>
             <div class='row'>
               <div class='col-md-6'>
@@ -92,15 +92,37 @@
             </center>
           </div>
           <div class="modal-footer">
-            <form>
-              <input type='hidden' name='cdEvento' id='cdEvento' value=''>
-              <button type='submit' class='site-btn'>Ver mais</button>
-            </form>
+              <button onclick='deleteEvent()' class='site-btn sb-dark'>Excluir</button>
+              <button onclick='seeMore()' class='site-btn'>Ver & Editar</button>
           </div>
           </div>
         </div>
       </div>
       <!-- Event section end -->
+
+      <!-- New event section -->
+      <div class='modal fade' id='newEventModal' tabindex='-1' role='dialog' aria-labelledby='newEventModalLabel' aria-hidden='true'>
+        <div class='modal-dialog' role='document'>
+          <div class='modal-content'>
+            <div class='modal-header'>
+              <h5 class='modal-title' id='newEventModalLabel'>Novo agendamento</h5>
+              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+              <span aria-hidden='true'>&times;</span>
+              </button>
+            </div>
+            <div class='modal-body' id='newEventModalBody'>
+              <center> Deseja registrar um novo agendamento para o dia </center>
+              <div class='row justify-content-center' id='newEventDate'> </div>
+              <div hidden id='oldDateFormat'> </div>
+            </div>
+            <div class='modal-footer'>
+            <button data-dismiss='modal' class='site-btn sb-dark'>Cancelar</button>
+            <button onclick='createEvent()' class='site-btn'>Continuar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- New event section end -->
 
     </div>  
   </section>

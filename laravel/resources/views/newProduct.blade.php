@@ -2,10 +2,10 @@
 
 @if(isset($etype)) 
 	@section('title') Editar Produto @endsection('title')
-	@section('icon') <img src='{{url("/img/icons/editProduct.png")}}' width='35px'> @endsection('icon')
+	@section('icon') <img class='responsive' src='{{url("/img/icons/editProduct.png")}}' width='35px'> @endsection('icon')
 @else
 	@section('title') Adicionar Produto @endsection('title')
-	@section('icon') <img src='{{url("/img/icons/newProduct.png")}}' width='35px'> @endsection('icon')
+	@section('icon') <img class='responsive' src='{{url("/img/icons/newProduct.png")}}' width='35px'> @endsection('icon')
 @endif
 
 @section('content')

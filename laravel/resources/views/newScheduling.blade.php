@@ -1,16 +1,14 @@
 @extends('templates.adm')
 
-@section('title') Agendamento @endsection('title')
+@if(isset($scd)) 
+	@section('title') Editar Agendamento @endsection('title')
+@else
+    @section('title') Criar Agendamento @endsection('title')
+@endif
 
 @section('icon') <img class='responsive' src='{{url("/img/icons/scheduling-light.png")}}' width='35px'> @endsection('icon')
 
 @section('content')
-<!--
-<script src='{{url("/assets/fullcalendar/daygrid/main.js")}}'></script>
-<script src='{{url("/assets/fullcalendar/core/main.js")}}'></script>
-<script src='{{url("/assets/fullcalendar/core/locales-all.js")}}'></script>
-<script src='{{url("/assets/js/fullcalendar.js")}}'></script>
--->     
 
     <!-- Suppliers section -->
     <section class='cart-section spad'>
@@ -29,7 +27,12 @@
                     </div>
                 </div>
                 <div class='col-lg-6'>
+                @if(isset($scd)) 
+					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/scheduling/$scd->cdAgendamento")}}'>
+					@method('PUT')
+                @else
                     <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/scheduling")}}' enctype='multiform/form-data'>
+                @endif
                         @csrf
                         <div class='row'>
 
@@ -39,7 +42,7 @@
                                     <input type='hidden' name='servicos' id='servicos'>
                                     <input type='hidden' name='funcionarios' id='funcionarios'>
                                     <label for='data'>Data*</label> <br>
-                                    <input type='text' name='data' id='data' class='calendar' value='{{$date}}' autofocus> 
+                                    <input type='text' name='data' id='data' class='calendar' value='{{$date ?? "" }}' autofocus> 
                                     <small> Calendário </small>
                                 </div>
                             </div>  
@@ -47,14 +50,14 @@
                             <div class='col-md-4 col-xs-12'>
                                 <div class='form-group'>
                                     <label for='inicio'>Início*</label>
-                                    <input type='time' name='inicio' id='inicio' >
+                                    <input type='time' name='inicio' id='inicio' value='{{$start ?? ""}}'>
                                 </div>
                             </div>
 
                             <div class='col-md-4 col-xs-12'>
                                 <div class='form-group'>
                                     <label for='fim'>Fim</label>
-                                    <input type='time' name='fim' id='fim' >
+                                    <input type='time' name='fim' id='fim' value='{{$end ?? ""}}'>
                                 </div>
                             </div>
 
@@ -64,7 +67,11 @@
                                     <select name='cliente' id='cliente'>
                                         <option value='0' disabled selected> Selecione um cliente </option>
                                             @foreach($clients as $cli)
-                                                <option value='{{$cli->cdCliente}}'> {{$cli->telefone}} | {{$cli->nmCliente}} </option>
+                                                @if(isset($scd->cdCliente) && $cli->cdCliente == $scd->cdCliente)
+                                                    <option value='{{$cli->cdCliente}}' selected> {{$cli->telefone}} | {{$cli->nmCliente}} </option>
+                                                @else
+                                                    <option value='{{$cli->cdCliente}}'> {{$cli->telefone}} | {{$cli->nmCliente}} </option>
+                                                @endif
                                             @endforeach
                                     </select>
                                 </div>

@@ -5,6 +5,10 @@
 @section('icon') <img class='responsive' src='{{url("/img/icons/product.png")}}' width='35px'> @endsection('icon')
 
 @section('content')
+
+<script src='{{url("/assets/js/jquery.quicksearch.js")}}'></script>
+<script src='{{url("/assets/js/jquery.tablesorter.min.js")}}'></script>
+
     <!-- Products section -->
     <section class='cart-section spad'>
 		<div class='container'>
