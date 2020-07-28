@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Blade;
+use App\Http\Controllers\Controller;
 
 class AppServiceProvider extends ServiceProvider
 {

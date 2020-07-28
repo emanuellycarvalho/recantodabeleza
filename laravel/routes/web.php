@@ -11,17 +11,24 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+*/ 
 
+Route::get('/adm', 'FullCalendar@index');
+Route::get('/load-events', 'SchedulingController@loadEvents')->name('routeLoadEvents');
 /*
 Route::get('/', 'ClientController@index');
 */
-Route::resource('adm/supplier', 'SupplierController');
+Route::view('adm/more', 'more');
+Route::resource('adm/product', 'ProductController');
 Route::resource('adm/employee', 'EmployeeController');
+Route::resource('adm/supplier', 'SupplierController');
+Route::resource('adm/scheduling', 'SchedulingController');
+Route::resource('adm/attendance', 'AttendanceController');
+//Route::get('employee/search', 'EmployeeController@search');
 Route::resource('adm/employeeType', 'EmployeeTypeController');
 Route::resource('adm/service', 'ServiceController');
-Route::resource('adm/product','ProductController');
 Route::resource('adm/customer', 'CustomerController');
+Route::get('adm/scheduling/create/{date?}', 'SchedulingController@create');
 
 
 Route::get('/cep', function(){

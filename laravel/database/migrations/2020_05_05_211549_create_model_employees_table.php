@@ -13,7 +13,7 @@ class CreateModelEmployeesTable extends Migration
      */
     public function up()
     {
-        Schema::create('TbFuncionario', function (Blueprint $table) {
+        Schema::create('tbFuncionario', function (Blueprint $table) {
             $table->increments('cdFuncionario');
             $table->string('nmFuncionario');
             $table->string('sexo');

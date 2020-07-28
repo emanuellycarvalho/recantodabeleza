@@ -2,10 +2,10 @@
 
 @if(isset($prod)) 
 	@section('title') Editar Produto @endsection('title')
-	@section('icon') <img src='{{url("/img/icons/editProduct.png")}}' width='35px'> @endsection('icon')
+	@section('icon') <img class='responsive' src='{{url("/img/icons/editProduct.png")}}' width='35px'> @endsection('icon')
 @else
 	@section('title') Adicionar Produto @endsection('title')
-	@section('icon') <img src='{{url("/img/icons/newProduct.png")}}' width='35px'> @endsection('icon')
+	@section('icon') <img class='responsive' src='{{url("/img/icons/newProduct.png")}}' width='35px'> @endsection('icon')
 @endif
 
 @section('content')
@@ -47,7 +47,10 @@
 						<div class='col-md-4 col-xs-12'>
 							<div class='form-group'>
 								<label for='preco'>Preço*</label>
-								<input type='text' name='precoProduto' id='precoProduto' placeholder='R$ 0 000,00' value='{{$prod->precoProduto ?? "" }}' required>
+								<input type='text' name='precoProduto' id='precoProduto' placeholder='R$ 0 000,00' value='{{$prod->precoProduto ?? "" }}' oninput='verificarPreco()'>
+								<small id='verificarPreco'>
+									Por favor, insira um valor maior ou igual a 1.
+								</small>
 							</div>
 						</div>
 

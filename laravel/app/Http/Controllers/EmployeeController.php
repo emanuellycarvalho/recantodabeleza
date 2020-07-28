@@ -17,6 +17,14 @@ class EmployeeController extends Controller
         $this->objEmployee = new ModelEmployee();
         $this->objEmployeeType = new ModelEmployeeType();
     }
+
+    public function search(Request $request)
+    {
+        $term = $request->get('term');
+        $employees = $this->objEmployee->where('nmFuncionario', 'like', '%' . $term . '%')->get();
+        return $employees;
+    }
+
     public function index()
     {
         $employees = $this->objEmployee->paginate(5);
