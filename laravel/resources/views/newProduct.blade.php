@@ -22,10 +22,10 @@
 					@endif
 				</div>
 				@if(isset($prod)) 
-                <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/product/$prod->cdProduto")}}' enctype='multiform/form-data'>
+                <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/product/$prod->cdProduto")}}' enctype='multipart/form-data'>
 					@method('PUT')				
 				@else
-                <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/product")}}' enctype='multiform/form-data'>
+                <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/product")}}' enctype='multipart/form-data'>
 				@endif
 					@csrf
 					<div class='row'>
@@ -72,18 +72,17 @@
 						<div class='col-md-12 col-xs-12'>
 							<div class='form-group'>
 								<label for='descricao'>Descrição</label>
-								<textarea name='descricao' id='descricao' placeholder='Descrição do produto para o cliente' value='{{$prod->descricao ?? old("descricao") }}'></textarea>
+								<textarea name='descricao' id='descricao' placeholder='Descrição do produto para o cliente' value='{{$prod->descricao ?? "" }}'></textarea>
 							</div>
 						</div>
 
 					</div>
 
 					<div class='row'>
-
 						<div class="col-md-12 col-xs-12">
 							<div class="form-group">
 								<label for="foto">Foto*</label>
-								<input class="form-control" id="foto" name="foto" type="file" value='{{$prod->foto ?? "" }}' accept="image/png, image/jpeg">
+								<input class="form-control" id="foto" name="foto" type="file" value='{{$prod->foto ?? ""}}' accept="image/png, image/jpeg">
 							</div>			
 						</div>
 
@@ -111,7 +110,7 @@
         }
 
         function verificarCampos(){
-			if ($('#nome').val() == '' && $('#marca').val() == '' && $('#preco').val() == '' && 
+			if ($('#nmProduto').val() == '' && $('#marca').val() == '' && $('#preco').val() == '' && 
 				$('#qtd').val() == '' && $('#desc').val() == '' && $('#foto').val() == '')
             {
                 return false;

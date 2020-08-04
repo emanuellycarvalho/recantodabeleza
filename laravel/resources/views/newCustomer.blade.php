@@ -24,11 +24,11 @@
 						{{$errorCEP}}
 					@endif
 				</div>
-				@if(isset($cusr)) 
-					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/customer/$cust->cdCliente")}}'>
+				@if(isset($cust)) 
+					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/customer/$cust->cdCliente")}}' enctype='multipart/form-data'>
 					@method('PUT')				
 				@else
-					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/customer")}}'>
+					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/customer")}}' enctype='multipart/form-data'>
 				@endif
 					@csrf
 					<div class='cf-title'><h4>Dados pessoais</h4></div>
@@ -47,18 +47,65 @@
 								<div class='border'>
 									<label for='sexo'>Sexo</label>
 									<div id='customRadio'>
-										<div class='custom-control custom-radio custom-control-inline'>
-											<input type='radio' class='custom-control-input' name='sexo' id='feminino' value='Feminino' >
-											<label class='custom-control-label' for='feminino'>Feminino</label>
-										</div>
-										<div class='custom-control custom-radio custom-control-inline'>
-											<input type='radio' class='custom-control-input' name='sexo' id='masculino' value='Masculino' >
-											<label class='custom-control-label' for='masculino'>Masculino</label>
-										</div>
-										<div class='custom-control custom-radio custom-control-inline'>
-											<input type='radio' class='custom-control-input' name='sexo' id='outro' value='Outro' >
-											<label class='custom-control-label' for='outro'>Outro</label>
-										</div>			
+									@if(isset($cust))
+										@switch($cust->sexo) 
+											@case ("Feminino")
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='feminino' value='Feminino' checked="yes">
+												<label class='custom-control-label' for='feminino'>Feminino</label>
+											</div>
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='masculino' value='Masculino' >
+												<label class='custom-control-label' for='masculino'>Masculino</label>
+											</div>
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='outro' value='Outro' >
+												<label class='custom-control-label' for='outro'>Outro</label>
+											</div>
+												@break
+											@case ("Masculino")
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='feminino' value='Feminino' >
+												<label class='custom-control-label' for='feminino'>Feminino</label>
+											</div>
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='masculino' value='Masculino' checked="yes">
+												<label class='custom-control-label' for='masculino'>Masculino</label>
+											</div>
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='outro' value='Outro' >
+												<label class='custom-control-label' for='outro'>Outro</label>
+											</div>
+												@break
+											@case ("Outro")
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='feminino' value='Feminino' >
+												<label class='custom-control-label' for='feminino'>Feminino</label>
+											</div>
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='masculino' value='Masculino' >
+												<label class='custom-control-label' for='masculino'>Masculino</label>
+											</div>
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='outro' value='Outro' checked="yes">
+												<label class='custom-control-label' for='outro'>Outro</label>
+											</div>
+												@break												
+									@endswitch
+								@else
+									<div class='custom-control custom-radio custom-control-inline'>
+										<input type='radio' class='custom-control-input' name='sexo' id='feminino' value='Feminino' >
+										<label class='custom-control-label' for='feminino'>Feminino</label>
+									</div>
+									<div class='custom-control custom-radio custom-control-inline'>
+										<input type='radio' class='custom-control-input' name='sexo' id='masculino' value='Masculino' >
+										<label class='custom-control-label' for='masculino'>Masculino</label>
+									</div>
+									<div class='custom-control custom-radio custom-control-inline'>
+										<input type='radio' class='custom-control-input' name='sexo' id='outro' value='Outro'>
+										<label class='custom-control-label' for='outro'>Outro</label>
+									</div>
+								@endif
 									</div>						
 								</div>
 							</div>
@@ -98,11 +145,25 @@
 							Sua senha deve ter no mínimo seis caracteres.
 							</small>
 						</div>
-						@else 
+
 						<div class='col-md-6 col-xs-12'>
+							<label for='senha2'>Confirmar senha*</label>
+							<input type='password' name='senha2' id='senha2' oninput='verificarSenha()' >
+							<small id='verificar'>
+								As senhas não conferem.
+							</small>
+						</div>
+
+						<div class="col-md-12 col-xs-12">
+							<div class="form-group">
+								<label for="foto">Foto</label>
+								<input class="form-control" id="foto" name="foto" type="file" value='' accept="image/png, image/jpeg">
+							</div>
+						</div>
+						@else
+						<div>
 							<input type='hidden' name='senha' id='senha' value='{{$cust->senha}}' readonly>
 						</div>
-						@endif
 						<div class='col-md-6 col-xs-12'>
 							<label for='senha2'>Confirmar senha*</label>
 							<input type='password' name='senha2' id='senha2' oninput='verificarSenha()' >
@@ -116,13 +177,14 @@
 							@endif
 						</div>
 
-						<div class="col-md-12 col-xs-12">
+						<div class="col-md-6 col-xs-12">
 							<div class="form-group">
 								<label for="foto">Foto</label>
-								<input class="form-control" id="foto" name="foto" type="file" value='{{$prod->foto ?? "" }}' accept="image/png, image/jpeg">
-							</div>			
+								<input class="form-control" id="foto" name="foto" type="file" value='{{$cust->foto ?? "" }}' accept="image/png, image/jpeg">
+							</div>
 						</div>
 
+						@endif
 					</div>
 													
 					<hr>

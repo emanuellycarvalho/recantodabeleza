@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ModelCustomer extends Model
 {
-    protected $table='TbCLiente';
+    protected $table='TbCliente';
     protected $fillable= ['nmCliente', 'sexo', 'telefone', 'dtNasc', 'email', 'senha', 'rua', 'numero', 'complemento', 'bairro', 'cep', 'rg', 'cidade', 'foto'];
 
     public function dtNasc(){
