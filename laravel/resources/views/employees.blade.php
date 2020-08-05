@@ -2,7 +2,7 @@
 
 @section('title') Funcionários @endsection('title')
 
-@section('icon') <img class='responsive' src='{{url("/img/icons/employee.png")}}' width='35px'> @endsection('icon')
+@section('icon') <img class='responsive' src='{{url("/img/icons/employee-light.png")}}' width='35px'> @endsection('icon')
 
 @section('content')
     <!-- Employees section -->
@@ -66,7 +66,7 @@
 									<td class='quy-col'><center>{{$emp->telefone}}</center></td>
 									<td class='quy-col'><img class='responsive' scr='{{url("/img/blog-thumbs/line.png")}}' width='35px'></td>
                                     <td class='quy-col'><center><a href='{{url("adm/employee/$emp->cdFuncionario")}}' title='Visualizar funcionário'><img class='responsive' src='{{url("/img/icons/seeEmployee.png")}}' height='35px'></a></center></td>
-                                    <td class='quy-col'><center><a href='{{url("/adm/employee/$emp->cdFuncionario/edit")}}' title='Editar funcionário'><img class='responsive' src='{{url("/img/icons/editEmployee.png")}}' height='35px'></a></center></td>
+                                    <td class='quy-col'><center><a href='{{url("adm/employee/$emp->cdFuncionario/edit")}}' title='Editar funcionário'><img class='responsive' src='{{url("/img/icons/editEmployee.png")}}' height='35px'></a></center></td>
 									<td class='quy-col'><center><a href='{{url("adm/employee/$emp->cdFuncionario")}}' title='Excluir funcionário' class='js-del'><img class='responsive' src='{{url("/img/icons/deleteEmployee.png")}}' height='35px'></a></center></td>
 								</tr>
 								@endforeach

@@ -10,20 +10,10 @@
 
 @section('content')
 
-<!-- Contact section -->
-<section class='contact-section'>
+	<!-- Contact section -->
+	<section class='contact-section'>
 		<div class='container'>
 			<div class='col-lg-10 offset-md-1'>
-				<div class='text-center mb-5 alert-danger'>
-					@if(isset($errors) && count($errors) > 0) 
-						@foreach($errors->all() as $error)
-							{{$error}} <br>							
-						@endforeach
-					@endif
-					@if(isset($errorCEP)) 
-						{{$errorCEP}}
-					@endif
-				</div>
 				@if(isset($emp)) 
 					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/employee/$emp->cdFuncionario")}}'>
 					@method('PUT')				
@@ -66,10 +56,10 @@
 		
 						<div class='col-md-5 col-xs-12'>
 							<div class='form-group'>
-								<label for='sexo'>Tipo</label>
+								<label for='tipo'>Tipo*</label>
 								<!-- preenchimento via banco com os tipos de funcionário -->
 								<select name='tipo' id='tipo'>
-									<option value='0' disable>Selecione</option>
+									<option value='0' disable selected>Selecione</option>
                                     @foreach($etypes as $type)
 										{{$v = $emp->cdTipoFuncionario ?? 0}}
 										@if($type->cdTipoFuncionario == $v)
@@ -128,7 +118,7 @@
 						<div class='col-md-6 col-xs-12'>
 							<label for='senha2'>Confirmar senha*</label>
 							<input type='password' name='senha2' id='senha2' oninput='verificarSenha()' >
-							<small id='verificar'>
+							<small id='verificarSenha' class='verificar'>
 								As senhas não conferem.
 							</small>
 							@if(isset($emp))
@@ -149,8 +139,11 @@
 						
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
-								<label for='cep'>CEP</label>
+								<label for='cep'>CEP*</label>
 								<input type='text' name='cep' id='cep' placeholder='00000-000' value='{{$emp->cep ?? old("cep")}}'>
+								<small id='verificarCEP' class='verificar'>
+									CEP não encontrado.
+								</small>
 								<small  class='form-text text-muted'>
 									Não sabe seu CEP? <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target='_blank'> Clique aqui. </a>
 								</small>

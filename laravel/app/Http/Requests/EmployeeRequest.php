@@ -24,7 +24,7 @@ class EmployeeRequest extends FormRequest
     public function rules()
     {
         return [
-            'nmFunc' => 'required',
+            'nome' => 'required',
             'sexo' => 'required',
             'cpf' => 'required|cpf|formato_cpf|unique:TbFuncionario,cpf', 
             'telefone' => 'required',
@@ -43,7 +43,7 @@ class EmployeeRequest extends FormRequest
     public function messages(){
 
         return [
-            'nmFunc.required' => 'O campo Nome é obrigatório.',
+            'nome.required' => 'O campo Nome é obrigatório.',
             'sexo.required' => 'O campo Sexo é obrigatório.',
             'cpf.required' => 'O campo CPF é obrigatório.',
             'cpf.cpf' => 'O CPF não é válido',

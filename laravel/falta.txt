@@ -1,0 +1,9 @@
+Fernando:
+???
+
+Manu:
+- resolver o problema do N:N no agendamento
+
+- resolver as pendências no calendário
+- limite de tempo no agendamento
+- opção de registrar atendimento a partir de agendamento

@@ -14,17 +14,44 @@ body {
 	font-smoothing: antialiased;
 }
 
-.contact-form small#verificar{
+body::selection {
+    background: #960b3f;
+    color: white;
+}
+
+.contact-form small.verificar{
+	font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+	color: red;
+	text-align: left;
+	box-sizing: border-box;
+	font-style: italic;
+}
+
+.contact-form div#validarHora{
+	font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+	color: red;
+	text-align: left;
+	box-sizing: border-box;
+	font-style: italic;
+}
+
+.is-invalid {
+	border-color: #dc3545;
+	box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+	display: block;
+	border-color: inherit;
+}
+
+.error-msg{
 	color: red;
 }
 
-
-label.error{
-	display: none!important;
-}
-
-.error{
-	background-color: red;
+.cart-table a.none {
+	color:#282828;
 }
 
 #cus5omRadio .custom-control-input {
@@ -83,6 +110,31 @@ label.error{
 
 #customRadio input[type=radio]:checked { /*bolao*/
 	background-color: #f51167;
+}
+
+img.button-icon{
+	max-width: 35px;
+	height: auto;
+}
+
+img.addOnTable{
+	max-width: 35px;
+	height: auto;
+	margin-top: 29px;
+}
+
+img.addOnTable:hover{
+	cursor: pointer;
+}
+
+img.removeFromTable{
+	max-width: 35px;
+	height: auto;
+	margin-top: 5px;
+}
+
+img.removeFromTable:hover{
+	cursor: pointer;
 }
 
 hr.pink {
@@ -191,6 +243,22 @@ ul.pagination li.page-item :hover{
 	max-width: 35px;
 	height: auto;
 }
+
+/* calendario */
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+    border: 1px solid #bababa;
+    background: #ebebeb;
+    font-weight: normal;
+    color: #ec105a;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+    border: 1px solid #ec105a;
+    background: #ec105a;
+    font-weight: normal;
+    color: #fff;
+}
+
 
 h1,
 h2,
@@ -2416,6 +2484,10 @@ ol {
 	border-radius: 10px;
 	margin-bottom: 10px;
 	font-size: 14px;
+}
+
+.contact-form input:read-only{
+	background: #dedede;
 }
 
 .contact-form select option {

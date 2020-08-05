@@ -13,6 +13,13 @@
 	<!-- Google Font -->
 	<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i' rel='stylesheet'>
 
+    <!-- Fullcalendar -->
+    <link href='{{asset("assets/fullcalendar/lib/main.css")}}' rel='stylesheet' />
+    <link href='{{asset("assets/fullcalendar/fullcalendar.css")}}' rel='stylesheet'>
+
+    <!-- Autocomplete -->
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
 	<!-- Stylesheets -->
 	<link rel='stylesheet' href='{{url("/assets/css/bootstrap.min.css")}}'/>
@@ -22,8 +29,34 @@
 	<link rel='stylesheet' href='{{url("/assets/css/jquery-ui.min.css")}}'/>
 	<link rel='stylesheet' href='{{url("/assets/css/owl.carousel.min.css")}}'/>
 	<link rel='stylesheet' href='{{url("/assets/css/animate.css")}}'/>
-	<link rel='stylesheet' href='{{url("/assets/css/style.css")}}'/>
+	<link rel='stylesheet' href='{{url("/assets/css/style.css")}}'/> 
 	<link rel='stylesheet' href='{{url("/assets/css/theme.default.css")}}'/>
+
+    <!--====== Javascripts & Jquery ======-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src='{{url("/assets/js/jquery-3.2.1.min.js")}}'></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+	<script src='{{url("/assets/js/bootstrap.min.js")}}'></script>
+	<script src='{{url("/assets/js/jquery.slicknav.min.js")}}'></script>
+	<script src='{{url("/assets/js/owl.carousel.min.js")}}'></script>
+	<script src='{{url("/assets/js/jquery.nicescroll.min.js")}}'></script>
+	<script src='{{url("/assets/js/jquery.validate.min.js")}}'></script>
+	<script src='{{url("/assets/js/jquery.zoom.min.js")}}'></script>
+	<script src='{{url("/assets/js/jquery-ui.min.js")}}'></script>
+	<script src='{{url("/assets/js/jquery.mask.min.js")}}'></script>
+    <script src='{{url("/assets/js/validator.min.js")}}'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script> 
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js'></script>
+    <script src='{{url("/assets/js/jquery.quicksearch.js")}}'></script>
+    <script src='{{url("/assets/js/jquery.tablesorter.min.js")}}'></script>
+    <script src='{{url("/assets/js/moment-with-locales.min.js")}}'></script>
+    <script src='{{url("/assets/js/locale-moment_pt-br.js")}}'></script>
+	<script src='{{url("/assets/js/main.js")}}'></script>
+	<script src='{{url("/assets/js/projeto.js")}}'></script>
+	<script src='{{url("/assets/js/validacao.js")}}'></script>
+    <script src='{{asset("assets/fullcalendar/script.js")}}'></script>
+    
 
 </head>
 <body>
@@ -54,7 +87,7 @@
                             <li><a href='{{url("/adm/employee")}}'>Funcionários</a></li>
                             <li><a href='{{url("/adm/supplier")}}'>Fornecedores</a></li>
                             <li><a href=''>Relatorios</a></li>
-                            <li><a href=''>Outros</a></li>
+                            <li><a href='{{url("adm/more")}}'>Mais</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -81,23 +114,6 @@
     <!-- Page info end -->
 
     @yield('content')
-
-    <!--====== Javascripts & Jquery ======-->
-    <script src='{{url("/assets/js/jquery-3.2.1.min.js")}}'></script>
-	<script src='{{url("/assets/js/bootstrap.min.js")}}'></script>
-	<script src='{{url("/assets/js/jquery.slicknav.min.js")}}'></script>
-	<script src='{{url("/assets/js/owl.carousel.min.js")}}'></script>
-	<script src='{{url("/assets/js/jquery.nicescroll.min.js")}}'></script>
-	<script src='{{url("/assets/js/jquery.validate.min.js")}}'></script>
-	<script src='{{url("/assets/js/jquery.zoom.min.js")}}'></script>
-	<script src='{{url("/assets/js/jquery-ui.min.js")}}'></script>
-	<script src='{{url("/assets/js/jquery.mask.min.js")}}'></script>
-	<script src='{{url("/assets/js/main.js")}}'></script>
-	<script src='{{url("/assets/js/projeto.js")}}'></script>
-	<script src='{{url("/assets/js/projeto.js")}}'></script>
-	<script src='{{url("/assets/js/validator.min.js")}}'></script>
-    <script src='{{url("/assets/js/jquery.quicksearch.js")}}'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js'></script>
 
     <script>
         //DELETE
