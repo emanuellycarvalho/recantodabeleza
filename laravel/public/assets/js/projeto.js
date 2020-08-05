@@ -99,7 +99,7 @@ $(document).ready(function () {
 
     div = $('<div>').addClass('col-md-3 col-xs-12');
 
-    $('<input>').attr({ name: 'valor[]', value: valor, type: 'text' }).appendTo(div);
+    $('<input>').attr({id:'valor', name: 'valor[]', value: valor, type: 'number' }).appendTo(div);
     div.appendTo(row);
 
     div = $('<div>').addClass('col-md-1 col-xs-12');

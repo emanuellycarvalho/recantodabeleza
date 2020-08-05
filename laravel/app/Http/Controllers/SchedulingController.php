@@ -8,7 +8,7 @@ use App\Models\ModelService;
 use App\Models\ModelEmployee;
 use App\Models\ModelScheduling;
 use App\Models\ModelEmployeeType;
-use App\Models\Event;
+use App\Models\AgendamentoServico;
 use App\Http\Requests\SchedulingRequest;
 use Carbon\Carbon;
 
@@ -25,13 +25,14 @@ class SchedulingController extends Controller
         $this->objEmployee = new ModelEmployee();
         $this->objService = new ModelService();
         $this->objClient = new ModelClient();
+        $this->agendamento_servico = new AgendamentoServico();
     }
 
     public function index()
     {
         return redirect('index');
     }
-        
+
     public function create($date)
     {
         $date = $this->generateDate($date);
@@ -69,11 +70,13 @@ class SchedulingController extends Controller
                 'cdCliente' => $request->cliente
             ]); 
             
-            $servicos = $request->select_services;
-            $funcionarios = $request->select_employees;
+            $servicos = $request->service_id;
+            $funcionarios = $request->employee_id;
             $valores = $request->valor;
             
-            $agendamento->relService()->attach($servicos);
+            for($i = 0; $i < sizeof($servicos); $i++){
+                $agendamento->relService()->attach($servicos[$i], ['cdFuncionario' => $funcionarios[$i], 'valorCobrado' => $valores[$i+1]]);
+            } 
             
             return redirect('adm/');
         } catch (Exception $e){
@@ -84,7 +87,8 @@ class SchedulingController extends Controller
     public function edit($id)
     {
         $scd = $this->objScheduling->where('cdAgendamento', $id)->first();
-        
+        $rel = $this->agendamento_servico->where('cdAgendamento', $id)->get();
+
         $date = Carbon::createFromFormat('Y-m-d H:i:s', $scd->start)->format('d/m/Y');
         $start = Carbon::createFromFormat('Y-m-d H:i:s', $scd->start)->format('H:i');
         $end = Carbon::createFromFormat('Y-m-d H:i:s', $scd->end)->format('H:i');
@@ -100,7 +104,8 @@ class SchedulingController extends Controller
                                     ->with(compact('date'))
                                     ->with(compact('start'))
                                     ->with(compact('end'))
-                                    ->with(compact('scd'));
+                                    ->with(compact('scd'))
+                                    ->with(compact('rel'));
     }
   
     public function update(SchedulingRequest $request, $id)
@@ -122,13 +127,17 @@ class SchedulingController extends Controller
                 'cdCliente' => $request->cliente
             ]); 
             
-            $servicos = $request->select_services;
-            $funcionarios = $request->select_employees;
+            $servicos = $request->service_id;
+            $funcionarios = $request->employee_id;
             $valores = $request->valor;
-            
+    
             $agendamento = $this->objScheduling->where('cdAgendamento', $id)->first();
-            $agendamento->relService()->sync($servicos);
-            
+            $agendamento->relService()->detach();
+
+            for($i = 0; $i < sizeof($servicos); $i++){
+                $agendamento->relService()->attach($servicos[$i], ['cdFuncionario' => $funcionarios[$i], 'valorCobrado' => $valores[$i+1]]);
+            } 
+                        
             return redirect('adm/');
         } catch (Exception $e){
             abort(401, $e->getMessage());

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +27,11 @@ Route::resource('adm/scheduling', 'SchedulingController');
 Route::resource('adm/attendance', 'AttendanceController');
 //Route::get('employee/search', 'EmployeeController@search');
 Route::resource('adm/employeeType', 'EmployeeTypeController');
-Route::get('adm/scheduling/create/{date?}', 'SchedulingController@create');
-
+Route::get('adm/scheduling/create/{date}', 'SchedulingController@create');
+Route::get('adm/scheduling/create', function() {
+    $url = 'adm/scheduling/create/' . Carbon::now()->format('Y-m-d');
+    return redirect($url);
+});
 
 Route::get('/cep', function(){
     $cepResponse = cep('01010000');

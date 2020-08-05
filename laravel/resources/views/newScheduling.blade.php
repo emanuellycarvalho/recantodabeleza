@@ -42,25 +42,28 @@
                                     <input type='hidden' name='servicos' id='servicos'>
                                     <input type='hidden' name='funcionarios' id='funcionarios'>
                                     <label for='data'>Data*</label> <br>
-                                    <input type='text' name='data' id='data' class='calendar' value='{{$date ?? "" }}' autofocus> 
-                                    <small> Calendário </small>
+                                    <input type='text' name='data' id='data'  value='{{$date ?? "" }}' autofocus> 
                                 </div>
                             </div>  
                             
                             <div class='col-md-4 col-xs-12'>
                                 <div class='form-group'>
                                     <label for='inicio'>Início*</label>
-                                    <input type='time' name='inicio' id='inicio' value='{{$start ?? ""}}'>
+                                    <input type='time' name='inicio' id='inicio' class='time' value='{{$start ?? ""}}'>
                                 </div>
                             </div>
 
                             <div class='col-md-4 col-xs-12'>
                                 <div class='form-group'>
                                     <label for='fim'>Fim</label>
-                                    <input type='time' name='fim' id='fim' value='{{$end ?? ""}}'>
+                                    <input type='time' name='fim' id='fim' class='time' value='{{$end ?? ""}}'>
                                 </div>
                             </div>
+                        </div>
 
+                        <div class='col-md-8 offset-md-4'> <div class='validar' id='validarHora'></div></div> 
+
+                        <div class='row'>
                             <div class='col-md-10 col-xs-12'>
                                 <div class='form-group'>
                                     <label for='cliente'>Cliente*</label>
@@ -126,7 +129,7 @@
                                     <label for='select_employee'>Funcionário*</label>
                                     <!--
                                     <input type='text' name='funcionario' id='funcionario' placeholder='Selecione um funcionario'>
-                                        -->
+                                        --> 
                                     <select name='select_employee' id='select_employee'>
                                         <option value='0' disabled selected> Selecione um funcionário </option>
                                         @foreach($employees as $emp) 
@@ -139,7 +142,7 @@
 
                                 <div class='col-md-3 col-xs-12'>
                                     <label for='valor'>Valor</label>
-                                    <input name='valor[]' id='valor' placeholder= '00.00' readonly>
+                                    <input name='valor[]' placeholder= '00.00' readonly>
                                 </div>
 
                                 <div class='col-md-1 col-xs-12'>    
@@ -162,7 +165,7 @@
                         </div>
 
                         <div class='row justify-content-end'>
-                            <a onClick='confirmarCancelar();' class='site-btn sb-dark' id='white'>Cancelar</a>
+                            <a onclick='window.history.back()' class='site-btn sb-dark' id='white'>Cancelar</a>
                             <button type='submit' class='site-btn'>Salvar</button>
                         </div>
                     </form>

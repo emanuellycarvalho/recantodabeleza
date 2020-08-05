@@ -1,9 +1,9 @@
 Fernando:
-- resultados/página
-- informações no modal de excluir
+???
 
 Manu:
-- modal com as informações [nome do cliente, telefone, data, inicio, fim, o que agendou e com quem]
+- resolver o problema do N:N no agendamento
+
+- resolver as pendências no calendário
 - limite de tempo no agendamento
-- crud registrar atendimento
 - opção de registrar atendimento a partir de agendamento

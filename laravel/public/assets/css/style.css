@@ -29,6 +29,16 @@ body::selection {
 	font-style: italic;
 }
 
+.contact-form div#validarHora{
+	font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+	color: red;
+	text-align: left;
+	box-sizing: border-box;
+	font-style: italic;
+}
+
 .is-invalid {
 	border-color: #dc3545;
 	box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
