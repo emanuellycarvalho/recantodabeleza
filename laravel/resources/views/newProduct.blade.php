@@ -85,7 +85,7 @@
 						<div class="col-md-12 col-xs-12">
 							<div class="form-group">
 								<label for="foto">Foto*</label>
-								<input class="form-control" id="foto" name="foto" type="file" value='{{$prod->foto ?? ""}}' accept="image/png, image/jpeg">
+								<input class="form-control" id="foto" name="fotoProd" type="file" value='{{$prod->foto ?? ""}}' accept="image/png, image/jpeg">
 							</div>			
 						</div>
 

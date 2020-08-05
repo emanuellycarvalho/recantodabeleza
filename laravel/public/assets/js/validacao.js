@@ -151,25 +151,30 @@
     $('#cadastro').validate({
       rules: {
         nome: 'required',
+        nmProduto: 'required',
+        nmCliente: 'required',
         tipo: {
           min: 1
         },
         telefone: 'required',
         cep: 'required',
         cpf: 'required',
+        rg: 'required',
         cnpj: 'required',
         senha: 'required',
         senha2: 'required',
+        sexo: 'required',
         rua: 'required',
         cidade: 'required',
         bairro: 'required',
         numero: 'required',
         marca: 'required',
+        fotoProd: 'required',
         qtd:{
           required: true,
           min: 1
         },
-        preco: 'required',
+        precoProduto: 'required',
         email: {
           required: true,
           email: true
@@ -177,7 +182,7 @@
       },
       messages: {
         tipo: {
-          min: 'Por favor, selecione uma opção.'
+          min: 'Por favor, selecione um tipo de funcionário.'
         }
       },
       errorElement: 'em',
