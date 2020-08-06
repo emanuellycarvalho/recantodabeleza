@@ -6,6 +6,10 @@
 <script src='{{asset("assets/fullcalendar/lib/main.js")}}'></script>
 <script src='{{url("assets/fullcalendar/lib/locales-all.min.js")}}'></script>
 <script src='{{asset("assets/fullcalendar/fullcalendar.js")}}'></script>
+<script>
+  localStorage.clear;
+  sessionStorage.clear;
+</script>
 
   <div id='wrap'>  
 
@@ -35,7 +39,7 @@
         <label for='drop-remove'>remove after drop</label>
       </p>
     </div>
-
+    
     <div id='calendar-wrap'>
       <div id='calendar' data-route-load-events='{{route("routeLoadEvents")}}'></div>
     </div>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */ 
 
 Route::get('/adm', 'FullCalendar@index');
+Route::get('/adm/index', 'FullCalendar@index');
 Route::get('/load-events', 'SchedulingController@loadEvents')->name('routeLoadEvents');
 /*
 Route::get('/', 'ClientController@index');
@@ -28,8 +30,11 @@ Route::resource('adm/attendance', 'AttendanceController');
 Route::resource('adm/employeeType', 'EmployeeTypeController');
 Route::resource('adm/service', 'ServiceController');
 Route::resource('adm/customer', 'CustomerController');
-Route::get('adm/scheduling/create/{date?}', 'SchedulingController@create');
-
+Route::get('adm/scheduling/create/{date}', 'SchedulingController@create');
+Route::get('adm/scheduling/create', function() {
+    $url = 'adm/scheduling/create/' . Carbon::now()->format('Y-m-d');
+    return redirect($url);
+});
 
 Route::get('/cep', function(){
     $cepResponse = cep('01010000');
