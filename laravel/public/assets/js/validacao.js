@@ -1,4 +1,78 @@
 
+$(document).ready(function(){
+  //ESCONDER SMALLS
+  $('.verificar').hide();
+
+  //VALIDATE
+  $('#cadastro').validate({
+    rules: {
+      nome: 'required',
+      tipo: {
+        min: 1
+      },
+      telefone: 'required',
+      cep: 'required',
+      cpf: 'required',
+      cnpj: 'required',
+      senha: 'required',
+      senha2: 'required',
+      rua: 'required',
+      cidade: 'required',
+      bairro: 'required',
+      numero: 'required',
+      marca: 'required',
+      cliente: 'required',
+      inicio: 'required',
+      fim: 'required',
+      total:{
+        required: true,
+        min: 1
+      },
+      qtd:{
+        required: true,
+        min: 1
+      },
+      preco: 'required',
+      email: {
+        required: true,
+        email: true
+      },
+    },
+    messages: {
+      tipo: {
+        min: 'Por favor, selecione uma opção.'
+      }, 
+      total: {
+        min: 'Valor inválido'
+      }
+    },
+    errorElement: 'em',
+    errorPlacement: function (error, element) {
+        // Add the `invalid-feedback` class to the error element
+        error.addClass('error-msg');
+
+        if (element.prop('type') === 'checkbox') {
+            error.insertAfter(element.next('label'));
+        } else {
+            error.insertAfter(element);
+        }
+    },
+    highlight: function (element, errorClass, validClass) {
+        $(element).addClass('is-invalid').removeClass('is-valid');
+    },
+    unhighlight: function (element, errorClass, validClass) {
+        $(element).addClass('is-valid').removeClass('is-invalid');
+    }
+  });
+
+  $('#cadastroClienteSimples').validate({
+    rules:{
+      nome: 'required',
+      telefone: 'required'
+    }
+  });
+});
+
   //VERIFICAR SENHAS ONINPUT
   function verificarSenha(){
     if ($('#senha').val() != $('#senha2').val()){
@@ -143,69 +217,6 @@
     });
   });
 
-  $(document).ready(function(){
-    //ESCONDER SMALLS
-    $('.verificar').hide();
-
-    //VALIDATE
-    $('#cadastro').validate({
-      rules: {
-        nome: 'required',
-        tipo: {
-          min: 1
-        },
-        telefone: 'required',
-        cep: 'required',
-        cpf: 'required',
-        cnpj: 'required',
-        senha: 'required',
-        senha2: 'required',
-        rua: 'required',
-        cidade: 'required',
-        bairro: 'required',
-        numero: 'required',
-        marca: 'required',
-        qtd:{
-          required: true,
-          min: 1
-        },
-        preco: 'required',
-        email: {
-          required: true,
-          email: true
-        },
-      },
-      messages: {
-        tipo: {
-          min: 'Por favor, selecione uma opção.'
-        }
-      },
-      errorElement: 'em',
-      errorPlacement: function (error, element) {
-          // Add the `invalid-feedback` class to the error element
-          error.addClass('error-msg');
-
-          if (element.prop('type') === 'checkbox') {
-              error.insertAfter(element.next('label'));
-          } else {
-              error.insertAfter(element);
-          }
-      },
-      highlight: function (element, errorClass, validClass) {
-          $(element).addClass('is-invalid').removeClass('is-valid');
-      },
-      unhighlight: function (element, errorClass, validClass) {
-          $(element).addClass('is-valid').removeClass('is-invalid');
-      }
-    });
-
-    $('#cadastroClienteSimples').validate({
-      rules:{
-        nome: 'required',
-        telefone: 'required'
-      }
-    });
-});
 
 // MENSAGENS PERSONALIZADAS
 jQuery.extend(jQuery.validator.messages, {

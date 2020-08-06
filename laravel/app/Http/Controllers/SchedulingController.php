@@ -35,6 +35,8 @@ class SchedulingController extends Controller
 
     public function create($date)
     {
+        $back = 'Cancelar';
+        
         $date = $this->generateDate($date);
 
         $id = $this->objEmployeeType->where('nmFuncao', 'Atendente')->first()->cdTipoFuncionario;
@@ -47,7 +49,8 @@ class SchedulingController extends Controller
                                     ->with(compact('clients'))
                                     ->with(compact('schedule'))
                                     ->with(compact('services'))
-                                    ->with(compact('date')); 
+                                    ->with(compact('date'))
+                                    ->with(compact('back')); 
         //with pode ser usado quantas vezes forem necessarias
     }
   
@@ -86,6 +89,7 @@ class SchedulingController extends Controller
   
     public function edit($id)
     {
+        $back = 'Voltar';
         $scd = $this->objScheduling->where('cdAgendamento', $id)->first();
         
         $rel = $this->agendamentoServico->where('cdAgendamento', $id)->get();
@@ -108,7 +112,8 @@ class SchedulingController extends Controller
                                     ->with(compact('start'))
                                     ->with(compact('end'))
                                     ->with(compact('scd'))
-                                    ->with(compact('rel'));
+                                    ->with(compact('rel'))
+                                    ->with(compact('back'));
     }
   
     public function update(SchedulingRequest $request, $id)

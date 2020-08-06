@@ -29,7 +29,7 @@
                 <div class='col-lg-6'>
                 @if(isset($scd)) 
 					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/scheduling/$scd->cdAgendamento")}}'>
-                    {{$back = 'Voltar'}}
+                    
 					@method('PUT')
                 @else
                     <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/scheduling")}}' enctype='multiform/form-data'>
