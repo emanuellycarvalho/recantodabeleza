@@ -47,11 +47,7 @@
 						<div class='col-md-4 col-xs-12'>
 							<div class='form-group'>
 								<label for='preco'>Preço*</label>
-<<<<<<< HEAD
 								<input type='text' name='precoProduto' id='precoProduto' placeholder='R$ 0 000,00' oninput='verificarPreco()' value='{{$prod->precoProduto ?? "" }}' required>
-=======
-								<input type='text' name='precoProduto' id='precoProduto' placeholder='R$ 0 000,00' value='{{$prod->precoProduto ?? "" }}' oninput='verificarPreco()'>
->>>>>>> master
 								<small id='verificarPreco'>
 									Por favor, insira um valor maior ou igual a 1.
 								</small>

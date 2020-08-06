@@ -29,6 +29,7 @@
                 <div class='col-lg-6'>
                 @if(isset($scd)) 
 					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/scheduling/$scd->cdAgendamento")}}'>
+                    
 					@method('PUT')
                 @else
                     <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/scheduling")}}' enctype='multiform/form-data'>
@@ -154,6 +155,7 @@
                         </div>
 
                         <div class='services'>
+
                         </div>
 
                         <div class='row'>
@@ -165,7 +167,7 @@
                         </div>
 
                         <div class='row justify-content-end'>
-                            <a onclick='window.history.back()' class='site-btn sb-dark' id='white'>Cancelar</a>
+                            <a onclick='window.history.back()' class='site-btn sb-dark' id='white'>{{$back}}</a>
                             <button type='submit' class='site-btn'>Salvar</button>
                         </div>
                     </form>
@@ -174,6 +176,14 @@
 		</div>
 	</section>
     <!-- Suppliers section end -->
+
+    @if(isset($rel))
+        <script>
+            @foreach($rel as $r) 
+                createFields({id: {{$r->cdFuncionario}}, name: '{{$r->nmFuncionario}}'}, {id: {{$r->cdServico}}, name: '{{$r->nmServico}}'});
+            @endforeach
+        </script>
+   @endif
 
     <!-- New client section -->
 	<div class='modal fade' id='newClientModal' tabindex='-1' role='dialog' aria-labelledby='newClientModalLabel' aria-hidden='true'>
@@ -215,13 +225,11 @@
     
 	<script>
         //PREENCHER INPUTS
-		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/employee/create'){
+		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/scheduling/create'){
 			document.getElementById('data').value = localStorage.getItem('data');
 			document.getElementById('inicio').value = localStorage.getItem('inicio');
 			document.getElementById('fim').value = localStorage.getItem('fim');
 			document.getElementById('cliente').value = localStorage.getItem('cliente');
-			//document.getElementById('servico').value = localStorage.getItem('servico');
-			//document.getElementById('funcionario').value = localStorage.getItem('funcionario');
 			localStorage.clear();
 		}
 
@@ -230,8 +238,6 @@
 			localStorage.setItem('inicio', $('#inicio').val());
 			localStorage.setItem('fim', $('#fim').val());
 			localStorage.setItem('cliente', $('#cliente').val());
-			//localStorage.setItem('servico', $('#servico').val());
-			//localStorage.setItem('funcionario', $('#funcionario').val());
 		}
 	</script> 
 	<!-- New client section end -->
