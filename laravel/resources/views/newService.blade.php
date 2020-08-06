@@ -27,7 +27,7 @@
                             <input type='text' name='descricao' id='descricao' placeholder='Insira uma descrição ou um nome' value='{{$svc->descricao ?? old("descricao")}}' autofocus required>
                         </div>
                     </div>
-                    
+
                     <div class='col-md-6 col-xs-12'>
                         <div class='form-group'>
                             <label for='valorServico'>Valor*</label>
