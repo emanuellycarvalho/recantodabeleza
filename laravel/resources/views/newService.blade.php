@@ -21,28 +21,42 @@
 	            <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/service")}}' enctype='multiform/form-data'>
 			@endif
 					@csrf
-                    <div class='col-md-12 col-xs-12'>
-                        <div class='form-group'>
-                            <label for='descricao'>Descrição*</label>
-                            <input type='text' name='descricao' id='descricao' placeholder='Insira uma descrição ou um nome' value='{{$svc->descricao ?? old("descricao")}}' autofocus required>
-                        </div>
-                    </div>
-                    
-                    <div class='col-md-6 col-xs-12'>
-                        <div class='form-group'>
-                            <label for='valorServico'>Valor*</label>
-                            <input type='text' name='valorServico' id='valorServico' placeholder='R$00,00' value='{{$svc->valorServico ?? old("valorServico")}}' required>
-                        </div>
-                    </div>
+					<div class='row'>
+						<div class='col-md-12 col-xs-12'>
+							<div class='form-group'>
+								<label for='descricao'>Descrição</label>
+								<input type='text' name='nmServico' id='nmServico' placeholder='Nome do serviço' value='{{$svc->nmServico ?? old("nmServico")}}' autofocus required>
+							</div>
+						</div>					
+					</div>
 
-                    <div class='col-md-6 col-xs-12'>
-                        <div class='form-group'>
-                            <label for='comissao'>Comissão*</label>
-                            <input type='text' name='comissao' id='comissao' placeholder='Porcentagem' value='{{$svc->comissao ?? old("comissao")}}' required>%
-                        </div>
-                    </div>
+					<div class='row'>
+						<div class='col-md-6'>
+							<div class='form-group'>
+								<label for='valorServico'>Valor*</label>
+								<input type='text' name='valorServico' id='valorServico' placeholder='R$ 00,00' value='{{$svc->valorServico ?? old("valorServico")}}' required>
+							</div>
+						</div>
+
+						<div class='col-md-6'>
+							<div class='form-group'>
+								<label for='comissao'>Comissão (%)*</label>
+								<input type='text' name='comissao' id='comissao' placeholder='Porcentagem' value='{{$svc->comissao ?? old("comissao")}}' required>
+							</div>
+						</div>		
+					</div>
+					
+					<div class='row'>
+						<div class='col-md-12 col-xs-12'>
+							<div class='form-group'>
+								<label for='descricao'>Descrição</label>
+								<textarea name="descricao" id="descricao" cols="15" rows="5"></textarea>
+							</div>
+						</div>
+					</div>
+            
 					<div class='row justify-content-end'>
-						<a onClick='confirmarCancelar()' class='site-btn sb-dark' id='white'>Cancelar</a>
+						<a onclick='confirmarCancelar()' class='site-btn sb-dark' id='white'>Cancelar</a>
 						<button type='submit' class='site-btn'>Salvar</button>
 					</div>
             </form>	
@@ -72,4 +86,28 @@
 			</div>
 		</div>
 	<!-- Confirm cancel section end -->
+
+	<script> 
+        window.confirmarCancelar = function(){
+            if(verificarCampos()){
+                $('#confirmCancelModal').modal();
+                $('confirmar').on('click', function(){
+                    window.location.href= '{{url("/adm/service")}}';
+                });
+            } else {
+                window.location.href= '{{url("/adm/service")}}';
+            }  
+        }
+
+        function verificarCampos(){
+			if ($('#nmServico').val() == '' || $('#nmServico').val() == null && 
+				$('#descricao').val() == '' || $('#descricao').val() == null && 
+				$('#valor').val() == '' || $('#valor').val() == null && 
+				$('#comissao').val() == '' || $('#comissao').val() == null)
+            {
+                return false;
+            }
+            return true;
+        }
+    </script>
 @endsection('content')

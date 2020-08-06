@@ -8,7 +8,7 @@ $(document).ready(function(){
   $('#cnpj').mask('00.000.000/0000-00', {reverse: true});
   $('#salarioBase').mask('00 000,00', {reverse: true});
   $('#precoProduto').mask('0 000.00', {reverse: true});
-  $('#valorServico').mask('000.00', {reverse: true});
+  $('#valorServico').mask('0 000.00', {reverse: true});
   $('#comissao').mask('000');
   $('#rg').mask('MG-00.000.000');
   
