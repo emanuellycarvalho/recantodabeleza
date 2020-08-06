@@ -49,7 +49,7 @@
 									<td class='quy-col'>
                                         <a href='{{url("adm/service/$svc->cdServico")}}' title='Visualizar serviço'>
                                             <div class='pc-title mt-1.5'>
-                                                <h4>{{$svc->descricao}}</h4>
+                                                <h4>{{$svc->nmServico}}</h4>
                                             </div>
                                         </a>
 									</td>

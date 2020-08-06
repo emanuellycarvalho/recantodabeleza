@@ -15,7 +15,7 @@
 		<div class='container'>
 			<div class='col-lg-10 offset-md-1'>
 			@if(isset($svc))
-				<form class='contact-form' name='edicao' id='edicao' method='post' action='{{url("adm/service/$svc->cdServico")}}' enctype='multiform/form-data'>
+				<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/service/$svc->cdServico")}}' enctype='multiform/form-data'>
 				@method('PUT')
 			@else
 	            <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/service")}}' enctype='multiform/form-data'>
@@ -24,7 +24,7 @@
 					<div class='row'>
 						<div class='col-md-12 col-xs-12'>
 							<div class='form-group'>
-								<label for='descricao'>Descrição</label>
+								<label for='descricao'>Nome</label>
 								<input type='text' name='nmServico' id='nmServico' placeholder='Nome do serviço' value='{{$svc->nmServico ?? old("nmServico")}}' autofocus required>
 							</div>
 						</div>					

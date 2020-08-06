@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Requests\ServiceRequest;
+use App\Http\Requests\ServiceRequest;
 use App\Models\ModelService;
 
 class ServiceController extends Controller
@@ -33,9 +33,10 @@ class ServiceController extends Controller
     public function store(ServiceRequest $request)
     {
         if ($this->objService->create([
+            'nmServico' =>$request->nmServico,
             'descricao'=>$request->descricao,
             'valorServico'=>$request->valorServico,
-            'comissao'=>$request->comissao
+            'comissao'=>($request->comissao/100)
         ])){
             return redirect('adm/service');
         }
@@ -75,9 +76,10 @@ class ServiceController extends Controller
     public function update(ServiceRequest $request, $id)
     {
         $this->objService->where('cdServico', $id)->update([
+                'nmServico' =>$request->nmServico,
                 'descricao'=>$request->descricao,
                 'valorServico'=>$request->valorServico,
-                'comissao'=>$request->comissao
+                'comissao'=>($request->comissao/100)
         ]);
         return redirect('adm/service');
     }
