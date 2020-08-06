@@ -33,7 +33,6 @@
 					@method('PUT')
                 @else
                     <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/scheduling")}}' enctype='multiform/form-data'>
-                    {{$back = 'Cancelar'}}
                 @endif
                         @csrf
                         <div class='row'>

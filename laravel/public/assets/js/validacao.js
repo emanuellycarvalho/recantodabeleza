@@ -24,6 +24,11 @@ $(document).ready(function(){
       cliente: 'required',
       inicio: 'required',
       fim: 'required',
+      comissao:{
+        required: true,
+        min: 0,
+        max: 100
+      },
       total:{
         required: true,
         min: 1

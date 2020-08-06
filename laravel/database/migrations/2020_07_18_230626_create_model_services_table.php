@@ -18,7 +18,7 @@ class CreateModelServicesTable extends Migration
             $table->string('nmServico');
             $table->string('descricao')->nullable();
             $table->double('valor', 10, 2);
-            $table->integer('comissao');
+            $table->double('comissao', 6, 3);
             $table->timestamps();
         });
     }

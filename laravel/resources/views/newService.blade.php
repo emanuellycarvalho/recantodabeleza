@@ -38,7 +38,7 @@
                     <div class='col-md-6 col-xs-12'>
                         <div class='form-group'>
                             <label for='comissao'>Comissão*</label>
-                            <input type='text' name='comissao' id='comissao' placeholder='00,00%' value='{{$svc->comissao ?? old("comissao")}}' required>
+                            <input type='text' name='comissao' id='comissao' placeholder='Porcentagem' value='{{$svc->comissao ?? old("comissao")}}' required>%
                         </div>
                     </div>
 					<div class='row justify-content-end'>
