@@ -16,18 +16,18 @@ class CreateModelCustomersTable extends Migration
         Schema::create('TbCliente', function (Blueprint $table) {
             $table->increments('cdCliente');
             $table->string('nmCliente');
-            $table->string('sexo');
+            $table->string('sexo')->nullable();
             $table->string('telefone');
             $table->date('dtNasc')->nullable();
-            $table->string('email');
-            $table->string('senha');
-            $table->string('rua');
-            $table->string('numero');
+            $table->string('email')->nullable();
+            $table->string('senha')->nullable();
+            $table->string('rua')->nullable();
+            $table->string('numero')->nullable();
             $table->string('complemento')->nullable();
-            $table->string('bairro');
-            $table->string('cep');
-            $table->string('rg');
-            $table->string('cidade');
+            $table->string('bairro')->nullable();
+            $table->string('cep')->nullable();
+            $table->string('rg')->nullable();
+            $table->string('cidade')->nullable();
             $table->string('foto')->nullable();
             $table->timestamps();
         });
