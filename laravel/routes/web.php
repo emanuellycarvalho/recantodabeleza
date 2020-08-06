@@ -15,6 +15,7 @@ use Carbon\Carbon;
 */ 
 
 Route::get('/adm', 'FullCalendar@index');
+Route::get('/adm/index', 'FullCalendar@index');
 Route::get('/load-events', 'SchedulingController@loadEvents')->name('routeLoadEvents');
 /*
 Route::get('/', 'ClientController@index');

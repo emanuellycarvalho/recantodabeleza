@@ -6,7 +6,10 @@
 <script src='{{asset("assets/fullcalendar/lib/main.js")}}'></script>
 <script src='{{url("assets/fullcalendar/lib/locales-all.min.js")}}'></script>
 <script src='{{asset("assets/fullcalendar/fullcalendar.js")}}'></script>
-
+<script>
+  localStorage.clear;
+  sessionStorage.clear;
+</script>
 
   <div id='wrap'>  
 
