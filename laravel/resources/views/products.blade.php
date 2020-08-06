@@ -34,7 +34,7 @@
 				</div>
 				<div class='col-lg-9'>  
 					<div class='exhibit-title'>
-						<hr> Exibindo 0 de 0  <hr>
+						<hr> Exibindo {{$products->count()}} de {{$products->total()}}  <hr>
 					</div>
 					<div class='cart-table'>
 						<div class='cart-table-warp'>

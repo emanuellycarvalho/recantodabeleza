@@ -7,7 +7,11 @@ $(document).ready(function(){
   $('#cpf').mask('000.000.000-00', {reverse: true});
   $('#cnpj').mask('00.000.000/0000-00', {reverse: true});
   $('#salarioBase').mask('00 000,00', {reverse: true});
-  $('#preco').mask('00 000,00', {reverse: true});
+  $('#precoProduto').mask('0 000.00', {reverse: true});
+  $('#valorServico').mask('000.00', {reverse: true});
+  $('#comissao').mask('00.00', {reverse: true});
+  $('#rg').mask('MG-00.000.000');
+  
 });
 
 //CALENDÁRIO

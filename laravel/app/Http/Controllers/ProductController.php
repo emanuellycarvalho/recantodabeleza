@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Models\ModelProduct;
+use Illuminate\Support\Facades\Storage;
+use DB;
 
 class ProductController extends Controller
 {
@@ -43,17 +45,15 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        if($this->objProduct->create([
-            'nmProduto'=>$request->nmProduto,
-            'marca'=>$request->marca,
-            'descricao'=>$request->descricao,
-            'qtd'=>$request->qtd,
-            'precoProduto'=>$request->precoProduto,
-            'comissao'=>$request->comissao,
-            'foto'=>$request->foto
-        ])){
-            return redirect('adm/product');
+        $data = $request->only('nmProduto', 'marca', 'descricao', 'qtd', 'precoProduto', 'comissao');
+
+        if($request->hasFile('foto') && $request->foto->isValid()) {
+            $fotoPath = $request->foto->store('productPhotos');
+            $data['foto'] = $fotoPath;
         }
+
+        $this->objProduct->create($data);
+        return redirect('adm/product');
     }
 
     /**
@@ -89,16 +89,18 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, $id)
     {
-        $this->objProduct->where('cdProduto', $id)->update([
-            'nmProduto'=>$request->nmProduto,
-            'marca'=>$request->marca,
-            'descricao'=>$request->descricao,
-            'qtd'=>$request->qtd,
-            'precoProduto'=>$request->precoProduto,
-            'comissao'=>$request->comissao,
-            'foto'=>$request->foto
-        ]);
+        $prod=$this->objProduct->where('cdProduto', $id);
+        // $foto=DB::table('TbProduto')->select('foto')->where('cdProduto', $id)->get();        
+        $data = $request->only('nmProduto', 'marca', 'descricao', 'qtd', 'precoProduto', 'comissao');
+        
+        if($request->hasFile('foto') && $request->foto->isValid()) {   
+            $fotoPath = $request->foto->store('productPhotos');
+            $data['foto'] = $fotoPath;
+        }
+
+        $prod->update($data);
         return redirect('adm/product');
+
     }
 
     /**
@@ -112,12 +114,4 @@ class ProductController extends Controller
         $del = $this->objProduct->where('cdProduto', $id)->delete();
     }
 
-    public function uploadPhoto($photo){
-        $extensao = explode('.', $photo['name']);
-        $extensao = end($extensao);
-        $nomeArquivo = uniqid() . '.' . $extensao;
-        move_uploaded_file($arquivo["tmp_name"],"fotos/" . $nomeArquivo);
-
-        return $nomeArquivo;
-    }
 }

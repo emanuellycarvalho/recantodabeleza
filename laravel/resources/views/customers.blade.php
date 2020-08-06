@@ -35,9 +35,8 @@
 							<table id='table' class='tablesorter'>
 							<thead>
 								<tr>
-									<th class='product-th'><br>Descrição</th>
-									<th class='quy-th'><br>Valor</th>
-									<th class='quy-th'><br>Comissão</th>
+									<th class='product-th'><br>Nome e contato</th>
+									<th class='quy-th'><br>E-mail</th>
                                     <th class='quy-th' id='none'><br>Ver mais</th>
                                     <th class='quy-th' id='none'><br>Editar</th>
 									<th class='quy-th' id='none'><br>Excluir</th>
@@ -50,11 +49,10 @@
                                         <a href='{{url("adm/customer/$cust->cdCliente")}}' title='Visualizar Cliente'>
                                             <div class='pc-title mt-1.5'>
                                                 <h4>{{$cust->nmCliente}}</h4>
-												<p>{{$cust->rg}}</p>
+												<p>{{$cust->telefone}}</p>
                                             </div>
                                         </a>
 									</td>
-									<td class='quy-col mt-3'><center>{{$cust->telefone}}</center></td>
 									<td class='quy-col mt-3'><center>{{$cust->email}}</center></td>
                                     <td class='quy-col mt-3'><center><a href='{{url("adm/customer/$cust->cdCliente")}}' title='Visualizar cliente'><img class='responsive' src='{{url("/img/icons/seeClient.png")}}' height='35px'></a></center></td>
                                     <td class='quy-col mt-3'><center><a href='{{url("/adm/customer/$cust->cdCliente/edit")}}' title='Editar cliente'><img class='responsive' src='{{url("/img/icons/editClient.png")}}' height='35px'></a></center></td>

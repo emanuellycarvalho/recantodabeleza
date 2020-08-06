@@ -2,45 +2,46 @@
 
 @section('title') Visualizar Produto @endsection('title')
 
-@section('icon') <img src='{{url("/img/icons/seeProduct-light.png")}}' width='35px'> @endsection('icon')
+@section('icon') <img src='{{url("/img/icons/seeProduct.png")}}' width='35px'> @endsection('icon')
 
 @section('content')
-    <!-- Product section -->
-    <section class='cart-section spad'>
+   	<!-- Client section -->
+       <section class='cart-section spad'>
 		<div class='container'>
 			<div class='row justify-content-center'>
-				<div class='col-lg-7'>
+				<div class='col-lg-9'>	
 					<div class='cart-table'>
-						<div class='sup'>
-                            <h3>{{$products->nmProduto}}</h3>
-                            <h5>Marca: {{$products->marca}}</h5>
-                            <br> 
-                            <b>Preço: </b> R${{$products->precoProduto}}
-                            <b class='pink'> | </b>
-                            <b>Comissão: </b> R${{$products->comissao}}%
-                            <b class='pink'> | </b> 
-                            <b>Quantidade em estoque: </b> {{$products->qtd}} unidades
-                            <br>
-                                <div class='row'> <!-- Descrição -->
-                                @if($products->descricao)
-                                    <div class='col-lg-6 order-2 order-lg-0'><br>
-                                        <b> Descrição </b><br>{{$products->descricao}}<br> 
-                                    </div>
-                                @else
-                                    <div class='col-lg-6 order-2 order-lg-0'><br>
-                                        <b> Descrição </b><br>O produto em questão ainda não tem uma descrição<br> 
-                                    </div>
-                                @endif
+						<h3 class='text-center'>{{$products->nmProduto}}</h3>
+						<div class='cart-table-warp'>
+                            <div class='row'>
+                            @if ($products->foto)
+                                <div class='col-lg-3 order-2 order-lg-0 text-center mb-4'>
+                                    <img src="{{url("storage/{$products->foto}")}}">
                                 </div>
-                            <div class='total-cost'>
-                                <a href='{{url("adm/product")}}' class='site-btn sb-dark'>Voltar</a>	
+                            @endif 
+                                <div class='col-lg-8 order-2 order-lg-1'>
+                                	<b> Marca: </b> {{$products->marca}}<b class='pink'> | </b>
+									<b> Comissão: </b> {{$products->comissao}}%<b class='pink'> | </b>
+                                    <b> Preço: </b> R${{$products->precoProduto}}
+                                    <br>
+                                    <b> Estoque: </b> {{$products->qtd}} unidades
+                                    <hr>
+                                    @if ($products->descricao != null)
+                                    	<b>Nasceu em </b> {{$products->descricao}} <b class='pink'> |</b>
+                                    @else
+                                        <b>Descrição do produto não informada</b>
+                                    @endif
+                                </div>
                             </div>
+                        </div>
+                        <div class='total-cost'>
+                        	<a href='{{url("adm/product")}}' class='site-btn sb-dark'>Voltar</a>	
                         </div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-    <!-- Products section end -->
+    <!-- Clients section end -->
 
 @endsection('content')

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Requests\ServiceRequest;
 use App\Models\ModelService;
 
 class ServiceController extends Controller
@@ -19,7 +20,6 @@ class ServiceController extends Controller
         return view('services', compact('services'));
     }
 
-    
     public function create()
     {
         return view('newService');
@@ -31,7 +31,7 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ServiceRequest $request)
     {
         if ($this->objService->create([
             'descricao'=>$request->descricao,
@@ -73,7 +73,7 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ServiceRequest $request, $id)
     {
         $this->objService->where('cdServico', $id)->update([
                 'descricao'=>$request->descricao,

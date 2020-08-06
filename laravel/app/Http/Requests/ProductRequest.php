@@ -27,8 +27,8 @@ class ProductRequest extends FormRequest
             'nmProduto'=>'required',
             'marca'=>'required',
             'qtd'=>'required|numeric',
-            'precoProduto'=>'required|numeric',
-            'comissao'=>'required|numeric',
+            'precoProduto'=>'required',
+            'comissao'=>'required',
             'foto'=>'required'
         ];
     }
@@ -40,9 +40,7 @@ class ProductRequest extends FormRequest
             'qtd.required'=>'Informe a quantidade disponível em estoque',
             'qtd.numeric'=>'Digite um número no campo de quantidade',
             'precoProduto.required'=>'Preencha o campo preço',
-            'precoProduto.numeric'=>'Digite um número para preço',
             'comissao.required'=>'O campo comissão é obrigatório',
-            'comissao.numeric'=>'Digite um número para o campo comissao',
             'foto.required'=>'O campo foto é obrigatório'
         ];
     }
