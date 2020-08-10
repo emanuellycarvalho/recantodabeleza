@@ -10,7 +10,7 @@ class ModelEmployeeType extends Model
     protected $fillable = ['nmFuncao', 'salarioBase'];
 
     public function relEmployee(){
-        return $this->hasMany('App\Models\ModelEmployee', 'cdTipoFuncionario');
+        return $this->hasMany('App\Models\ModelEmployee', 'cdTipoFuncionario', 'cdTipoFuncionario');
     }
 
     public function salarioBase(){

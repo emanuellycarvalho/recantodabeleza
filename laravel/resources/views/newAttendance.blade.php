@@ -1,12 +1,12 @@
 @extends('templates.adm')
 
-@if(isset($scd)) 
-	@section('title') Editar Agendamento @endsection('title')
+@if(isset($atd)) 
+	@section('title') Editar Atendimento @endsection('title')
 @else
-    @section('title') Criar Agendamento @endsection('title')
+    @section('title') Criar Atendimento @endsection('title')
 @endif
 
-@section('icon') <img class='responsive' src='{{url("/img/icons/scheduling-light.png")}}' width='35px'> @endsection('icon')
+@section('icon') <img class='responsive' src='{{url("/img/icons/attendance-light.png")}}' width='35px'> @endsection('icon')
 
 @section('content')
 
@@ -27,12 +27,12 @@
                     </div>
                 </div>
                 <div class='col-lg-6'>
-                @if(isset($scd)) 
-					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/scheduling/$scd->cdAgendamento")}}'>
+                @if(isset($atd)) 
+					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/attendance/$atd->cdAtendimento")}}'>
                     
 					@method('PUT')
                 @else
-                    <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/scheduling")}}' enctype='multiform/form-data'>
+                    <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/attendance")}}' enctype='multiform/form-data'>
                 @endif
                         @csrf
                         <div class='row'>
@@ -71,7 +71,7 @@
                                     <select name='cliente' id='cliente'>
                                         <option value='0' disabled selected> Selecione um cliente </option>
                                             @foreach($clients as $cli)
-                                                @if(isset($scd->cdCliente) && $cli->cdCliente == $scd->cdCliente)
+                                                @if(isset($atd->cdCliente) && $cli->cdCliente == $atd->cdCliente)
                                                     <option value='{{$cli->cdCliente}}' selected> {{$cli->telefone}} | {{$cli->nmCliente}} </option>
                                                 @else
                                                     <option value='{{$cli->cdCliente}}'> {{$cli->telefone}} | {{$cli->nmCliente}} </option>
@@ -134,7 +134,9 @@
                                     <select name='select_employee' id='select_employee'>
                                         <option value='0' disabled selected> Selecione um funcionário </option>
                                         @foreach($employees as $emp) 
-                                           <option value='{{$emp->cdFuncionario}}'> {{$emp->nmFuncionario}}</option>
+                                            @if($emp->cdTipoFuncionario == $id)
+                                                <option value='{{$emp->cdFuncionario}}'> {{$emp->nmFuncionario}}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -223,7 +225,7 @@
     
 	<script>
         //PREENCHER INPUTS
-		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/scheduling/create'){
+		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/attendance/create'){
 			document.getElementById('data').value = localStorage.getItem('data');
 			document.getElementById('inicio').value = localStorage.getItem('inicio');
 			document.getElementById('fim').value = localStorage.getItem('fim');
@@ -243,4 +245,4 @@
 
 @endsection('content')
 
-@section('del') scheduling @endsection('del')
+@section('del') attendance @endsection('del')

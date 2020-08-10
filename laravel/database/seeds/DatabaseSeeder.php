@@ -52,16 +52,16 @@ class DatabaseSeeder extends Seeder
         ModelEmployeeType::create([
             'nmFuncao' => 'Gerente',
             'salarioBase' => 500
+        ]);        
+        
+        ModelEmployeeType::create([
+            'nmFuncao' => 'Atendente',
+            'salarioBase' => 200
         ]);
 
         ModelEmployeeType::create([
             'nmFuncao' => 'Secretário(a)',
             'salarioBase' => 300
-        ]);
-        
-        ModelEmployeeType::create([
-            'nmFuncao' => 'Atendente',
-            'salarioBase' => 200
         ]);
 
         

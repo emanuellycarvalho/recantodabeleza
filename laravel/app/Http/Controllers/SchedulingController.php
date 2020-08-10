@@ -14,18 +14,20 @@ use Carbon\Carbon;
 
 class SchedulingController extends Controller
 {
+    protected  $agendamentoServico;
+    protected  $objEmployeeType;    
     protected  $objScheduling;
-    protected  $objEmployee;    
+    protected  $objEmployee;   
     protected  $objService;
     protected  $objClient;
 
     public function __construct(){
+        $this->agendamentoServico = new AgendamentoServico();
         $this->objEmployeeType = new ModelEmployeeType();
         $this->objScheduling = new ModelScheduling();
         $this->objEmployee = new ModelEmployee();
         $this->objService = new ModelService();
         $this->objClient = new ModelClient();
-        $this->agendamentoServico = new AgendamentoServico();
     }
 
     public function index()
@@ -41,12 +43,12 @@ class SchedulingController extends Controller
             $date = $this->generateDate($date);
 
             $id = $this->getAtendente();
+            $etype = $this->objEmployeeType->where('cdTipoFuncionario', $id)->first();
+            $employees = $etype->relEmployee()->get();
             $schedule = $this->objScheduling->all();
-            $employees = $this->objEmployee->all();
             $services = $this->objService->all();
             $clients = $this->objClient->all();
             return view('newScheduling')->with(compact('employees'))
-                                        ->with(compact('id'))
                                         ->with(compact('clients'))
                                         ->with(compact('schedule'))
                                         ->with(compact('services'))

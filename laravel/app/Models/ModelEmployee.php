@@ -11,8 +11,8 @@ class ModelEmployee extends Model
                         'rua', 'numero', 'bairro', 'cidade', 'complemento', 'cdTipoFuncionario'];
 
     public function relEmployeeType(){
-        return $this->hasOne('App\Models\ModelEmployeeType', 'cdTipoFuncionario', 'cdTipoFuncionario');
-    }
+        return $this->belongsTo('App\Models\ModelEmployeeType', 'cdTipoFuncionario', 'cdTipoFuncionario');
+    } 
 
     public function relEmployee(){
         return $this->hasMany('App\Models\ModelScheduling', 'cdFuncionario', 'cdFuncionario');
