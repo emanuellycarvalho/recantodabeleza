@@ -35,23 +35,26 @@ class SchedulingController extends Controller
 
     public function create($date)
     {
-        $back = 'Cancelar';
+        try{
+            $back = 'Cancelar';
         
-        $date = $this->generateDate($date);
+            $date = $this->generateDate($date);
 
-        $id = $this->objEmployeeType->where('nmFuncao', 'Atendente')->first()->cdTipoFuncionario;
-        $schedule = $this->objScheduling->all();
-        $employees = $this->objEmployee->all();
-        $services = $this->objService->all();
-        $clients = $this->objClient->all();
-        return view('newScheduling')->with(compact('employees'))
-                                    ->with(compact('id'))
-                                    ->with(compact('clients'))
-                                    ->with(compact('schedule'))
-                                    ->with(compact('services'))
-                                    ->with(compact('date'))
-                                    ->with(compact('back')); 
-        //with pode ser usado quantas vezes forem necessarias
+            $id = $this->getAtendente();
+            $schedule = $this->objScheduling->all();
+            $employees = $this->objEmployee->all();
+            $services = $this->objService->all();
+            $clients = $this->objClient->all();
+            return view('newScheduling')->with(compact('employees'))
+                                        ->with(compact('id'))
+                                        ->with(compact('clients'))
+                                        ->with(compact('schedule'))
+                                        ->with(compact('services'))
+                                        ->with(compact('date'))
+                                        ->with(compact('back')); 
+        }catch(Excepcion $e){
+            abort(401, $e->getMessage());
+        }    
     }
   
     public function store(SchedulingRequest $request)
@@ -181,6 +184,14 @@ class SchedulingController extends Controller
         return response()->json($schedule); 
     }
 
+    protected function getAtendente(){
+        $obj = $this->objEmployeeType->where('nmFuncao', 'Atendente')->first();
+        if($obj != null){
+            return $obj->cdTipoFuncionario;
+        }
+
+        throw new \Exception('Desculpe, ocorreu um erro ao recuperar os atendentes.');
+    }
     protected function findClient($id){
         $client = $this->objClient->where('cdCliente', $id)->first();
         if ($client != null){

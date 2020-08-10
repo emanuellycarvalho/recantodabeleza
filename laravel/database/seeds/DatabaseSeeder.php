@@ -5,7 +5,6 @@ use App\Models\ModelClient;
 use App\Models\ModelService;
 use App\Models\ModelSupplier;
 use App\Models\ModelEmployee;
-use App\Models\Event;
 use App\Models\ModelEmployeeType;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -148,25 +147,6 @@ class DatabaseSeeder extends Seeder
             'descricao' => 'Esfoliação com ou sem granulação para remover célular mortas, hidratar e renovar a pele',
             'valor' => 39.99,
             'comissao' => 15
-        ]);
-
-        Event::create([
-            'start' => '2020-07-20 07:30:00',
-            'end' => '2020-07-20 08:30:00',
-            'valor' => 39.99
-        ]);
-
-        Event::create([
-            'start' => '2020-07-21 07:30:00',
-            'end' => '2020-07-21 08:30:00',
-            'color' => '#7842f5',
-            'valor' => 39.99
-        ]);
-
-        Event::create([
-            'start' => '2020-07-20',
-            'end' => '2020-07-20',
-            'valor' => 39.99
         ]);
                
     }
