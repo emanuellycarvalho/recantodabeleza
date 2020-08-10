@@ -28,6 +28,8 @@ Route::resource('adm/scheduling', 'SchedulingController');
 Route::resource('adm/attendance', 'AttendanceController');
 //Route::get('employee/search', 'EmployeeController@search');
 Route::resource('adm/employeeType', 'EmployeeTypeController');
+Route::resource('adm/service', 'ServiceController');
+Route::resource('adm/customer', 'CustomerController');
 Route::get('adm/scheduling/create/{date}', 'SchedulingController@create');
 Route::get('adm/scheduling/create', function() {
     $url = 'adm/scheduling/create/' . Carbon::now()->format('Y-m-d');

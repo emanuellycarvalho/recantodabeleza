@@ -5,74 +5,113 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Models\ModelProduct;
+use Illuminate\Support\Facades\Storage;
+use DB;
 
 class ProductController extends Controller
 {
-
-    protected  $objProduct;
-
-    public function __construct(){
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    protected $objProduct;
+    
+    public function __construct() {
         $this->objProduct = new ModelProduct();
     }
+
     public function index()
     {
-        $products = $this->objProduct->paginate(10);
+        $products = $this->objProduct->paginate(5);
         return view('products', compact('products'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        $etypes = $this->objProduct->all();
         return view('newProduct');
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(ProductRequest $request)
-    {   
-        $preco = str_replace(',', '.', $request->preco);
-        if ($this->objProduct->create([
-            'nmProduto' => $request->nome,
-            'marca' => $request->marca,
-            'descricao' => $request->desc ?? NULL,
-            'qtd' => $request->qtd,
-            'preco' => $preco,
-            'comissao' => $request->comissao,
-            'foto' => $foto
-            ])){
-                return redirect('adm/product');
-            } 
+    {
+        $data = $request->only('nmProduto', 'marca', 'descricao', 'qtd', 'precoProduto', 'comissao');
+
+        if($request->hasFile('foto') && $request->foto->isValid()) {
+            $fotoPath = $request->foto->store('productPhotos');
+            $data['foto'] = $fotoPath;
+        }
+
+        $this->objProduct->create($data);
+        return redirect('adm/product');
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
-        $emp = $this->objProduct->where('cdProduto', $id)->first();
-        return view('showProduct', compact('emp'));
+        $products = $this->objProduct->where('cdProduto', $id)->first();
+        return view ('showProduct', compact('products'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
-        $emp = $this->objProduct->where('cdProduto', $id)->first();
-        $etypes = $this->objProduct->all();
-        return view('newProduct', compact('emp'));
+        $prod=$this->objProduct->where('cdProduto', $id)->first();
+        return view('newProduct', compact('prod'));
     }
-  
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(ProductRequest $request, $id)
     {
-        $preco = str_replace(',', '.', $request->preco);
-        if ($this->objProduct->where('cdProduto', $id)->update([
-            'nmProduto' => $request->nome,
-            'marca' => $request->marca,
-            'qtd' => $request->qtd,
-            'preco' => $preco,
-            'comissao' => $comissao,
-            'foto' => $foto
-        ])){
-            return redirect('adm/product');
+        $prod=$this->objProduct->where('cdProduto', $id);
+        // $foto=DB::table('TbProduto')->select('foto')->where('cdProduto', $id)->get();        
+        $data = $request->only('nmProduto', 'marca', 'descricao', 'qtd', 'precoProduto', 'comissao');
+        
+        if($request->hasFile('foto') && $request->foto->isValid()) {   
+            $fotoPath = $request->foto->store('productPhotos');
+            $data['foto'] = $fotoPath;
         }
+
+        $prod->update($data);
+        return redirect('adm/product');
+
     }
-  
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
         $del = $this->objProduct->where('cdProduto', $id)->delete();
     }
-  
+
 }

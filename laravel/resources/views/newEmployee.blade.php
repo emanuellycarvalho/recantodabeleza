@@ -189,7 +189,7 @@
 					<div class='col-md-12'>
 						<div class='row'><p><br></p></div>
 						<div class='row justify-content-end'>
-							<a onClick='confirmarCancelar();' class='site-btn sb-dark' id='white'>Cancelar</a>
+							<a onclick='confirmarCancelar();' class='site-btn sb-dark' id='white'>Cancelar</a>
 							<button class='site-btn'>Salvar</button>	
 						</div>
 						<div class='row'><p><br></p></div>

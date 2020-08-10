@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateModelProductsTable extends Migration
+class ModelProduct extends Migration
 {
     /**
      * Run the migrations.
@@ -19,8 +19,8 @@ class CreateModelProductsTable extends Migration
             $table->string('marca');
             $table->string('descricao')->nullable();
             $table->integer('qtd');
-            $table->double('preco', 10, 2);
-            $table->integer('comissao');
+            $table->double('precoProduto', 9, 2);
+            $table->double('comissao', 4, 2);
             $table->string('foto');
             $table->timestamps();
         });
