@@ -1,7 +1,0 @@
-- Paginação
-- Resultados/página
-- 'Encontre na página'
-- Botão de voltar
-- input de imagem no cadCliente
-
-1) Excluir

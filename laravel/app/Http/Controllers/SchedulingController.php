@@ -45,6 +45,7 @@ class SchedulingController extends Controller
             $id = $this->getAtendente();
             $etype = $this->objEmployeeType->where('cdTipoFuncionario', $id)->first();
             $employees = $etype->relEmployee()->get();
+
             $schedule = $this->objScheduling->all();
             $services = $this->objService->all();
             $clients = $this->objClient->all();

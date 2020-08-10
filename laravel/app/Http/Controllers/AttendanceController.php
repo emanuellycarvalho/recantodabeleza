@@ -14,7 +14,6 @@ use Carbon\Carbon;
 
 class AttendanceController extends Controller
 {
-    protected  $agendamentoServico;
     protected  $objEmployeeType;    
     protected  $objScheduling;
     protected  $objEmployee;   
@@ -23,7 +22,6 @@ class AttendanceController extends Controller
     protected  $objClient;
 
     public function __construct(){
-        $this->agendamentoServico = new AgendamentoServico();
         $this->objEmployeeType = new ModelEmployeeType();
         $this->objScheduling = new ModelScheduling();
         $this->objEmployee = new ModelEmployee();
@@ -34,21 +32,37 @@ class AttendanceController extends Controller
 
     public function index()
     {
-        return redirect('index');
+        return view('attendances');
     }
 
     public function create()
     {
-        try{
+        try{             
             
+            $id = $this->getAtendente();
+            $etype = $this->objEmployeeType->where('cdTipoFuncionario', $id)->first();
+            $employees = $etype->relEmployee()->get();
+
             $clients = $this->objClient->all();
             $services = $this->objService->all();
             $products = $this->objProduct->all();
-            $employees = $this->objEmployee->all();
+
+            return view('newAttendance')->with(compact('clients'))
+                                        ->with(compact('services'))
+                                        ->with(compact('employees'));
 
             
         }catch(Excepcion $e){
             abort(401, $e->getMessage());
         }    
+    }
+
+    protected function getAtendente(){
+        $obj = $this->objEmployeeType->where('nmFuncao', 'Atendente')->first();
+        if($obj != null){
+            return $obj->cdTipoFuncionario;
+        }
+
+        throw new \Exception('Desculpe, ocorreu um erro ao recuperar os atendentes.');
     }
 }

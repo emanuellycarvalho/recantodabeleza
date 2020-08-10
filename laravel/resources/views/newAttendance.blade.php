@@ -24,7 +24,7 @@
                         @if(isset($errorCEP)) 
                             {{$errorCEP}}
                         @endif
-                    </div>
+                    </div> 
                 </div>
                 <div class='col-lg-6'>
                 @if(isset($atd)) 
@@ -134,9 +134,7 @@
                                     <select name='select_employee' id='select_employee'>
                                         <option value='0' disabled selected> Selecione um funcionário </option>
                                         @foreach($employees as $emp) 
-                                            @if($emp->cdTipoFuncionario == $id)
-                                                <option value='{{$emp->cdFuncionario}}'> {{$emp->nmFuncionario}}</option>
-                                            @endif
+                                            <option value='{{$emp->cdFuncionario}}'> {{$emp->nmFuncionario}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -167,7 +165,7 @@
                         </div>
 
                         <div class='row justify-content-end'>
-                            <a onclick='window.history.back()' class='site-btn sb-dark' id='white'>{{$back}}</a>
+                            <a onclick='window.history.back()' class='site-btn sb-dark' id='white'>Cancelar</a>
                             <button type='submit' class='site-btn'>Salvar</button>
                         </div>
                     </form>

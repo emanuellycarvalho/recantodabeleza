@@ -17,11 +17,11 @@ class ModelProduct extends Migration
             $table->increments('cdProduto');
             $table->string('nmProduto');
             $table->string('marca');
-            $table->string('descricao')->nullable();
+            $table->string('descricao', 245)->nullable();
             $table->integer('qtd');
             $table->double('precoProduto', 9, 2);
             $table->double('comissao', 4, 2);
-            $table->string('foto');
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }
