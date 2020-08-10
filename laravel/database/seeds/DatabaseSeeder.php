@@ -147,6 +147,7 @@ class DatabaseSeeder extends Seeder
             'descricao' => 'Esfoliação com ou sem granulação para remover célular mortas, hidratar e renovar a pele',
             'valor' => 39.99,
             'comissao' => 15
-        ]);               
+        ]);
+               
     }
 }
