@@ -19,6 +19,9 @@ body::selection {
     color: white;
 }
 
+.contact-form.itens{
+	margin-top: 40px;
+}
 .contact-form small.verificar{
 	font-size: 1rem;
     font-weight: 400;
@@ -54,7 +57,11 @@ body::selection {
 	color:#282828;
 }
 
-#cus5omRadio .custom-control-input {
+tr:hover{
+	background-color: #f0f0f0;
+}
+
+#customRadio .custom-control-input {
 	margin-bottom: 15px;
 }
 
@@ -123,6 +130,10 @@ img.addOnTable{
 	margin-top: 29px;
 }
 
+img.addOnTable.margin-off{
+	margin-top: 0px;
+}
+
 img.addOnTable:hover{
 	cursor: pointer;
 }
@@ -131,6 +142,10 @@ img.removeFromTable{
 	max-width: 35px;
 	height: auto;
 	margin-top: 5px;
+}
+
+img.removeFromTable.margin-off{
+	margin-top: 0px;
 }
 
 img.removeFromTable:hover{
