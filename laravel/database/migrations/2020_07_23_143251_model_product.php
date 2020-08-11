@@ -21,7 +21,7 @@ class ModelProduct extends Migration
             $table->integer('qtd');
             $table->double('precoProduto', 9, 2);
             $table->double('comissao', 4, 2);
-            $table->string('foto');
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }

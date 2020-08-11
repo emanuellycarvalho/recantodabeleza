@@ -168,6 +168,90 @@ class DatabaseSeeder extends Seeder
             'end' => '2020-07-20',
             'valor' => 39.99
         ]);
-               
+
+        ModelCustomer::create([
+            'nmCliente' => 'Maria Aparecida de Jesus',
+            'sexo' => 'Feminino',
+            'telefone' => '(31)98765-1234',
+            'dtNasc' => '1980-05-02',
+            'email' => 'mariazinha12@gmail.com',
+            'senha' => '123456',
+            'rua' => 'Rua Vinte e Cinco de Agosto',
+            'numero' => '111',
+            'complemento' => '',
+            'bairro' => 'Centro', 
+            'cep' => '35180-022',
+            'rg' => 'MG-12.456.123',
+            'cidade' => 'Timóteo',
+            'foto' => ''
+
+        ]);
+        
+        ModelCustomer::create([
+            'nmCliente' => 'José Maria Silva',
+            'sexo' => 'Masculino',
+            'telefone' => '(31)95748-1893',
+            'dtNasc' => '1995-01-05',
+            'email' => 'jose_123@yahoo.com',
+            'senha' => '123456',
+            'rua' => 'Rua Sessenta e Oito',
+            'numero' => '123',
+            'complemento' => '',
+            'bairro' => 'Olaria', 
+            'cep' => '35180-200',
+            'rg' => 'MG-44.568.193',
+            'cidade' => 'Timóteo',
+            'foto' => ''
+
+        ]);
+
+        ModelCustomer::create([
+            'nmCliente' => 'Mikaelly Souza Vieira',
+            'sexo' => 'Outro',
+            'telefone' => '(31)91903-1023',
+            'dtNasc' => '2000-10-23',
+            'email' => 'mikaS_v23@hotmail.com',
+            'senha' => '123456',
+            'rua' => 'Rua Professora Ana Letro Staacks',
+            'numero' => '104',
+            'complemento' => '',
+            'bairro' => 'Bromélias', 
+            'cep' => '35180-500',
+            'rg' => 'MG-43.295.103',
+            'cidade' => 'Timóteo',
+            'foto' => ''
+
+        ]);
+
+        ModelProduct::create([
+            'nmProduto' => 'Shampoo anti caspa',
+            'marca' => 'Clear men',
+            'descricao' => 'O shampoo anti caspa clear men elimina por completo os fungos causadores da caspa e ainda deixa o cabelo com um perfume agradável',
+            'qtd' => 50,
+            'precoProduto' => 23,
+            'comissao' => 15,
+            'foto' => ''
+        ]);
+           
+        ModelProduct::create([
+            'nmProduto' => 'Escova para cabelo',
+            'marca' => 'Pentes e Cia',
+            'descricao' => 'A escova para cabelo é ideal para utilizar em conjunto com o secador, para modelar e secar os cabelos',
+            'qtd' => 30,
+            'precoProduto' => 45,
+            'comissao' => 12,
+            'foto' => ''
+        ]);
+
+        ModelProduct::create([
+            'nmProduto' => 'Óleo de argan',
+            'marca' => 'INOAR',
+            'descricao' => 'O óleo de argan hidrata de fortalece os fios capilares',
+            'qtd' => 25,
+            'precoProduto' => 7,
+            'comissao' => 10,
+            'foto' => ''
+        ]);
+
     }
 }
