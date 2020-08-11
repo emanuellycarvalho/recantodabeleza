@@ -49,6 +49,7 @@ class AttendanceController extends Controller
 
             return view('newAttendance')->with(compact('clients'))
                                         ->with(compact('services'))
+                                        ->with(compact('products'))
                                         ->with(compact('employees'));
 
             

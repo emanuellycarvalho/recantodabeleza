@@ -10,6 +10,8 @@
 
 @section('content')
 
+    <script src='{{url("assets/js/scheduling.js")}}'></script>
+
     <!-- Suppliers section -->
     <section class='cart-section spad'>
 		<div class='container'>
