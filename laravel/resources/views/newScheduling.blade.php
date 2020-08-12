@@ -10,6 +10,8 @@
 
 @section('content')
 
+<script src='{{url("assets/js/scheduling.js")}}'></script>
+
     <!-- Suppliers section -->
     <section class='cart-section spad'>
 		<div class='container'>
@@ -152,10 +154,6 @@
 
                         </div>
 
-                        <div class='services'>
-
-                        </div>
-
                         <div class='row'>
                             <div class='col-md-3 col-xs-12 offset-md-8'>
                                 <div class='form-group'>
@@ -237,6 +235,7 @@
 			localStorage.setItem('fim', $('#fim').val());
 			localStorage.setItem('cliente', $('#cliente').val());
         }
+<<<<<<< HEAD
         
         $(document).ready(function () {
             $('#addOnTable').on('click', function (event) {
@@ -309,6 +308,8 @@
             document.getElementById('inicio').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
             }
         }
+=======
+>>>>>>> manu
 	</script> 
 	<!-- New client section end -->
 

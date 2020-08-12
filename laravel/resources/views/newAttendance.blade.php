@@ -10,10 +10,21 @@
 
 @section('content')
 
+<script src='{{url("assets/js/scheduling.js")}}'></script>
+<script src='{{url("assets/js/attendance.js")}}'></script>
+
     <!-- Suppliers section -->
     <section class='cart-section spad'>
 		<div class='container'>
-			<div class='row justify-content-center'>
+            <div class='contact-form' id='totalValue'>
+                <div class='form-group'>
+                    <div class='labelBackground'> 
+                        <label for='total'>Valor Final</label>
+                    </div>
+                    <input name='total' id='total' placeholder='Total' value='0'>
+                </div>
+            </div>
+			<div class='row justify-content-center' id='attendance'>
                 <div class='col-lg-8'>
                     <div class='text-center mb-5 alert-danger'>
                         @if(isset($errors) && count($errors) > 0) 
@@ -26,7 +37,7 @@
                         @endif
                     </div> 
                 </div>
-                <div class='col-lg-6'>
+                <div class='col-lg-8'>
                 @if(isset($atd)) 
 					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/attendance/$atd->cdAtendimento")}}'>
                     
@@ -35,7 +46,10 @@
                     <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/attendance")}}' enctype='multiform/form-data'>
                 @endif
                         @csrf
+<<<<<<< HEAD
 
+=======
+>>>>>>> manu
                         <!-- form header -->
                         <div class='row'>
 
@@ -86,8 +100,16 @@
                         <div class='text-center mb-5 alert-danger' id='service_error'>
                         </div>
 
+<<<<<<< HEAD
                         <div class='row'>
 
+=======
+                        <div class='text-center mb-5 alert-warning' id='service_warning'>
+                        </div>
+
+                        <div class='row'>
+
+>>>>>>> manu
                             <div class='col-md-4 col-xs-12'>
                                 <label for='select_service'>Serviço*</label>
                                 <select name='select_service[]' id='select_service'>
@@ -130,6 +152,11 @@
                                 <label for='valorServico'>Valor*</label>
                                 <input name='valorServico' id='valorServico' placeholder= '00.00'>
                             </div>
+<<<<<<< HEAD
+
+                            <div class='col-md-1 col-xs-12'>    
+                                <img class='addOnTable' src='{{url("img/icons/addOnTable.png")}}' title='Adicionar' id='addOnTable-service'>
+=======
 
                             <div class='col-md-1 col-xs-12'>    
                                 <img class='addOnTable' src='{{url("img/icons/addOnTable.png")}}' title='Adicionar' id='addOnTable-service'>
@@ -137,6 +164,48 @@
 
                         </div>
 
+                    </div>
+
+                    <div class='services'> 
+                        <div class='cart-table itens'>
+                            <div class='cart-table-warp'>
+                                @csrf
+                                <table id='serviceTable' class='tablesorter'>
+                                <thead>
+                                    <tr>
+                                        <th class='product-th'>Serviço</th>
+                                        <th style='visibility: hidden;'></th>
+                                        <th class='quy-th'>Funcionario</th>
+                                        <th style='visibility: hidden;'></th>
+                                        <th class='quy-th' id='none'>Valor</th>
+                                        <th style='visibility: hidden;'></th>
+                                        <th class='quy-th' id='none'>Excluir</th>
+                                    </tr>
+                                </thead>
+                                <tbody id='tbody'>
+                                    <tr></tr>
+                                </tbody>
+                                </table>
+>>>>>>> manu
+                            </div>
+                            <div class='total-cost-free'>
+                                <div class='col-md-3 offset-md-9 value' id='serviceTotal'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end services section -->
+                
+                <div class='row'> . </div>
+
+                <div class='col-lg-9 contact-form itens'> <!-- products section -->
+                    <div id='products'>
+                        
+                        <div class='col-md-12 col-xs-12'>
+                            <div class='cf-title'><h4>Produtos</h4></div>
+                            <hr class='pink'>
+                        </div>
+
+<<<<<<< HEAD
                     </div>
 
                     <div class='services'> 
@@ -179,6 +248,12 @@
                         </div>
 
                         <div class='text-center mb-5 alert-danger' id='product_error'>
+=======
+                        <div class='text-center mb-5 alert-danger' id='product_error'>
+                        </div>
+
+                        <div class='text-center mb-5 alert-warning' id='product_warning'>
+>>>>>>> manu
                         </div>
 
                         <div class='row'>
@@ -208,6 +283,7 @@
                                         <option label='{{$pdt->cdProduto}}' value='{{$pdt->precoProduto}}'></option>
                                     @endforeach
                                 </select> 
+<<<<<<< HEAD
                             </div>
 
                             <div class='col-md-4 col-xs-12'>
@@ -262,11 +338,29 @@
                             <div class='total-cost-free'>
                                 <div class='row justify-content-end' id='pagination'>
                                 </div>
+=======
+>>>>>>> manu
                             </div>
+
+                            <div class='col-md-4 col-xs-12'>
+                                <label for='qtd'>Quantidade*</label>
+                                <input type='number' name='qtd' id='qtd' placeholder= '000'>
+                            </div>
+
+                            <div class='col-md-3 col-xs-12'>
+                                <label for='precoProduto'>Valor unitário*</label>
+                                <input type='text' name='precoProduto' id='precoProduto' placeholder= '00.00'>
+                            </div>
+
+                            <div class='col-md-1 col-xs-12'>    
+                                <img class='addOnTable' src='{{url("img/icons/addOnTable.png")}}' title='Adicionar' id='addOnTable-product'>
+                            </div>
+
                         </div>
                     </div>
                 </div> <!-- end products section -->
 
+<<<<<<< HEAD
                 <div class='contact-form'> <!-- form footer -->
                     <div class='row'>
                         <div class='col-md-5 offset-md-8'>
@@ -277,14 +371,66 @@
                         </div>
                     </div>
 
+=======
+                    </div>
+
+                    <div class='products'> 
+                        <div class='cart-table itens' >
+                            <div class='cart-table-warp'>
+                                @csrf
+                                <table id='productTable' class='tablesorter'>
+                                <thead>
+                                    <tr>
+                                        <th class='product-th'>Produto</th>
+                                        <th style='visibility: hidden;'></th>
+                                        <th class='quy-th' id='none'>Quantidade</th>
+                                        <th style='visibility: hidden;'></th>
+                                        <th class='quy-th' id='none'>Valor final</th>
+                                        <th style='visibility: hidden;'></th>
+                                        <th class='quy-th' id='none'>Excluir</th>
+                                    </tr>
+                                </thead>
+                                <tbody id='tbody'>
+                                    <tr>
+                                        <td class='quy-col'>
+                                            <a href='' title='Visualizar produto'>
+                                                <div class='pc-title'>
+                                                    <h4></h4>
+                                                    <p></p>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td class='quy-col' id='product'><center></center></td>
+                                        <td class='quy-col' id='quantity'><center></center></td>
+                                        <td class='quy-col' id='finalValue'><center></center></td>
+                                        <td class='quy-col' id='delete'><center></center></td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                            </div>
+                            <div class='total-cost-free'>
+                                <div class='col-md-3 offset-md-9 value' id='productTotal'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end products section -->
+
+                <div class='contact-form'> <!-- form footer -->
+>>>>>>> manu
                     <div class='row justify-content-end'>
                         <a onclick='window.history.back()' class='site-btn sb-dark' id='white'>Cancelar</a>
                         <button type='submit' class='site-btn'>Salvar</button>
                     </div>
+<<<<<<< HEAD
                     
                 </div> <!-- end form footer -->
                     </form> <!-- end form -->
 			</div> <!-- jutify content center -->
+=======
+                </div> <!-- end form footer -->
+            </form> <!-- end form -->
+            </div> <!-- jutify content center -->
+>>>>>>> manu
 		</div> <!-- container -->
 	</section>
     <!-- Suppliers section end -->
@@ -343,6 +489,7 @@
 			localStorage.setItem('fim', $('#fim').val());
 			localStorage.setItem('cliente', $('#cliente').val());
         }
+<<<<<<< HEAD
         
         $(document).ready(function () {
             $('#select_service').on('change', function(event) {
@@ -407,6 +554,8 @@
                 $('#select_service').val(0);
             });
         });
+=======
+>>>>>>> manu
 	</script> 
 	<!-- New client section end -->
 

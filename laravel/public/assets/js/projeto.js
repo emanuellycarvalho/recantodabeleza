@@ -6,11 +6,12 @@ $(document).ready(function(){
   $('#dtNasc').mask('00/00/0000');
   $('#telefone').mask('(00) 00000-0000');
   $('#cep').mask('00000-000', {reverse: true});
-  $('#valor').mask('0 000,00', {reverse: true});
+  $('#valor').mask('0 000.00', {reverse: true});
+  $('#total').mask('00 000.00', {reverse: true});
   $('#cpf').mask('000.000.000-00', {reverse: true});
-  $('#precoProduto').mask('0 000,00', {reverse: true});
-  $('#valorServico').mask('0 000,00', {reverse: true});
-  $('#salarioBase').mask('00 000,00', {reverse: true});
+  $('#precoProduto').mask('0 000.00', {reverse: true});
+  $('#valorServico').mask('0 000.00', {reverse: true});
+  $('#salarioBase').mask('00 000.00', {reverse: true});
   $('#cnpj').mask('00.000.000/0000-00', {reverse: true});
 });
 
@@ -40,6 +41,7 @@ $(function() {
   $('#table').tablesorter();
 });
 
+<<<<<<< HEAD
 //verifica se os dois selects estão preenchidos
 function verifyServiceData(service_id, employee_id){
   document.getElementById('service_error').innerHTML="";
@@ -263,6 +265,8 @@ function removeFromTotal(valor){
   }
 }
 
+=======
+>>>>>>> manu
 /*
 //AUTOCOMPLETE
 $(jfunction (){
