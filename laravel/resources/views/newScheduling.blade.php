@@ -10,7 +10,7 @@
 
 @section('content')
 
-    <script src='{{url("assets/js/scheduling.js")}}'></script>
+<script src='{{url("assets/js/scheduling.js")}}'></script>
 
     <!-- Suppliers section -->
     <section class='cart-section spad'>
@@ -102,7 +102,7 @@
                             <div class='row'>
 
                                 <div class='col-md-4 col-xs-12'>
-                                    <label for='select_service'>Servico*</label>
+                                    <label for='select_service'>Serviço*</label>
                                     <select name='select_service[]' id='select_service'>
                                         <option value='0' disabled selected> Selecione um serviço por vez </option>
                                         @foreach($services as $svc)
@@ -151,10 +151,6 @@
                                 </div>
 
                             </div>
-
-                        </div>
-
-                        <div class='services'>
 
                         </div>
 
@@ -238,7 +234,7 @@
 			localStorage.setItem('inicio', $('#inicio').val());
 			localStorage.setItem('fim', $('#fim').val());
 			localStorage.setItem('cliente', $('#cliente').val());
-		}
+        }
 	</script> 
 	<!-- New client section end -->
 

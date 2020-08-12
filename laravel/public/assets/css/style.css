@@ -11,7 +11,6 @@
 	 height: 100%;
 	 font-family: 'Josefin Sans', sans-serif;
 	 -webkit-font-smoothing: antialiased;
-	 font-smoothing: antialiased;
  }
  
  body::selection {
@@ -19,9 +18,35 @@
 	 color: white;
  }
  
+ .contact-form#totalValue {
+    float: right;
+    margin-top: 50px;
+    margin-left: 20px;
+    left: 20px;
+    top: 41px;
+    width: 150px;
+    padding: 0 10px;
+    border: 1px solid #cf024f;
+    background: #f0f0f0;
+	text-align: center;
+	position: sticky;
+  }
+
+  .contact-form#totalValue label{
+	  margin: 5px;
+  }
+
+  .contact-form#totalValue input{
+	text-align: center;
+}
+  .container #attendance {
+    margin-right: 250px;
+    margin-top: 0px;
+  }
  .contact-form.itens{
 	 margin-top: 40px;
  }
+
  .contact-form small.verificar{
 	 font-size: 1rem;
 	 font-weight: 400;
@@ -119,6 +144,11 @@
 	 background-color: #f51167;
  }
  
+ div.value {
+	color: #f8f7f7;
+	font-size: 20px;
+ }
+
  img.button-icon{
 	 max-width: 35px;
 	 height: auto;

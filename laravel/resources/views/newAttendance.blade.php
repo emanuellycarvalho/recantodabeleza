@@ -16,7 +16,15 @@
     <!-- Suppliers section -->
     <section class='cart-section spad'>
 		<div class='container'>
-			<div class='row justify-content-center'>
+            <div class='contact-form' id='totalValue'>
+                <div class='form-group'>
+                    <div class='labelBackground'> 
+                        <label for='total'>Valor Final</label>
+                    </div>
+                    <input name='total' id='total' placeholder='Total' value='0'>
+                </div>
+            </div>
+			<div class='row justify-content-center' id='attendance'>
                 <div class='col-lg-8'>
                     <div class='text-center mb-5 alert-danger'>
                         @if(isset($errors) && count($errors) > 0) 
@@ -29,7 +37,7 @@
                         @endif
                     </div> 
                 </div>
-                <div class='col-lg-6'>
+                <div class='col-lg-8'>
                 @if(isset($atd)) 
 					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/attendance/$atd->cdAtendimento")}}'>
                     
@@ -38,7 +46,6 @@
                     <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/attendance")}}' enctype='multiform/form-data'>
                 @endif
                         @csrf
-
                         <!-- form header -->
                         <div class='row'>
 
@@ -87,6 +94,9 @@
                         </div>
 
                         <div class='text-center mb-5 alert-danger' id='service_error'>
+                        </div>
+
+                        <div class='text-center mb-5 alert-warning' id='service_warning'>
                         </div>
 
                         <div class='row'>
@@ -164,8 +174,7 @@
                                 </table>
                             </div>
                             <div class='total-cost-free'>
-                                <div class='row justify-content-end' id='pagination'>
-                                </div>
+                                <div class='col-md-3 offset-md-9 value' id='serviceTotal'></div>
                             </div>
                         </div>
                     </div>
@@ -182,6 +191,9 @@
                         </div>
 
                         <div class='text-center mb-5 alert-danger' id='product_error'>
+                        </div>
+
+                        <div class='text-center mb-5 alert-warning' id='product_warning'>
                         </div>
 
                         <div class='row'>
@@ -238,9 +250,12 @@
                                 <table id='productTable' class='tablesorter'>
                                 <thead>
                                     <tr>
-                                        <th class='product-th'>Serviço</th>
+                                        <th class='product-th'>Produto</th>
+                                        <th style='visibility: hidden;'></th>
                                         <th class='quy-th' id='none'>Quantidade</th>
+                                        <th style='visibility: hidden;'></th>
                                         <th class='quy-th' id='none'>Valor final</th>
+                                        <th style='visibility: hidden;'></th>
                                         <th class='quy-th' id='none'>Excluir</th>
                                     </tr>
                                 </thead>
@@ -263,31 +278,20 @@
                                 </table>
                             </div>
                             <div class='total-cost-free'>
-                                <div class='row justify-content-end' id='pagination'>
-                                </div>
+                                <div class='col-md-3 offset-md-9 value' id='productTotal'></div>
                             </div>
                         </div>
                     </div>
                 </div> <!-- end products section -->
 
                 <div class='contact-form'> <!-- form footer -->
-                    <div class='row'>
-                        <div class='col-md-5 offset-md-8'>
-                            <div class='form-group'>
-                                <label for='total'>Valor Final</label>
-                                <input name='total' id='total' placeholder='Total' value='0' readonly>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class='row justify-content-end'>
                         <a onclick='window.history.back()' class='site-btn sb-dark' id='white'>Cancelar</a>
                         <button type='submit' class='site-btn'>Salvar</button>
                     </div>
-                    
                 </div> <!-- end form footer -->
-                    </form> <!-- end form -->
-			</div> <!-- jutify content center -->
+            </form> <!-- end form -->
+            </div> <!-- jutify content center -->
 		</div> <!-- container -->
 	</section>
     <!-- Suppliers section end -->
@@ -346,70 +350,6 @@
 			localStorage.setItem('fim', $('#fim').val());
 			localStorage.setItem('cliente', $('#cliente').val());
         }
-        
-        $(document).ready(function () {
-            $('#select_service').on('change', function(event) {
-                //pega o valor do serviço
-                var option = document.querySelectorAll('option[label="' + $('#select_service').val() + '"]');
-                document.getElementById('valorServico').value = option[0].value;
-
-            });
-
-            $('#addOnTable-service').on('click', function (event) {
-                event.preventDefault();
-
-                //armazena os dados dos selects preenchidos
-                const employee_id = $('#select_employee').val();
-                const employee_name = $('#select_employee option:selected').html();
-                
-                const service_id = $('#select_service').val();
-                const service_name = $('#select_service option:selected').html();
-
-                const value = $('#valorServico').val();
-                
-                if (verifyServiceData(service_id, employee_id, value) == null){
-                    return;
-                }
-
-                //cria as linhas com estes valores
-                createServiceRow({id: employee_id, name: employee_name}, {id: service_id, name: service_name}, value);
-                removeOptionsSelected(employee_id, service_id);
-
-                //coloca os selects nas posições originais
-                $('#select_employee').val(0);
-                $('#select_service').val(0);
-                $('#valorServico').val(0);
-            });
-
-            $('#select_product').on('change', function(event) {
-                //pega o valor do produto
-                var option = document.querySelectorAll('option[label="' + $('#select_product').val() + '"]');
-                document.getElementById('precoProduto').value = option[1].value;
-            });
-
-            $('#addOnTable-product').on('click', function (event) {
-                event.preventDefault();
-
-                //armazena os dados do select preenchido
-                const product_id = $('#select_product').val();
-                const product_name = $('#select_product option:selected').html();
-                
-                const qtd = $('#qtd').val();
-                const value = $('#precoProduto').val();
-
-                if (verifyProductData(product_id, qtd, value) == null){
-                    return;
-                }
-
-                //cria as linhas com estes valores
-                createProductRow({id: employee_id, name: employee_name}, {id: service_id, name: service_name});
-                removeOptionsSelected(product_id);
-
-                //coloca o select em sua posição original
-                $('#select_employee').val(0);
-                $('#select_service').val(0);
-            });
-        });
 	</script> 
 	<!-- New client section end -->
 
