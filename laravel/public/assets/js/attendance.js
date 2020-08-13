@@ -1,6 +1,18 @@
 
     $(document).ready(function () {
 
+        $('#tipoPagamento').on('change', function (event){
+            const paymentType = document.getElementById('tipoPagamento').value;
+
+            if(paymentType == 'crediario' || paymentType == 'credito'){
+                $('#parcelas').removeAttr('readonly');
+            } else {
+                $('#parcelas').attr('readonly', 'readonly');
+                $('#parcelas').val(1);
+            }
+        
+        });
+
         //SERVICO
         $('#select_service').on('change', function(event) {
             //pega o valor do serviço
@@ -68,7 +80,7 @@
     function createServiceRow(employee, service, value) {
 
         if(addToTotal('service', value) == 0){
-            const alrt = 'Desculpe, correu um erro com o valor.';
+            const alrt = 'Desculpe, ocorreu um erro com o valor.';
             $('#service_warning').append(alrt);
             return;
         }
@@ -101,9 +113,22 @@
         cel7.innerHTML = `<center> <img class='addOnTable margin-off' src='http://localhost/BicJr/recantodabeleza/laravel/public/img/icons/removeFromTable.png' title='Remover'> </center>`;
 
         $(cel7).on('click', function (event){
-        removeServiceItem(this);
+            removeServiceItem(this);
         });
         
+        const services = document.getElementById('servicos').value;
+        if(services != ''){
+            document.getElementById('servicos').value = services + ',' + service.id;
+        } else {
+            document.getElementById('servicos').value = service.id;
+        }
+        
+        const employees = document.getElementById('funcionarios').value;
+        if(employees != ''){
+            document.getElementById('funcionarios').value = employees + ',' + employee.id;
+        } else {
+            document.getElementById('funcionarios').value = employee.id;
+        }        
     }
 
     function createProductRow(product) {
@@ -114,7 +139,7 @@
         value = value.substring(0, value.indexOf('.') + 3);
 
         if(addToTotal('product', value) == 0){
-            const alrt = 'Desculpe, correu um erro com o valor.';
+            const alrt = 'Desculpe, ocorreu um erro com o valor.';
             $('#product_warning').append(alrt);
             return;
         }
@@ -145,7 +170,13 @@
         $(cel7).on('click', function (event){
         removeProductItem(this);
         });
-        
+
+        const products = document.getElementById('produtos').value;
+        if(products != null){
+            document.getElementById('produtos').value = products + ',' + product.id;
+        }else {
+            document.getElementById('produtos').value = product.id;
+        }
     }
 
     function removeServiceItem(cel){
@@ -157,7 +188,7 @@
 
         //atualiza o campo referente ao valor final
         if(removeFromTotal('service', value) == 0){
-            var alrt = 'Desculpe, correu um erro com o valor.';
+            var alrt = 'Desculpe, ocorreu um erro com o valor.';
             $('#service_warning').append(alrt);
             return;
         }
@@ -172,6 +203,21 @@
         const employee_name = row.childNodes[2].innerHTML;
         const employee_id = row.childNodes[3].innerHTML;
 
+        const services = removeFromStringArray(document.getElementById('servicos').value, service_id);
+        const employees = removeFromStringArray(document.getElementById('funcionarios').value, employee_id);
+        const values = removeFromStringArray(document.getElementById('valoresServicos').value, employee_id);
+
+        if(services == 0 || employees == 0 || values == 0){
+            cleanNotifications('service');
+            var alrt = 'Ocorreu um erro ao remover o serviço.';
+            $('#service_warning').append(alrt);
+            return;
+        } 
+
+        document.getElementById('servicos').value = services; 
+        document.getElementById('funcionarios').value = employees; 
+        document.getElementById('valoresServico').value = employees; 
+        
         //volta com eles pros primeiros selects
         $('#select_employee').append(`<option value="${employee_id}">${employee_name}</option>`);
         $('#select_service').append(`<option value="${service_id}">${service_name}</option>`);
@@ -186,7 +232,7 @@
         const value = row.childNodes[4].innerText.substring(3);
 
         if(removeFromTotal('product', value) == 0){
-            var alrt = 'Desculpe, correu um erro com o valor.';
+            var alrt = 'Desculpe, ocorreu um erro com o valor.';
             $('#product_warning').append(alrt);
             return;
         }
@@ -195,6 +241,19 @@
 
         const product_name = row.childNodes[0].innerHTML;
         const product_id = row.childNodes[1].innerHTML;
+
+        const products = removeFromStringArray(document.getElementById('produtos').value, product_id);
+        const values = removeFromStringArray(document.getElementById('valoresProdutos').value, product_id);
+
+        if(products == 0 || values == 0){
+            cleanNotifications('product');
+            var alrt = 'Ocorreu um erro ao remover o produto.';
+            $('#product_warning').append(alrt);
+            return;
+        } 
+
+        document.getElementById('produtos').value = products; 
+        document.getElementById('valoresProdutos').value = values; 
 
         $('#select_product').append(`<option value="${product_id}">${product_name}</option>`);
 
@@ -282,6 +341,7 @@
         }
 
         document.getElementById('total').value = total;
+        document.getElementById('valorFinal').value = total;
         return;
     }
 
@@ -333,9 +393,22 @@
         return 1;
     }
 
+    function removeFromStringArray(string, element){
+        //console.log(string);
+        //console.log(element);
+        if (string != null && element != null){
+            var array = string.split(',');
+            array.splice(array.indexOf(element), 1);
+            //console.log(array.toString());
+            return array.toString();
+        }
+
+        return 0;
+    }
+
     function cleanNotifications(divName){
-    document.getElementById(`${divName}_error`).innerHTML="";
-    document.getElementById(`${divName}_warning`).innerHTML="";
+        document.getElementById(`${divName}_error`).innerHTML="";
+        document.getElementById(`${divName}_warning`).innerHTML="";
     }
 
     function removeOptionsSelected(product_id) {

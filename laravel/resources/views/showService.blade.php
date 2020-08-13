@@ -2,7 +2,7 @@
 
 @section('title') Visualizar Serviço @endsection('title')
 
-@section('icon') <img src='{{url("/img/icons/seeService-light.png")}}' width='35px'> @endsection('icon')
+@section('icon') <img src='{{url("/img/icons/seeService.png")}}' width='35px'> @endsection('icon')
 
 @section('content')
     <!-- Service section -->
@@ -14,7 +14,7 @@
 						<div class='sup'>
                             <h3>{{$services->descricao}}</h3>
                             <br>
-                            <b>Valor: </b>R${{$services->valorServico}} <b> <b class='pink'> |</b> Comissão: </b> {{$services->comissao}}%
+                            <b>Valor: </b>R${{$services->valor}} <b> <b class='pink'> |</b> Comissão: </b> {{$services->comissao}}%
                             <br><br><b> Funcionários aptos:</b>
                             <div class='total-cost mt-3'>
                                 <a href='{{url("adm/service")}}' class='site-btn sb-dark'>Voltar</a>	
