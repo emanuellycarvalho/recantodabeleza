@@ -200,11 +200,10 @@
                                 <label for='valorServico'>Valor*</label>
                                 <input name='valorServico' id='valorServico' placeholder= '00.00'>
                             </div>
-<<<<<<< HEAD
 
                             <div class='col-md-1 col-xs-12'>    
                                 <img class='addOnTable' src='{{url("img/icons/addOnTable.png")}}' title='Adicionar' id='addOnTable-service'>
-=======
+
 
                             <div class='col-md-1 col-xs-12'>    
                                 <img class='addOnTable' src='{{url("img/icons/addOnTable.png")}}' title='Adicionar' id='addOnTable-service'>
@@ -234,7 +233,7 @@
                                     <tr></tr>
                                 </tbody>
                                 </table>
->>>>>>> manu
+
                             </div>
                             <div class='total-cost-free'>
                                 <div class='col-md-3 offset-md-9 value' id='serviceTotal'></div>
@@ -253,7 +252,6 @@
                             <hr class='pink'>
                         </div>
 
-<<<<<<< HEAD
                     </div>
 
                     <div class='services'> 
@@ -296,12 +294,9 @@
                         </div>
 
                         <div class='text-center mb-5 alert-danger' id='product_error'>
-=======
-                        <div class='text-center mb-5 alert-danger' id='product_error'>
                         </div>
 
                         <div class='text-center mb-5 alert-warning' id='product_warning'>
->>>>>>> manu
                         </div>
 
                         <div class='row'>
