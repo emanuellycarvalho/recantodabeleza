@@ -47,17 +47,25 @@
                 @endif
                         @csrf
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+>>>>>>> manu
+=======
+                        <input type='hidden' name='produtos' id='produtos'>
+                        <input type='hidden' name='servicos' id='servicos'>
+                        <input type='hidden' name='valoresServicos' id='valoresServicos'>
+                        <input type='hidden' name='valoresProdutos' id='valoresProdutos'>
+                        <input type='hidden' name='valorFinal' id='valorFinal'>
+                        <input type='hidden' name='funcionarios' id='funcionarios'>
+                        <input type='hidden' name='hoje' id='hoje' value= '@php echo date("Y-m-d") @endphp'>
+
 >>>>>>> manu
                         <!-- form header -->
                         <div class='row'>
 
                             <div class='col-md-3 col-xs-12'>
                                 <div class='form-group'>
-                                    <input type='hidden' name='hoje' id='hoje' value= '@php echo date("Y-m-d") @endphp'>
-                                    <input type='hidden' name='servicos' id='servicos'>
-                                    <input type='hidden' name='funcionarios' id='funcionarios'>
                                     <label for='data'>Data*</label> <br>
                                     <input type='text' name='data' id='data' class='calendar' placeholder='00/00/0000' value='{{$date ?? "" }}' autofocus> 
                                 </div>
@@ -81,6 +89,46 @@
 
                             <div class='col-md-2 col-xs-12'>
                                 <button type='button' class='plus-btn' data-toggle='modal' data-target='#newClientModal'> + </button>
+                            </div>
+
+                        </div>
+
+                        <div class='row' id='pagamento'>
+                            
+                            <div class='col-md-4'>
+                                <div class='form-group'>
+                                    <label for='tipoPagamento'>Pagamento*</label>
+                                    <select name='tipoPagamento' id='tipoPagamento'>
+                                        <option value='0' disabled selected> Selecione um tipo de pagamento </option>
+                                        <option value='dinheiro'> Dinheiro </option>
+                                        <option value='crediario'> Crediário </option>
+                                        <option value='debito'> Cartão (Débito) </option>
+                                        <option value='credito'> Cartão (Crédito) </option>
+                                    </select>
+                                </div>
+                            </div> 
+
+                            <div class='col-md-2'>
+                                <label for='parcelas'>Parcelas</label>
+                                <input type='number' name='parcelas' id='parcelas' readonly>
+                            </div>
+
+                            <div class='col-md-6'>
+                                <div class='form-group'>
+                                    <div class='border'>
+                                        <label for='situacao'>Situação</label>
+                                        <div id='customRadio'>
+                                            <div class='custom-control custom-radio custom-control-inline'>
+                                                <input type='radio' class='custom-control-input' name='situacao' id='pago' value='P' >
+                                                <label class='custom-control-label' for='pago'>Pago</label>
+                                            </div>
+                                            <div class='custom-control custom-radio custom-control-inline'>
+                                                <input type='radio' class='custom-control-input' name='situacao' id='nao_pago' value='N' >
+                                                <label class='custom-control-label' for='nao_pago'>Não pago</label>
+                                            </div>			
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
@@ -287,14 +335,14 @@
                             </div>
 
                             <div class='col-md-4 col-xs-12'>
-                                <label for='qtd'>Quantidade*</label>
-                                <input type='number' name='qtd' id='qtd' placeholder= '000'>
-                            </div>
-
-                            <div class='col-md-3 col-xs-12'>
                                 <label for='precoProduto'>Valor unitário*</label>
                                 <input type='text' name='precoProduto' id='precoProduto' placeholder= '00.00'>
                             </div>
+
+                            <div class='col-md-3 col-xs-12'>
+                                <label for='qtd'>Quantidade*</label>
+                                <input type='number' name='qtd' id='qtd' placeholder= '000'>
+                                </div>
 
                             <div class='col-md-1 col-xs-12'>    
                                 <img class='addOnTable' src='{{url("img/icons/addOnTable.png")}}' title='Adicionar' id='addOnTable-product'>
@@ -415,6 +463,7 @@
                     </div>
                 </div> <!-- end products section -->
 
+<<<<<<< HEAD
                 <div class='contact-form'> <!-- form footer -->
 >>>>>>> manu
                     <div class='row justify-content-end'>
@@ -427,6 +476,17 @@
                     </form> <!-- end form -->
 			</div> <!-- jutify content center -->
 =======
+=======
+                <div class='row'> . </div>
+                
+                <div class='row justify-content-end'> <!-- form footer -->
+
+                    <div class='contact-form'> 
+                        <a onclick='window.history.back()' class='site-btn sb-dark' id='white'>Cancelar</a>
+                        <button type='submit' class='site-btn'>Salvar</button>
+                    </div>
+                    
+>>>>>>> manu
                 </div> <!-- end form footer -->
             </form> <!-- end form -->
             </div> <!-- jutify content center -->

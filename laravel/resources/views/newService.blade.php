@@ -2,10 +2,10 @@
 
 @if(isset($svc)) 
 	@section('title') Editar Serviço @endsection('title')
-	@section('icon') <img src='{{url("/img/icons/editEmployeeType-light.png")}}' width='35px'> @endsection('icon')
+	@section('icon') <img src='{{url("/img/icons/editService-light.png")}}' width='35px'> @endsection('icon')
 @else
 	@section('title') Adicionar Serviço @endsection('title')
-	@section('icon') <img src='{{url("/img/icons/newEmployeeType-light.png")}}' width='35px'> @endsection('icon')
+	@section('icon') <img src='{{url("/img/icons/newService-light.png")}}' width='35px'> @endsection('icon')
 @endif
 
 @section('content')
