@@ -2,7 +2,7 @@
 
 @section('title') Serviços @endsection('title')
 
-@section('icon') <img class='responsive' src='{{url("/img/icons/service.png")}}' width='35px'> @endsection('icon')
+@section('icon') <img class='responsive' src='{{url("/img/icons/service-light.png")}}' width='35px'> @endsection('icon')
 
 @section('content')
     <!-- services section -->
@@ -55,9 +55,9 @@
 									</td>
 									<td class='quy-col mt-3'><center>R${{$svc->valorServico}}</center></td>
 									<td class='quy-col mt-3'><center>{{$svc->comissao}}%</center></td>
-                                    <td class='quy-col mt-3'><center><a href='{{url("adm/service/$svc->cdServico")}}' title='Visualizar serviço'><img class='responsive' src='{{url("/img/icons/#.png")}}' height='35px'></a></center></td>
-                                    <td class='quy-col mt-3'><center><a href='{{url("/adm/service/$svc->cdServico/edit")}}' title='Editar serviço'><img class='responsive' src='{{url("/img/icons/#.png")}}' height='35px'></a></center></td>
-									<td class='quy-col mt-3'><center><a href='{{url("adm/service/$svc->cdServico")}}' title='Excluir serviço' class='js-del'><img class='responsive' src='{{url("/img/icons/#.png")}}' height='35px'></a></center></td>
+                                    <td class='quy-col mt-3'><center><a href='{{url("adm/service/$svc->cdServico")}}' title='Visualizar serviço'><img class='responsive' src='{{url("/img/icons/seeService.png")}}' height='35px'></a></center></td>
+                                    <td class='quy-col mt-3'><center><a href='{{url("/adm/service/$svc->cdServico/edit")}}' title='Editar serviço'><img class='responsive' src='{{url("/img/icons/editService.png")}}' height='35px'></a></center></td>
+									<td class='quy-col mt-3'><center><a href='{{url("adm/service/$svc->cdServico")}}' title='Excluir serviço' class='js-del'><img class='responsive' src='{{url("/img/icons/deleteService.png")}}' height='35px'></a></center></td>
 								</tr>
 								@endforeach
 							</tbody>

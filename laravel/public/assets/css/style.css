@@ -26,7 +26,8 @@
     top: 41px;
     width: 150px;
     padding: 0 10px;
-    border: 1px solid #cf024f;
+	border: 2px solid #f51167;
+	border-radius: 10px;
     background: #f0f0f0;
 	text-align: center;
 	position: sticky;
@@ -37,7 +38,12 @@
   }
 
   .contact-form#totalValue input{
+	margin-top: 5px;
+	margin-bottom: 3px;
 	text-align: center;
+	font-size: 20px;
+	color: black;
+	background-color: #f0f0f0;
 }
   .container #attendance {
     margin-right: 250px;
