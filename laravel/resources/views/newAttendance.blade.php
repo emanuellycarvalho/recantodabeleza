@@ -46,7 +46,6 @@
                     <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/attendance")}}' enctype='multiform/form-data'>
                 @endif
                         @csrf
-
                         <input type='hidden' name='produtos' id='produtos'>
                         <input type='hidden' name='servicos' id='servicos'>
                         <input type='hidden' name='valoresServicos' id='valoresServicos'>
@@ -272,32 +271,20 @@
                             </div>
 
                             <div class='col-md-4 col-xs-12'>
-                                <label for='qtd'>Quantidade*</label>
-                                <input type='number' name='qtd' id='qtd' placeholder= '000'>
-                            </div>
-
-                            <div class='col-md-3 col-xs-12'>
                                 <label for='precoProduto'>Valor unitário*</label>
                                 <input type='text' name='precoProduto' id='precoProduto' placeholder= '00.00'>
                             </div>
+
+                            <div class='col-md-3 col-xs-12'>
+                                <label for='qtd'>Quantidade*</label>
+                                <input type='number' name='qtd' id='qtd' placeholder= '000'>
+                                </div>
 
                             <div class='col-md-1 col-xs-12'>    
                                 <img class='addOnTable' src='{{url("img/icons/addOnTable.png")}}' title='Adicionar' id='addOnTable-product'>
                             </div>
 
                         </div>
-                    </div>
-                </div> <!-- end products section -->
-
-                <div class='contact-form'> <!-- form footer -->
-                    <div class='row'>
-                        <div class='col-md-5 offset-md-8'>
-                            <div class='form-group'>
-                                <label for='total'>Valor Final</label>
-                                <input name='total' id='total' placeholder='Total' value='0' readonly>
-                            </div>
-                        </div>
-                    </div>
 
                     </div>
 
@@ -342,10 +329,6 @@
                     </div>
                 </div> <!-- end products section -->
 
-                    <div class='row justify-content-end'>
-                        <a onclick='window.history.back()' class='site-btn sb-dark' id='white'>Cancelar</a>
-                        <button type='submit' class='site-btn'>Salvar</button>
-                    </div>
                 <div class='row'> . </div>
                 
                 <div class='row justify-content-end'> <!-- form footer -->
@@ -358,7 +341,6 @@
                 </div> <!-- end form footer -->
             </form> <!-- end form -->
             </div> <!-- jutify content center -->
-
 		</div> <!-- container -->
 	</section>
     <!-- Suppliers section end -->
