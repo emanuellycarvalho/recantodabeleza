@@ -14,7 +14,7 @@ class CustomerController extends Controller
         $this->objCustomer = new ModelCustomer();
     }
 
-    public function index()
+    public function index() 
     {
         $customers = $this->objCustomer->paginate(5);
         return view('customers', compact('customers'));
@@ -38,12 +38,14 @@ class CustomerController extends Controller
      */
     public function store(CustomerRequest $request)
     {
-        $cepResponse = cep($request->cep);
-        if ($cepResponse->isOk()){
-            $data = $cepResponse->getCepModel();
-            //return $data;
-        } else {
-            $errorCEP = "O CEP informado é inválido!";  
+        if($request->cep != null){
+            $cepResponse = cep($request->cep);
+            if ($cepResponse->isOk()){
+                $data = $cepResponse->getCepModel();
+                //return $data;
+            } else {
+                $errorCEP = "O CEP informado é inválido!";  
+            }
         }
         
         $dtNasc = NULL;
@@ -63,7 +65,7 @@ class CustomerController extends Controller
         }
 
         $this->objCustomer->create($data);
-        return redirect('adm/customer');
+        return redirect($this->objCustomer->whereToGo());
         
     }
 

@@ -14,7 +14,7 @@ class ModelCustomer extends Model
             $dtNasc = explode( '-' , $this->dtNasc);
             $dtNasc = $dtNasc[2] . '/' . $dtNasc[1] . '/' . $dtNasc[0];
             return $dtNasc;
-        }
+        } 
 
         return "";
     }
@@ -25,6 +25,15 @@ class ModelCustomer extends Model
             $found = $this->find('email', '{$email}')->first();
         }
         return $found;
+    }
+
+    public function whereToGo(){
+        $url = explode('/', $_SERVER['HTTP_REFERER']);
+        $length = count($url);
+        if ($url[$length - 2] == 'create' && ($url[$length - 3] == 'scheduling' || $url[$length - 3] == 'attendance')){
+            return $_SERVER['HTTP_REFERER'];
+        }
+        return 'adm/customer';   
     }
 
 }

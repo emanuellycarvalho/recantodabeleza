@@ -21,7 +21,7 @@ class EmployeeTypeController extends Controller
     }
 
     public function create()
-    {
+    { 
         return view('newEmployeeType');
     }
 
