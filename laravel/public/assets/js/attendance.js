@@ -117,18 +117,25 @@
         });
         
         const services = document.getElementById('servicos').value;
-        if(services != ''){
+        if(services != '' || services != null){
             document.getElementById('servicos').value = services + ',' + service.id;
         } else {
             document.getElementById('servicos').value = service.id;
         }
         
         const employees = document.getElementById('funcionarios').value;
-        if(employees != ''){
+        if(employees != '' || employees != null){
             document.getElementById('funcionarios').value = employees + ',' + employee.id;
         } else {
             document.getElementById('funcionarios').value = employee.id;
         }        
+
+        const values = document.getElementById('valoresServicos').value;
+        if(values != null || values != ''){
+            document.getElementById('valoresServicos').value = values + ',' + value;
+        } else {
+            document.getElementById('valoresServicos').value = value;
+        }
     }
 
     function createProductRow(product) {
@@ -177,6 +184,20 @@
         }else {
             document.getElementById('produtos').value = product.id;
         }
+
+        const amt = document.getElementById('quantidades').value;
+        if(amt != null || amt != ''){
+            document.getElementById('quantidades').value = amt + ',' + product.amt;
+        } else {
+            document.getElementById('quantidades').value = product.amt;
+        }
+
+        const values = document.getElementById('valoresProdutos').value;
+        if(values != null || values != ''){
+            document.getElementById('valoresProdutos').value = values + ',' + value;
+        } else {
+            document.getElementById('valoresProdutos').value = value;
+        }
     }
 
     function removeServiceItem(cel){
@@ -206,6 +227,7 @@
         const services = removeFromStringArray(document.getElementById('servicos').value, service_id);
         const employees = removeFromStringArray(document.getElementById('funcionarios').value, employee_id);
         const values = removeFromStringArray(document.getElementById('valoresServicos').value, employee_id);
+
 
         if(services == 0 || employees == 0 || values == 0){
             cleanNotifications('service');

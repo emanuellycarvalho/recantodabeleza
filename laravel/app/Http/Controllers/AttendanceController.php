@@ -40,17 +40,17 @@ class AttendanceController extends Controller
 
     public function create()
     {
-        try{              
+        try{          
             
-            $id = $this->getAtendente();
-            $etype = $this->objEmployeeType->where('cdTipoFuncionario', $id)->first();
-            $employees = $etype->relEmployee()->get();
-
+            $date = Carbon::today()->setTimezone('America/Sao_Paulo')->format('d/m/Y');
+            
             $clients = $this->objClient->all();
+            $employees = $this->getAtendentes();
             $services = $this->objService->all();
             $products = $this->objProduct->all();
 
-            return view('newAttendance')->with(compact('clients'))
+            return view('newAttendance')->with(compact('date'))
+                                        ->with(compact('clients'))
                                         ->with(compact('services'))
                                         ->with(compact('products'))
                                         ->with(compact('employees'));
@@ -61,33 +61,55 @@ class AttendanceController extends Controller
         }    
     }
 
-    public function store(SchedulingRequest $request)
+    public function store(AttendanceRequest $request)
     {  
         try {
 
            $att = $this->objAttendance->create([
-                'dtAtendimento' => $request->data,
+                'dtAtendimento' => Carbon::createFromFormat('d/m/Y', $request->data, 'America/Sao_Paulo')->toDateTimeString(),
                 'valorTotal' => $request->valorFinal,
                 'cdCliente' => $request->cliente,
                 'cdAgendamento' => null,
-                'situação' => $request->situacao,
+                'situacao' => $request->situacao,
                 'cdFuncionario' => 1, //futuramente o funcionário logado
                 'tipoPagamento' => $request->tipoPagamento,
                 'qtdParcelas' => $request->parcelas
            ]); 
+
+           $servicos = explode(',', $request->servicos);
+           $funcionarios = explode(',', $request->funcionarios);
+           $valoresServicos = explode(',', $request->valoresServicos);
+
+           $produtos = explode(',', $request->produtos);
+           $quantidades = explode(',', $request->quantidades);
+           $valoresProdutos = explode(',', $request->valoresProdutos); 
             
-           dd($att);
+            for($i = 1; $i < sizeof($servicos); $i++){
+                $att->relService()->attach($servicos[$i], ['cdFuncionario' => $funcionarios[$i], 'valorCobrado' => $valoresServicos[$i]]);
+            } 
+
+            for($i = 1; $i < sizeof($produtos); $i++){
+                $att->relProduct()->attach($produtos[$i], ['quantidade'=> $quantidades[$i], 'valorCobrado' => $valoresProdutos[$i]]);
+            }
+
             return $this->index();
         } catch (Exception $e){
             abort(401, $e->getMessage());
         }
     }
 
-    protected function getAtendente(){
+    protected function getAtendentes(){
+        $employees = null;
         $obj = $this->objEmployeeType->where('nmFuncao', 'Atendente')->first();
+
         if($obj != null){
-            return $obj->cdTipoFuncionario;
+            $etype = $this->objEmployeeType->where('cdTipoFuncionario', $obj->cdTipoFuncionario)->first();
+            $employees = $etype->relEmployee()->get();
         }
+        
+        if($employees != null){
+            return $employees;
+        }        
 
         throw new \Exception('Desculpe, ocorreu um erro ao recuperar os atendentes.');
     }

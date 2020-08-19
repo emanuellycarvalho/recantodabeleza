@@ -1,5 +1,29 @@
+$(document).ready(function () {
+  $('#addOnTable').on('click', function (event) {
+      event.preventDefault();
+
+      //armazena os dados dos selects preenchidos
+      const employee_id = $('#select_employee').val();
+      const employee_name = $('#select_employee option:selected').html();
+      
+      const service_id = $('#select_service').val();
+      const service_name = $('#select_service option:selected').html();
+      
+      if (verifyServiceData(service_id, employee_id) == null){
+          return;
+      }
+
+      //cria os inputs com estes valores
+      createFields({id: employee_id, name: employee_name}, {id: service_id, name: service_name});
+      removeOptionsSelected(employee_id, service_id);
+
+      //coloca o primeiro select em sua posição original
+      $('#select_employee').val(0);
+      $('#select_service').val(0);
+  });
+
 //verifica se os dois selects estão preenchidos
-function verifyServiceData(service_id, employee_id){
+  function verifyServiceData(service_id, employee_id){
     document.getElementById('service_error').innerHTML="";
     
     if(service_id == null || employee_id == null){
@@ -117,30 +141,6 @@ function verifyServiceData(service_id, employee_id){
       document.getElementById('total').value = total;
     }
   }
-
-  $(document).ready(function () {
-    $('#addOnTable').on('click', function (event) {
-        event.preventDefault();
-
-        //armazena os dados dos selects preenchidos
-        const employee_id = $('#select_employee').val();
-        const employee_name = $('#select_employee option:selected').html();
-        
-        const service_id = $('#select_service').val();
-        const service_name = $('#select_service option:selected').html();
-        
-        if (verifyServiceData(service_id, employee_id) == null){
-            return;
-        }
-
-        //cria os inputs com estes valores
-        createFields({id: employee_id, name: employee_name}, {id: service_id, name: service_name});
-        removeOptionsSelected(employee_id, service_id);
-
-        //coloca o primeiro select em sua posição original
-        $('#select_employee').val(0);
-        $('#select_service').val(0);
-    });
 
     //VERIFICAR O HORARIO CHANGE
     const inputInicio = document.getElementById('inicio');

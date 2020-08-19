@@ -14,5 +14,5 @@ class ModelService extends Model
         ->as('agendamentos')
         ->withPivot('CdFuncionario', 'valorCobrado')
         ->withTimestamps(); 
-     }
+    }
 }
