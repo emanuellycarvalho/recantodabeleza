@@ -309,6 +309,7 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
     -webkit-overflow-scrolling: touch;
     position: relative; /* for abs-positioned elements within */
   }
+
 .fc .fc-scroller-liquid {
     height: 100%;
   }
@@ -721,7 +722,7 @@ A HORIZONTAL event
   }
   .fc .fc-daygrid-day-frame:hover {
     cursor: pointer;
-    background-color:var(--fc-today-bg-color, rgba(255, 220, 40, 0.15));
+    background-color:var(--fc-today-bg-color, rgba(255, 220, 40, 0.15));*/
   }
 .fc {
 

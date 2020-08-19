@@ -52,6 +52,7 @@
                         <input type='hidden' name='valoresProdutos' id='valoresProdutos'>
                         <input type='hidden' name='valorFinal' id='valorFinal'>
                         <input type='hidden' name='funcionarios' id='funcionarios'>
+                        <input type='hidden' name='quantidades' id='quantidades'>
                         <input type='hidden' name='hoje' id='hoje' value= '@php echo date("Y-m-d") @endphp'>
 
                         <!-- form header -->

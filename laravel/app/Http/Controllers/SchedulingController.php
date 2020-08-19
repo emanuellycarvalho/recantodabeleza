@@ -42,10 +42,7 @@ class SchedulingController extends Controller
         
             $date = $this->generateDate($date);
 
-            $id = $this->getAtendente();
-            $etype = $this->objEmployeeType->where('cdTipoFuncionario', $id)->first();
-            $employees = $etype->relEmployee()->get();
-
+            $employees = $this->getAtendentes();
             $schedule = $this->objScheduling->all();
             $services = $this->objService->all();
             $clients = $this->objClient->all();
@@ -187,14 +184,21 @@ class SchedulingController extends Controller
         return response()->json($schedule); 
     }
 
-    protected function getAtendente(){
+    protected function getAtendentes(){
         $obj = $this->objEmployeeType->where('nmFuncao', 'Atendente')->first();
         if($obj != null){
-            return $obj->cdTipoFuncionario;
+            $etype = $this->objEmployeeType->where('cdTipoFuncionario', $obj->cdTipoFuncionario)->first();
         }
+        
+        $employees = $etype->relEmployee()->get();
+        
+        if($employees != null){
+            return $employees;
+        }        
 
         throw new \Exception('Desculpe, ocorreu um erro ao recuperar os atendentes.');
     }
+    
     protected function findClient($id){
         $client = $this->objClient->where('cdCliente', $id)->first();
         if ($client != null){

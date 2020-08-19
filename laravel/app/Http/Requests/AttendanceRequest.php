@@ -13,7 +13,7 @@ class AttendanceRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,29 @@ class AttendanceRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'data' => 'date|required',
+            'valorFinal' => 'min:1|required',
+            'cliente' => 'required',
+            'situacao' => 'required',
+            //'cdFuncionario' => 'required',
+            'tipoPagamento' => 'required',
+            'parcelas' => 'min:1|max:12|required'
+        ];
+    }
+
+    public function messages(){
+
+        return [
+            'data.required' => 'O campo Data é obrigatório.',
+            'valorFinal.required' => 'O valor total é obrigatório.',
+            'valorTotal.min' => 'O valor total é inválido.',
+            'cliente.required' => 'O campo do cliente é obrigatório.',
+            'situacao.required' => 'O campo Situação é obrigatório.',
+            //'cdFuncionario.required' => 'Não há código do funcionário operante.',
+            'tipoPagamento.required' => 'O campo Tipo de Pagamento é obrigatório.',
+            'parcelas.required' => 'O campo Parcelas é obrigatório.',
+            'parcelas.min' => 'O mínimo de parcelas é 1',
+            'parcelas.max' => 'O máximo de aprcelas é 12'
         ];
     }
 }
