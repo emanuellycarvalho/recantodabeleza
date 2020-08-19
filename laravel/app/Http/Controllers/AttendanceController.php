@@ -40,14 +40,17 @@ class AttendanceController extends Controller
 
     public function create()
     {
-        try{              
+        try{          
+            
+            $date = Carbon::today()->setTimezone('America/Sao_Paulo')->format('d/m/Y');
             
             $clients = $this->objClient->all();
             $employees = $this->getAtendentes();
             $services = $this->objService->all();
             $products = $this->objProduct->all();
 
-            return view('newAttendance')->with(compact('clients'))
+            return view('newAttendance')->with(compact('date'))
+                                        ->with(compact('clients'))
                                         ->with(compact('services'))
                                         ->with(compact('products'))
                                         ->with(compact('employees'));
@@ -96,12 +99,13 @@ class AttendanceController extends Controller
     }
 
     protected function getAtendentes(){
+        $employees = null;
         $obj = $this->objEmployeeType->where('nmFuncao', 'Atendente')->first();
+
         if($obj != null){
             $etype = $this->objEmployeeType->where('cdTipoFuncionario', $obj->cdTipoFuncionario)->first();
+            $employees = $etype->relEmployee()->get();
         }
-        
-        $employees = $etype->relEmployee()->get();
         
         if($employees != null){
             return $employees;

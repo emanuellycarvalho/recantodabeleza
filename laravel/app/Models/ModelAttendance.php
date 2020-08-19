@@ -11,14 +11,14 @@ class ModelAttendance extends Model
                             'tipoPagamento', 'qtdParcelas'];
 
     public function relService(){
-        return $this->belongsToMany('App\Models\ModelService', 'tbAtendimentoServico', 'cdServico', 'cdAtendimento')
+        return $this->belongsToMany('App\Models\ModelService', 'tbAtendimentoServico', 'cdAtendimento', 'cdServico')
         ->as('servicos')
         ->withPivot('CdFuncionario', 'valorCobrado')
         ->withTimestamps(); 
     }
 
     public function relProduct(){
-        return $this->belongsToMany('App\Models\ModelProduct', 'tbAtendimentoProduto', 'cdProduto', 'cdAtendimento')
+        return $this->belongsToMany('App\Models\ModelProduct', 'tbAtendimentoProduto', 'cdAtendimento', 'cdProduto')
         ->as('produtos')
         ->withPivot('quantidade', 'valorCobrado')
         ->withTimestamps(); 
