@@ -9,6 +9,10 @@ class ModelCustomer extends Model
     protected $table='TbCliente';
     protected $fillable= ['nmCliente', 'sexo', 'telefone', 'dtNasc', 'email', 'senha', 'rua', 'numero', 'complemento', 'bairro', 'cep', 'rg', 'cidade', 'foto'];
 
+    public function relScheduling(){
+        return $this->hasMany('App\Models\ModelScheduling', 'cdAgendamento', 'cdCliente');
+    }
+    
     public function dtNasc(){
         if ($this->dtNasc != NULL){
             $dtNasc = explode( '-' , $this->dtNasc);
