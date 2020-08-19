@@ -230,7 +230,7 @@
 					</div>
 					<div class='row justify-content-end'>
 						<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-						<button type='submit' class='site-btn' onclick='saveData()'>Adicionar</button>
+						<button type='submit' class='site-btn' onclick='saveData()'>Adicionar</button> 
 					</div>
 				</form>
 			</div>

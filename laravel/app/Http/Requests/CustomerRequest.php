@@ -25,16 +25,7 @@ class CustomerRequest extends FormRequest
     {
         return [
             'nmCliente'=>'required',
-            'sexo'=>'required',
-            'telefone'=>'required',
-            'email'=>'required',
-            'senha'=>'required',
-            'rua'=>'required',
-            'numero'=>'required',
-            'bairro'=>'required',
-            'cep'=>'required',
-            'rg'=>'required',
-            'cidade'=>'required'
+            'telefone'=>'required'
 
         ];
     }

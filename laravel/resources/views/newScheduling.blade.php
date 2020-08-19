@@ -196,13 +196,13 @@
 				</button>
 			</div>
 			<div class='modal-body'>
-				<form class='contact-form' name='cadastroClienteSimples' id='cadastroClienteSimples' method='post' action='{{url("adm/client")}}'>
+				<form class='contact-form' name='cadastro1' id='cadastro1' method='post' action='{{url("adm/customer")}}'>
 					@csrf
 					<div class='row'>	
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
-								<label for='nome'>Nome*</label>
-								<input type='text' name='nome' id='nome' placeholder='Nome'>
+								<label for='nmCliente'>Nome*</label>
+								<input type='text' name='nmCliente' id='nmCliente' placeholder='Nome'>
 							</div>
 						</div>
 						
