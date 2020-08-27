@@ -13,7 +13,7 @@
 	<!-- Google Font -->
 	<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i' rel='stylesheet'>
 
-
+ 
 	<!-- Stylesheets -->
 	<link rel='stylesheet' href='{{url("/assets/css/bootstrap.min.css")}}'/>
 	<link rel='stylesheet' href='{{url("/assets/css/font-awesome.min.css")}}'/>
@@ -23,6 +23,18 @@
 	<link rel='stylesheet' href='{{url("/assets/css/owl.carousel.min.css")}}'/>
 	<link rel='stylesheet' href='{{url("/assets/css/animate.css")}}'/>
 	<link rel='stylesheet' href='{{url("/assets/css/style.css")}}'/>
+
+	<!-- Template's Javascripts & Jquery -->
+	<script src='{{url("/assets/js/jquery-3.2.1.min.js")}}'></script>
+	<script src='{{url("/assets/js/bootstrap.min.js")}}'></script>
+	<script src='{{url("/assets/js/jquery.slicknav.min.js")}}'></script>
+	<script src='{{url("/assets/js/owl.carousel.min.js")}}'></script>
+	<script src='{{url("/assets/js/jquery.nicescroll.min.js")}}'></script>
+	<script src='{{url("/assets/js/jquery.zoom.min.js")}}'></script>
+	<script src='{{url("/assets/js/jquery-ui.min.js")}}'></script>
+	<script src='{{url("/assets/js/main.js")}}'></script>
+	<!-- End Template's Javascripts & Jquery -->
+
 
 </head>
 <body>
@@ -208,15 +220,6 @@
 	</section>
 	<!-- Footer section end -->
 
-   	<!--====== Javascripts & Jquery ======-->
-	   <script src='{{url("/assets/js/jquery-3.2.1.min.js")}}'></script>
-	<script src='{{url("/assets/js/bootstrap.min.js")}}'></script>
-	<script src='{{url("/assets/js/jquery.slicknav.min.js")}}'></script>
-	<script src='{{url("/assets/js/owl.carousel.min.js")}}'></script>
-	<script src='{{url("/assets/js/jquery.nicescroll.min.js")}}'></script>
-	<script src='{{url("/assets/js/jquery.zoom.min.js")}}'></script>
-	<script src='{{url("/assets/js/jquery-ui.min.js")}}'></script>
-	<script src='{{url("/assets/js/main.js")}}'></script>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 <html lang='zxx'>
 <head>
 	<title>@yield('title')</title>
-	<meta charset='UTF-8'>
+	<meta charset='UTF-8'> 
 	<meta name='description' content=' Divisima | eCommerce Template'>
 	<meta name='keywords' content='divisima, eCommerce, creative, html'>
 	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
@@ -69,10 +69,10 @@
             <div class='text-center'>
                 <a href='{{url("/adm")}}'><img src='{{url("/img/logo-light.png")}}' alt=''></a>                    
                 <div class='col-md-2 offset-md-11'>
-                    <a href='' title='Seu perfil'><img src='{{url("/img/icons/user-light.png")}}' alt=''></a>
-                    <a href='' title='Sair'><img src='{{url("/img/icons/logoff-light.png")}}' alt=''></a>
+                    <a href='#' title='Seu perfil'><img src='{{url("/img/icons/user-light.png")}}' alt=''></a>
+                    <a href='#' title='Sair'><img src='{{url("/img/icons/logoff-light.png")}}' alt=''></a>
                     <p class='light'>Fulano de tal - Secretário</p>
-                </div> 
+                </div>  
             </div>
             <!-- Header section -->
             <header class='header-section'>
@@ -81,13 +81,28 @@
                         <!-- menu -->
                         <ul class='main-menu'>
                             <li><a href='{{url("/adm")}}'>Home</a></li>
-                            <li><a href='{{url("adm/product")}}'>Produtos</a></li>
-                            <li><a href='{{url("adm/service")}}'>Serviços</a></li>
-                            <li><a href='{{url("adm/customer")}}'>Clientes</a></li>
-                            <li><a href='{{url("/adm/employee")}}'>Funcionários</a></li>
-                            <li><a href='{{url("/adm/supplier")}}'>Fornecedores</a></li>
-                            <li><a href=''>Relatorios</a></li>
-                            <li><a href='{{url("adm/more")}}'>Mais</a></li>
+                            <li><a href='#' class='none'>Atendimentos</a> 
+                                <ul class='sub-menu'>
+                                    <li><a href='{{url("adm/scheduling/create")}}'>Agendar</a></li>
+                                    <li><a href='{{url("adm/attendance/create")}}'>Registrar</a></li>
+                                </ul>
+                            </li>
+                            <li><a href='#' class='none'>Pagamentos</a> 
+                                <ul class='sub-menu'>
+                                    <li><a href='{{url("adm/registerPayment")}}'>de Clientes</a></li>
+                                    <li><a href='#'>de Despesas</a></li>
+                                </ul>
+                            </li>
+                            <li><a href='#' class='none'>Gerenciar</a> 
+                                <ul class='sub-menu'>
+                                    <li><a href='{{url("adm/customer")}}'>Clientes</a></li>
+                                    <li><a href='{{url("adm/service")}}'>Serviços</a></li>
+                                    <li><a href='{{url("adm/product")}}'>Produtos</a></li>
+                                    <li><a href='{{url("/adm/employee")}}'>Funcionários</a></li>
+                                    <li><a href='{{url("/adm/supplier")}}'>Fornecedores</a></li>
+                                </ul>
+                            </li>
+                            <li><a href='#'>Relatorios</a></li>
                         </ul>
                     </div>
                 </nav>
