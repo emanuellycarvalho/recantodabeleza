@@ -299,7 +299,7 @@
 				</div>
 				<div class='modal-body'>
 					<h5>Deseja voltar para a tabela de clientes?</h5>
-					Se confirmar vai perder todos os dados inseridos na tabela.
+					Os novos dados inseridos serão perdidos.
 				</div>
 				<div class='modal-footer'>
 					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>

@@ -9,7 +9,8 @@
     <section class='cart-section spad'>
 		<div class='container'>
             <div class='row justify-content-center'>
-                <a href='{{url("adm/attendance/create")}}' class='site-btn'> Registrar atendimento <img src='{{url("/img/icons/addOnTable-light.png")}}' class='button-icon'></a>
+                <a href='{{url("adm/attendance/create")}}' class='site-btn'><img src='{{url("/img/icons/addOnTable-light.png")}}' class='button-icon'> Registrar atendimento</a>
+                <a href='{{url("adm/registerPayment")}}' class='site-btn'><img src='{{url("/img/icons/payment-light.png")}}' class='button-icon'> Registrar pagamento</a>
             </div>
 		</div>
 	</section>

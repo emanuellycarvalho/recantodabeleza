@@ -52,6 +52,9 @@
 							<div class='form-group'>
 								<label for='cnpj'>CNPJ*</label>
 								<input  type='text' name='cnpj' id='cnpj' value='{{$sup->cnpj ?? ""}}'>
+								<small id='verificarCNPJ' class='verificar'>
+									O CNPJ inserido é inválido.
+								</small>
 							</div>
 						</div>
 
@@ -66,7 +69,7 @@
 						<div class='row'><p><br></p></div>
 						<div class='row justify-content-end'>
 						<a onClick='confirmarCancelar()' class='site-btn sb-dark' id='white'>Cancelar</a>
-							<button type='submit' class='site-btn'>Salvar</button>	
+							<button type='submit' class='site-btn' onclick='saveData()'>Salvar</button>	
 						</div>
 						<div class='row'><p><br></p></div>
 					</div>
@@ -88,7 +91,7 @@
 				</div>
 				<div class='modal-body'>
 					<h5>Deseja voltar para a tabela de fornecedores?</h5>
-					Se confirmar vai perder todos os dados inseridos na tabela.
+					Os novos dados inseridos serão perdidos.
 				</div>
 				<div class='modal-footer'>
 					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
@@ -120,6 +123,21 @@
             }
             return true;
         }
+
+		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/employee/create'){
+			document.getElementById('nome').value = localStorage.getItem('nome');
+			document.getElementById('telefone').value = localStorage.getItem('telefone');
+			document.getElementById('cnpj').value = localStorage.getItem('cnpj');
+			document.getElementById('email').value = localStorage.getItem('email');
+			localStorage.clear();
+		}
+
+		function saveData(){
+			localStorage.setItem('nome', $('#nome').val());
+			localStorage.setItem('telefone', $('#telefone').val());
+			localStorage.setItem('cnpj', $('#cnpj').val());
+			localStorage.setItem('email', $('#email').val());
+		}
     </script>
 	<!-- Confirm cancel section end -->
 

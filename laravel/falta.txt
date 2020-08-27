@@ -2,4 +2,7 @@ Fernando:
 ???
 
 Manu:
-- opção de registrar atendimento a partir de agendamento
+- verificar toda a validação
+- uniformizar as mensagens
+- funcionario data, adicionar tipo
+- formatar o menu

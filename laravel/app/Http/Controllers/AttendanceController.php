@@ -113,4 +113,21 @@ class AttendanceController extends Controller
 
         throw new \Exception('Desculpe, ocorreu um erro ao recuperar os atendentes.');
     }
+
+    protected function registerPayment(){
+        $clients = $this->objClient->all();
+        return view('registerPayment')->with(compact('clients'));
+    }
+
+    protected function getAttendances(){
+        return $this->objAttendance->all();
+    }
+
+    protected function getUnpaidAttendances(){
+        return $this->objAttendance->where('situacao', 'N')->get();
+    }
+
+    protected function getSomeonesAttendances($id){
+        return $this->objAttendance->where('cdCliente', $id)->get();
+    }
 }

@@ -8,7 +8,7 @@
 	@section('icon') <img src='{{url("/img/icons/newEmployee-light.png")}}' width='35px'> @endsection('icon')
 @endif
 
-@section('content')
+@section('content') 
 
 	<!-- Contact section -->
 	<section class='contact-section'>
@@ -51,7 +51,7 @@
 										</div>			
 									</div>						
 								</div>
-							</div>
+							</div> 
 						</div>
 		
 						<div class='col-md-5 col-xs-12'>
@@ -80,13 +80,19 @@
 							<div class='form-group'>
 								<label for='telefone'>Telefone*</label>
 								<input type='text' name='telefone' id='telefone' placeholder='(00) 00000-0000' value='{{$emp->telefone ?? old("telefone")}}'>
+								<small id='verificarTelefone' class='verificar'>
+									O telefone que você inseriu é inválido.
+								</small>
 							</div>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='dtNasc'>Data de nascimento</label>
-								<input type='text' name='dtNasc' id='dtNasc' placeholder='00/00/00' @if(isset($emp)) value='{{$emp->dtNasc()}}' @endif >
+								<input type='text' name='dtNasc' id='dtNasc' placeholder='00/00/0000' value='{{$emp->dtNasc ?? old("dtNasc")}}' >
+								<small id='verificarDtNasc' class='verificar'>
+									A data de nascimento que você inseriu é inválida.
+								</small>
 							</div>
 						</div>
 
@@ -94,6 +100,9 @@
 							<div class='form-group'>
 								<label for='cpf'>CPF*</label>
 								<input type='text' name='cpf' id='cpf' value='{{$emp->cpf ?? old("cpf")}}'>
+								<small id='verificarCPF' class='verificar'>
+									O CPF que você inseriu é inválido.
+								</small>
 							</div>
 						</div>
 
@@ -117,7 +126,7 @@
 						@endif
 						<div class='col-md-6 col-xs-12'>
 							<label for='senha2'>Confirmar senha*</label>
-							<input type='password' name='senha2' id='senha2' oninput='verificarSenha()' >
+							<input type='password' name='senha2' id='senha2' >
 							<small id='verificarSenha' class='verificar'>
 								As senhas não conferem.
 							</small>
@@ -237,8 +246,55 @@
 			</div>
 		</div>
 	</div>
+	<!-- New type section end -->
+	
 
-	<script>
+	<!-- Confirm cancel section -->
+	<div class='modal fade' id='confirmCancelModal' tabindex='-1' role='dialog' aria-labelledby='confirmCancelLabel' aria-hidden='true'>
+		<div class='modal-dialog' role='document'>
+			<div class='modal-content'>
+				<div class='modal-header'>
+					<h5 class='modal-title' id='confirmCancelLabel'>Confirmar</h5>
+					<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+					<span aria-hidden='true'>&times;</span>
+					</button>
+				</div>
+				<div class='modal-body'>
+					<h5>Deseja voltar para a tabela de funcionários?</h5>
+					Os novos dados inseridos serão perdidos.
+				</div>
+				<div class='modal-footer'>
+					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
+					<a href='{{url("adm/employee")}}' class='site-btn' id='white'>Confirmar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script> 
+
+		window.confirmarCancelar = function(){
+            if(verificarCampos()){
+                $('#confirmCancelModal').modal();
+                $('confirmar').on('click', function(){
+                    window.location.href= '{{url("/adm/employee")}}';
+                });
+            } else {
+                window.location.href= '{{url("/adm/employee")}}';
+            }  
+        }
+
+        function verificarCampos(){
+            if ($('#nome').val() == '' && $('#telefone').val() == '' && $('#cpf').val() == '' && 
+                $('#email').val() == '' && $('#senha').val() == '' && $('#rua').val() == '' && 
+                $('#bairro').val() == '' && $('#cidade').val() == '' && $('#numero').val() == '' &&
+                $('#complemento').val() == '' && $('#cep').val() == '' && $('#dtNasc').val() == '')
+            {
+                return false;
+            }
+            return true;
+        }
+
 		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/employee/create'){
 			document.getElementById('nome').value = localStorage.getItem('nome');
 			document.getElementById('telefone').value = localStorage.getItem('telefone');
@@ -267,54 +323,6 @@
 			localStorage.setItem('numero', $('#numero').val());
 			localStorage.setItem('comp', $('#complemento').val());
 		}
-	</script>
-	<!-- New type section end -->
-	
-
-	<!-- Confirm cancel section -->
-	<div class='modal fade' id='confirmCancelModal' tabindex='-1' role='dialog' aria-labelledby='confirmCancelLabel' aria-hidden='true'>
-		<div class='modal-dialog' role='document'>
-			<div class='modal-content'>
-				<div class='modal-header'>
-					<h5 class='modal-title' id='confirmCancelLabel'>Confirmar</h5>
-					<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-					<span aria-hidden='true'>&times;</span>
-					</button>
-				</div>
-				<div class='modal-body'>
-					<h5>Deseja voltar para a tabela de funcionários?</h5>
-					Se confirmar vai perder todos os dados inseridos na tabela.
-				</div>
-				<div class='modal-footer'>
-					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-					<a href='{{url("adm/employee")}}' class='site-btn' id='white'>Confirmar</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<script> 
-        window.confirmarCancelar = function(){
-            if(verificarCampos()){
-                $('#confirmCancelModal').modal();
-                $('confirmar').on('click', function(){
-                    window.location.href= '{{url("/adm/employee")}}';
-                });
-            } else {
-                window.location.href= '{{url("/adm/employee")}}';
-            }  
-        }
-
-        function verificarCampos(){
-            if ($('#nome').val() == '' && $('#telefone').val() == '' && $('#cpf').val() == '' && 
-                $('#email').val() == '' && $('#senha').val() == '' && $('#rua').val() == '' && 
-                $('#bairro').val() == '' && $('#cidade').val() == '' && $('#numero').val() == '' &&
-                $('#complemento').val() == '' && $('#cep').val() == '' && $('#dtNasc').val() == '')
-            {
-                return false;
-            }
-            return true;
-        }
 
     </script>
 	<!-- Confirm cancel section end -->

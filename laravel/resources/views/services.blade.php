@@ -86,7 +86,7 @@
 				</button>
 			</div>
 			<div class='modal-body'>
-				<p>Tem certeza que quer apagar esse registro?</p>
+				<p>Tem certeza que quer excluir esse registro?</p>
 			</div>
 			<div class='modal-footer'>
 				<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>

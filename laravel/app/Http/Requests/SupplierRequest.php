@@ -12,7 +12,7 @@ class SupplierRequest extends FormRequest
      * @return bool
      */
     public function authorize()
-    {
+    { 
         return true;
     }
 
@@ -24,7 +24,7 @@ class SupplierRequest extends FormRequest
     public function rules()
     {
         return [
-            'nmFornecedor' => 'required',
+            'nome' => 'required',
             'telefone' => 'required',
             'cnpj' => 'required|cnpj|formato_cnpj', //composer require geekcom/validator-docs
             'email' => 'required'
@@ -34,7 +34,7 @@ class SupplierRequest extends FormRequest
     public function messages(){
 
         return [
-            'nmFornecedor.required' => 'O campo "Nome" é obrigatório.',
+            'nome.required' => 'O campo "Nome" é obrigatório.',
             'telefone.required' => 'O campo "Telefone" é obrigatório.',
             'email.required' => 'O campo "Email" é obrigatório.',
             'cnpj.required' => 'O campo "CNPJ" é obrigatório.',
