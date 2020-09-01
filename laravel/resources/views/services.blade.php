@@ -21,7 +21,7 @@
 							</div>
 						</div>
 						<div class='col-xl-1 col-lg-5'>
-							<a href='{{url("adm/service/create")}}' title='Novo servico'><img class='responsive' src='{{url("/img/icons/#.png")}}' width='70px'></a>
+							<a href='{{url("adm/service/create")}}' title='Novo servico'><img class='responsive' src='{{url("/img/icons/newService.png")}}' width='70px'></a>
 						</div>
 					</div>
 				</div>
