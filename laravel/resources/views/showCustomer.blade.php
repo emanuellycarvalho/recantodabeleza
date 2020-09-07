@@ -9,16 +9,16 @@
        <section class='cart-section spad'>
 		<div class='container'>
 			<div class='row justify-content-center'>
-				<div class='col-lg-9'>	
+				<div class='col-lg-9'>
 					<div class='cart-table'>
 						<h3>{{$customers->nmCliente}}</h3>
 						<div class='cart-table-warp'>
                             <div class='row'>
                             @if ($customers->foto)
                                 <div class='col-lg-3 order-2 order-lg-0 text-center'>
-                                    <img src="{{url("storage/{$customers->foto}")}}">
+                                    <img src="{{url("storage/{$customers->foto}")}}" width='130px'>
                                 </div>
-                            @endif 
+                            @endif
                                 <div class='col-lg-7 order-2 order-lg-1'>
 								@if ($customers->dtNasc != null)
                                 	<b>Nasceu em </b> {{$customers->dtNasc}} <b class='pink'> |</b>

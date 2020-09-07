@@ -28,7 +28,7 @@
 							</div>
 						</div>
 						<div class='col-xl-1 col-lg-5'>
-							<a href='{{url("adm/product/create")}}' title='Novo Produto'><img class='responsive' src='{{url("/img/icons/newProduct.png")}}' width='70px'></a>
+							<a href='{{url("adm/product/create")}}' title='Adicionar Produto'><img class='responsive' src='{{url("/img/icons/newProduct.png")}}' width='70px'></a>
 						</div>
 					</div>
 				</div>
@@ -45,7 +45,7 @@
 									<th class='product-th'>Nome</th>
 									<th class='quy-th'>Preço</th>
                                     <th class='quy-th'>Estoque</th>
-                                    <th class='quy-th' id='none'>Ver mais</th>
+                                    <th class='quy-th' id='none'>Visualizar</th>
                                     <th class='quy-th' id='none'>Editar</th>
 									<th class='quy-th' id='none'>Excluir</th>
 								</tr>
@@ -61,7 +61,8 @@
                                             </div>
                                         </a>
 									</td>
-									<td class='quy-col'><center>{{$prod->precoProduto}}</center></td>
+									@php $precoProduto = str_replace('.', ',', $prod->precoProduto); @endphp
+									<td class='quy-col'><center>{{$precoProduto}}</center></td>
                                     <td class='quy-col'><center>{{$prod->qtd}}</center></td>
                                     <td class='quy-col'><center><a href='{{url("adm/product/$prod->cdProduto")}}' title='Visualizar produto'><img class='responsive' src='{{url("/img/icons/seeProduct.png")}}' height='35px'></a></center></td>
                                     <td class='quy-col'><center><a href='{{url("adm/product/$prod->cdProduto/edit")}}' title='Editar produto'><img class='responsive' src='{{url("/img/icons/editProduct.png")}}' height='35px'></a></center></td>
@@ -87,17 +88,17 @@
 		<div class='modal-dialog' role='document'>
 			<div class='modal-content'>
 			<div class='modal-header'>
-				<h5 class='modal-title'>Confirmar exclusão</h5>
+				<h5 class='modal-title'>Excluir produto</h5>
 				<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
 				<span aria-hidden='true'>&times;</span>
 				</button>
 			</div>
 			<div class='modal-body'>
-				<p>Tem certeza que quer excluir esse registro?</p>
+				<p>Tem certeza que deseja excluir esse registro?</p>
 			</div>
 			<div class='modal-footer'>
-				<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-				<button type='button' class='site-btn' id='del'>Confirmar</button>
+				<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>
+				<button type='button' class='site-btn' id='del'>Sim</button>
 			</div>
 			</div>
 		</div>

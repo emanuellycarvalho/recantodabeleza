@@ -45,13 +45,15 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
+        $request['precoProduto'] = str_replace(',', '.', $request['precoProduto']);
+        $request['precoProduto'] = str_replace(' ', '', $request['precoProduto']);
+
         $data = $request->only('nmProduto', 'marca', 'descricao', 'qtd', 'precoProduto', 'comissao');
 
         if($request->hasFile('foto') && $request->foto->isValid()) {
             $fotoPath = $request->foto->store('productPhotos');
             $data['foto'] = $fotoPath;
         }
-
         $this->objProduct->create($data);
         return redirect('adm/product');
     }
@@ -90,6 +92,9 @@ class ProductController extends Controller
     public function update(ProductRequest $request, $id)
     {
         $prod=$this->objProduct->where('cdProduto', $id);
+        
+        $request['precoProduto'] = str_replace(',', '.', $request['precoProduto']);
+        $request['precoProduto'] = str_replace(' ', '', $request['precoProduto']);
         // $foto=DB::table('TbProduto')->select('foto')->where('cdProduto', $id)->get();        
         $data = $request->only('nmProduto', 'marca', 'descricao', 'qtd', 'precoProduto', 'comissao');
         

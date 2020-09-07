@@ -12,10 +12,14 @@
 				<div class='col-lg-7'>
 					<div class='cart-table'>
 						<div class='sup'>
-                            <h3>{{$services->descricao}}</h3>
+                            <h3>{{$services->nmServico}}</h3>
                             <br>
-                            <b>Valor: </b>R${{$services->valor}} <b> <b class='pink'> |</b> Comissão: </b> {{$services->comissao}}%
-                            <br><br><b> Funcionários aptos:</b>
+                            <h5>{{$services->descricao}}</h5>
+                            <br>
+                            @php $valorServico = str_replace('.', ',', $services->valorServico); @endphp
+                            <b>Valor: </b>R${{$valorServico}} <b> <b class='pink'> |</b> Comissão: </b> {{$services->comissao*100}}%
+                            <br>
+                            <br><b> Funcionários aptos:</b> por enquanto, não temos Funcionários aptos para realizar este serviço.
                             <div class='total-cost mt-3'>
                                 <a href='{{url("adm/service")}}' class='site-btn sb-dark'>Voltar</a>	
                             </div>

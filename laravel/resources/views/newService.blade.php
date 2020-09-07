@@ -24,7 +24,7 @@
 					<div class='row'>
 						<div class='col-md-12 col-xs-12'>
 							<div class='form-group'>
-								<label for='descricao'>Nome</label>
+								<label for='nome'>Nome</label>
 								<input type='text' name='nmServico' id='nmServico' placeholder='Nome do serviço' value='{{$svc->nmServico ?? old("nmServico")}}' autofocus required>
 							</div>
 						</div>					
@@ -50,11 +50,11 @@
 						<div class='col-md-12 col-xs-12'>
 							<div class='form-group'>
 								<label for='descricao'>Descrição</label>
-								<textarea name="descricao" id="descricao" cols="15" rows="5"></textarea>
+								<textarea name="descricao" id="descricao" cols="15" rows="5">{{$svc->descricao ?? old("descricao")}}</textarea>
 							</div>
 						</div>
 					</div>
-            
+
 					<div class='row justify-content-end'>
 						<a onclick='confirmarCancelar()' class='site-btn sb-dark' id='white'>Cancelar</a>
 						<button type='submit' class='site-btn'>Salvar</button>
@@ -70,18 +70,23 @@
 		<div class='modal-dialog' role='document'>
 			<div class='modal-content'>
 				<div class='modal-header'>
-					<h5 class='modal-title' id='confirmCancelLabel'>Confirmar</h5>
+					<h5 class='modal-title' id='confirmCancelLabel'>Confirmar cancelamento</h5>
 					<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
 					<span aria-hidden='true'>&times;</span>
 					</button>
 				</div>
 				<div class='modal-body'>
+				@if(isset($svc)) 
+					<h5>Deseja voltar para a tabela de serviços?</h5>
+					Se confirmar, os dados alterados serão perdidos.
+				@else
 					<h5>Deseja voltar para a tabela de serviços?</h5>
 					Se confirmar vai perder todos os dados inseridos no formulário.
+				@endif
 				</div>
 				<div class='modal-footer'>
-					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-					<a href='{{url("adm/employee")}}' class='site-btn' id='white' name='confirmar'>Confirmar</a>
+					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>
+					<a href='{{url("adm/employee")}}' class='site-btn' id='white' name='confirmar'>Sim</a>
 				</div>
 			</div>
 		</div>

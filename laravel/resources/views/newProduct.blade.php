@@ -75,7 +75,7 @@
 						<div class='col-md-12 col-xs-12'>
 							<div class='form-group'>
 								<label for='descricao'>Descrição</label>
-								<textarea name='descricao' id='descricao' placeholder='Descrição do produto para o cliente' value='{{$prod->descricao ?? "" }}'></textarea>
+								<textarea name='descricao' id='descricao' placeholder='Descrição do produto para o cliente'>{{$prod->descricao ?? old("descricao")}}</textarea>
 							</div>
 						</div>
 
@@ -85,7 +85,7 @@
 						<div class="col-md-12 col-xs-12">
 							<div class="form-group">
 								<label for="foto">Foto*</label>
-								<input class="form-control" id="foto" name="fotoProd" type="file" value='{{$prod->foto ?? ""}}' accept="image/png, image/jpeg">
+								<input class="form-control" id="foto" name="foto" type="file" value='{{$prod->foto ?? ""}}' accept="image/png, image/jpeg">
 							</div>			
 						</div>
 
@@ -129,18 +129,23 @@
 		<div class='modal-dialog' role='document'>
 			<div class='modal-content'>
 				<div class='modal-header'>
-					<h5 class='modal-title' id='confirmCancelLabel'>Confirmar</h5>
+					<h5 class='modal-title' id='confirmCancelLabel'>Confirmar cancelamento</h5>
 					<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
 					<span aria-hidden='true'>&times;</span>
 					</button>
 				</div>
 				<div class='modal-body'>
+				@if(isset($prod)) 
 					<h5>Deseja voltar para a tabela de produtos?</h5>
-					Os novos dados inseridos serão perdidos.
+					Se confirmar, os dados alterados serão perdidos.
+				@else
+					<h5>Deseja voltar para a tabela de produtos?</h5>
+					Se confirmar vai perder todos os dados inseridos no formulário.
+				@endif
 				</div>
 				<div class='modal-footer'>
-					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-					<a href='{{url("adm/product")}}' class='site-btn' id='white'>Confirmar</a>
+					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>
+					<a href='{{url("adm/product")}}' class='site-btn' id='white'>Sim</a>
 				</div>
 			</div>
 		</div>

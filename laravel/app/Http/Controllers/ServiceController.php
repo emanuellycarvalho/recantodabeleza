@@ -32,6 +32,8 @@ class ServiceController extends Controller
      */
     public function store(ServiceRequest $request)
     {
+        $request['valorServico'] = str_replace(',', '.', $request['valorServico']);
+        $request['valorServico'] = str_replace(' ', '', $request['valorServico']);
         if ($this->objService->create([
             'nmServico' =>$request->nmServico,
             'descricao'=>$request->descricao,
@@ -63,6 +65,7 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $svc = $this->objService->where('cdServico', $id)->first();
+        $svc->comissao = $svc->comissao*100;
         return view('newService', compact('svc'));
     }
 
@@ -75,6 +78,8 @@ class ServiceController extends Controller
      */
     public function update(ServiceRequest $request, $id)
     {
+        $request['valorServico'] = str_replace(',', '.', $request['valorServico']);
+        $request['valorServico'] = str_replace(' ', '', $request['valorServico']);
         $this->objService->where('cdServico', $id)->update([
                 'nmServico' =>$request->nmServico,
                 'descricao'=>$request->descricao,

@@ -4,7 +4,7 @@
 	@section('title') Editar Cliente @endsection('title')
 	@section('icon') <img src='{{url("/img/icons/editClient-light.png")}}' width='35px'> @endsection('icon')
 @else
-	@section('title') Novo Cliente @endsection('title')
+	@section('title') Adicionar Cliente @endsection('title')
 	@section('icon') <img src='{{url("/img/icons/newClient-light.png")}}' width='35px'> @endsection('icon')
 @endif
 
@@ -292,18 +292,23 @@
 		<div class='modal-dialog' role='document'>
 			<div class='modal-content'>
 				<div class='modal-header'>
-					<h5 class='modal-title' id='confirmCancelLabel'>Confirmar</h5>
+					<h5 class='modal-title' id='confirmCancelLabel'>Confirmar cancelamento</h5>
 					<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
 					<span aria-hidden='true'>&times;</span>
 					</button>
 				</div>
 				<div class='modal-body'>
+				@if(isset($svc)) 
 					<h5>Deseja voltar para a tabela de clientes?</h5>
-					Os novos dados inseridos serão perdidos.
+					Se confirmar, os dados alterados serão perdidos.
+				@else
+					<h5>Deseja voltar para a tabela de clientes?</h5>
+					Se confirmar vai perder todos os dados inseridos no formulário.
+				@endif
 				</div>
 				<div class='modal-footer'>
-					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-					<a href='{{url("adm/custloyee")}}' class='site-btn' id='white'>Confirmar</a>
+					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>
+					<a href='{{url("adm/custloyee")}}' class='site-btn' id='white'>Sim</a>
 				</div>
 			</div>
 		</div>

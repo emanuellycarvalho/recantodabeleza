@@ -15,6 +15,7 @@ $(document).ready(function(){
       cep: 'required',
       cpf: 'required',
       cnpj: 'required',
+      rg:'required',
       rua: 'required',
       cidade: 'required',
       bairro: 'required',

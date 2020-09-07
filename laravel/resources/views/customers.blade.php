@@ -21,14 +21,14 @@
 							</div>
 						</div>
 						<div class='col-xl-1 col-lg-5'>
-							<a href='{{url("adm/customer/create")}}' title='Novo servico'><img class='responsive' src='{{url("/img/icons/newClient.png")}}' width='70px'></a>
+							<a href='{{url("adm/customer/create")}}' title='Adicionar cliente'><img class='responsive' src='{{url("/img/icons/newClient.png")}}' width='70px'></a>
 						</div>
 					</div>
 				</div>
 				<div class='col-lg-9'>  
 					<div class='exhibit-title'>
 						<hr> Exibindo {{$customers->count()}} de {{$customers->total()}} <hr>
-					</div>
+				</div>
 					<div class='cart-table'>
 						<div class='cart-table-warp'>
 							@csrf
@@ -37,7 +37,7 @@
 								<tr>
 									<th class='product-th'><br>Nome e contato</th>
 									<th class='quy-th'><br>E-mail</th>
-                                    <th class='quy-th' id='none'><br>Ver mais</th>
+                                    <th class='quy-th' id='none'><br>Visualizar</th>
                                     <th class='quy-th' id='none'><br>Editar</th>
 									<th class='quy-th' id='none'><br>Excluir</th>
 								</tr>
@@ -85,11 +85,11 @@
 				</button>
 			</div>
 			<div class='modal-body'>
-				<p>Tem certeza que quer excluir esse registro?</p>
+				<p>Tem certeza que deseja excluir esse registro?</p>
 			</div>
 			<div class='modal-footer'>
-				<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-				<button type='button' class='site-btn' id='del'>Confirmar</button>
+				<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>
+				<button type='button' class='site-btn' id='del'>Sim</button>
 			</div>
 			</div>
 		</div>

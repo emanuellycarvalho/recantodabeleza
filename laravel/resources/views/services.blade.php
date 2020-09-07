@@ -21,7 +21,7 @@
 							</div>
 						</div>
 						<div class='col-xl-1 col-lg-5'>
-							<a href='{{url("adm/service/create")}}' title='Novo servico'><img class='responsive' src='{{url("/img/icons/newService.png")}}' width='70px'></a>
+							<a href='{{url("adm/service/create")}}' title='Adicionar serviço'><img class='responsive' src='{{url("/img/icons/newService.png")}}' width='70px'></a>
 						</div>
 					</div>
 				</div>
@@ -38,7 +38,7 @@
 									<th class='product-th'><br>Descrição</th>
 									<th class='quy-th'><br>Valor</th>
 									<th class='quy-th'><br>Comissão</th>
-                                    <th class='quy-th' id='none'><br>Ver mais</th>
+                                    <th class='quy-th' id='none'><br>Visualizar</th>
                                     <th class='quy-th' id='none'><br>Editar</th>
 									<th class='quy-th' id='none'><br>Excluir</th>
 								</tr>
@@ -53,8 +53,9 @@
                                             </div>
                                         </a>
 									</td>
-									<td class='quy-col mt-3'><center>R${{$svc->valorServico}}</center></td>
-									<td class='quy-col mt-3'><center>{{$svc->comissao}}%</center></td>
+									@php $valorServico = str_replace('.', ',', $svc->valorServico); @endphp
+									<td class='quy-col mt-3'><center>R${{$valorServico}}</center></td>
+									<td class='quy-col mt-3'><center>{{$svc->comissao*100}}%</center></td>
                                     <td class='quy-col mt-3'><center><a href='{{url("adm/service/$svc->cdServico")}}' title='Visualizar serviço'><img class='responsive' src='{{url("/img/icons/seeService.png")}}' height='35px'></a></center></td>
                                     <td class='quy-col mt-3'><center><a href='{{url("/adm/service/$svc->cdServico/edit")}}' title='Editar serviço'><img class='responsive' src='{{url("/img/icons/editService.png")}}' height='35px'></a></center></td>
 									<td class='quy-col mt-3'><center><a href='{{url("adm/service/$svc->cdServico")}}' title='Excluir serviço' class='js-del'><img class='responsive' src='{{url("/img/icons/deleteService.png")}}' height='35px'></a></center></td>
@@ -86,11 +87,11 @@
 				</button>
 			</div>
 			<div class='modal-body'>
-				<p>Tem certeza que quer excluir esse registro?</p>
+				<p>Tem certeza que deseja excluir esse registro?</p>
 			</div>
 			<div class='modal-footer'>
-				<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-				<button type='button' class='site-btn' id='del'>Confirmar</button>
+				<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>
+				<button type='button' class='site-btn' id='del'>Sim</button>
 			</div>
 			</div>
 		</div>
