@@ -74,6 +74,73 @@ $(document).ready(function(){
     }
   });
 
+    //VALIDATE
+    $('#cadastro1').validate({
+      rules: {
+        nome: 'required',
+        tipo: {
+          min: 1
+        },
+        telefone: 'required',
+        cep: 'required',
+        cpf: 'required',
+        cnpj: 'required',
+        numero: 'required',
+        marca: 'required',
+        cliente: 'required',
+        inicio: 'required',
+        fim: 'required',
+        senha2: 'required',
+        senha: {
+          required: true,
+          minlength: 6
+        },
+        comissao:{
+          required: true,
+          min: 0,
+          max: 100
+        },
+        total:{
+          required: true,
+          min: 1
+        },
+        qtd:{
+          required: true,
+          min: 1
+        },
+        preco: 'required',
+        email: {
+          required: true,
+          email: true
+        },
+      },
+      messages: {
+        tipo: {
+          min: 'Por favor, selecione uma opção.'
+        }, 
+        total: {
+          min: 'Valor inválido'
+        }
+      },
+      errorElement: 'em',
+      errorPlacement: function (error, element) {
+          // Add the `invalid-feedback` class to the error element
+          error.addClass('error-msg');
+  
+          if (element.prop('type') === 'checkbox') {
+              error.insertAfter(element.next('label'));
+          } else {
+              error.insertAfter(element);
+          }
+      },
+      highlight: function (element, errorClass, validClass) {
+          $(element).addClass('is-invalid').removeClass('is-valid');
+      },
+      unhighlight: function (element, errorClass, validClass) {
+          $(element).addClass('is-valid').removeClass('is-invalid');
+      }
+    });
+
   $('#cadastroClienteSimples').validate({
     rules:{
       nome: 'required',
@@ -88,79 +155,103 @@ $(document).ready(function(){
     //VERIFICAR CNPJ
     $('#cnpj').blur(function(){
 
-      document.getElementById('cnpj').style.boxShadow = 'none';
-      $('#verificarCNPJ').hide();
+     if($(this).val() != null || $(this).val() != '')
+      return;
 
-      if(!validaCPFeCNPJ($('#cnpj').val())){
+      if(!validaCPFeCNPJ($(this).val())){
         document.getElementById('cnpj').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
         $('#verificarCNPJ').show();
+        return;
       } 
+
+      document.getElementById('cnpj').style.boxShadow = 'none';
+      $('#verificarCNPJ').hide();
+      return;
 
     });
 
     //VERIFICAR CNPJ
     $('#cpf').blur(function(){
 
-      document.getElementById('cpf').style.boxShadow = 'none';
-      $('#verificarCPF').hide();
+      if($(this).val() == null || $(this).val() == '')
+        return;
 
-      if(!validaCPFeCNPJ($('#cpf').val())){
+      if(!validaCPFeCNPJ($(this).val())){
         document.getElementById('cpf').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
         $('#verificarCPF').show();
+        return;
       } 
+
+      document.getElementById('cpf').style.boxShadow = 'none';
+      $('#verificarCPF').hide();
+      return;
 
     });
 
     //VERIFICAR SENHA ONINPUT
     $('#senha2').on('input', function(){
 
+      if($('#senha').val()== null || $('#senha').val() == '')
+        return;
+
       if ($('#senha').val() != $('#senha2').val()){
         $('#verificarSenha').show();
         document.getElementById('senha2').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
-      } else{
-        $('#verificarSenha').hide();
-        document.getElementById('senha2').style.boxShadow = 'none';
+        return;
       }
+      
+      $('#verificarSenha').hide();
+      document.getElementById('senha2').style.boxShadow = 'none';
+      return;
 
     });
 
      //VERIFICAR DATA DE NASCIMENTO
      $('#dtNasc').blur(function(){
 
-      document.getElementById('dtNasc').style.boxShadow = 'none';
-      $('#verificarDtNasc').hide();
+      if($(this).val() == null || $(this).val() == '')
+        return;
 
-      if(!verificarData($('#dtNasc').val())){
+      if(!verificarData($(this).val())){
         document.getElementById('dtNasc').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
         $('#verificarDtNasc').show();
+        return;
       } 
+
+      document.getElementById('dtNasc').style.boxShadow = 'none';
+      $('#verificarDtNasc').hide();
 
     });
 
     //VERIFICAR PRECO ONINPUT
     $('#preco').on('input', function(){
 
-      $('#verificarPreco').hide();
-      document.getElementById('senha2').style.boxShadow = 'none';
-
-      var a = parseFloat($('#preco').val());
+      var a = parseFloat($(this).val());
       if (a < 1){
         document.getElementById('preco').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
         $('#verificarPreco').show();
+        return;
       }
 
+      $('#verificarPreco').hide();
+      document.getElementById('senha2').style.boxShadow = 'none';
+      return;
     });
 
     //VERIFICAR TELEFONE BLUR
     $('#telefone').blur(function(){
-      
-      document.getElementById('telefone').style.boxShadow = 'none';
-        $('#verificarTelefone').hide();
 
-      if(!(/^\((?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/.test($('#telefone').val()))){
+      if($(this).val() == null || $(this).val() == '')
+        return;    
+
+      if(!(/^\((?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/.test($(this).val()))){
         document.getElementById('telefone').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
         $('#verificarTelefone').show();
+        return;
       }
+
+      document.getElementById('telefone').style.boxShadow = 'none';
+      $('#verificarTelefone').hide();
 
     });
 
@@ -232,6 +323,9 @@ $(document).ready(function(){
 
   //VERIFICAR DATA
   function verificarData(data){
+    if(data == null || data == '')
+      return true;
+
     reg = /[^\d\/\.]/gi;                  // Mascara = dd/mm/aaaa | dd.mm.aaaa
     var valida = data.replace(reg,'');    // aplica mascara e valida só numeros
     if (valida && valida.length == 10) {  // é válida, então ;)
@@ -257,6 +351,9 @@ $(document).ready(function(){
   }
 
   function validaCPFeCNPJ(val) {
+    if(val == null || val == '')
+      return true;
+
     if (val.length == 14) {
         var cpf = val.trim();
      

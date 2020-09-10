@@ -19,11 +19,15 @@
                             <br><br>
                             <div class='cart-table-warp mb-3'>
                                 <div class='row'> <!-- Contato -->
-                                    <div class='col-lg-6 order-2 order-lg-0'><br>
-                                        <b> Telefone </b> {{$emp->telefone}} <br> <b>E-mail </b> {{$emp->email}}
+                                    
+                                    <div class='col-lg-6 order-2 order-lg-0'>
+                                        <b>Rua </b>{{$emp->rua}}, {{$emp->numero}} <br>
+                                        <b>Bairro</b> {{$emp->bairro}} <br> 
+                                        <b>Cidade </b>{{$emp->cidade}} <br>
+                                        <b>CEP: </b> {{$emp->cep ?? '' }} 
                                     </div>
-                                    <div class='col-lg-6 order-2 order-lg-1'>
-                                        {{$emp->rua}}, n° {{$emp->numero}}, Bairro {{$emp->bairro}}, <br> {{$emp->cidade}} - {{$emp->cep ?? '' }} 
+                                    <div class='col-lg-6 order-2 order-lg-1'><br>
+                                        <b> Telefone </b> {{$emp->telefone}} <br> <b>E-mail </b> {{$emp->email}}
                                     </div>
                                 </div>
                             </div>

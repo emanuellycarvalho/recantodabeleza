@@ -36,10 +36,10 @@
 							<thead>
 								<tr>
 									<th class='product-th'><br>Nome</th>
-									<th class='quy-th'><a href='{{url("adm/employeeType")}}' class='pink'>Ver tipos</a> <br>Tipo</th>
+									<th class='quy-th'><br>Tipo</th>
 									<th class='quy-th'><br>Telefone</th>
 									<th class='quy-th'><br></th>
-                                    <th class='quy-th' id='none'><br>Ver mais</th>
+                                    <th class='quy-th' id='none'><br>Visualizar</th>
                                     <th class='quy-th' id='none'><br>Editar</th>
 									<th class='quy-th' id='none'><br>Excluir</th>
 								</tr>

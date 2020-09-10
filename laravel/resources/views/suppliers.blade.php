@@ -41,7 +41,7 @@
 									<th class='product-th'>Nome</th>
 									<th class='quy-th'>Telefone</th>
 									<th class='quy-th'></th>
-                                    <th class='quy-th' id='none'>Ver mais</th>
+                                    <th class='quy-th' id='none'>Visualizar</th>
                                     <th class='quy-th' id='none'>Editar</th>
 									<th class='quy-th' id='none'>Excluir</th>
 								</tr>

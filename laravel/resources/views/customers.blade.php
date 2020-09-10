@@ -37,7 +37,7 @@
 								<tr>
 									<th class='product-th'><br>Nome e contato</th>
 									<th class='quy-th'><br>E-mail</th>
-                                    <th class='quy-th' id='none'><br>Ver mais</th>
+                                    <th class='quy-th' id='none'><br>Visualizar</th>
                                     <th class='quy-th' id='none'><br>Editar</th>
 									<th class='quy-th' id='none'><br>Excluir</th>
 								</tr>

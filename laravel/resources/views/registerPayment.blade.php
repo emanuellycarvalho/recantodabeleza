@@ -48,7 +48,7 @@
                                     <tr>
                                         <th class='quy-th'>Data</th>
                                         <th class='quy-th'>Valor Total</th>
-                                        <th class='quy-th' id='none'>Ver mais</th>
+                                        <th class='quy-th' id='none'>Visualizar</th>
                                         <th class='quy-th' id='none'>Pago</th>
                                     </tr>
                                 </thead>
@@ -106,8 +106,8 @@
     <script>
 
         $('#search').on('click', function(event){
-            const cli = $('#cliente').val();
             event.preventDefault;
+            const cli = $('#cliente').val();
 
             $.ajax
                 ({ 
@@ -119,9 +119,7 @@
                         $('tbody').html('');
                         data.map(function(item){
                             if(item.cdCliente == cli){
-                                console.log(cli);
                                 var action = `{{url("/adm/customer/updateAttendances/`+ cli + `")}}`;
-                                console.log(action);
                                 var date = item.dtAtendimento;
                                 date = date.split('-');
                                 date = date[2] + '/' + date[1] + '/' + date[0];

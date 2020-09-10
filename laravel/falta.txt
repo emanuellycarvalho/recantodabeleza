@@ -2,7 +2,6 @@ Fernando:
 ???
 
 Manu:
-- verificar toda a validação
-- uniformizar as mensagens
-- funcionario data, adicionar tipo
-- formatar o menu
+funcionário
+- verificar cpf e email já existentes
+(pode deixar?)

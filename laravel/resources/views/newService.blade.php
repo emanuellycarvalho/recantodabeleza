@@ -80,8 +80,8 @@
 					Se confirmar vai perder todos os dados inseridos no formulário.
 				</div>
 				<div class='modal-footer'>
-					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-					<a href='{{url("adm/employee")}}' class='site-btn' id='white' name='confirmar'>Confirmar</a>
+					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>
+					<a href='{{url("adm/employee")}}' class='site-btn' id='white' name='confirmar'>Sim</a>
 				</div>
 			</div>
 		</div>
