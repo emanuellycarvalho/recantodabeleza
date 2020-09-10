@@ -96,8 +96,8 @@
 				<p>Tem certeza que quer excluir esse registro?</p>
 			</div>
 			<div class='modal-footer'>
-				<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-				<button type='button' class='site-btn' id='del'>Confirmar</button>
+				<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>
+				<button type='button' class='site-btn' id='del'>Sim</button>
 			</div>
 			</div>
 		</div>
