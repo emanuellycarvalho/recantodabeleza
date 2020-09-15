@@ -13,18 +13,7 @@
 <!-- Contact section -->
 <section class='contact-section'>
 		<div class='container'>
-			@if(isset($errors) && count($errors) > 0) 
-				@foreach($errors->all() as $error)
-					<div class='row justify-content-center'>
-						<div class='text-center mb-1 col-lg-8 alert-danger'>
-						{{$error}} <br>		
-						</div>
-					</div>					
-				@endforeach
-			@endif
-			@if(isset($errorCEP)) 
-				{{$errorCEP}}
-			@endif
+			
 			<div class='col-lg-10 offset-md-1'>
 				@if(isset($emp)) 
 					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/employee/$emp->cdFuncionario")}}'>
@@ -113,7 +102,13 @@
 								<label for='cpf'>CPF*</label>
 								<input type='text' name='cpf' id='cpf' value='{{$emp->cpf ?? old("cpf")}}'>
 								<small id='verificarCPF' class='verificar'>
-									O CPF que você inseriu é inválido.
+									@if(isset($errors) && count($errors) > 0) 
+										@foreach($errors->all() as $error)
+											@if(strpos($error, "CPF") != false)
+												O CPF que você inseriu já foi cadastrado no sistema.
+											@endif				
+										@endforeach
+									@endif
 								</small>
 							</div>
 						</div>
@@ -283,7 +278,7 @@
 		</div>
 	</div>
 
-	<script>  
+	<script>   
 
 		window.confirmarCancelar = function(){
             if(verificarCampos()){

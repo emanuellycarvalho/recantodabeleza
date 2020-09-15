@@ -178,6 +178,7 @@ $(document).ready(function(){
 
       if(!validaCPFeCNPJ($(this).val())){
         document.getElementById('cpf').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+        document.getElementById('cpf').innerText = 'O CPF que você inseriu é inválido.'
         $('#verificarCPF').show();
         return;
       } 
