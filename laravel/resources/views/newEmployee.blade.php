@@ -13,6 +13,13 @@
 <!-- Contact section -->
 <section class='contact-section'>
 		<div class='container'>
+			@if(isset($errors) && count($errors) > 0) 
+				@foreach($errors->all() as $error)
+					@if(strpos($error, "CPF") !== false)
+						O CPF que você inseriu já foi cadastrado no sistema.
+					@endif				
+				@endforeach
+			@endif
 			
 			<div class='col-lg-10 offset-md-1'>
 				@if(isset($emp)) 
@@ -102,13 +109,7 @@
 								<label for='cpf'>CPF*</label>
 								<input type='text' name='cpf' id='cpf' value='{{$emp->cpf ?? old("cpf")}}'>
 								<small id='verificarCPF' class='verificar'>
-									@if(isset($errors) && count($errors) > 0) 
-										@foreach($errors->all() as $error)
-											@if(strpos($error, "CPF") != false)
-												O CPF que você inseriu já foi cadastrado no sistema.
-											@endif				
-										@endforeach
-									@endif
+									
 								</small>
 							</div>
 						</div>
