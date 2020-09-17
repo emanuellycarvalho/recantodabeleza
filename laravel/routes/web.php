@@ -16,13 +16,14 @@ use Carbon\Carbon;
 
 //Route::resource('/', 'ClientController@index');
 
-Route::get('/adm', 'FullCalendar@index');
-Route::get('/adm/index', 'FullCalendar@index');
-Route::get('/load-events', 'SchedulingController@loadEvents')->name('routeLoadEvents');
+Route::get('adm', 'FullCalendar@index');
+Route::get('adm/index', 'FullCalendar@index');
+Route::get('load-events', 'SchedulingController@loadEvents')->name('routeLoadEvents');
 Route::get('adm/registerPayment', 'AttendanceController@registerPayment');
 Route::get('getAttendances', 'AttendanceController@getAttendances')->name('getAttendances');
 Route::get('getUnpaidAttendances', 'AttendanceController@getUnpaidAttendances')->name('getUnpaidAttendances');
 Route::post('adm/customer/updateAttendances/{id}', 'CustomerController@UpdateAttendances');
+Route::post('adm/newEmpType', 'EmployeeTypeController@store')->name('newEmpType');
 Route::view('adm/more', 'more');
 Route::resource('adm/product', 'ProductController');
 Route::resource('adm/employee', 'EmployeeController');

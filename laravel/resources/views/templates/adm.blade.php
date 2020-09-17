@@ -100,6 +100,7 @@
                                     <li><a href='{{url("adm/product")}}'>Produtos</a></li>
                                     <li><a href='{{url("/adm/employee")}}'>Funcionários</a></li>
                                     <li><a href='{{url("/adm/supplier")}}'>Fornecedores</a></li>
+                                    <li><a href='{{url("adm/employeeType")}}'>Tipos de funcionário</a></li>
                                 </ul>
                             </li>
                             <li><a href='#'>Relatorios</a></li>

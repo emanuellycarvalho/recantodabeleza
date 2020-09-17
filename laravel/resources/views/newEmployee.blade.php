@@ -4,15 +4,27 @@
 	@section('title') Editar Funcionário @endsection('title')
 	@section('icon') <img src='{{url("/img/icons/editEmployee-light.png")}}' width='35px'> @endsection('icon')
 @else
-	@section('title') Novo Funcionário @endsection('title')
+	@section('title') Adicionar Funcionário @endsection('title')
 	@section('icon') <img src='{{url("/img/icons/newEmployee-light.png")}}' width='35px'> @endsection('icon')
 @endif
 
 @section('content') 
 
-	<!-- Contact section -->
-	<section class='contact-section'>
+<!-- Contact section -->
+<section class='contact-section'>
 		<div class='container'>
+			@if(isset($errors) && count($errors) > 0) 
+				@foreach($errors->all() as $error)
+					<div class='row justify-content-center'>
+						<div class='text-center mb-1 col-lg-8 alert-danger'>
+						{{$error}} <br>		
+						</div>
+					</div>					
+				@endforeach
+			@endif
+			@if(isset($errorCEP)) 
+				{{$errorCEP}}
+			@endif
 			<div class='col-lg-10 offset-md-1'>
 				@if(isset($emp)) 
 					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/employee/$emp->cdFuncionario")}}'>
@@ -73,7 +85,7 @@
 						</div> 
 
 						<div class='col-md-1 col-xs-12'>
-							<button type='button' class='plus-btn' data-toggle='modal' data-target='#newTypeModal'> + </button>
+							<button type='button' class='plus-btn' data-toggle='modal' data-target='#newTypeModal' tabindex='-1'> + </button>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
@@ -162,21 +174,21 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='rua'>Rua*</label>
-								<input type='text' name='rua' id='rua' value='{{$emp->rua ?? old("rua")}}'>
+								<input type='text' name='rua' id='rua' value='{{$emp->rua ?? old("rua")}}' readonly>
 							</div>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='bairro'>Bairro*</label>
-								<input type='text' name='bairro' id='bairro' value='{{$emp->bairro ?? old("bairro")}}'>
+								<input type='text' name='bairro' id='bairro' value='{{$emp->bairro ?? old("bairro")}}' readonly>
 							</div>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='cidade'>Cidade*</label>
-								<input type='text' name='cidade' id='cidade' value='{{$emp->cidade ?? old("cidade")}}'>
+								<input type='text' name='cidade' id='cidade' value='{{$emp->cidade ?? old("cidade")}}' readonly>
 							</div>
 						</div>
 
@@ -233,7 +245,7 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='salarioBase'>Salário Base*</label>
-								<input type='text' name='salarioBase' id='salarioBase' placeholder='Nome'>
+								<input type='text' name='salarioBase' id='salarioBase' placeholder='00 000,00'>
 							</div>
 						</div>
 					</div>
@@ -264,14 +276,14 @@
 					Os novos dados inseridos serão perdidos.
 				</div>
 				<div class='modal-footer'>
-					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-					<a href='{{url("adm/employee")}}' class='site-btn' id='white'>Confirmar</a>
+					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>
+					<a href='{{url("adm/employee")}}' class='site-btn' id='white'>Sim</a>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<script> 
+	<script>  
 
 		window.confirmarCancelar = function(){
             if(verificarCampos()){
@@ -311,6 +323,7 @@
 		}
 
 		function saveData(){
+			localStorage.clear();
 			localStorage.setItem('nome', $('#nome').val());
 			localStorage.setItem('telefone', $('#telefone').val());
 			localStorage.setItem('dtNasc', $('#dtNasc').val());

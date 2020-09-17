@@ -41,7 +41,7 @@
 									<th class='product-th'>Nome</th>
 									<th class='quy-th'>Telefone</th>
 									<th class='quy-th'></th>
-                                    <th class='quy-th' id='none'>Ver mais</th>
+                                    <th class='quy-th' id='none'>Visualizar</th>
                                     <th class='quy-th' id='none'>Editar</th>
 									<th class='quy-th' id='none'>Excluir</th>
 								</tr>
@@ -93,8 +93,8 @@
 				<p>Tem certeza que quer excluir esse registro?</p>
 			</div>
 			<div class='modal-footer'>
-				<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-				<button type='button' class='site-btn' id='del'>Confirmar</button>
+				<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>
+				<button type='button' class='site-btn' id='del'>Sim</button>
 			</div>
 			</div>
 		</div>

@@ -94,8 +94,8 @@
 					Os novos dados inseridos serão perdidos.
 				</div>
 				<div class='modal-footer'>
-					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-					<a href='{{url("adm/supplier")}}' class='site-btn' id='white'>Confirmar</a>
+					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>
+					<a href='{{url("adm/supplier")}}' class='site-btn' id='white'>Sim</a>
 				</div>
 			</div>
 		</div>
