@@ -17,16 +17,6 @@
 		<div class='container'>
 			<div class='row justify-content-center'>
                 <div class='col-lg-8'>
-                    <div class='text-center mb-5 alert-danger'>
-                        @if(isset($errors) && count($errors) > 0) 
-                            @foreach($errors->all() as $error)
-                                {{$error}} <br>							
-                            @endforeach
-                        @endif
-                        @if(isset($errorCEP)) 
-                            {{$errorCEP}}
-                        @endif
-                    </div>
                 </div>
                 <div class='col-lg-6'>
                 @if(isset($scd)) 
@@ -111,7 +101,7 @@
                                                 if(sessionStorage.getItem('values') != null){
                                                     values = sessionStorage.getItem('values');
                                                 }
-                                                var val = values + '{{$svc->valor}}';
+                                                var val = values + '{{$svc->valorServico}}';
                                                 values[{{$svc->cdServico}}] = val;
                                                 sessionStorage.setItem('values', values);
                                             </script> 
@@ -123,7 +113,7 @@
                                 <div id='valores' hidden>
                                     <select multiple name='valores' id='valores' readonly>
                                         @foreach($services as $svc)
-                                            <option label='{{$svc->cdServico}}' value='{{$svc->valor}}'></option>
+                                            <option label='{{$svc->cdServico}}' value='{{$svc->valorServico}}'></option>
                                         @endforeach
                                     </select> 
                                 </div>

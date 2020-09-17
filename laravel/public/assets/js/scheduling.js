@@ -182,7 +182,7 @@ function validarHora(){
     algoErrado = true;
     }
     
-    if(horaInicio < inicio || horaFim < inicio || horaInicio > fim || horaFim > fim){
+    if((horaInicio != '' || horaFim != '') || horaInicio < inicio || horaFim < inicio || horaInicio > fim || horaFim > fim){
     document.getElementById('validarHora').innerHTML = 'O estabelecimento funciona de 7:00 à 17:00';
     algoErrado = true;
     }
