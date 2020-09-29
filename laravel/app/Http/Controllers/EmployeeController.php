@@ -140,5 +140,13 @@ class EmployeeController extends Controller
     {
         $del = $this->objEmployee->where('cdFuncionario', $id)->delete();
     }
+
+    public function getCPFs(){
+        return $this->objEmployee->whereNotNull('cpf')->get(); 
+    }
+
+    public function getEmails(){
+        return $this->objEmployee->whereNotNull('email')->get(); 
+    }
   
 }

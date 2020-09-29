@@ -22,6 +22,12 @@ Route::get('load-events', 'SchedulingController@loadEvents')->name('routeLoadEve
 Route::get('adm/registerPayment', 'AttendanceController@registerPayment');
 Route::get('getAttendances', 'AttendanceController@getAttendances')->name('getAttendances');
 Route::get('getUnpaidAttendances', 'AttendanceController@getUnpaidAttendances')->name('getUnpaidAttendances');
+Route::get('getCustomersCPFs', 'CustomerController@getCPFs')->name('getCustomersCPFs');
+Route::get('getCustomersEmails', 'CustomerController@getEmails')->name('getCustomersEmails');
+Route::get('getEmployeesCPFs', 'EmployeeController@getCPFs')->name('getEmployeesCPFs');
+Route::get('getEmployeesEmails', 'EmployeeController@getEmails')->name('getEmployeesEmails');
+Route::get('getSuppliersEmails', 'SupplierController@getEmails')->name('getSuppliersEmails');
+Route::get('getSuplliersCNPJs', 'SupplierController@getCNPJs')->name('getSuplliersCNPJs');
 Route::post('adm/customer/updateAttendances/{id}', 'CustomerController@UpdateAttendances');
 Route::post('adm/newEmpType', 'EmployeeTypeController@store')->name('newEmpType');
 Route::view('adm/more', 'more');
