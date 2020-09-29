@@ -14,38 +14,47 @@ use Carbon\Carbon;
 |
 */ 
 
-//Route::resource('/', 'ClientController@index');
+//OTHERS
+Route::resource('adm/product', 'ProductController');
+Route::resource('adm/service', 'ServiceController');
 
-Route::get('adm', 'FullCalendar@index');
-Route::get('adm/index', 'FullCalendar@index');
-Route::get('load-events', 'SchedulingController@loadEvents')->name('routeLoadEvents');
+//ATTENDANCE
 Route::get('adm/registerPayment', 'AttendanceController@registerPayment');
 Route::get('getAttendances', 'AttendanceController@getAttendances')->name('getAttendances');
 Route::get('getUnpaidAttendances', 'AttendanceController@getUnpaidAttendances')->name('getUnpaidAttendances');
+Route::resource('adm/attendance', 'AttendanceController');
+
+//CUSTOMER
 Route::get('getCustomersCPFs', 'CustomerController@getCPFs')->name('getCustomersCPFs');
 Route::get('getCustomersEmails', 'CustomerController@getEmails')->name('getCustomersEmails');
+Route::resource('adm/customer', 'CustomerController');
+
+//EMPLOYEE + TYPE
 Route::get('getEmployeesCPFs', 'EmployeeController@getCPFs')->name('getEmployeesCPFs');
 Route::get('getEmployeesEmails', 'EmployeeController@getEmails')->name('getEmployeesEmails');
+Route::post('adm/newEmpType', 'EmployeeTypeController@store')->name('newEmpType');
+Route::resource('adm/employee', 'EmployeeController');
+Route::resource('adm/employeeType', 'EmployeeTypeController');
+
+//SUPPLIER
 Route::get('getSuppliersEmails', 'SupplierController@getEmails')->name('getSuppliersEmails');
 Route::get('getSuplliersCNPJs', 'SupplierController@getCNPJs')->name('getSuplliersCNPJs');
 Route::post('adm/customer/updateAttendances/{id}', 'CustomerController@UpdateAttendances');
-Route::post('adm/newEmpType', 'EmployeeTypeController@store')->name('newEmpType');
-Route::view('adm/more', 'more');
-Route::resource('adm/product', 'ProductController');
-Route::resource('adm/employee', 'EmployeeController');
 Route::resource('adm/supplier', 'SupplierController');
-Route::resource('adm/scheduling', 'SchedulingController');
-Route::resource('adm/attendance', 'AttendanceController');
-//Route::get('employee/search', 'EmployeeController@search');
-Route::resource('adm/employeeType', 'EmployeeTypeController');
-Route::resource('adm/service', 'ServiceController');
-Route::resource('adm/customer', 'CustomerController');
-Route::resource('adm/attendance', 'AttendanceController');
+
+//SCHEDULING
 Route::get('adm/scheduling/create/{date}', 'SchedulingController@create');
 Route::get('adm/scheduling/create', function() {
     $url = 'adm/scheduling/create/' . Carbon::now()->format('Y-m-d');
     return redirect($url);
 });
+Route::resource('adm/scheduling', 'SchedulingController');
+
+//GENERAL
+Route::view('adm/more', 'more');
+Route::get('adm', 'FullCalendar@index');
+Route::get('adm/index', 'FullCalendar@index');
+Route::get('load-events', 'SchedulingController@loadEvents')->name('routeLoadEvents');
 
 Route::get('/cep', function(){
     $cepResponse = cep('01010000');
