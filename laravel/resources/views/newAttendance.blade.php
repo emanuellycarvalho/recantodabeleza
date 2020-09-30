@@ -158,7 +158,7 @@
                             <div id='valores' hidden>
                                 <select multiple name='valores' id='valores' readonly>
                                     @foreach($services as $svc)
-                                        <option label='{{$svc->cdServico}}' value='{{$svc->valor}}'></option>
+                                        <option label='{{$svc->cdServico}}' value='{{$svc->valorServico}}'></option>
                                     @endforeach
                                 </select> 
                             </div>
@@ -259,7 +259,7 @@
                                     @endforeach
                                 </select> 
                             </div>
-
+ 
                             <div class='col-md-4 col-xs-12'>
                                 <label for='precoProduto'>Valor unitário*</label>
                                 <input type='text' name='precoProduto' id='precoProduto' placeholder= '00.00'>
@@ -331,7 +331,7 @@
                     
                 </div> <!-- end form footer -->
             </form> <!-- end form -->
-            </div> <!-- jutify content center -->
+            </div> <!-- jutify content center --> 
 		</div> <!-- container -->
 	</section>
     <!-- Suppliers section end -->
