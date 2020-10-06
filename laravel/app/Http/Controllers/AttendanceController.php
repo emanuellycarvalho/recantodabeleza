@@ -35,7 +35,7 @@ class AttendanceController extends Controller
 
     public function index()
     {
-        return view('attendances');
+        return view('index');
     }
 
     public function create()
@@ -65,9 +65,12 @@ class AttendanceController extends Controller
     {  
         try {
 
+        $total = str_replace(',', '.', $request->valorFinal);
+        $total = str_replace(' ', '', $total);
+
            $att = $this->objAttendance->create([
                 'dtAtendimento' => Carbon::createFromFormat('d/m/Y', $request->data, 'America/Sao_Paulo')->toDateTimeString(),
-                'valorTotal' => $request->valorFinal,
+                'valorTotal' => $total,
                 'cdCliente' => $request->cliente,
                 'cdAgendamento' => null,
                 'situacao' => $request->situacao,
@@ -97,6 +100,16 @@ class AttendanceController extends Controller
             abort(401, $e->getMessage());
         }
     }
+
+    public function show($id)
+    {
+        $atdc = $this->objAttendance->where('cdAtendimento', $id)->first();
+        $cli = $this->objClient->where('cdCliente', $atdc->cdCliente)->first();
+
+        return view ('showAttendance')->with(compact('atdc'))
+                                      ->with(compact('cli'));
+    }
+
 
     protected function getAtendentes(){
         $employees = null;
