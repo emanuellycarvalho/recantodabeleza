@@ -9,6 +9,7 @@
 @endif 
 
 @section('content')
+<script src='{{url("assets/js/product.js")}}'></script>
 
 <!-- Contact section -->
 <section class='contact-section'>
@@ -64,6 +65,56 @@
 						</div>
 
 					</div>
+
+					<div id='products'>
+                        
+						<div class='col-md-12 col-xs-12'>
+							<div class='cf-title'><h4>Produtos</h4></div>
+							<hr class='pink'>
+						</div>
+
+						<div class='text-center mb-5 alert-danger' id='product_error'>
+						</div>
+
+						<div class='row'>
+
+							<div class='col-md-11 col-xs-12'>
+								<label for='select_product'>Produto</label>
+								<select name='select_product[]' id='select_product'>
+									<option value='0' disabled selected> Selecione um produto por vez </option>
+									@foreach($products as $prod)
+										<script>
+											var values = [];
+											if(sessionStorage.getItem('values') != null){
+												values = sessionStorage.getItem('values');
+											}
+											var val = values + '{{$prod->nmProduto}}';
+											values[{{$prod->cdProduto}}] = val;
+											sessionStorage.setItem('values', values);
+										</script> 
+										<option value='{{$prod->cdProduto}}'> {{$prod->nmProduto}}</option>
+									@endforeach
+								</select>
+							</div>
+
+							<div class='col-md-1 col-xs-12'>    
+								<img class='addOnTable' src='{{url("img/icons/newProduct.png")}}' title='Adicionar' id='addOnTable'>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class='products'>
+
+					</div>
+					@if(isset($rel))
+						<script scr='{{url("assets/js/product.js")}}'>
+							@foreach($rel as $r) 
+								createFields({id: {{$r->cdProduto}}, name: '{{$r->nmProduto}}'});
+							@endforeach
+						</script>
+					@endif
 										
 					<div class='col-md-12'>
 						<div class='row'><p><br></p></div>

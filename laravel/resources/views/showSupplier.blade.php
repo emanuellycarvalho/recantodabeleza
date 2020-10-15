@@ -18,10 +18,14 @@
                                 <div class='row'>
                                     <div class='col-lg-12 order-2 order-lg-1'>
                                     <b> Telefone </b> {{$sup->telefone}} 
-                                    <b class='pink'> | </b> <br>
+                                    <b class='pink'> | </b>
                                     <b>E-mail </b> {{$sup->email}}
                                     </div>
-                                </div>
+                                </div><hr>
+                                <br><b> Produtos à venda</b>
+                                @foreach ($rel as $r)
+                                    <li>{{$r->nmProduto}}</li>
+                                @endforeach    
                             </div>
                             <div class='total-cost'>
                                 <a href='{{url("adm/supplier")}}' class='site-btn sb-dark'>Voltar</a>	

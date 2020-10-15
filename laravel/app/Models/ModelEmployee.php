@@ -18,6 +18,13 @@ class ModelEmployee extends Model
         return $this->hasMany('App\Models\ModelScheduling', 'cdFuncionario', 'cdFuncionario');
     }
 
+    public function relService() {
+        return $this->belongsToMany('App\Models\ModelService', 'tbFuncionarioServico', 'cdFuncionario', 'cdServico')
+        ->as('funcionarios')
+        ->withPivot('cdServico')
+        ->withTimestamps();
+    }
+
     public function dtNasc(){
         if ($this->dtNasc != NULL){
             $dtNasc = explode( '-' , $this->dtNasc);

@@ -15,11 +15,14 @@
                             <h3>{{$services->nmServico}}</h3>
                             <br>
                             <h5>{{$services->descricao}}</h5>
-                            <br>
+                            <br><hr>
                             @php $valorServico = str_replace('.', ',', $services->valorServico); @endphp
                             <b>Valor: </b>R${{$valorServico}} <b> <b class='pink'> |</b> Comissão: </b> {{$services->comissao*100}}%
                             <br>
-                            <br><b> Funcionários aptos:</b> por enquanto, não temos Funcionários aptos para realizar este serviço.
+                            <br><b> Funcionários aptos</b>
+                            @foreach ($rel as $r)
+                                <li>{{$r->nmFuncionario}}</li>
+                            @endforeach
                             <div class='total-cost mt-3'>
                                 <a href='{{url("adm/service")}}' class='site-btn sb-dark'>Voltar</a>	
                             </div>

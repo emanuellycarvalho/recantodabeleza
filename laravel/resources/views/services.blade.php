@@ -35,7 +35,7 @@
 							<table id='table' class='tablesorter'>
 							<thead>
 								<tr>
-									<th class='product-th'><br>Descrição</th>
+									<th class='product-th'><br>Nome</th>
 									<th class='quy-th'><br>Valor</th>
 									<th class='quy-th'><br>Comissão</th>
                                     <th class='quy-th' id='none'><br>Visualizar</th>

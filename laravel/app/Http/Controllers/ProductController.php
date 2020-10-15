@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\FornecedorProduto;
+use App\Models\ModelSupplier;
 use App\Http\Requests\ProductRequest;
 use App\Models\ModelProduct;
 use Illuminate\Support\Facades\Storage;
@@ -15,10 +17,14 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    protected $objProduct;
+    protected  $objSupplier;
+    protected  $objProduct;
+    protected  $fornecedorProduto;
     
     public function __construct() {
+        $this->objSupplier = new ModelSupplier();
         $this->objProduct = new ModelProduct();
+        $this->fornecedorProduto = new FornecedorProduto();
     }
 
     public function index()
