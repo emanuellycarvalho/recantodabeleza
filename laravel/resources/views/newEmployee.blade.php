@@ -31,6 +31,7 @@
 					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/employee")}}'>
 				@endif
 					@csrf
+					<input type='hidden' id='is-valid' value='valid'>
 					<div class='cf-title'><h4>Dados pessoais</h4></div>
 					
 					<div class='row'> <!-- grupo de inputs referente aos dados pessoais -->
@@ -286,9 +287,19 @@
 
 		$(document).ready(function(){
 
+			//DESABILITA O SUBMIT
+			$('#cadastro').submit(function(){
+				event.preventDefault();
+				var erros = 0;
+				$('#cadastro input').each(function(){
+					$(this).css('boxShadow') == 'rgba(220, 53, 69, 0.25) 0px 0px 0px 3.2px' ? erros++ : '';
+				});
+				
+				erros == 0 ? this.submit() : '';
+			});
+
 			//VERIFICA CPF JÁ EXISTENTE
 			$('#cpf').on('blur', function(){
-				event.preventDefault;
 				const cpf = document.getElementById('cpf').value;
 
 				$.ajax
@@ -311,7 +322,8 @@
 
 			//VERIFICA EMAIL JÁ EXISTENTE
 			$('#email').on('blur', function(){
-				event.preventDefault;
+				document.getElementById('verificarEmail').innerText = '';
+				document.getElementById('email').style.boxShadow = 'none';
 				const email = document.getElementById('email').value;
 
 				$.ajax

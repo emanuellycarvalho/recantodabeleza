@@ -160,11 +160,13 @@ $(document).ready(function(){
 
       if(!validaCPFeCNPJ($(this).val())){
         document.getElementById('cnpj').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+        document.getElementById('is-valid').value = 'invalid';
         $('#verificarCNPJ').show();
         return;
       } 
 
       document.getElementById('cnpj').style.boxShadow = 'none';
+      document.getElementById('is-valid').value = 'valid';
       $('#verificarCNPJ').hide();
       return;
 
@@ -178,12 +180,14 @@ $(document).ready(function(){
 
       if(!validaCPFeCNPJ($(this).val())){
         document.getElementById('cpf').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+        document.getElementById('is-valid').value = 'invalid';
         document.getElementById('verificarCPF').innerText = 'O CPF que você inseriu é inválido.'
         $('#verificarCPF').show();
         return;
       } 
 
       document.getElementById('cpf').style.boxShadow = 'none';
+      document.getElementById('is-valid').value = 'valid';
       document.getElementById('verificarCPF').innerText = '';
       $('#verificarCPF').hide();
       return;
@@ -216,11 +220,13 @@ $(document).ready(function(){
 
       if(!verificarData($(this).val())){
         document.getElementById('dtNasc').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+        document.getElementById('is-valid').value = 'invalid';
         $('#verificarDtNasc').show();
         return;
       } 
 
       document.getElementById('dtNasc').style.boxShadow = 'none';
+      document.getElementById('is-valid').value = 'valid';
       $('#verificarDtNasc').hide();
 
     });
@@ -248,11 +254,13 @@ $(document).ready(function(){
 
       if(!(/^\((?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/.test($(this).val()))){
         document.getElementById('telefone').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+        document.getElementById('is-valid').value = 'invalid';
         $('#verificarTelefone').show();
         return;
       }
 
       document.getElementById('telefone').style.boxShadow = 'none';
+      document.getElementById('is-valid').value = 'valid';
       $('#verificarTelefone').hide();
 
     });
@@ -264,7 +272,6 @@ $(document).ready(function(){
   
       $.getJSON('https://viacep.com.br/ws/MG/' + c + '/' + r + '/json/', function(dados) {
   
-      console.log(dados);
         if (!('erro' in dados)) {
             //Atualiza os campos com os valores da consulta.
             $('#cep').val(dados[0].cep);
@@ -478,9 +485,9 @@ $(document).ready(function(){
 jQuery.extend(jQuery.validator.messages, {
     required: 'Por favor, preencha este campo.',
     remote: 'Por favor, corrija este campo.',
-    email: 'O e-mail que você inseriu não é valido.',
+    email: 'O e-mail que você inseriu é inválido.',
     url: 'Por favor, insira uma URL válida.',
-    date: 'A data que você inseriu não é valida.',
+    date: 'A data que você inseriu é inválida.',
     dateISO: 'Por favor, insira uma data válida (ISO).',
     number: 'Por favor, insira um número válido.',
     digits: 'Por favor, insira somente d&iacute;gitos.',
