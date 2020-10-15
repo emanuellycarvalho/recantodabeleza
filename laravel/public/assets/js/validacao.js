@@ -161,11 +161,13 @@ $(document).ready(function(){
 
       if(!validaCPFeCNPJ($(this).val())){
         document.getElementById('cnpj').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+        document.getElementById('verificarCPF').innerText = 'O CPF que você inseriu é inválido.'
         $('#verificarCNPJ').show();
         return;
       } 
 
       document.getElementById('cnpj').style.boxShadow = 'none';
+      document.getElementById('verificarCPF').innerText = '';
       $('#verificarCNPJ').hide();
       return;
 
@@ -265,7 +267,6 @@ $(document).ready(function(){
   
       $.getJSON('https://viacep.com.br/ws/MG/' + c + '/' + r + '/json/', function(dados) {
   
-      console.log(dados);
         if (!('erro' in dados)) {
             //Atualiza os campos com os valores da consulta.
             $('#cep').val(dados[0].cep);
@@ -479,9 +480,9 @@ $(document).ready(function(){
 jQuery.extend(jQuery.validator.messages, {
     required: 'Por favor, preencha este campo.',
     remote: 'Por favor, corrija este campo.',
-    email: 'O e-mail que você inseriu não é valido.',
+    email: 'O e-mail que você inseriu é inválido.',
     url: 'Por favor, insira uma URL válida.',
-    date: 'A data que você inseriu não é valida.',
+    date: 'A data que você inseriu é inválida.',
     dateISO: 'Por favor, insira uma data válida (ISO).',
     number: 'Por favor, insira um número válido.',
     digits: 'Por favor, insira somente d&iacute;gitos.',

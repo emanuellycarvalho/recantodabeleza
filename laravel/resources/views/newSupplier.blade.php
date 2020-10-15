@@ -15,12 +15,13 @@
 <section class='contact-section'>
 		<div class='container'>
 			@if(isset($errors) && count($errors) > 0) 
-					<div class='row justify-content-center'>
-						<div class='text-center mb-1 col-lg-8 alert-danger'>
-							Fornecedor não cadastrado por inserção de dados inválidos.	
-						</div>
-					</div>			
-				@endif
+				<div class='row justify-content-center'>
+					<div class='text-center mb-1 col-lg-8 alert-danger'>
+						Fornecedor não cadastrado por inserção de dados inválidos.	
+					</div>
+				</div>			
+			@endif
+			<div class='col-lg-10 offset-md-1'>
 				@if(isset($sup)) 
 					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/supplier/$sup->cdFornecedor")}}'>
 					@method('PUT')				
@@ -156,9 +157,20 @@
 
 		$(document).ready(function(){
 
-			//VERIFICA CPF JÁ EXISTENTE
+			//DESABILITA O SUBMIT
+			$('#cadastro').submit(function(){
+				event.preventDefault();
+				var erros = 0;
+				$('#cadastro input').each(function(){
+					$(this).css('boxShadow') == 'rgba(220, 53, 69, 0.25) 0px 0px 0px 3.2px' ? erros++ : '';
+				});
+				
+				erros == 0 ? this.submit() : '';
+			});
+
+			//VERIFICA CNPJ JÁ EXISTENTE
 			$('#cnpj').on('blur', function(){
-				event.preventDefault;
+				alert('foi');
 				const cnpj = document.getElementById('cnpj').value;
 
 				$.ajax
@@ -168,7 +180,9 @@
 					url: '{{route("getSuplliersCNPJs")}}',
 					success: function (data)
 					{
+						console.log('cenepejota: ' + cnpj);
 						data.map(function(item){
+							console.log(item.cnpj);
 							if(item.cnpj == cnpj){
 								document.getElementById('cnpj').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
 								document.getElementById('verificarCNPJ').innerText = 'CNPJ já registrado no sistema.'
@@ -181,15 +195,13 @@
 
 			//VERIFICA EMAIL JÁ EXISTENTE
 			$('#email').on('blur', function(){
-				alert('chego')
-				event.preventDefault;
 				const email = document.getElementById('email').value;
 
 				$.ajax
 				({ 
 					type: 'GET',
 					dataType: 'json',
-					url: '{{route("getSuplliersCNPJs")}}',
+					url: '{{route("getSuppliersEmails")}}',
 					success: function (data)
 					{
 						data.map(function(item){
@@ -203,6 +215,7 @@
 				});
 			});
 		});
+		
         window.confirmarCancelar = function(){
             if(verificarCampos()){
                 $('#confirmCancelModal').modal();

@@ -38,7 +38,7 @@ Route::resource('adm/employeeType', 'EmployeeTypeController');
 
 //SUPPLIER
 Route::get('getSuppliersEmails', 'SupplierController@getEmails')->name('getSuppliersEmails');
-Route::get('getSuplliersCNPJs', 'SupplierController@getCNPJs')->name('getSuplliersCNPJs');
+Route::get('getSuppliersCNPJs', 'SupplierController@getCNPJs')->name('getSuppliersCNPJs');
 Route::post('adm/customer/updateAttendances/{id}', 'CustomerController@UpdateAttendances');
 Route::resource('adm/supplier', 'SupplierController');
 
