@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\FuncionarioServico;
+use App\Models\ModelService;
 use App\Http\Requests\EmployeeRequest;
 use App\Models\ModelEmployee;
 use App\Models\ModelEmployeeType; 
@@ -12,10 +14,13 @@ class EmployeeController extends Controller
 
     protected  $objEmployee;
     protected  $objEmployeeType;
+    protected  $objService;
+    protected  $funcionarioServico;
 
     public function __construct(){
         $this->objEmployee = new ModelEmployee();
         $this->objEmployeeType = new ModelEmployeeType();
+        $this->objService = new ModelService();
     }
 
     public function search(Request $request)

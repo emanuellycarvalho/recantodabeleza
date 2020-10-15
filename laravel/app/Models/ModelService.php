@@ -15,4 +15,12 @@ class ModelService extends Model
         ->withPivot('CdFuncionario', 'valorCobrado')
         ->withTimestamps(); 
     }
+    
+    public function relEmployee() {
+        return $this->belongsToMany('App\Models\ModelEmployee', 'tbFuncionarioServico', 'cdServico', 'cdFuncionario')
+        ->as('funcionarios')
+        ->withPivot('cdServico')
+        ->withTimestamps();
+    }
+
 }

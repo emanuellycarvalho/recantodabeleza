@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\FornecedorProduto;
+use App\Models\ModelProduct;
 use App\Http\Requests\SupplierRequest;
 use App\Models\ModelSupplier;
 
@@ -10,9 +12,13 @@ class SupplierController extends Controller
 {
 
     protected  $objSupplier;
+    protected  $objProduct;
+    protected  $fornecedorProduto;
 
     public function __construct(){
         $this->objSupplier = new ModelSupplier();
+        $this->objProduct = new ModelProduct();
+        $this->fornecedorProduto = new FornecedorProduto();
     }
     public function index()
     {
@@ -22,75 +28,109 @@ class SupplierController extends Controller
   
     public function create()
     {
-        return view('newSupplier');
+        try{
+            $products = $this->objProduct->all();
+            return view('newSupplier')->with(compact('products'));
+        }catch(Excepcion $e){
+            abort(401, $e->getMessage());
+        }
     }
   
     public function store(SupplierRequest $request)
     {
-        if ($this->objSupplier->create([
-            'nmFornecedor' => $request->nome,
-            'cnpj' => $request->cnpj,
-            'telefone'  => $request->telefone,
-            'email' => $request->email
-            ])){
-                return redirect('adm/supplier');
-            }
-        /*
-        $supplier = new Supplier;
-        $supplier->nome = $request->nome;
-        $supplier->cnpj = $request->cnjp;
-        $supplier->telefone = $request->telefone;
-        $supplier->email = $request->email;
-        $supplier->save();
-        return redirect()->route('suppliers.index')->with('message', 'supplier created successfully!');
-        */
+        try {
+            $fornecedor = $this->objSupplier->create([
+                'nmFornecedor' =>$request->nome,
+                'cnpj' => $request->cnpj,
+                'telefone'  => $request->telefone,
+                'email' => $request->email
+            ]);
+            
+            $produtos = $request->product_id;
+            //dd($funcionarios);
+            for($i = 0; $i < sizeof($produtos); $i++){
+            $fornecedor->relProduct()->attach($produtos[$i]);
+        }
+        
+        return redirect('adm/supplier');
+        
+        } catch (Exception $e){
+            abort(401, $e->getMessage());
+        }
+
     }
   
     public function show($id)
     {
         $sup = $this->objSupplier->where('cdFornecedor', $id)->first();
-        return view('showSupplier', compact('sup'));
+        
+        $rel = $this->fornecedorProduto->where('cdFornecedor', $id)->get();
+        $rel = $this->menageRelationship($rel);
+        return view('showSupplier')->with(compact('sup'))
+                                   ->with(compact('rel'));
     }
   
     public function edit($id)
     {
         $sup = $this->objSupplier->where('cdFornecedor', $id)->first();
-        //$suppliers = SupplierController::findOrFail($id);
-        return view('newSupplier',compact('sup'));
+        
+        $rel = $this->fornecedorProduto->where('cdFornecedor', $id)->get();
+        $rel = $this->menageRelationship($rel);
+
+        $products = $this->objProduct->all();
+        return view('newSupplier')->with(compact('sup'))
+                                  ->with(compact('products'))
+                                  ->with(compact('rel'));
     }
   
     public function update(SupplierRequest $request, $id)
     {
-        if ($this->objSupplier->where('cdFornecedor', $id)->update([
-            'nmFornecedor' => $request->nome,
-            'cnpj' => $request->cnpj,
-            'telefone'  => $request->telefone,
-            'email' => $request->email
-        ])){
+        try {
+            $this->objSupplier->where('cdFornecedor', $id)->update([
+                'nmFornecedor' => $request->nome,
+                'cnpj' => $request->cnpj,
+                'telefone'  => $request->telefone,
+                'email' => $request->email
+            ]);
+            
+            $produtos = $request->product_id;
+            for($i = 0; $i < sizeof($produtos); $i++){
+                $this->fornecedorProdutos->insert([
+                    'cdFornecedor' => $id, 
+                    'cdProduto' => $produtos[$i] 
+                ]);
+            }
+        
             return redirect('adm/supplier');
-        } 
-       
 
-        /*
-        $supplier = SupplierController::findOrFail($id);
-        $supplier->name        = $request->name;
-        $supplier->description = $request->description;
-        $supplier->quantity    = $request->quantity;
-        $supplier->price       = $request->price;
-        $supplier->save();
-        return redirect()->route('suppliers.index')->with('message', 'supplier updated successfully!');
-        */
+            } catch (Exception $e){
+                abort(401, $e->getMessage());
+            }
+
     }
   
     public function destroy($id)
     {
-
         $del = $this->objSupplier->where('cdFornecedor', $id)->delete();
-        /*
-        $supplier = SupplierController::findOrFail($id);
-        $supplier->delete();
-        return redirect()->route('suppliers.index')->with('alert-success','supplier hasbeen deleted!');
-        */
+    }
+
+    
+    protected function menageRelationship($rel){
+        if($rel != null){
+            $return = [];
+            foreach($rel as $r){
+                $re = new \stdClass();
+                $product = $this->objProduct->where('cdProduto', $r->cdProduto)->first();
+                $re->cdProduto = $product->cdProduto;
+                $re->nmProduto = $product->nmProduto;
+    
+                array_push($return, $re);
+            }
+            //dd($return);
+            return $return;
+        }  else {
+            throw new \Exception('Desculpe, ocorreu um erro ao recuperar os funcionarios deste servico.');
+        }
     }
     
 }

@@ -57,7 +57,7 @@
                         <div class='col-md-4 col-xs-12'>
 							<div class='form-group'>
 								<label for='comissao'>Comissão*</label>
-								<input type='text' name='comissao' id='comissao' placeholder='00,00%' value='{{$prod->comissao ?? "" }}' required>
+								<input type='text' name='comissao' id='comissao' placeholder='00%' value='{{$prod->comissao ?? "" }}' required>
 							</div>
 						</div>
 
