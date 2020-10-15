@@ -14,13 +14,11 @@
 <section class='contact-section'>
 		<div class='container'>
 			@if(isset($errors) && count($errors) > 0) 
-				@foreach($errors->all() as $error)
-					<div class='row justify-content-center'>
-						<div class='text-center mb-1 col-lg-8 alert-danger'>
-						{{$error}} <br>		
-						</div>
-					</div>					
-				@endforeach
+				<div class='row justify-content-center'>
+					<div class='text-center mb-1 col-lg-8 alert-danger'>
+						Funcionário não cadastrado por inserção de dados inválidos.	
+					</div>
+				</div>			
 			@endif
 			@if(isset($errorCEP)) 
 				{{$errorCEP}}
@@ -113,7 +111,6 @@
 								<label for='cpf'>CPF*</label>
 								<input type='text' name='cpf' id='cpf' value='{{$emp->cpf ?? old("cpf")}}'>
 								<small id='verificarCPF' class='verificar'>
-									O CPF que você inseriu é inválido.
 								</small>
 							</div>
 						</div>
@@ -121,6 +118,8 @@
 						<div class='col-md-12 col-xs-12'>
 							<label for='email'>Email*</label>
 							<input type='email' name='email' id='email' placeholder='E-mail' value='{{$emp->email ?? old("email")}}' autocomplete='off'>
+							<small id='verificarEmail' class='verificar'>
+							</small>
 						</div>
 
 						@if(!isset($emp))
@@ -278,12 +277,61 @@
 				<div class='modal-footer'>
 					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>
 					<a href='{{url("adm/employee")}}' class='site-btn' id='white'>Sim</a>
-				</div>
+				</div> 
 			</div>
 		</div>
 	</div>
 
 	<script>  
+
+		$(document).ready(function(){
+
+			//VERIFICA CPF JÁ EXISTENTE
+			$('#cpf').on('blur', function(){
+				event.preventDefault;
+				const cpf = document.getElementById('cpf').value;
+
+				$.ajax
+                ({ 
+                    type: 'GET',
+                    dataType: 'json',
+                    url: '{{route("getEmployeesCPFs")}}',
+                    success: function (data)
+                    {
+                        data.map(function(item){
+                            if(item.cpf == cpf){
+                                document.getElementById('cpf').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+								document.getElementById('verificarCPF').innerText = 'CPF já registrado no sistema.'
+								$('#verificarCPF').show();
+                            }
+                        })
+                    }
+                });
+			})
+
+			//VERIFICA EMAIL JÁ EXISTENTE
+			$('#email').on('blur', function(){
+				event.preventDefault;
+				const email = document.getElementById('email').value;
+
+				$.ajax
+                ({ 
+                    type: 'GET',
+                    dataType: 'json',
+                    url: '{{route("getEmployeesEmails")}}',
+                    success: function (data)
+                    {
+                        data.map(function(item){
+                            if(item.email == email){
+                                document.getElementById('email').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+								document.getElementById('verificarEmail').innerText = 'Email já registrado no sistema.'
+								$('#verificarEmail').show();
+                            }
+                        })
+                    }
+                });
+			})
+		});
 
 		window.confirmarCancelar = function(){
             if(verificarCampos()){

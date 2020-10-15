@@ -165,4 +165,8 @@ class CustomerController extends Controller
     public function findCPF($cpf){
         return $this->objCustomer->where('cpf', $cpf)->get();
     }
+    
+    public function getCPFs(){
+        return $this->objCustomer->where('cpf' != NULL)->get(); 
+    }
 }

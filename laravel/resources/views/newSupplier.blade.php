@@ -13,14 +13,13 @@
 <!-- Contact section -->
 <section class='contact-section'>
 		<div class='container'>
-			<div class='col-lg-10 offset-md-1'>
-				<div class='text-center mb-5 alert-danger'>
-					@if(isset($errors) && count($errors) > 0) 
-						@foreach($errors->all() as $error)
-							{{$error}} <br>							
-						@endforeach
-					@endif
-				</div>
+			@if(isset($errors) && count($errors) > 0) 
+					<div class='row justify-content-center'>
+						<div class='text-center mb-1 col-lg-8 alert-danger'>
+							Fornecedor não cadastrado por inserção de dados inválidos.	
+						</div>
+					</div>			
+				@endif
 				@if(isset($sup)) 
 					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/supplier/$sup->cdFornecedor")}}'>
 					@method('PUT')				
@@ -53,7 +52,6 @@
 								<label for='cnpj'>CNPJ*</label>
 								<input  type='text' name='cnpj' id='cnpj' value='{{$sup->cnpj ?? ""}}'>
 								<small id='verificarCNPJ' class='verificar'>
-									O CNPJ inserido é inválido.
 								</small>
 							</div>
 						</div>
@@ -61,6 +59,8 @@
 						<div class='col-md-6 col-xs-12'>
 							<label for='email'>Email*</label>
 							<input  type='email' name='email' id='email' value='{{$sup->email ?? ""}}' placeholder='E-mail'>
+							<small id='verificarEmail' class='verificar'>
+							</small>
 						</div>
 
 					</div>
@@ -102,6 +102,56 @@
 	</div>
 
 	<script> 
+
+		$(document).ready(function(){
+
+			//VERIFICA CPF JÁ EXISTENTE
+			$('#cnpj').on('blur', function(){
+				event.preventDefault;
+				const cnpj = document.getElementById('cnpj').value;
+
+				$.ajax
+				({ 
+					type: 'GET',
+					dataType: 'json',
+					url: '{{route("getSuplliersCNPJs")}}',
+					success: function (data)
+					{
+						data.map(function(item){
+							if(item.cnpj == cnpj){
+								document.getElementById('cnpj').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+								document.getElementById('verificarCNPJ').innerText = 'CNPJ já registrado no sistema.'
+								$('#verificarCNPJ').show();
+							}
+						});
+					}
+				});
+			});
+
+			//VERIFICA EMAIL JÁ EXISTENTE
+			$('#email').on('blur', function(){
+				alert('chego')
+				event.preventDefault;
+				const email = document.getElementById('email').value;
+
+				$.ajax
+				({ 
+					type: 'GET',
+					dataType: 'json',
+					url: '{{route("getSuplliersCNPJs")}}',
+					success: function (data)
+					{
+						data.map(function(item){
+							if(item.email == email){
+								document.getElementById('email').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+								document.getElementById('verificarEmail').innerText = 'Email já registrado no sistema.'
+								$('#verificarEmail').show();
+							}
+						});
+					}
+				});
+			});
+		});
         window.confirmarCancelar = function(){
             if(verificarCampos()){
                 $('#confirmCancelModal').modal();

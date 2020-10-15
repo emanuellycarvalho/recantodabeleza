@@ -156,7 +156,7 @@ $(document).ready(function(){
     //VERIFICAR CNPJ
     $('#cnpj').blur(function(){
 
-     if($(this).val() != null || $(this).val() != '')
+     if($(this).val() == null || $(this).val() == '')
       return;
 
       if(!validaCPFeCNPJ($(this).val())){
@@ -171,7 +171,7 @@ $(document).ready(function(){
 
     });
 
-    //VERIFICAR CNPJ
+    //VERIFICAR CPF
     $('#cpf').blur(function(){
 
       if($(this).val() == null || $(this).val() == '')
@@ -179,11 +179,13 @@ $(document).ready(function(){
 
       if(!validaCPFeCNPJ($(this).val())){
         document.getElementById('cpf').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+        document.getElementById('verificarCPF').innerText = 'O CPF que você inseriu é inválido.'
         $('#verificarCPF').show();
         return;
       } 
 
       document.getElementById('cpf').style.boxShadow = 'none';
+      document.getElementById('verificarCPF').innerText = '';
       $('#verificarCPF').hide();
       return;
 
@@ -205,7 +207,7 @@ $(document).ready(function(){
       document.getElementById('senha2').style.boxShadow = 'none';
       return;
 
-    });
+    }); 
 
      //VERIFICAR DATA DE NASCIMENTO
      $('#dtNasc').blur(function(){

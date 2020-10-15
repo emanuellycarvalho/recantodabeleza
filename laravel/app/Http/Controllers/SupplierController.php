@@ -93,4 +93,11 @@ class SupplierController extends Controller
         */
     }
     
-}
+    public function getCNPJs(){
+        return $this->objSupplier->whereNotNull('cnpj')->get(); 
+    }
+
+    public function getEmails(){
+        return $this->objSupplier->whereNotNull('email')->get(); 
+    }
+} 

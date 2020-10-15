@@ -26,18 +26,6 @@
             </div>
 			<div class='row justify-content-center' id='attendance'>
                 <div class='col-lg-8'>
-                    <div class='text-center mb-5 alert-danger'>
-                        @if(isset($errors) && count($errors) > 0) 
-                            @foreach($errors->all() as $error)
-                                {{$error}} <br>							
-                            @endforeach
-                        @endif
-                        @if(isset($errorCEP)) 
-                            {{$errorCEP}}
-                        @endif
-                    </div> 
-                </div>
-                <div class='col-lg-8'>
                 @if(isset($atd)) 
 					<form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/attendance/$atd->cdAtendimento")}}'>
                     
@@ -170,7 +158,7 @@
                             <div id='valores' hidden>
                                 <select multiple name='valores' id='valores' readonly>
                                     @foreach($services as $svc)
-                                        <option label='{{$svc->cdServico}}' value='{{$svc->valor}}'></option>
+                                        <option label='{{$svc->cdServico}}' value='{{$svc->valorServico}}'></option>
                                     @endforeach
                                 </select> 
                             </div>
@@ -271,7 +259,7 @@
                                     @endforeach
                                 </select> 
                             </div>
-
+ 
                             <div class='col-md-4 col-xs-12'>
                                 <label for='precoProduto'>Valor unitário*</label>
                                 <input type='text' name='precoProduto' id='precoProduto' placeholder= '00.00'>
@@ -333,23 +321,17 @@
 
                 <div class='contact-form'> <!-- form footer -->
 
-                    <div class='row justify-content-end'>
-                        <a onclick='window.history.back()' class='site-btn sb-dark' id='white'>Cancelar</a>
-                        <button type='submit' class='site-btn'>Salvar</button>
-                    </div>
+                    <div class='row'> . </div>                
+                    <div class='row justify-content-end'> <!-- form footer -->
 
-                <div class='row'> . </div>
-                
-                <div class='row justify-content-end'> <!-- form footer -->
-
-                    <div class='contact-form'> 
-                        <a onclick='window.history.back()' class='site-btn sb-dark' id='white'>Cancelar</a>
-                        <button type='submit' class='site-btn'>Salvar</button>
-                    </div>
+                        <div class='contact-form'> 
+                            <a onclick='window.history.back()' class='site-btn sb-dark' id='white'>Cancelar</a>
+                            <button type='submit' class='site-btn'>Salvar</button>
+                        </div>
                     
                 </div> <!-- end form footer -->
             </form> <!-- end form -->
-            </div> <!-- jutify content center -->
+            </div> <!-- jutify content center --> 
 		</div> <!-- container -->
 	</section>
     <!-- Suppliers section end -->
