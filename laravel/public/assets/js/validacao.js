@@ -160,13 +160,13 @@ $(document).ready(function(){
 
       if(!validaCPFeCNPJ($(this).val())){
         document.getElementById('cnpj').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
-        document.getElementById('is-valid').value = 'invalid';
+        document.getElementById('verificarCPF').innerText = 'O CPF que você inseriu é inválido.'
         $('#verificarCNPJ').show();
         return;
       } 
 
       document.getElementById('cnpj').style.boxShadow = 'none';
-      document.getElementById('is-valid').value = 'valid';
+      document.getElementById('verificarCPF').innerText = '';
       $('#verificarCNPJ').hide();
       return;
 
@@ -180,14 +180,12 @@ $(document).ready(function(){
 
       if(!validaCPFeCNPJ($(this).val())){
         document.getElementById('cpf').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
-        document.getElementById('is-valid').value = 'invalid';
         document.getElementById('verificarCPF').innerText = 'O CPF que você inseriu é inválido.'
         $('#verificarCPF').show();
         return;
       } 
 
       document.getElementById('cpf').style.boxShadow = 'none';
-      document.getElementById('is-valid').value = 'valid';
       document.getElementById('verificarCPF').innerText = '';
       $('#verificarCPF').hide();
       return;
@@ -220,13 +218,11 @@ $(document).ready(function(){
 
       if(!verificarData($(this).val())){
         document.getElementById('dtNasc').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
-        document.getElementById('is-valid').value = 'invalid';
         $('#verificarDtNasc').show();
         return;
       } 
 
       document.getElementById('dtNasc').style.boxShadow = 'none';
-      document.getElementById('is-valid').value = 'valid';
       $('#verificarDtNasc').hide();
 
     });
@@ -254,13 +250,11 @@ $(document).ready(function(){
 
       if(!(/^\((?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/.test($(this).val()))){
         document.getElementById('telefone').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
-        document.getElementById('is-valid').value = 'invalid';
         $('#verificarTelefone').show();
         return;
       }
 
       document.getElementById('telefone').style.boxShadow = 'none';
-      document.getElementById('is-valid').value = 'valid';
       $('#verificarTelefone').hide();
 
     });
