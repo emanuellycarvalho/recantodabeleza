@@ -177,7 +177,7 @@
 				({ 
 					type: 'GET',
 					dataType: 'json',
-					url: '{{route("getSuplliersCNPJs")}}',
+					url: '{{route("getSuppliersCNPJs")}}',
 					success: function (data)
 					{
 						console.log('cenepejota: ' + cnpj);

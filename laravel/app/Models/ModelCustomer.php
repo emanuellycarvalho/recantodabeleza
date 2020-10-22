@@ -34,7 +34,12 @@ class ModelCustomer extends Model
     public function whereToGo(){
         $url = explode('/', $_SERVER['HTTP_REFERER']);
         $length = count($url);
-        if ($url[$length - 2] == 'create' && ($url[$length - 3] == 'scheduling' || $url[$length - 3] == 'attendance')){
+        
+        if($url[$length - 2] == 'create' && $url[$length - 3] == 'scheduling'){
+            return $_SERVER['HTTP_REFERER'];
+        }
+
+        if ($url[$length - 1] == 'create' && $url[$length - 2] == 'attendance'){
             return $_SERVER['HTTP_REFERER'];
         }
         return 'adm/customer';   

@@ -51,6 +51,9 @@
                                 <div class='form-group'>
                                     <label for='data'>Data*</label> <br>
                                     <input type='text' name='data' id='data' class='calendar' placeholder='00/00/0000' value='{{$date ?? "" }}' autofocus> 
+                                    <small id='verificarData' class='verificar'>
+									    A data deve ser igual ou anterior a hoje.
+								    </small>
                                 </div>
                             </div>  
 
@@ -93,7 +96,7 @@
 
                             <div class='col-md-2'>
                                 <label for='parcelas'>Parcelas</label>
-                                <input type='number' name='parcelas' id='parcelas' readonly>
+                                <input type='number' name='parcelas' id='parcelas' min='1' readonly>
                             </div>
 
                             <div class='col-md-6'>
@@ -176,7 +179,7 @@
 
                             <div class='col-md-3 col-xs-12'>
                                 <label for='valorServico'>Valor*</label>
-                                <input name='valorServico' id='valorServico' placeholder= '00.00'>
+                                <input name='valorServico' id='valorServico' placeholder= '00,00'>
                             </div>
 
                             <div class='col-md-1 col-xs-12'>    
@@ -262,12 +265,12 @@
  
                             <div class='col-md-4 col-xs-12'>
                                 <label for='precoProduto'>Valor unitário*</label>
-                                <input type='text' name='precoProduto' id='precoProduto' placeholder= '00.00'>
+                                <input type='text' name='precoProduto' id='precoProduto' placeholder= '00,00'>
                             </div>
 
                             <div class='col-md-3 col-xs-12'>
                                 <label for='qtd'>Quantidade*</label>
-                                <input type='number' name='qtd' id='qtd' placeholder= '000'>
+                                <input type='number' name='qtd' id='qtd' min='1' placeholder= '000'>
                                 </div>
 
                             <div class='col-md-1 col-xs-12'>    
@@ -374,7 +377,33 @@
 		</div>
 	</div>
     
-	<script> 
+    <script> 
+    
+        $(document).ready(function(){
+            $('#verificarData').hide();
+            $('#data').on('blur', function(){verificarData()});
+            $('#data').on('mouseleave', function(){verificarData()});
+            
+            $('#cadastro').on('submit', function(){
+                event.preventDefault();
+                //alert(verificarData());
+                verificarData() ? this.submit() : '';
+            });
+        });
+
+        function verificarData(){
+            document.getElementById('data').style.boxShadow = 'none';
+            $('#verificarData').hide();
+            const dt = document.getElementById('data').value;
+
+            if(dt > moment().format('l')){
+                document.getElementById('data').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+                $('#verificarData').show();
+                return false;
+            }
+            return true;
+        }
+
         //PREENCHER INPUTS
 		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/attendance/create'){
 			document.getElementById('data').value = localStorage.getItem('data');
