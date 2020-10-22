@@ -1,6 +1,6 @@
 @extends('templates.adm')
 
-@section('title') Registrar pagamento @endsection('title')
+@section('title') Pagamento de cliente @endsection('title')
 
 @section('icon') <img class='responsive' src='{{url("/img/icons/payment-light.png")}}' width='35px'> @endsection('icon')
 
