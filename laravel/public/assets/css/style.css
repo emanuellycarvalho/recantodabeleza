@@ -169,6 +169,16 @@
 	color: red;
 }
 
+.cart-table #mensagem{
+	text-align: center;
+	color: #282828;
+	padding: 8px;
+}
+
+.cart-table #pago{
+	max-width: 27px;
+}
+
 .cart-table a.none {
 	color:#282828;
 }

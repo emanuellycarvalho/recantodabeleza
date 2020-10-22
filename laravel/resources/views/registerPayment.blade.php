@@ -40,6 +40,8 @@
                         </div>
 
                         <div class='cart-table'>
+                            <div id='mensagem'>
+                            </div>
                             <div class='cart-table-warp'>
                                 @csrf
                                 
@@ -107,6 +109,8 @@
 
         $('#search').on('click', function(event){
             event.preventDefault;
+            $('tbody').html('');
+            document.getElementById('mensagem').innerText = '';
             const cli = $('#cliente').val();
 
             $.ajax
@@ -115,10 +119,11 @@
                     dataType: 'json',
                     url: '{{route("getUnpaidAttendances")}}',
                     success: function (data)
-                    {
-                        $('tbody').html('');
+                    {                        
                         data.map(function(item){
+                            var existe = false;
                             if(item.cdCliente == cli){
+                                existe = true;
                                 var action = `{{url("adm/attendance/registerPayment/`+ item.cdAtendimento + `")}}`;
                                 var date = item.dtAtendimento;
                                 date = date.split('-');
@@ -131,6 +136,9 @@
                                     </tr>`
                                 $('tbody').append($newRow);
                                 $('#attendance').attr('action', action);
+                            }
+                            if(!existe){
+                                document.getElementById('mensagem').innerText = 'Nada para ver por aqui.'
                             }
                         })
                     }
