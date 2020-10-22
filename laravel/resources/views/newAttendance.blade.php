@@ -3,7 +3,7 @@
 @if(isset($atd)) 
 	@section('title') Editar Atendimento @endsection('title')
 @else
-    @section('title') Criar Atendimento @endsection('title')
+    @section('title') Registrar Atendimento @endsection('title')
 @endif
 
 @section('icon') <img class='responsive' src='{{url("/img/icons/attendance-light.png")}}' width='35px'> @endsection('icon')
@@ -353,20 +353,20 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='nmCliente'>Nome*</label>
-								<input type='text' name='nmCliente' id='nmCliente' placeholder='Nome'>
+								<input type='text' name='nmCliente' id='nmCliente' placeholder='Nome' tabindex='1'>
 							</div>
 						</div>
 						
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='telefone'>Telefone*</label>
-								<input type='text' name='telefone' id='telefone' placeholder='Telefone'>
+								<input type='text' name='telefone' id='telefone' placeholder='Telefone' tabindex='2'>
 							</div>
 						</div>
 					</div>
 					<div class='row justify-content-end'>
 						<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-						<button type='submit' class='site-btn' onclick='saveData()'>Adicionar</button>
+						<button type='submit' class='site-btn' onclick='saveData()' tabindex='3'>Adicionar</button>
 					</div>
 				</form>
 			</div>

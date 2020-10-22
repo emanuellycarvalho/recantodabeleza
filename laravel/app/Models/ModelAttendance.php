@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ModelAttendance extends Model
+class ModelAttendance extends Model 
 {
     protected $table = 'tbAtendimento';
     protected $fillable = ['dtAtendimento', 'valorTotal', 'cdCliente', 'situacao', 'cdFuncionario',
@@ -12,7 +12,6 @@ class ModelAttendance extends Model
 
     public function relService(){
         return $this->belongsToMany('App\Models\ModelService', 'tbAtendimentoServico', 'cdAtendimento', 'cdServico')
-        ->as('servicos')
         ->withPivot('CdFuncionario', 'valorCobrado')
         ->withTimestamps(); 
     }

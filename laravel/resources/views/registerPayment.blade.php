@@ -119,14 +119,14 @@
                         $('tbody').html('');
                         data.map(function(item){
                             if(item.cdCliente == cli){
-                                var action = `{{url("/adm/customer/updateAttendances/`+ cli + `")}}`;
+                                var action = `{{url("adm/attendance/registerPayment/`+ item.cdAtendimento + `")}}`;
                                 var date = item.dtAtendimento;
                                 date = date.split('-');
                                 date = date[2] + '/' + date[1] + '/' + date[0];
                                 $newRow = `<tr>
                                         <td><center>${date}</center></td>
                                         <td><center>R$${item.valorTotal}</center></td>
-                                        <td><center><a href='{{url("adm/attendance/` + item.cdAtendimento +  `")}}' title='Visualizar Atendimento'><img class='responsive' src='{{url("/img/icons/seePayment.png")}}' height='35px'></a></center></td>
+                                        <td><center><a href='{{url("adm/payment/` + item.cdAtendimento +  `")}}' title='Visualizar Atendimento'><img class='responsive' src='{{url("/img/icons/seePayment.png")}}' height='35px'></a></center></td>
                                         <td><center><input type='checkbox' id='pago' value='N' onchange='changeValue()'></center></td>
                                     </tr>`
                                 $('tbody').append($newRow);

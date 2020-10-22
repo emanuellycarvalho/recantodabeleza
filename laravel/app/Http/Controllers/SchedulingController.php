@@ -44,8 +44,8 @@ class SchedulingController extends Controller
 
             $employees = $this->getAtendentes();
             $schedule = $this->objScheduling->all();
-            $services = $this->objService->all();
-            $clients = $this->objClient->all();
+            $services = $this->objService->orderBy('nmServico')->get();
+            $clients = $this->objClient->orderBy('nmCliente')->get();
             return view('newScheduling')->with(compact('employees'))
                                         ->with(compact('clients'))
                                         ->with(compact('schedule'))
@@ -104,9 +104,9 @@ class SchedulingController extends Controller
         $end = Carbon::createFromFormat('Y-m-d H:i:s', $scd->end)->format('H:i');
 
         $id = $this->objEmployeeType->where('nmFuncao', 'Atendente')->first()->cdTipoFuncionario;
-        $employees = $this->objEmployee->all();
-        $services = $this->objService->all();
-        $clients = $this->objClient->all();
+        $employees = $this->objEmployee->orderBy('nmFuncionario')->get();
+        $services = $this->objService->orderBy('nmServico')->get();
+        $clients = $this->objClient->orderBy('nmCliente')->get();
         return view('newScheduling')->with(compact('employees'))
                                     ->with(compact('id'))
                                     ->with(compact('clients'))
