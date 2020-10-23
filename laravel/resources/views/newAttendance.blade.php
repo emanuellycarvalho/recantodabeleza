@@ -394,9 +394,13 @@
         function verificarData(){
             document.getElementById('data').style.boxShadow = 'none';
             $('#verificarData').hide();
-            const dt = document.getElementById('data').value;
+            
+            var data = document.getElementById('data').value;
+            let parts = data.split('/');
 
-            if(dt > moment().format('l')){
+            data = new Date(parts[2], parts[1] - 1, parts[0]); 
+
+            if(data >= new Date()){
                 document.getElementById('data').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
                 $('#verificarData').show();
                 return false;

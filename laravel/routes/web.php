@@ -44,11 +44,7 @@ Route::get('getSuppliersCNPJs', 'SupplierController@getCNPJs')->name('getSupplie
 Route::resource('adm/supplier', 'SupplierController');
 
 //SCHEDULING
-Route::get('adm/scheduling/create/{date}', 'SchedulingController@create');
-Route::get('adm/scheduling/create', function() {
-    $url = 'adm/scheduling/create/' . Carbon::now()->format('Y-m-d');
-    return redirect($url);
-});
+Route::get('adm/scheduling/create/{date}', 'SchedulingController@newCreate');
 Route::resource('adm/scheduling', 'SchedulingController');
 
 //GENERAL

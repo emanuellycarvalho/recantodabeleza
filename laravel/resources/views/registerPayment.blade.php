@@ -73,7 +73,6 @@
                     </div> 
                     <div class='row'> . </div>
                     <div class='row justify-content-end'>
-                        <button onclick='history.back(-1)' class='site-btn sb-dark'>Cancelar</button>
                         <button type='submit' class='site-btn'>Confirmar</button>
                     </form>
                     </div>
@@ -108,7 +107,7 @@
     <script>
 
         $('#search').on('click', function(event){
-            event.preventDefault;
+            event.preventDefault();
             $('tbody').html('');
             document.getElementById('mensagem').innerText = '';
             const cli = $('#cliente').val();
@@ -119,12 +118,12 @@
                     dataType: 'json',
                     url: '{{route("getUnpaidAttendances")}}',
                     success: function (data)
-                    {                        
+                    {               
+                        var existe = false;        
                         data.map(function(item){
-                            var existe = false;
                             if(item.cdCliente == cli){
                                 existe = true;
-                                var action = `{{url("adm/attendance/registerPayment/`+ item.cdAtendimento + `")}}`;
+                                var action = `{{url("adm/attendance/registerPayment/`+ cli + `")}}`;
                                 var date = item.dtAtendimento;
                                 date = date.split('-');
                                 date = date[2] + '/' + date[1] + '/' + date[0];
@@ -132,15 +131,15 @@
                                         <td><center>${date}</center></td>
                                         <td><center>R$${item.valorTotal}</center></td>
                                         <td><center><a href='{{url("adm/payment/` + item.cdAtendimento +  `")}}' title='Visualizar Atendimento'><img class='responsive' src='{{url("/img/icons/seePayment.png")}}' height='35px'></a></center></td>
-                                        <td><center><input type='checkbox' id='pago' value='N' onchange='changeValue()'></center></td>
+                                        <td><center><input type='checkbox' id='campo` + item.cdAtendimento + `' name ='pago' value='N' onchange='changeValue()'></center></td>
                                     </tr>`
                                 $('tbody').append($newRow);
                                 $('#attendance').attr('action', action);
                             }
-                            if(!existe){
-                                document.getElementById('mensagem').innerText = 'Nada para ver por aqui.'
-                            }
-                        })
+                        }); 
+                        if(!existe){
+                            document.getElementById('mensagem').innerText = 'Nada para ver por aqui.'
+                        }
                     }
                 });
         });

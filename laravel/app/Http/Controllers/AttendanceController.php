@@ -63,6 +63,7 @@ class AttendanceController extends Controller
 
     public function store(AttendanceRequest $request)
     {  
+        dd($request);
         try { 
 
         $total = str_replace(',', '.', $request->valorFinal);
@@ -161,10 +162,15 @@ class AttendanceController extends Controller
 
     }
 
-    public function registerPayment($id)
+    public function registerPayment(Request $request, $cdCliente)
     {
         try{
+            dd($request);
 
+            $unpaid = $this->objAttendance->where('cdCliente', $cdCliente)->where('situacao', 'N')->get();
+            foreach($unpaid as $u){
+                $input = $u->cdAtendimento;
+            }
             $this->objAttendance->where('cdAtendimento', $id)->update([
                 'situacao' => 'P'
             ]);

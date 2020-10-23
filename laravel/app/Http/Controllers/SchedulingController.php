@@ -35,7 +35,11 @@ class SchedulingController extends Controller
         return redirect('index');
     }
 
-    public function create($date)
+    public function create(){
+        return $this->newCreate(Carbon::now()->format('Y-m-d'));
+    }
+
+    public function newCreate($date)
     {
         try{
             $back = 'Cancelar';

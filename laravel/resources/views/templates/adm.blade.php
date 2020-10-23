@@ -82,7 +82,7 @@
                         <ul class='main-menu'>
                             <li><a href='{{url("/adm")}}'>Home</a></li>
                             <li><a href='#' class='none'>Atendimentos</a> 
-                                <ul class='sub-menu'>
+                                <ul class='sub-menu'> 
                                     <li><a href='{{url("adm/scheduling/create")}}'>Agendar</a></li>
                                     <li><a href='{{url("adm/attendance/create")}}'>Registrar</a></li>
                                 </ul>

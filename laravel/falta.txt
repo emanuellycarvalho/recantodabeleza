@@ -1,11 +1,8 @@
 Fernando:
-???
+- Padronizar as duas casas depois da vírgula em serviço
 
 Manu:
-funcionário
-- verificar cpf e email já existentes
-(tentando mostrar a mensagem abaixo do edit
-)
-- fazer a lista do procedimento de pull e push adequados no github (colocar no drive e indicar no grupo)
-
+atendimento
+- n pra m de funcionário/serviço
+- revisar o cálculo
 - trabalhar na implementação do pagamento
