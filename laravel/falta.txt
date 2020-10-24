@@ -3,6 +3,6 @@ Fernando:
 
 Manu:
 atendimento
-- n pra m de funcionário/serviço
 - revisar o cálculo
+- n pra m de funcionário/serviço
 - trabalhar na implementação do pagamento
