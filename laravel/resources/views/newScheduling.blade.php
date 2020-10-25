@@ -56,7 +56,7 @@
 
                         <div class='col-md-8 offset-md-4'> <div class='validar' id='validarHora'></div></div> 
 
-                        <div class='row'>
+                        <div class='row'> 
                             <div class='col-md-10 col-xs-12'>
                                 <div class='form-group'>
                                     <label for='cliente'>Cliente*</label>
@@ -133,7 +133,7 @@
 
                                 <div class='col-md-3 col-xs-12'>
                                     <label for='valor'>Valor</label>
-                                    <input name='valor[]' placeholder= '00.00' readonly>
+                                    <input name='valor[]' placeholder= '00,00' readonly>
                                 </div>
 
                                 <div class='col-md-1 col-xs-12'>    
@@ -214,6 +214,30 @@
 	</div>
     
 	<script>
+/*     select `TbFuncionario`.*, `tbFuncionarioServico`.`cdServico` as `pivot_cdServico`, 
+    `tbFuncionarioServico`.`cdFuncionario` as `pivot_cdFuncionario`, 
+    `tbFuncionarioServico`.`created_at` as `pivot_created_at`, 
+    `tbFuncionarioServico`.`updated_at` as `pivot_updated_at` 
+    from `TbFuncionario` inner join `tbFuncionarioServico` 
+    on `TbFuncionario`.`id` = `tbFuncionarioServico`.`cdFuncionario` 
+    where `tbFuncionarioServico`.`cdServico` is null */
+
+    $(document).ready(function(){
+        //N PRA M DE FUNCIONARIO SERVIÇO
+        $('#select_service').on('change', function(event){
+            const cdServico = $(this).val();
+            $.ajax({
+                url: '{{route("getESRelationship")}}',
+                method:'GET',
+                data:{id: cdServico},
+                dataType:'json',
+                success:function(data)
+                {
+                alert('foi');
+                }
+            });
+        });
+    });
         //PREENCHER INPUTS
 		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/scheduling/create'){
 			document.getElementById('data').value = localStorage.getItem('data');

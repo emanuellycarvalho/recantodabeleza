@@ -1,6 +1,6 @@
 
     $(document).ready(function () {
-
+ 
         $('#tipoPagamento').on('change', function (event){
             const paymentType = document.getElementById('tipoPagamento').value;
 

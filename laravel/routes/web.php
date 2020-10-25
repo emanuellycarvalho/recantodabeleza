@@ -52,6 +52,7 @@ Route::view('adm/more', 'more');
 Route::get('adm', 'FullCalendar@index');
 Route::get('adm/index', 'FullCalendar@index');
 Route::get('load-events', 'SchedulingController@loadEvents')->name('routeLoadEvents');
+Route::get('getESRelationship', 'ServiceController@getEmployeeRelationship')->name('getESRelationship');
 
 Route::get('/cep', function(){
     $cepResponse = cep('01010000');

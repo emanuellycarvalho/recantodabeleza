@@ -73,9 +73,9 @@ $(document).ready(function () {
   
   //remove do primeiro select as options que já foram selecionadas anteriormente
   function removeOptionsSelected(employee_id, service_id) {
-    $('#select_employee option[value="' + employee_id + '"]').each(function () {
+/*     $('#select_employee option[value="' + employee_id + '"]').each(function () {
       $(this).remove();
-    });
+    }); */
   
     $('#select_service option[value="' + service_id + '"]').each(function () {
       $(this).remove(); 
@@ -93,7 +93,7 @@ $(document).ready(function () {
       total = total.substring(0, total.indexOf(".") + 3);
       document.getElementById('total').value = total;
     }
-  }
+  } 
   
   function removeItem(event) {
     event.preventDefault();

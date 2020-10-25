@@ -164,22 +164,21 @@ class AttendanceController extends Controller
 
     public function registerPayment(Request $request, $cdCliente)
     {
+        dd($request);
         try{
-            dd($request);
-
             $unpaid = $this->objAttendance->where('cdCliente', $cdCliente)->where('situacao', 'N')->get();
             foreach($unpaid as $u){
-                $input = $u->cdAtendimento;
+                $campo = 'campo' . $u->cdAtendimento;
+                /* $u->update([
+                    'situacao' => $request->get($campo)
+                ]); */
             }
-            $this->objAttendance->where('cdAtendimento', $id)->update([
-                'situacao' => 'P'
-            ]);
 
             return $this->registerPaymentView();
         } catch(Excepcion $e){
             abort(401, $e->getMessage());
         }
-    }
+    } 
 
     protected function registerPaymentView(){
         $clients = $this->objClient->orderBy('nmCliente')->get();
@@ -190,8 +189,8 @@ class AttendanceController extends Controller
         return $this->objAttendance->all();
     }
 
-    protected function getUnpaidAttendances(){
-        return $this->objAttendance->where('situacao', 'N')->get();
+    protected function getUnpaidAttendances(Request $request){
+        return $this->objAttendance->where('situacao', 'N')->where('cdCliente', $request->get('client'))->get();
     }
 
     protected function getSomeonesAttendances($id){

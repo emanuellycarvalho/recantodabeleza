@@ -4,5 +4,7 @@ Fernando:
 Manu:
 atendimento
 - revisar o cálculo
+
+ambos com o mesmo erro relacionado ao n pra m \/
 - n pra m de funcionário/serviço
 - trabalhar na implementação do pagamento

@@ -112,36 +112,33 @@
             document.getElementById('mensagem').innerText = '';
             const cli = $('#cliente').val();
 
-            $.ajax
-                ({ 
-                    type: 'GET',
-                    dataType: 'json',
-                    url: '{{route("getUnpaidAttendances")}}',
-                    success: function (data)
-                    {               
-                        var existe = false;        
-                        data.map(function(item){
-                            if(item.cdCliente == cli){
-                                existe = true;
-                                var action = `{{url("adm/attendance/registerPayment/`+ cli + `")}}`;
-                                var date = item.dtAtendimento;
-                                date = date.split('-');
-                                date = date[2] + '/' + date[1] + '/' + date[0];
-                                $newRow = `<tr>
-                                        <td><center>${date}</center></td>
-                                        <td><center>R$${item.valorTotal}</center></td>
-                                        <td><center><a href='{{url("adm/payment/` + item.cdAtendimento +  `")}}' title='Visualizar Atendimento'><img class='responsive' src='{{url("/img/icons/seePayment.png")}}' height='35px'></a></center></td>
-                                        <td><center><input type='checkbox' id='campo` + item.cdAtendimento + `' name ='pago' value='N' onchange='changeValue()'></center></td>
-                                    </tr>`
-                                $('tbody').append($newRow);
-                                $('#attendance').attr('action', action);
-                            }
-                        }); 
-                        if(!existe){
-                            document.getElementById('mensagem').innerText = 'Nada para ver por aqui.'
-                        }
+            $.ajax({ 
+                type: 'GET',
+                data: {client: cli},
+                dataType: 'json',
+                url: '{{route("getUnpaidAttendances")}}',
+                success: function (data)
+                {               
+                    if(data.length < 1){
+                        document.getElementById('mensagem').innerText = 'Nada para ver por aqui.'
                     }
-                });
+
+                    data.map(function(item){
+                        var action = `{{url("adm/attendance/registerPayment/`+ cli + `")}}`;
+                        var date = item.dtAtendimento;
+                        date = date.split('-');
+                        date = date[2] + '/' + date[1] + '/' + date[0];
+                        $newRow = `<tr>
+                                <td><center>${date}</center></td>
+                                <td><center>R$${item.valorTotal}</center></td>
+                                <td><center><a href='{{url("adm/payment/` + item.cdAtendimento +  `")}}' title='Visualizar Atendimento'><img class='responsive' src='{{url("/img/icons/seePayment.png")}}' height='35px'></a></center></td>
+                                <td><center><input type='checkbox' id='campo` + item.cdAtendimento + `' name ='pago' value='N' onchange='changeValue()'></center></td>
+                            </tr>`
+                        $('tbody').append($newRow);
+                        $('#attendance').attr('action', action);
+                    });
+                }
+            });
         });
 
         function changeValue(){

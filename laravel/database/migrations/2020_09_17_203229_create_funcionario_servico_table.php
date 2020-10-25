@@ -16,7 +16,6 @@ class CreateFuncionarioServicoTable extends Migration
         Schema::create('tbFuncionarioServico', function (Blueprint $table) {
             $table->unsignedBigInteger('cdServico')->references('cdServico')->on('tbServico')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('cdFuncionario')->references('cdFuncionario')->on('tbFuncionario')->onUpdate('cascade')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

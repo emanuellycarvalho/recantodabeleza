@@ -6,6 +6,7 @@ use App\Models\ModelEmployee;
 use App\Models\FuncionarioServico;
 use App\Http\Requests\ServiceRequest;
 use App\Models\ModelService;
+use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
@@ -160,5 +161,19 @@ class ServiceController extends Controller
         }  else {
             throw new \Exception('Desculpe, ocorreu um erro ao recuperar os funcionarios deste servico.');
         }
+    }
+
+    public function getEmployeeRelationship(Request $request){
+       try {
+            $id = $request->get('id');
+            $service = $this->objService->where('cdServico', $id)->first();
+            if($service == null)
+                throw new \Exception('Desculpe, ocorreu um erro ao recuperar os funcionarios deste servico.');
+
+            return $service->relEmployee()->get();
+       }catch(Exception $e){
+           abort(401, $e->getMessage());
+       }
+
     }
 }
