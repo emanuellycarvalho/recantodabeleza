@@ -9,7 +9,7 @@
             } else {
                 $('#parcelas').attr('readonly', 'readonly');
                 $('#parcelas').val(1);
-            } 
+            }  
 
             if(paymentType == 'credito' || paymentType == 'debito'){
                 document.getElementById('nao_pago').disabled = true;
@@ -25,7 +25,7 @@
             //pega o valor do serviço
             var option = document.querySelectorAll('option[label="' + $('#select_service').val() + '"]');
             var val = option[0].value;
-            document.getElementById('valorServico').value = val.replace('.', ',');
+            document.getElementById('valorServico').value = 'R$ ' + val.replace('.', ',');
 
         });
 
@@ -39,7 +39,7 @@
             const service_id = $('#select_service').val();
             const service_name = $('#select_service option:selected').html();
 
-            const value = $('#valorServico').val();
+            const value = $('#valorServico').val().substring(3);
             
             if (verifyServiceData(service_id, employee_id, value) == null){
                 return;
@@ -47,7 +47,7 @@
 
             //cria as linhas com estes valores
             createServiceRow({id: employee_id, name: employee_name}, {id: service_id, name: service_name}, value);
-            removeOptionsSelectedEmployee(employee_id, service_id);
+            removeOptionsSelectedEmployee(service_id);
 
             //coloca os selects nas posições originais
             $('#select_employee').val(0);
@@ -60,7 +60,7 @@
             //pega o valor do produto
             var option = document.querySelectorAll('option[label="' + $('#select_product').val() + '"]');
             var val = option[1].value;
-            document.getElementById('precoProduto').value = val.replace('.', ',');
+            document.getElementById('precoProduto').value = 'R$ ' + menageValueFormat(val.replace('.', ','));
             document.getElementById('qtd').value = 1;
         });
 
@@ -71,7 +71,7 @@
             const product_name = $('#select_product option:selected').html();
             
             const amt = $('#qtd').val();
-            const value = $('#precoProduto').val();
+            const value = $('#precoProduto').val().substring(3);
 
             if (verifyProductData(product_id, amt, value) == null){
                 return;
@@ -118,11 +118,11 @@
         cel2.innerHTML = service.id;
         cel3.innerHTML = `<center> ${employee.name} </center>`;
         cel4.innerHTML = employee.id;
-        cel5.innerHTML = `<center> R$ ${value} </center>`;
+        cel5.innerHTML = `<center> R$ ${menageValueFormat(value)} </center>`;
         cel7.innerHTML = `<center> <img class='addOnTable margin-off' src='http://localhost/BicJr/recantodabeleza/laravel/public/img/icons/removeFromTable.png' title='Remover'> </center>`;
 
         $(cel7).on('click', function (event){
-            removeServiceItem(this);
+          removeServiceItem(this);
         });
         
         const services = document.getElementById('servicos').value;
@@ -149,14 +149,13 @@
 
     function createProductRow(product) {
 
-        //console.log('valor: ' + product.value);
-        //console.log('quantidade: ' + product.amt);
         var value = product.value.replace(',', '.');
-        value = (value * parseInt(product.amt)).toString();
-        value = value.substring(0, value.indexOf('.') + 3);
+        var finalValue = (value * parseInt(product.amt)).toString();
+        finalValue = finalValue.substring(0, value.indexOf('.') + 3);
+        finalValue = finalValue.replace('.', ',');
         value = value.replace('.', ',');
 
-        if(addToTotal('product', value) == 0){
+        if(addToTotal('product', finalValue) == 0){
             const alrt = 'Desculpe, ocorreu um erro com o valor.';
             $('#product_warning').append(alrt);
             return;
@@ -168,25 +167,28 @@
         
         const cel1 = newRow.insertCell(0); //produto
         const cel2 = newRow.insertCell(1); //id
-        const cel3 = newRow.insertCell(2); //qtd
+        const cel3 = newRow.insertCell(2); //unitario
         const cel4 = newRow.insertCell(3); //vazia
-        const cel5 = newRow.insertCell(4); //qtd*valor
+        const cel5 = newRow.insertCell(4); //qtd
         const cel6 = newRow.insertCell(5); //vazia
-        const cel7 = newRow.insertCell(6); //excluir
+        const cel7 = newRow.insertCell(6); //qtd*valor
+        const cel8 = newRow.insertCell(7); //vazia
+        const cel9 = newRow.insertCell(8); //excluir
      
         cel2.style.visibility = 'hidden';
         cel4.style.visibility = 'hidden';
         cel6.style.visibility = 'hidden';
     
 
-        cel1.innerHTML = `${product.name}`;
+        cel1.innerHTML = `${product.name.substring(0, 30)}`;
         cel2.innerHTML = product.id;
-        cel3.innerHTML = `<center> ${product.amt} </center>`;
-        cel5.innerHTML = `<center> R$ ${value} </center>`;
-        cel7.innerHTML = `<center> <img class='addOnTable margin-off' src='http://localhost/BicJr/recantodabeleza/laravel/public/img/icons/removeFromTable.png' title='Remover'> </center>`;
+        cel3.innerHTML = `<center> R$ ${value} </center>`;
+        cel5.innerHTML = `<center> ${product.amt} </center>`;
+        cel7.innerHTML = `<center> R$ ${menageValueFormat(finalValue)} </center>`;
+        cel9.innerHTML = `<center> <img class='addOnTable margin-off' src='http://localhost/BicJr/recantodabeleza/laravel/public/img/icons/removeFromTable.png' title='Remover'> </center>`;
 
-        $(cel7).on('click', function (event){
-        removeProductItem(this);
+        $(cel9).on('click', function (event){
+            removeProductItem(this);
         });
 
         const products = document.getElementById('produtos').value;
@@ -217,6 +219,7 @@
         const row = cel.parentNode;
         
         const value = row.childNodes[4].innerText.substring(3);
+        //console.log(value); return;
 
         //atualiza o campo referente ao valor final
         if(removeFromTotal('service', value) == 0){
@@ -238,7 +241,7 @@
         const employees = removeFromStringArray(document.getElementById('funcionarios').value, employee_id);
         const values = removeFromStringArray(document.getElementById('valoresServicos').value, employee_id);
 
-        console.log(services + ', ' + employees + ', ' + values);
+        //console.log(services + ', ' + employees + ', ' + values);
         
         if(services == 'lombrou' || employees == 'lombrou' || values == 'lombrou'){
             cleanNotifications('service');
@@ -295,24 +298,19 @@
     function addToTotal(divName, value){
         cleanNotifications(divName);
         if(value != null){
-            value = value.replace(',', '.');
-            value = parseFloat(value);
             const divTotal = document.getElementById(`${divName}Total`);
-            //console.log(divTotal);
+            //console.log(value);
             var valueDiv;
 
             if(divTotal.innerHTML == ''){
                 divTotal.innerText = 'R$';
-                valueDiv = $('<b>').attr({id:`${divName}Value`}).appendTo(divTotal);
-                //console.log(valueDiv.prevObject[0]);
-                valueDiv.prevObject[0].innerText = value.toString().replace('.', ',');
+                valueDiv = $('<b>').attr({id:`${divName}Value`}).appendTo(divTotal);    
+                valueDiv.prevObject[0].innerText = menageValueFormat(value);
             } else {
                 valueDiv = document.getElementById(`${divName}Value`);
-                //console.log(valueDiv);
                 var already = valueDiv.innerText.replace(',', '.');
-                var total = (parseFloat(already) + value).toString();
-                total = total.replace('.', ',');
-                valueDiv.innerText = total.substring(0, total.indexOf(',') + 3);
+                var total = (parseFloat(already) + parseFloat(value)).toString();
+                valueDiv.innerText = menageValueFormat(total.replace('.', ','));
 
                 if(valueDiv.innerText == 'NaN' || valueDiv.innerText == '[o'){
                     valueDiv.innerText = 0;
@@ -331,19 +329,17 @@
         var valueDiv = document.getElementById(`${divName}Value`);
 
         if(value != null && valueDiv.innerText != null){
-            //console.log('valor da tabela: ' + value);
-            //console.log('valor da div: ' + valueDiv.innerText);
             value = parseFloat(value.replace(',', '.'));
-            //console.log('valores pós parseFloat: ' + value + ', - ' + parseFloat(valueDiv.innerText));
             var total = parseFloat(valueDiv.innerText.replace(',', '.')) - value;
-            
-            if(total < 0){
+            //console.log(total); return;
+
+            if(total < 0 || total < 1){
                 valueDiv.innerText = 0;
                 return 0;
             };
             
-            total = (total).toString().replace('.', ',');
-            valueDiv.innerText = total.substring(0, total.indexOf(",") + 3);
+            total = total.toString().replace('.', ',');
+            valueDiv.innerText = menageValueFormat(total);
             
             if(valueDiv.innerText == 'NaN' || valueDiv.innerText == '[o'){
                 valueDiv.innerText = 0;
@@ -367,14 +363,14 @@
             product = parseFloat(document.getElementById('productValue').innerText.replace(',', '.'));
         }
 
-        var total = (service+product).toString();
-        total = total.substring(0, total.indexOf(".") + 3);
+        var total = (service+product).toString().replace('.', ',');
+        total = 'R$ ' + menageValueFormat(total);
         if (total == null){
             return 0;
         }
 
-        document.getElementById('total').value = total.replace('.', ',');
-        document.getElementById('valorFinal').value = total.replace('.', ',');
+        document.getElementById('total').value = total;
+        document.getElementById('valorFinal').value = total;
         return;
     }
 
@@ -443,10 +439,10 @@
         document.getElementById(`${divName}_warning`).innerHTML="";
     }
 
-    function removeOptionsSelectedEmployee(employee_id, service_id) {
-        $('#select_employee option[value="' + employee_id + '"]').each(function () {
+    function removeOptionsSelectedEmployee(service_id) {
+        /* $('#select_employee option[value="' + employee_id + '"]').each(function () {
           $(this).remove();
-        });
+        }); */
       
         $('#select_service option[value="' + service_id + '"]').each(function () {
           $(this).remove();
@@ -457,4 +453,25 @@
         $('#select_product option[value="' + product_id + '"]').each(function () {
             $(this).remove();
         });
+    }
+
+    function menageValueFormat(value){
+        if(value != null){
+            const index = value.indexOf(',');
+            value = value.split('');
+            
+            if(value[index+1] == null)
+                value[index+1] = 0;
+            
+            if(value[index+2] == null)
+                value[index+2] = 0;
+
+            var final = value[0];
+            for($i = 1; $i < index+3; $i ++){
+                final += value[$i];
+            }
+
+            return final;
+        }
+        return null;
     }

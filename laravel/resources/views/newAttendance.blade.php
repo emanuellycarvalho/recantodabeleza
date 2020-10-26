@@ -234,7 +234,7 @@
                         <div class='text-center mb-5 alert-warning' id='product_warning'>
                         </div>
 
-                        <div class='row'>
+                        <div class='row'> 
 
                             <div class='col-md-4 col-xs-12'>
                                 <label for='select_product'>Produto*</label>
@@ -290,7 +290,9 @@
                                     <tr>
                                         <th class='product-th'>Produto</th>
                                         <th style='visibility: hidden;'></th>
-                                        <th class='quy-th' id='none'>Quantidade</th>
+                                        <th class='quy-th' id='none'>Uni</th>
+                                        <th style='visibility: hidden;'></th>
+                                        <th class='quy-th' id='none'>Qtd</th>
                                         <th style='visibility: hidden;'></th>
                                         <th class='quy-th' id='none'>Valor final</th>
                                         <th style='visibility: hidden;'></th>
@@ -308,6 +310,7 @@
                                             </a>
                                         </td>
                                         <td class='quy-col' id='product'><center></center></td>
+                                        <td class='quy-col' id='unitary'><center></center></td>
                                         <td class='quy-col' id='quantity'><center></center></td>
                                         <td class='quy-col' id='finalValue'><center></center></td>
                                         <td class='quy-col' id='delete'><center></center></td>
@@ -406,7 +409,7 @@
                 return false;
             }
             return true;
-        }
+        } 
 
         //PREENCHER INPUTS
 		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/attendance/create'){

@@ -15,7 +15,7 @@ $(document).ready(function () {
 
       //cria os inputs com estes valores
       createFields({id: employee_id, name: employee_name}, {id: service_id, name: service_name});
-      removeOptionsSelected(employee_id, service_id);
+      removeOptionsSelected(service_id);
 
       //coloca o primeiro select em sua posição original
       $('#select_employee').val(0);
@@ -42,7 +42,7 @@ $(document).ready(function () {
     for (var item of option) {
       var valor = item.value;
     }
-    //console.clear();
+  
     //atualiza o campo referente ao valor final
     addToTotal(valor);
   
@@ -72,7 +72,7 @@ $(document).ready(function () {
   }
   
   //remove do primeiro select as options que já foram selecionadas anteriormente
-  function removeOptionsSelected(employee_id, service_id) {
+  function removeOptionsSelected(service_id) {
 /*     $('#select_employee option[value="' + employee_id + '"]').each(function () {
       $(this).remove();
     }); */
@@ -81,19 +81,6 @@ $(document).ready(function () {
       $(this).remove(); 
     });
   }
-  
-  //atualiza o campo referente ao valor final
-  function addToTotal(valor){
-    if (valor != null){
-      valor = parseFloat(valor);
-      var total = document.getElementById('total').value;
-      //console.log(total + ", " + valor);
-      total = parseFloat(total) + valor;
-      total = total.toString();
-      total = total.substring(0, total.indexOf(".") + 3);
-      document.getElementById('total').value = total;
-    }
-  } 
   
   function removeItem(event) {
     event.preventDefault();
@@ -106,8 +93,8 @@ $(document).ready(function () {
     const service_div = button.closest('.selected');
   
     //pega os valores do funcionário e serviço
-    const employee_id = service_div.find("[name='employee_id[]']").val();
-    const employee_name = service_div.find("[name='employee_name[]']").val();
+    /* const employee_id = service_div.find("[name='employee_id[]']").val();
+    const employee_name = service_div.find("[name='employee_name[]']").val(); */
   
     const service_id = service_div.find("[name='service_id[]']").val();
     const service_name = service_div.find("[name='service_name[]']").val();
@@ -128,8 +115,20 @@ $(document).ready(function () {
     //remove a div 
     service_div.remove();
   }
-  
+
   //atualiza o campo referente ao valor final
+  function addToTotal(valor){
+    if (valor != null){
+      valor = parseFloat(valor);
+      var total = document.getElementById('total').value;
+      //console.log(total + ", " + valor);
+      total = parseFloat(total) + valor;
+      total = total.toString();
+      total = total.substring(0, total.indexOf(".") + 3);
+      document.getElementById('total').value = total;
+    }
+  } 
+  
   function removeFromTotal(valor){
     if (valor != null){
       valor = parseFloat(valor);
@@ -185,7 +184,7 @@ function validarHora(){
     if((horaInicio != '' || horaFim != '') || horaInicio < inicio || horaFim < inicio || horaInicio > fim || horaFim > fim){
     document.getElementById('validarHora').innerHTML = 'O estabelecimento funciona de 7:00 à 17:00';
     algoErrado = true;
-    }
+    } 
     
     if(algoErrado){
     $('.verificar').show();
