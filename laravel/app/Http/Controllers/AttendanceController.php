@@ -21,7 +21,7 @@ class AttendanceController extends Controller
     protected  $objEmployee;   
     protected  $objService;
     protected  $objProduct;
-    protected  $objClient;
+    protected  $objCustomer;
 
     public function __construct(){
         $this->objEmployeeType = new ModelEmployeeType();
@@ -30,7 +30,7 @@ class AttendanceController extends Controller
         $this->objEmployee = new ModelEmployee();
         $this->objService = new ModelService();
         $this->objProduct = new ModelProduct();
-        $this->objClient = new ModelClient();
+        $this->objCustomer = new ModelClient();
     }
 
     public function index()
@@ -44,7 +44,7 @@ class AttendanceController extends Controller
             
             $date = Carbon::today()->setTimezone('America/Sao_Paulo')->format('d/m/Y');
             
-            $clients = $this->objClient->orderBy('nmCliente')->get();
+            $clients = $this->objCustomer->orderBy('nmCliente')->get();
             $employees = $this->getAtendentes();
             $services = $this->objService->all();
             $products = $this->objProduct->all();
@@ -63,12 +63,13 @@ class AttendanceController extends Controller
 
     public function store(AttendanceRequest $request)
     {  
-        dd($request);
+        //dd($request);
         try { 
 
         $total = str_replace(',', '.', $request->valorFinal);
         $total = str_replace(' ', '', $total);
-
+        $total = substr($total, 2);
+        
            $att = $this->objAttendance->create([
                 'dtAtendimento' => Carbon::createFromFormat('d/m/Y', $request->data, 'America/Sao_Paulo')->toDateTimeString(),
                 'valorTotal' => $total,
@@ -105,7 +106,7 @@ class AttendanceController extends Controller
     public function show($id)
     {
         $atdc = $this->objAttendance->where('cdAtendimento', $id)->first();
-        $cli = $this->objClient->where('cdCliente', $atdc->cdCliente)->first();
+        $cli = $this->objCustomer->where('cdCliente', $atdc->cdCliente)->first();
 
         return view ('showAttendance')->with(compact('atdc'))
                                       ->with(compact('cli'));
@@ -140,7 +141,7 @@ class AttendanceController extends Controller
             $employees = $this->objEmployee->all();
 
             
-            $cli = $this->objClient->where('cdCliente', $att->cdCliente)->first();
+            $cli = $this->objCustomer->where('cdCliente', $att->cdCliente)->first();
             if($cli == null)
                 $client->nmCliente = 'Não encontrado.';
             else{
@@ -162,26 +163,29 @@ class AttendanceController extends Controller
 
     }
 
-    public function registerPayment(Request $request, $cdCliente)
+    public function registerPayment(Request $request)
     {
-        dd($request);
+        //dd($request->pago);
         try{
-            $unpaid = $this->objAttendance->where('cdCliente', $cdCliente)->where('situacao', 'N')->get();
-            foreach($unpaid as $u){
-                $campo = 'campo' . $u->cdAtendimento;
-                /* $u->update([
-                    'situacao' => $request->get($campo)
-                ]); */
-            }
+            if($request->pago == null)
+                throw new \Exception('Desculpe, ocorreu um erro ao recuperar os atendimentos não pagos.');
+                
+            $unpaidArray = $request->pago;
+            for($i = 0; $i < sizeof($unpaidArray); $i++){
+                $unpaid = $this->objAttendance->where('cdAtendimento', $unpaidArray[$i]);
+                if(!$unpaid->update(['situacao' => 'P']))
+                    throw new \Exception('Desculpe, ocorreu um erro ao atualizar a situação do(s) pagamento(s) selecionado(s).');
+            }            
 
             return $this->registerPaymentView();
+
         } catch(Excepcion $e){
             abort(401, $e->getMessage());
         }
     } 
 
     protected function registerPaymentView(){
-        $clients = $this->objClient->orderBy('nmCliente')->get();
+        $clients = $this->objCustomer->orderBy('nmCliente')->get();
         return view('registerPayment')->with(compact('clients'));
     }
 

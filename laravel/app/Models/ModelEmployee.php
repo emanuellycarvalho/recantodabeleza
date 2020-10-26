@@ -20,9 +20,7 @@ class ModelEmployee extends Model
 
     public function relService() {
         return $this->belongsToMany('App\Models\ModelService', 'tbFuncionarioServico', 'cdFuncionario', 'cdServico')
-        ->as('funcionarios')
-        ->withPivot('cdServico')
-        ->withTimestamps();
+                    ->withTimestamps();
     }
 
     public function dtNasc(){

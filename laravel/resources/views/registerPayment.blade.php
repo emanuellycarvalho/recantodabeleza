@@ -124,7 +124,7 @@
                     }
 
                     data.map(function(item){
-                        var action = `{{url("adm/attendance/registerPayment/`+ cli + `")}}`;
+                        var action = `{{url("adm/attendance/registerPayment")}}`;
                         var date = item.dtAtendimento;
                         date = date.split('-');
                         date = date[2] + '/' + date[1] + '/' + date[0];
@@ -132,7 +132,7 @@
                                 <td><center>${date}</center></td>
                                 <td><center>R$${item.valorTotal}</center></td>
                                 <td><center><a href='{{url("adm/payment/` + item.cdAtendimento +  `")}}' title='Visualizar Atendimento'><img class='responsive' src='{{url("/img/icons/seePayment.png")}}' height='35px'></a></center></td>
-                                <td><center><input type='checkbox' id='campo` + item.cdAtendimento + `' name ='pago' value='N' onchange='changeValue()'></center></td>
+                                <td><center><input type='checkbox' id='pago' name ='pago[]' value='` + item.cdAtendimento +  `'></center></td>
                             </tr>`
                         $('tbody').append($newRow);
                         $('#attendance').attr('action', action);

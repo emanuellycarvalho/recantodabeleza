@@ -11,16 +11,13 @@ class ModelService extends Model
     
     public function relScheduling(){
         return $this->belongsToMany('App\Models\ModelScheduling', 'tbAgendamentoServico', 'cdServico', 'cdAgendamento')
-        ->as('agendamentos')
-        ->withPivot('CdFuncionario', 'valorCobrado')
-        ->withTimestamps(); 
+                    ->withPivot('CdFuncionario', 'valorCobrado')
+                    ->withTimestamps(); 
     }
     
     public function relEmployee() {
         return $this->belongsToMany('App\Models\ModelEmployee', 'tbFuncionarioServico', 'cdServico', 'cdFuncionario')
-        ->as('funcionarios')
-        ->withPivot('cdServico')
-        ->withTimestamps();
+                    ->withTimestamps();
     }
 
 }
