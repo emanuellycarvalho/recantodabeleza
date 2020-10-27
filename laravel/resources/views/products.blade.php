@@ -28,7 +28,7 @@
 							</div>
 						</div>
 						<div class='col-xl-1 col-lg-5'>
-							<a href='{{url("adm/product/create")}}' title='Adicionar Produto'><img class='responsive' src='{{url("/img/icons/newProduct.png")}}' width='70px'></a>
+							<a href='{{url("adm/product/create")}}' title='Adicionar produto'><img class='responsive' src='{{url("/img/icons/newProduct.png")}}' width='70px'></a>
 						</div>
 					</div>
 				</div>
@@ -94,7 +94,8 @@
 				</button>
 			</div>
 			<div class='modal-body'>
-				<p>Tem certeza que deseja excluir esse registro?</p>
+				<p>Tem certeza que deseja excluir esse registro?<br>
+				<b>Nome:</b>{{$prod->nmProduto}}</p>
 			</div>
 			<div class='modal-footer'>
 				<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>

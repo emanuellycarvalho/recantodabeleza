@@ -2,7 +2,7 @@
 $(document).ready(function(){
   $('#comissao').mask('000');
   $('#data').mask('00/00/0000');
-  $('#rg').mask('MG-00.000.000');
+  $('#rg').mask('00.000.000-0');
   $('#dtNasc').mask('00/00/0000');
   $('#telefone').mask('(00) 00000-0000');
   $('#cep').mask('00000-000', {reverse: true});

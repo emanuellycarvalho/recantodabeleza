@@ -115,13 +115,19 @@
 							<div class='form-group'>
 								<label for='telefone'>Telefone*</label>
 								<input type='text' name='telefone' id='telefone' placeholder='(00) 00000-0000' value='{{$cust->telefone ?? old("telefone")}}'>
+								<small id='verificarTelefone' class='verificar'>
+									O telefone que você inseriu é inválido.
+								</small>
 							</div>
 						</div>
 
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='dtNasc'>Data de nascimento</label>
-								<input type='text' name='dtNasc' id='dtNasc' placeholder='00/00/00' @if(isset($cust)) value='{{$cust->dtNasc()}}' @endif >
+								<input type='text' name='dtNasc' id='dtNasc' placeholder='00/00/0000' @if(isset($cust)) value='{{$cust->dtNasc()}}' @endif >
+								<small id='verificarDtNasc' class='verificar'>
+									A data de nascimento que você inseriu é inválida.
+								</small>
 							</div>
 						</div>
 
@@ -145,29 +151,13 @@
 							Sua senha deve ter no mínimo seis caracteres.
 							</small>
 						</div>
-
-						<div class='col-md-6 col-xs-12'>
-							<label for='senha2'>Confirmar senha*</label>
-							<input type='password' name='senha2' id='senha2' oninput='verificarSenha()' >
-							<small id='verificar'>
-								As senhas não conferem.
-							</small>
-						</div>
-
-						<div class="col-md-12 col-xs-12">
-							<div class="form-group">
-								<label for="foto">Foto</label>
-								<input class="form-control" id="foto" name="foto" type="file" value='' accept="image/png, image/jpeg">
-							</div>
-						</div>
-						@else
-						<div>
+						@else 
 							<input type='hidden' name='senha' id='senha' value='{{$cust->senha}}' readonly>
-						</div>
+						@endif
 						<div class='col-md-6 col-xs-12'>
 							<label for='senha2'>Confirmar senha*</label>
-							<input type='password' name='senha2' id='senha2' oninput='verificarSenha()' >
-							<small id='verificar'>
+							<input type='password' name='senha2' id='senha2' >
+							<small id='verificarSenha' class='verificar'>
 								As senhas não conferem.
 							</small>
 							@if(isset($cust))
@@ -177,14 +167,20 @@
 							@endif
 						</div>
 
-						<div class="col-md-6 col-xs-12">
-							<div class="form-group">
-								<label for="foto">Foto</label>
-								<input class="form-control" id="foto" name="foto" type="file" value='{{$cust->foto ?? "" }}' accept="image/png, image/jpeg">
+						@if(isset($cust))
+							<div class="col-md-6 col-xs-12">
+									<label for="foto">Foto</label>
+									<input class="form-control" id="foto" name="foto" type="file" value='{{$cust->foto ?? "" }}' accept="image/png, image/jpeg">
 							</div>
-						</div>
-
+						@else
+							<div class="col-md-12 col-xs-12">
+								<div class="form-group">
+									<label for="foto">Foto</label>
+									<input class="form-control" id="foto" name="foto" type="file" accept="image/png, image/jpeg">
+								</div>
+							</div>
 						@endif
+
 					</div>
 													
 					<hr>
@@ -308,7 +304,7 @@
 				</div>
 				<div class='modal-footer'>
 					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>
-					<a href='{{url("adm/custloyee")}}' class='site-btn' id='white'>Sim</a>
+					<a href='{{url("adm/customer")}}' class='site-btn' id='white'>Sim</a>
 				</div>
 			</div>
 		</div>
