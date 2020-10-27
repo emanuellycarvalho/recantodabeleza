@@ -19,9 +19,11 @@ Route::resource('adm/product', 'ProductController');
 Route::resource('adm/service', 'ServiceController');
 
 //ATTENDANCE
-Route::get('adm/registerPayment', 'AttendanceController@registerPayment');
+Route::get('adm/registerPayment', 'AttendanceController@registerPaymentView');
 Route::get('getAttendances', 'AttendanceController@getAttendances')->name('getAttendances');
 Route::get('getUnpaidAttendances', 'AttendanceController@getUnpaidAttendances')->name('getUnpaidAttendances');
+Route::get('adm/payment/{id}', 'AttendanceController@showPayment');
+Route::post('adm/attendance/registerPayment/{id}', 'AttendanceController@registerPayment');
 Route::resource('adm/attendance', 'AttendanceController');
 
 //CUSTOMER
@@ -39,15 +41,10 @@ Route::resource('adm/employeeType', 'EmployeeTypeController');
 //SUPPLIER
 Route::get('getSuppliersEmails', 'SupplierController@getEmails')->name('getSuppliersEmails');
 Route::get('getSuppliersCNPJs', 'SupplierController@getCNPJs')->name('getSuppliersCNPJs');
-Route::post('adm/customer/updateAttendances/{id}', 'CustomerController@UpdateAttendances');
 Route::resource('adm/supplier', 'SupplierController');
 
 //SCHEDULING
-Route::get('adm/scheduling/create/{date}', 'SchedulingController@create');
-Route::get('adm/scheduling/create', function() {
-    $url = 'adm/scheduling/create/' . Carbon::now()->format('Y-m-d');
-    return redirect($url);
-});
+Route::get('adm/scheduling/create/{date}', 'SchedulingController@newCreate');
 Route::resource('adm/scheduling', 'SchedulingController');
 
 //GENERAL

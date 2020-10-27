@@ -44,7 +44,7 @@ class AttendanceController extends Controller
             
             $date = Carbon::today()->setTimezone('America/Sao_Paulo')->format('d/m/Y');
             
-            $clients = $this->objClient->all();
+            $clients = $this->objClient->orderBy('nmCliente')->get();
             $employees = $this->getAtendentes();
             $services = $this->objService->all();
             $products = $this->objProduct->all();
@@ -63,7 +63,8 @@ class AttendanceController extends Controller
 
     public function store(AttendanceRequest $request)
     {  
-        try {
+        dd($request);
+        try { 
 
         $total = str_replace(',', '.', $request->valorFinal);
         $total = str_replace(' ', '', $total);
@@ -127,8 +128,61 @@ class AttendanceController extends Controller
         throw new \Exception('Desculpe, ocorreu um erro ao recuperar os atendentes.');
     }
 
-    protected function registerPayment(){
-        $clients = $this->objClient->all();
+    public function showPayment($id){
+        try{
+            $att = $this->objAttendance->where('cdAtendimento', $id)->first();
+            if($att == null)
+                throw new \Exception('Desculpe, ocorreu um erro ao recuperar o atendimento.');
+            
+            $dtAttendance = Carbon::createFromFormat('Y-m-d', $att->dtAtendimento, 'America/Sao_Paulo')->format('d/m/Y');
+            $services = $att->relService()->get();
+            $products = $att->relProduct()->get();
+            $employees = $this->objEmployee->all();
+
+            
+            $cli = $this->objClient->where('cdCliente', $att->cdCliente)->first();
+            if($cli == null)
+                $client->nmCliente = 'Não encontrado.';
+            else{
+                $nmClient = $cli->nmCliente;
+                $telefone = $cli->telefone;
+            }
+
+            return view('showPayment')->with(compact('att'))
+                                      ->with(compact('employees'))
+                                      ->with(compact('nmClient'))
+                                      ->with(compact('telefone'))
+                                      ->with(compact('dtAttendance'))
+                                      ->with(compact('services'))
+                                      ->with(compact('products'));
+
+        } catch(Exception $e){
+            abort(401, $e->getMessage());
+        }
+
+    }
+
+    public function registerPayment(Request $request, $cdCliente)
+    {
+        try{
+            dd($request);
+
+            $unpaid = $this->objAttendance->where('cdCliente', $cdCliente)->where('situacao', 'N')->get();
+            foreach($unpaid as $u){
+                $input = $u->cdAtendimento;
+            }
+            $this->objAttendance->where('cdAtendimento', $id)->update([
+                'situacao' => 'P'
+            ]);
+
+            return $this->registerPaymentView();
+        } catch(Excepcion $e){
+            abort(401, $e->getMessage());
+        }
+    }
+
+    protected function registerPaymentView(){
+        $clients = $this->objClient->orderBy('nmCliente')->get();
         return view('registerPayment')->with(compact('clients'));
     }
 

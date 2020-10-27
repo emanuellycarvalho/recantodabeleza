@@ -1,6 +1,6 @@
 @extends('templates.adm')
 
-@section('title') Registrar pagamento @endsection('title')
+@section('title') Pagamento de cliente @endsection('title')
 
 @section('icon') <img class='responsive' src='{{url("/img/icons/payment-light.png")}}' width='35px'> @endsection('icon')
 
@@ -40,6 +40,8 @@
                         </div>
 
                         <div class='cart-table'>
+                            <div id='mensagem'>
+                            </div>
                             <div class='cart-table-warp'>
                                 @csrf
                                 
@@ -71,7 +73,6 @@
                     </div> 
                     <div class='row'> . </div>
                     <div class='row justify-content-end'>
-                        <button onclick='history.back(-1)' class='site-btn sb-dark'>Cancelar</button>
                         <button type='submit' class='site-btn'>Confirmar</button>
                     </form>
                     </div>
@@ -106,7 +107,9 @@
     <script>
 
         $('#search').on('click', function(event){
-            event.preventDefault;
+            event.preventDefault();
+            $('tbody').html('');
+            document.getElementById('mensagem').innerText = '';
             const cli = $('#cliente').val();
 
             $.ajax
@@ -115,24 +118,28 @@
                     dataType: 'json',
                     url: '{{route("getUnpaidAttendances")}}',
                     success: function (data)
-                    {
-                        $('tbody').html('');
+                    {               
+                        var existe = false;        
                         data.map(function(item){
                             if(item.cdCliente == cli){
-                                var action = `{{url("/adm/customer/updateAttendances/`+ cli + `")}}`;
+                                existe = true;
+                                var action = `{{url("adm/attendance/registerPayment/`+ cli + `")}}`;
                                 var date = item.dtAtendimento;
                                 date = date.split('-');
                                 date = date[2] + '/' + date[1] + '/' + date[0];
                                 $newRow = `<tr>
                                         <td><center>${date}</center></td>
                                         <td><center>R$${item.valorTotal}</center></td>
-                                        <td><center><a href='{{url("adm/attendance/` + item.cdAtendimento +  `")}}' title='Visualizar Atendimento'><img class='responsive' src='{{url("/img/icons/seePayment.png")}}' height='35px'></a></center></td>
-                                        <td><center><input type='checkbox' id='pago' value='N' onchange='changeValue()'></center></td>
+                                        <td><center><a href='{{url("adm/payment/` + item.cdAtendimento +  `")}}' title='Visualizar Atendimento'><img class='responsive' src='{{url("/img/icons/seePayment.png")}}' height='35px'></a></center></td>
+                                        <td><center><input type='checkbox' id='campo` + item.cdAtendimento + `' name ='pago' value='N' onchange='changeValue()'></center></td>
                                     </tr>`
                                 $('tbody').append($newRow);
                                 $('#attendance').attr('action', action);
                             }
-                        })
+                        }); 
+                        if(!existe){
+                            document.getElementById('mensagem').innerText = 'Nada para ver por aqui.'
+                        }
                     }
                 });
         });

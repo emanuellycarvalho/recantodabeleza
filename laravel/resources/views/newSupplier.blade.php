@@ -170,19 +170,16 @@
 
 			//VERIFICA CNPJ JÁ EXISTENTE
 			$('#cnpj').on('blur', function(){
-				alert('foi');
 				const cnpj = document.getElementById('cnpj').value;
 
 				$.ajax
 				({ 
 					type: 'GET',
 					dataType: 'json',
-					url: '{{route("getSuplliersCNPJs")}}',
+					url: '{{route("getSuppliersCNPJs")}}',
 					success: function (data)
 					{
-						console.log('cenepejota: ' + cnpj);
 						data.map(function(item){
-							console.log(item.cnpj);
 							if(item.cnpj == cnpj){
 								document.getElementById('cnpj').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
 								document.getElementById('verificarCNPJ').innerText = 'CNPJ já registrado no sistema.'

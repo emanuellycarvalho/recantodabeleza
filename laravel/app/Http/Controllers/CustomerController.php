@@ -142,17 +142,6 @@ class CustomerController extends Controller
         $del = $this->objCustomer->where('cdCliente', $id)->delete();
     }
 
-    public function UpdateAttendances($id)
-    {
-        try{
-
-            $customer = $this->getCustomer($id);
-        } catch(Excepcion $e){
-            abort(401, $e->getMessage());
-        }
-        dd($id);
-    }
-
     protected function getCustomer($id)
     {
         $customer = $this->objCustomer->where('cdCliente', $id)->get();

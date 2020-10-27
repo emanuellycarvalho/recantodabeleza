@@ -10,6 +10,13 @@
                 $('#parcelas').attr('readonly', 'readonly');
                 $('#parcelas').val(1);
             } 
+
+            if(paymentType == 'credito' || paymentType == 'debito'){
+                document.getElementById('nao_pago').disabled = true;
+                document.getElementById('pago').checked = true;
+            } else {
+                document.getElementById('nao_pago').disabled = false;
+            } 
         
         });
 

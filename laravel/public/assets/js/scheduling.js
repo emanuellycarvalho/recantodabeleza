@@ -78,7 +78,7 @@ $(document).ready(function () {
     });
   
     $('#select_service option[value="' + service_id + '"]').each(function () {
-      $(this).remove();
+      $(this).remove(); 
     });
   }
   

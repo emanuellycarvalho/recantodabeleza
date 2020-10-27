@@ -18,7 +18,7 @@ $(document).ready(function(){
 //CALENDÁRIO
 $(function() {
   $('.calendar').datepicker({
-      showOn: 'button',
+      //showOn: 'button',
       showOtherMonths: true,
       selectOtherMonths: true,
       numberOfMonths: 2,

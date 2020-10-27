@@ -161,13 +161,13 @@ $(document).ready(function(){
 
       if(!validaCPFeCNPJ($(this).val())){
         document.getElementById('cnpj').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
-        document.getElementById('verificarCPF').innerText = 'O CPF que você inseriu é inválido.'
+        document.getElementById('verificarCNPJ').innerText = 'O CNPJ que você inseriu é inválido.'
         $('#verificarCNPJ').show();
         return;
       } 
 
       document.getElementById('cnpj').style.boxShadow = 'none';
-      document.getElementById('verificarCPF').innerText = '';
+      document.getElementById('verificarCNPJ').innerText = '';
       $('#verificarCNPJ').hide();
       return;
 

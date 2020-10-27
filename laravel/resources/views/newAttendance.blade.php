@@ -3,7 +3,7 @@
 @if(isset($atd)) 
 	@section('title') Editar Atendimento @endsection('title')
 @else
-    @section('title') Criar Atendimento @endsection('title')
+    @section('title') Registrar Atendimento @endsection('title')
 @endif
 
 @section('icon') <img class='responsive' src='{{url("/img/icons/attendance-light.png")}}' width='35px'> @endsection('icon')
@@ -51,6 +51,9 @@
                                 <div class='form-group'>
                                     <label for='data'>Data*</label> <br>
                                     <input type='text' name='data' id='data' class='calendar' placeholder='00/00/0000' value='{{$date ?? "" }}' autofocus> 
+                                    <small id='verificarData' class='verificar'>
+									    A data deve ser igual ou anterior a hoje.
+								    </small>
                                 </div>
                             </div>  
 
@@ -93,7 +96,7 @@
 
                             <div class='col-md-2'>
                                 <label for='parcelas'>Parcelas</label>
-                                <input type='number' name='parcelas' id='parcelas' readonly>
+                                <input type='number' name='parcelas' id='parcelas' min='1' readonly>
                             </div>
 
                             <div class='col-md-6'>
@@ -176,7 +179,7 @@
 
                             <div class='col-md-3 col-xs-12'>
                                 <label for='valorServico'>Valor*</label>
-                                <input name='valorServico' id='valorServico' placeholder= '00.00'>
+                                <input name='valorServico' id='valorServico' placeholder= '00,00'>
                             </div>
 
                             <div class='col-md-1 col-xs-12'>    
@@ -262,12 +265,12 @@
  
                             <div class='col-md-4 col-xs-12'>
                                 <label for='precoProduto'>Valor unitário*</label>
-                                <input type='text' name='precoProduto' id='precoProduto' placeholder= '00.00'>
+                                <input type='text' name='precoProduto' id='precoProduto' placeholder= '00,00'>
                             </div>
 
                             <div class='col-md-3 col-xs-12'>
                                 <label for='qtd'>Quantidade*</label>
-                                <input type='number' name='qtd' id='qtd' placeholder= '000'>
+                                <input type='number' name='qtd' id='qtd' min='1' placeholder= '000'>
                                 </div>
 
                             <div class='col-md-1 col-xs-12'>    
@@ -353,20 +356,20 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='nmCliente'>Nome*</label>
-								<input type='text' name='nmCliente' id='nmCliente' placeholder='Nome'>
+								<input type='text' name='nmCliente' id='nmCliente' placeholder='Nome' tabindex='1'>
 							</div>
 						</div>
 						
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='telefone'>Telefone*</label>
-								<input type='text' name='telefone' id='telefone' placeholder='Telefone'>
+								<input type='text' name='telefone' id='telefone' placeholder='Telefone' tabindex='2'>
 							</div>
 						</div>
 					</div>
 					<div class='row justify-content-end'>
 						<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-						<button type='submit' class='site-btn' onclick='saveData()'>Adicionar</button>
+						<button type='submit' class='site-btn' onclick='saveData()' tabindex='3'>Adicionar</button>
 					</div>
 				</form>
 			</div>
@@ -374,7 +377,37 @@
 		</div>
 	</div>
     
-	<script> 
+    <script> 
+    
+        $(document).ready(function(){
+            $('#verificarData').hide();
+            $('#data').on('blur', function(){verificarData()});
+            $('#data').on('mouseleave', function(){verificarData()});
+            
+            $('#cadastro').on('submit', function(){
+                event.preventDefault();
+                //alert(verificarData());
+                verificarData() ? this.submit() : '';
+            });
+        });
+
+        function verificarData(){
+            document.getElementById('data').style.boxShadow = 'none';
+            $('#verificarData').hide();
+            
+            var data = document.getElementById('data').value;
+            let parts = data.split('/');
+
+            data = new Date(parts[2], parts[1] - 1, parts[0]); 
+
+            if(data >= new Date()){
+                document.getElementById('data').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+                $('#verificarData').show();
+                return false;
+            }
+            return true;
+        }
+
         //PREENCHER INPUTS
 		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/attendance/create'){
 			document.getElementById('data').value = localStorage.getItem('data');
