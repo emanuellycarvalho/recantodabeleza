@@ -300,7 +300,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id='tbody'>
-                                    <tr>
+                                    <tr> 
                                         <td class='quy-col'>
                                             <a href='' title='Visualizar produto'>
                                                 <div class='pc-title'>
@@ -413,18 +413,18 @@
 
         //PREENCHER INPUTS
 		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/attendance/create'){
-			document.getElementById('data').value = localStorage.getItem('data');
+			/* document.getElementById('data').value = localStorage.getItem('data');
 			document.getElementById('inicio').value = localStorage.getItem('inicio');
 			document.getElementById('fim').value = localStorage.getItem('fim');
-			document.getElementById('cliente').value = localStorage.getItem('cliente');
+			document.getElementById('cliente').value = localStorage.getItem('cliente'); */
 			localStorage.clear();
 		}
 
 		function saveData(){
-			localStorage.setItem('data', $('#data').val());
+			/* localStorage.setItem('data', $('#data').val());
 			localStorage.setItem('inicio', $('#inicio').val());
 			localStorage.setItem('fim', $('#fim').val());
-			localStorage.setItem('cliente', $('#cliente').val());
+			localStorage.setItem('cliente', $('#cliente').val()); */
         }
 	</script> 
 	<!-- New client section end -->

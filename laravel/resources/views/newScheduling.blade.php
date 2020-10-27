@@ -89,7 +89,7 @@
                             <div class='text-center mb-5 alert-danger' id='service_error'>
                             </div>
 
-                            <div class='row'>
+                            <div class='row'> 
 
                                 <div class='col-md-4 col-xs-12'>
                                     <label for='select_service'>Serviço*</label>
@@ -133,7 +133,7 @@
 
                                 <div class='col-md-3 col-xs-12'>
                                     <label for='valor'>Valor</label>
-                                    <input name='valor[]' placeholder= '00,00' readonly>
+                                    <input name='valor[]' placeholder='00,00' readonly>
                                 </div>
 
                                 <div class='col-md-1 col-xs-12'>    

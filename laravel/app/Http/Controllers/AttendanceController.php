@@ -68,7 +68,6 @@ class AttendanceController extends Controller
 
         $total = str_replace(',', '.', $request->valorFinal);
         $total = str_replace(' ', '', $total);
-        $total = substr($total, 2);
         
            $att = $this->objAttendance->create([
                 'dtAtendimento' => Carbon::createFromFormat('d/m/Y', $request->data, 'America/Sao_Paulo')->toDateTimeString(),
@@ -167,8 +166,8 @@ class AttendanceController extends Controller
     {
         //dd($request->pago);
         try{
-            if($request->pago == null)
-                throw new \Exception('Desculpe, ocorreu um erro ao recuperar os atendimentos não pagos.');
+            /* if($request->pago == null)
+                throw new \Exception('Desculpe, ocorreu um erro ao recuperar os atendimentos não pagos.'); */
                 
             $unpaidArray = $request->pago;
             for($i = 0; $i < sizeof($unpaidArray); $i++){

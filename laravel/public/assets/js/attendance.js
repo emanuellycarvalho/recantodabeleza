@@ -20,6 +20,24 @@
         
         });
 
+        $('#valorServico').on('input', function(){
+            var value = $(this).val();
+            
+            if(value.substring(0, 1) == 'R')
+                value = value.substring(1);
+            
+            $(this).val('R$ ' + value);
+        });
+
+        $('#precoProduto').on('input', function(){
+            var value = $(this).val();
+
+            if(value.substring(0, 1) == 'R')
+                value = value.substring(1);
+            
+            $(this).val('R$ ' + value);
+        });
+
         //SERVICO
         $('#select_service').on('change', function(event) {
             //pega o valor do serviço
@@ -41,9 +59,8 @@
 
             const value = $('#valorServico').val().substring(3);
             
-            if (verifyServiceData(service_id, employee_id, value) == null){
+            if (verifyServiceData(service_id, employee_id, value) == null)
                 return;
-            }
 
             //cria as linhas com estes valores
             createServiceRow({id: employee_id, name: employee_name}, {id: service_id, name: service_name}, value);
@@ -88,7 +105,7 @@
 
     function createServiceRow(employee, service, value) {
 
-        if(addToTotal('service', value) == 0){
+        if(addToClassTotal('service', value) == 0){
             const alrt = 'Desculpe, ocorreu um erro com o valor.';
             $('#service_warning').append(alrt);
             return;
@@ -155,7 +172,7 @@
         finalValue = finalValue.replace('.', ',');
         value = value.replace('.', ',');
 
-        if(addToTotal('product', finalValue) == 0){
+        if(addToClassTotal('product', finalValue) == 0){
             const alrt = 'Desculpe, ocorreu um erro com o valor.';
             $('#product_warning').append(alrt);
             return;
@@ -231,7 +248,7 @@
         const table = document.getElementById('serviceTable');
 
         //pega os valores do funcionário e serviço    
-        const service_name = row.childNodes[0].innerHTML;
+        const service_name = row.childNodes[0].innerHTML; 
         const service_id = row.childNodes[1].innerHTML;
 
         const employee_name = row.childNodes[2].innerHTML;
@@ -295,12 +312,12 @@
         table.deleteRow(row.rowIndex);
     }
 
-    function addToTotal(divName, value){
+    function addToClassTotal(divName, value){
         cleanNotifications(divName);
         if(value != null){
-            const divTotal = document.getElementById(`${divName}Total`);
-            //console.log(value);
             var valueDiv;
+            //console.log(value);
+            const divTotal = document.getElementById(`${divName}Total`);
 
             if(divTotal.innerHTML == ''){
                 divTotal.innerText = 'R$';
@@ -308,6 +325,7 @@
                 valueDiv.prevObject[0].innerText = menageValueFormat(value);
             } else {
                 valueDiv = document.getElementById(`${divName}Value`);
+                value = value.replace(',', '.');
                 var already = valueDiv.innerText.replace(',', '.');
                 var total = (parseFloat(already) + parseFloat(value)).toString();
                 valueDiv.innerText = menageValueFormat(total.replace('.', ','));
@@ -329,22 +347,18 @@
         var valueDiv = document.getElementById(`${divName}Value`);
 
         if(value != null && valueDiv.innerText != null){
-            value = parseFloat(value.replace(',', '.'));
-            var total = parseFloat(valueDiv.innerText.replace(',', '.')) - value;
+            var total = valueDiv.innerText.replace(',', '.');
+            value = value.replace(',', '.');
+            total = parseFloat(total) - parseFloat(value);
             //console.log(total); return;
 
-            if(total < 0 || total < 1){
+            if(total < 1){
                 valueDiv.innerText = 0;
                 return 0;
             };
             
             total = total.toString().replace('.', ',');
             valueDiv.innerText = menageValueFormat(total);
-            
-            if(valueDiv.innerText == 'NaN' || valueDiv.innerText == '[o'){
-                valueDiv.innerText = 0;
-                return 0;
-            }
 
             return updateTotalValue();
         } 
@@ -364,12 +378,13 @@
         }
 
         var total = (service+product).toString().replace('.', ',');
-        total = 'R$ ' + menageValueFormat(total);
+        total = menageValueFormat(total);
         if (total == null){
             return 0;
         }
-
-        document.getElementById('total').value = total;
+        
+        //console.log('total:' + total);
+        document.getElementById('total').value = 'R$ ' + total;
         document.getElementById('valorFinal').value = total;
         return;
     }
@@ -383,13 +398,13 @@
             return;
         }
 
-        if(qtd <= 0 || qtd == null){
+        /* if(qtd <= 0 || qtd == null){
             var alrt = 'A quantidade precisa ser maior que zero.';
             $('#service_error').append(alrt);
             return;
-        }
+        } */ 
 
-        if(value <= 0 || value == null){
+        if(value.replace(',' , '.') <= 0 || value == null){
             var alrt = 'O valor do serviço precisa ser maior que zero.';
             $('#service_error').append(alrt);
             return;
@@ -454,24 +469,4 @@
             $(this).remove();
         });
     }
-
-    function menageValueFormat(value){
-        if(value != null){
-            const index = value.indexOf(',');
-            value = value.split('');
-            
-            if(value[index+1] == null)
-                value[index+1] = 0;
-            
-            if(value[index+2] == null)
-                value[index+2] = 0;
-
-            var final = value[0];
-            for($i = 1; $i < index+3; $i ++){
-                final += value[$i];
-            }
-
-            return final;
-        }
-        return null;
-    }
+    

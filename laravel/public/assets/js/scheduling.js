@@ -106,10 +106,10 @@ $(document).ready(function () {
     }
   
     //atualiza o campo referente ao valor final
-    removeFromTotal(valor);
+    removeFromTotal(valor); 
   
     //volta com eles pros primeiros selects
-    $('#select_employee').append(`<option value="${employee_id}">${employee_name}</option>`);
+    //$('#select_employee').append(`<option value="${employee_id}">${employee_name}</option>`);
     $('#select_service').append(`<option value="${service_id}">${service_name}</option>`);
   
     //remove a div 
@@ -119,27 +119,58 @@ $(document).ready(function () {
   //atualiza o campo referente ao valor final
   function addToTotal(valor){
     if (valor != null){
-      valor = parseFloat(valor);
+      var total = document.getElementById('total').value;
+      total = total.replace(',', '.');
+      total = parseFloat(total) + parseFloat(valor);
+      total = total.toString().replace('.', ',');
+      document.getElementById('total').value = menageValueFormat(total);
+      /* valor = parseFloat(valor);
       var total = document.getElementById('total').value;
       //console.log(total + ", " + valor);
       total = parseFloat(total) + valor;
       total = total.toString();
       total = total.substring(0, total.indexOf(".") + 3);
-      document.getElementById('total').value = total;
+      document.getElementById('total').value = total; */
     }
   } 
   
   function removeFromTotal(valor){
     if (valor != null){
-      valor = parseFloat(valor);
+      var total = document.getElementById('total').value;
+      total = total.replace(',', '.');
+      total = parseFloat(total) - parseFloat(valor);
+      total = total.toString().replace('.', ',');
+      document.getElementById('total').value = menageValueFormat(total);
+      /* valor = parseFloat(valor);
       var total = document.getElementById('total').value;
       total = parseFloat(total) - valor;
       if(total < 0){ total = 0 }
       total = total.toString();
       total = total.substring(0, total.indexOf(".") + 3);
-      document.getElementById('total').value = total;
+      document.getElementById('total').value = total; */
     }
   }
+
+  window.menageValueFormat = function(value){
+    if(value != null){
+        const index = value.indexOf(',');
+        value = value.split('');
+        
+        if(value[index+1] == null)
+            value[index+1] = 0;
+        
+        if(value[index+2] == null)
+            value[index+2] = 0;
+
+        var final = value[0];
+        for($i = 1; $i < index+3; $i ++){
+            final += value[$i];
+        }
+
+        return final.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+    return null;
+}
 
     //VERIFICAR O HORARIO CHANGE
     const inputInicio = document.getElementById('inicio');

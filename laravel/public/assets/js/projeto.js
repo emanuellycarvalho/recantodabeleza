@@ -9,8 +9,8 @@ $(document).ready(function(){
   $('#valor').mask('0 000,00', {reverse: true});
   $('#total').mask('00 000,00', {reverse: true});
   $('#cpf').mask('000.000.000-00', {reverse: true});
-  $('#precoProduto').mask('0 000,00', {reverse: true});
-  $('#valorServico').mask('0 000,00', {reverse: true});
+  $('#precoProduto').mask('AA 0 000,00', {reverse: true});
+  $('#valorServico').mask('AA 0 000,00', {reverse: true});
   $('#salarioBase').mask('00 000,00', {reverse: true});
   $('#cnpj').mask('00.000.000/0000-00', {reverse: true});
 });
