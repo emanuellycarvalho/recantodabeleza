@@ -23,7 +23,7 @@ $(document).ready(function () {
       document.getElementById('employee_error').innerHTML="";
       console.log('teste2');
       if(employee_id == null){
-        var alrt = 'Você precisa selecionar um funcionário por vez.';
+        var alrt = 'Por Favor, selecione um funcionário.';
         $('#employee_error').append(alrt);
         return null;
       }

@@ -21,6 +21,12 @@
 	            <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/service")}}' enctype='multiform/form-data'>
 			@endif
 					@csrf
+
+					<div class='col-md-12 col-xs-12'>
+                                <div class='cf-title'><h4>Dados Gerais</h4></div>
+                                <hr class='pink'>
+                    </div>
+
 					<div class='row'>
 						<div class='col-md-12 col-xs-12'>
 							<div class='form-group'>
@@ -58,7 +64,7 @@
 					<div id='employees'>
                         
                             <div class='col-md-12 col-xs-12'>
-                                <div class='cf-title'><h4>Funcionários</h4></div>
+                                <div class='cf-title'><h4>Funcionários Aptos</h4></div>
                                 <hr class='pink'>
                             </div>
 
@@ -70,7 +76,7 @@
                                 <div class='col-md-11 col-xs-12'>
                                     <label for='select_employee'>Funcionário</label>
                                     <select name='select_employee[]' id='select_employee'>
-                                        <option value='0' disabled selected> Selecione um funcionário por vez </option>
+                                        <option value='0' disabled selected> Selecione um funcionário </option>
                                         @foreach($employees as $emp)
                                             <script>
                                                 var values = [];
