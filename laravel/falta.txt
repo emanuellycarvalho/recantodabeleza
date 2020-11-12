@@ -7,7 +7,7 @@ Manu:
 
 2) Resolver apresentação/visualização RF pagamento
 
-3) Testar a situação do CNPJ, havia algum erro anterior que não tinha sido resolvido. 
+3) Resolvido
 
 ambos com o mesmo erro relacionado ao n pra m \/
 - n pra m de funcionário/serviço
