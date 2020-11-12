@@ -428,7 +428,7 @@
         }
 	</script> 
 	<!-- New client section end -->
-
+ 
 
 @endsection('content')
 

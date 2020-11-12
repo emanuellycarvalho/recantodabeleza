@@ -170,7 +170,20 @@
 
 			//VERIFICA CNPJ JÁ EXISTENTE
 			$('#cnpj').on('blur', function(){
+				document.getElementById('cnpj').style.boxShadow = 'none';
+				document.getElementById('verificarCNPJ').innerText = '';
+
 				const cnpj = document.getElementById('cnpj').value;
+
+				if(cnpj == null || cnpj == '')
+				return;
+
+				if(!validaCPFeCNPJ(cnpj)){
+					document.getElementById('cnpj').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+					document.getElementById('verificarCNPJ').innerText = 'O CNPJ que você inseriu é inválido.'
+					$('#verificarCNPJ').show();
+					return;
+				} 
 
 				$.ajax
 				({ 
@@ -191,8 +204,17 @@
 			});
 
 			//VERIFICA EMAIL JÁ EXISTENTE
-			$('#email').on('blur', function(){
+			$('#email').on('blur', function(event){
+				event.preventDefault();
 				const email = document.getElementById('email').value;
+				
+				if(email == null || email == ''){
+					$('#verificarEmail').hide();
+					return;
+				}
+
+				if(document.getElementById('email').style.boxShadow == 'rgba(220, 53, 69, 0.25) 0px 0px 0px 0.2rem')
+					$('#verificarEmail').hide();
 
 				$.ajax
 				({ 
@@ -201,8 +223,10 @@
 					url: '{{route("getSuppliersEmails")}}',
 					success: function (data)
 					{
+						var x = true;
 						data.map(function(item){
 							if(item.email == email){
+								x = false;
 								document.getElementById('email').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
 								document.getElementById('verificarEmail').innerText = 'Email já registrado no sistema.'
 								$('#verificarEmail').show();

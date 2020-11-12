@@ -354,7 +354,7 @@ $(document).ready(function(){
     return false                           // se inválida :(
   }
 
-  function validaCPFeCNPJ(val) {
+  window.validaCPFeCNPJ = function(val) {
     if(val == null || val == '')
       return true;
 
