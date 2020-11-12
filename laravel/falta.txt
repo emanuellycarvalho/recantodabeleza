@@ -2,8 +2,12 @@ Fernando:
 - Padronizar as duas casas depois da vírgula em serviço
 
 Manu:
-atendimento
-- revisar o cálculo
+
+1) corrigir problemas do RF Registrar Atendimento
+
+2) Resolver apresentação/visualização RF pagamento
+
+3) Testar a situação do CNPJ, havia algum erro anterior que não tinha sido resolvido. 
 
 ambos com o mesmo erro relacionado ao n pra m \/
 - n pra m de funcionário/serviço
