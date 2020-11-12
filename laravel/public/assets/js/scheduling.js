@@ -36,11 +36,15 @@ $(document).ready(function () {
       var option = document.querySelectorAll('option[label="' + service_id + '"]');
       var valor = option[0].value.replace('.', ',');
       
-      document.querySelector('input[name="valor[]"]').value = 'R$ ' + valor;
+      if(document.querySelector('input[name="valor[]"]') != null){
+        document.querySelector('input[name="valor[]"]').value = 'R$ ' + valor;
+        return;
+      }
+      document.getElementById('valorServico').value = 'R$ ' + valor;
     }
 
 //verifica se os dois selects estão preenchidos
-  function verifyServiceData(service_id, employee_id, value){
+  window.verifyServiceData = function(service_id, employee_id, value){
     document.getElementById('service_error').innerHTML="";
     
     if(service_id == null || employee_id == null){
@@ -191,5 +195,5 @@ window.cleanNotifications = function(divName){
 
   if(document.getElementById(`${divName}_warning`) != null)
     document.getElementById(`${divName}_warning`).innerHTML="";
-    
+
 }
