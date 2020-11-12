@@ -1,15 +1,9 @@
 $(document).ready(function () {
   
-  $('#select_service').on('change', function(){
-      const service_id = $('#select_service').val();
-      var option = document.querySelectorAll('option[label="' + service_id + '"]');
-      
-      for(var item of option) {
-        var valor = item.value.replace('.', ',');
-      }
-      
-      document.querySelector('input[name="valor[]"]').value = 'R$ ' + valor;
-  });
+  $('#select_service').on('change', function(){selectService()});
+  $('input[name="valor[]"]').on('input', function(){
+      $(this).val('R$ ' + $(this).val());
+  })
 
   $('#addOnTable').on('click', function (event) {
       event.preventDefault();
@@ -20,22 +14,33 @@ $(document).ready(function () {
       
       const service_id = $('#select_service').val();
       const service_name = $('#select_service option:selected').html();
+    
+      const value = $('input[name="valor[]"]').val();
+
       
-      if (verifyServiceData(service_id, employee_id) == null){
+      if (verifyServiceData(service_id, employee_id, value.substring(3)) == null){
           return;
       }
 
       //cria os inputs com estes valores
-      createFields({id: employee_id, name: employee_name}, {id: service_id, name: service_name});
+      createFields({id: employee_id, name: employee_name}, {id: service_id, name: service_name}, value);
       removeOptionsSelected(service_id);
 
       //coloca o primeiro select em sua posição original
       $('#select_employee').val(0);
       $('#select_service').val(0);
-  });
+});
+
+    window.selectService = function (){
+      const service_id = $('#select_service').val();
+      var option = document.querySelectorAll('option[label="' + service_id + '"]');
+      var valor = option[0].value.replace('.', ',');
+      
+      document.querySelector('input[name="valor[]"]').value = 'R$ ' + valor;
+    }
 
 //verifica se os dois selects estão preenchidos
-  function verifyServiceData(service_id, employee_id){
+  function verifyServiceData(service_id, employee_id, value){
     document.getElementById('service_error').innerHTML="";
     
     if(service_id == null || employee_id == null){
@@ -43,18 +48,19 @@ $(document).ready(function () {
       $('#service_error').append(alrt);
       return null;
     }
+
+    if(value.replace(',' , '.') <= 0 || value == null){
+      var alrt = 'O valor do serviço precisa ser maior que zero.';
+      $('#service_error').append(alrt);
+      return;
+    }
+
     return 1;
   }
   
   //cria os inputs com os valores selecionados numa nova div
-  function createFields(employee, service) {
-    
-    //pega o valor do serviço
-    var option = document.querySelectorAll('option[label="' + service.id + '"]');
-    for (var item of option) {
-      var valor = item.value.replace('.', ',');
-    }
-  
+  function createFields(employee, service, valor) {
+      
     var row = $('<div>').addClass('row selected');
     var div = $('<div>').addClass('col-md-4 col-xs-12');
   
@@ -70,7 +76,7 @@ $(document).ready(function () {
   
     div = $('<div>').addClass('col-md-3 col-xs-12');
   
-    $('<input>').attr({id:'valor', name: 'valor[]', value: 'R$ ' + valor, type: 'text' }).appendTo(div);
+    $('<input>').attr({id:'valor', name: 'valor[]', value: valor, type: 'text', readonly: true }).appendTo(div);
     div.appendTo(row);
   
     div = $('<div>').addClass('col-md-1 col-xs-12');
@@ -178,4 +184,12 @@ function validarHora(){
     document.getElementById('fim').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
     document.getElementById('inicio').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
     }
+}
+
+window.cleanNotifications = function(divName){
+  document.getElementById(`${divName}_error`).innerHTML="";
+
+  if(document.getElementById(`${divName}_warning`) != null)
+    document.getElementById(`${divName}_warning`).innerHTML="";
+    
 }

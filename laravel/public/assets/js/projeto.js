@@ -13,6 +13,7 @@ $(document).ready(function(){
   $('#valorServico').mask('AA 0 000,00', {reverse: true});
   $('#salarioBase').mask('00 000,00', {reverse: true});
   $('#cnpj').mask('00.000.000/0000-00', {reverse: true});
+  $('input[name="valor[]"]').mask('AA 0 000,00', {reverse: true});
 });
 
 //CALENDÁRIO

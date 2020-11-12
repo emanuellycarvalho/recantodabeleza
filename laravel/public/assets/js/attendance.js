@@ -21,13 +21,7 @@
         });
 
         //SERVICO
-        $('#select_service').on('change', function(event) {
-            //pega o valor do serviço
-            var option = document.querySelectorAll('option[label="' + $('#select_service').val() + '"]');
-            var val = option[0].value;
-            document.getElementById('valorServico').value = 'R$ ' + val.replace('.', ',');
-
-        });
+        $('#select_service').on('change', function(){selectService()});
 
         $('#addOnTable-service').on('click', function (event) {
             event.preventDefault();
@@ -370,30 +364,6 @@
         document.getElementById('valorFinal').value = total;
         return;
     }
-
-    function verifyServiceData(service_id, employee_id, value){
-        cleanNotifications('service');
-
-        if(service_id == null || employee_id == null){
-            var alrt = 'Você precisa selecionar um serviço e um funcionário por vez.';
-            $('#service_error').append(alrt);
-            return;
-        }
-
-        /* if(qtd <= 0 || qtd == null){
-            var alrt = 'A quantidade precisa ser maior que zero.';
-            $('#service_error').append(alrt);
-            return;
-        } */ 
-
-        if(value.replace(',' , '.') <= 0 || value == null){
-            var alrt = 'O valor do serviço precisa ser maior que zero.';
-            $('#service_error').append(alrt);
-            return;
-        }
-
-        return 1;
-    }
     
     function verifyProductData(product_id, amt, value){
         cleanNotifications('product');
@@ -429,11 +399,6 @@
         }
 
         return 'lombrou';
-    }
-
-    function cleanNotifications(divName){
-        document.getElementById(`${divName}_error`).innerHTML="";
-        document.getElementById(`${divName}_warning`).innerHTML="";
     }
 
     function removeOptionsSelectedEmployee(service_id) {
