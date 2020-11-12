@@ -1,4 +1,16 @@
 $(document).ready(function () {
+  
+  $('#select_service').on('change', function(){
+      const service_id = $('#select_service').val();
+      var option = document.querySelectorAll('option[label="' + service_id + '"]');
+      
+      for(var item of option) {
+        var valor = item.value.replace('.', ',');
+      }
+      
+      document.querySelector('input[name="valor[]"]').value = 'R$ ' + valor;
+  });
+
   $('#addOnTable').on('click', function (event) {
       event.preventDefault();
 
@@ -40,11 +52,8 @@ $(document).ready(function () {
     //pega o valor do serviço
     var option = document.querySelectorAll('option[label="' + service.id + '"]');
     for (var item of option) {
-      var valor = item.value;
+      var valor = item.value.replace('.', ',');
     }
-  
-    //atualiza o campo referente ao valor final
-    addToTotal(valor);
   
     var row = $('<div>').addClass('row selected');
     var div = $('<div>').addClass('col-md-4 col-xs-12');
@@ -61,7 +70,7 @@ $(document).ready(function () {
   
     div = $('<div>').addClass('col-md-3 col-xs-12');
   
-    $('<input>').attr({id:'valor', name: 'valor[]', value: valor, type: 'number' }).appendTo(div);
+    $('<input>').attr({id:'valor', name: 'valor[]', value: 'R$ ' + valor, type: 'text' }).appendTo(div);
     div.appendTo(row);
   
     div = $('<div>').addClass('col-md-1 col-xs-12');
@@ -69,14 +78,11 @@ $(document).ready(function () {
     div.appendTo(row);
   
     row.prependTo('.services');
+    updateTotalValue();
   }
   
   //remove do primeiro select as options que já foram selecionadas anteriormente
-  function removeOptionsSelected(service_id) {
-/*     $('#select_employee option[value="' + employee_id + '"]').each(function () {
-      $(this).remove();
-    }); */
-  
+  function removeOptionsSelected(service_id) {  
     $('#select_service option[value="' + service_id + '"]').each(function () {
       $(this).remove(); 
     });
@@ -92,10 +98,6 @@ $(document).ready(function () {
     //pega a div mais perto do botão que foi acionado
     const service_div = button.closest('.selected');
   
-    //pega os valores do funcionário e serviço
-    /* const employee_id = service_div.find("[name='employee_id[]']").val();
-    const employee_name = service_div.find("[name='employee_name[]']").val(); */
-  
     const service_id = service_div.find("[name='service_id[]']").val();
     const service_name = service_div.find("[name='service_name[]']").val();
   
@@ -105,72 +107,26 @@ $(document).ready(function () {
       var valor = item.value;
     }
   
-    //atualiza o campo referente ao valor final
-    removeFromTotal(valor); 
-  
     //volta com eles pros primeiros selects
-    //$('#select_employee').append(`<option value="${employee_id}">${employee_name}</option>`);
     $('#select_service').append(`<option value="${service_id}">${service_name}</option>`);
   
     //remove a div 
     service_div.remove();
+    updateTotalValue();
   }
 
-  //atualiza o campo referente ao valor final
-  function addToTotal(valor){
-    if (valor != null){
-      var total = document.getElementById('total').value;
-      total = total.replace(',', '.');
-      total = parseFloat(total) + parseFloat(valor);
-      total = total.toString().replace('.', ',');
-      document.getElementById('total').value = menageValueFormat(total);
-      /* valor = parseFloat(valor);
-      var total = document.getElementById('total').value;
-      //console.log(total + ", " + valor);
-      total = parseFloat(total) + valor;
-      total = total.toString();
-      total = total.substring(0, total.indexOf(".") + 3);
-      document.getElementById('total').value = total; */
+  function updateTotalValue(){
+    const inputs = document.querySelectorAll('input[id="valor"]');
+    var total = 0;
+
+    for(var input of inputs){
+      var value = input.value.substring(3); 
+      value = parseFloat(value.replace(',', '.'));
+      total += value;  
     }
-  } 
-  
-  function removeFromTotal(valor){
-    if (valor != null){
-      var total = document.getElementById('total').value;
-      total = total.replace(',', '.');
-      total = parseFloat(total) - parseFloat(valor);
-      total = total.toString().replace('.', ',');
-      document.getElementById('total').value = menageValueFormat(total);
-      /* valor = parseFloat(valor);
-      var total = document.getElementById('total').value;
-      total = parseFloat(total) - valor;
-      if(total < 0){ total = 0 }
-      total = total.toString();
-      total = total.substring(0, total.indexOf(".") + 3);
-      document.getElementById('total').value = total; */
-    }
+
+    document.getElementById('total').value = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   }
-
-  window.menageValueFormat = function(value){
-    if(value != null){
-        const index = value.indexOf(',');
-        value = value.split('');
-        
-        if(value[index+1] == null)
-            value[index+1] = 0;
-        
-        if(value[index+2] == null)
-            value[index+2] = 0;
-
-        var final = value[0];
-        for($i = 1; $i < index+3; $i ++){
-            final += value[$i];
-        }
-
-        return final.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    }
-    return null;
-}
 
     //VERIFICAR O HORARIO CHANGE
     const inputInicio = document.getElementById('inicio');

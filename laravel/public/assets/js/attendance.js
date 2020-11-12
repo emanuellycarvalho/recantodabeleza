@@ -20,24 +20,6 @@
         
         });
 
-        $('#valorServico').on('input', function(){
-            var value = $(this).val();
-            
-            if(value.substring(0, 1) == 'R')
-                value = value.substring(1);
-            
-            $(this).val('R$ ' + value);
-        });
-
-        $('#precoProduto').on('input', function(){
-            var value = $(this).val();
-
-            if(value.substring(0, 1) == 'R')
-                value = value.substring(1);
-            
-            $(this).val('R$ ' + value);
-        });
-
         //SERVICO
         $('#select_service').on('change', function(event) {
             //pega o valor do serviço
@@ -333,10 +315,10 @@
                 if(valueDiv.innerText == 'NaN' || valueDiv.innerText == '[o'){
                     valueDiv.innerText = 0;
                     return 0;
-                }
+                } 
             }
 
-            return updateTotalValue();
+            return updateTotalValue2();
         } 
 
         return 0;
@@ -360,13 +342,13 @@
             total = total.toString().replace('.', ',');
             valueDiv.innerText = menageValueFormat(total);
 
-            return updateTotalValue();
+            return updateTotalValue2();
         } 
 
         return 0;
     }
 
-    function updateTotalValue(){
+    function updateTotalValue2(){
         var service = 0;
         var product = 0;
 
@@ -468,5 +450,26 @@
         $('#select_product option[value="' + product_id + '"]').each(function () {
             $(this).remove();
         });
+    }
+
+    function menageValueFormat(value){
+        if(value != null){
+            const index = value.indexOf(',');
+            value = value.split('');
+            
+            if(value[index+1] == null)
+                value[index+1] = 0;
+            
+            if(value[index+2] == null)
+                value[index+2] = 0;
+    
+            var final = value[0];
+            for($i = 1; $i < index+3; $i ++){
+                final += value[$i];
+            }
+    
+            return final.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+        return null;
     }
     
