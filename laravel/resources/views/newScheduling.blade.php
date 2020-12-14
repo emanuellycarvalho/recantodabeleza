@@ -193,6 +193,7 @@
 							<div class='form-group'>
 								<label for='nmCliente'>Nome*</label>
 								<input type='text' name='nmCliente' id='nmCliente' placeholder='Nome'>
+                                <small class='verificar' id='verificarNome'> Por favor, preencha este campo. </small>
 							</div>
 						</div>
 						
@@ -200,12 +201,13 @@
 							<div class='form-group'>
 								<label for='telefone'>Telefone*</label>
 								<input type='text' name='telefone' id='telefone' placeholder='Telefone'>
+                                <small class='verificar' id='verificarTelefone'> Por favor, insira um telefone válido. </small>
 							</div>
 						</div>
 					</div>
 					<div class='row justify-content-end'>
 						<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-						<button type='submit' class='site-btn' onclick='saveData()'>Adicionar</button>
+						<button type='submit' class='site-btn' id='addClient'>Adicionar</button>
 					</div>
 				</form>
 			</div>
@@ -237,7 +239,18 @@
                 }
             });
         });
+
+        $('#cadastro1').submit(function(event){
+            if(!verificarTelefone()){
+                event.preventDefault();
+                return false;
+            }
+
+            $(this).submit();
+        });
     });
+
+
         //PREENCHER INPUTS
 		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/scheduling/create'){
 			document.getElementById('data').value = localStorage.getItem('data');
@@ -247,7 +260,7 @@
 			localStorage.clear();
 		}
 
-		function saveData(){
+		function addClient(){
 			localStorage.setItem('data', $('#data').val());
 			localStorage.setItem('inicio', $('#inicio').val());
 			localStorage.setItem('fim', $('#fim').val());

@@ -17,7 +17,7 @@ $(document).ready(function () {
     
       const value = $('input[name="valor[]"]').val();
 
-      
+       
       if (verifyServiceData(service_id, employee_id, value.substring(3)) == null){
           return;
       }

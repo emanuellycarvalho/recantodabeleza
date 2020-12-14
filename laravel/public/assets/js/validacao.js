@@ -78,7 +78,8 @@ $(document).ready(function(){
     //VALIDATE
     $('#cadastro1').validate({
       rules: {
-        nome: 'required',
+      nmCliente: 'required',
+      nome: 'required',
         tipo: {
           min: 1
         },
@@ -244,21 +245,22 @@ $(document).ready(function(){
     });
 
     //VERIFICAR TELEFONE BLUR
-    $('#telefone').blur(function(){
+    window.verificarTelefone = function(){
+        if($('#telefone').val() == null || $('#telefone').val() == '')
+        return false;     
 
-      if($(this).val() == null || $(this).val() == '')
-        return;    
-
-      if(!(/^\((?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/.test($(this).val()))){
+      if(!(/^\((?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/.test($('#telefone').val()))){
         document.getElementById('telefone').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
         $('#verificarTelefone').show();
-        return;
+        return false;
       }
 
       document.getElementById('telefone').style.boxShadow = 'none';
       $('#verificarTelefone').hide();
+      return true;
+    }
 
-    });
+    $('#telefone').blur(function(){verificarTelefone()});
 
     // CEP E ENDEREÇO
     $('#cidade').blur(function(){

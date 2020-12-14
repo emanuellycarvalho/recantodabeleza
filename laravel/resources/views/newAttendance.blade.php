@@ -359,20 +359,22 @@
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='nmCliente'>Nome*</label>
-								<input type='text' name='nmCliente' id='nmCliente' placeholder='Nome' tabindex='1'>
+								<input type='text' name='nmCliente' id='nmCliente' placeholder='Nome'>
+                                <small class='verificar' id='verificarNome'> Por favor, preencha este campo. </small>
 							</div>
 						</div>
 						
 						<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
 								<label for='telefone'>Telefone*</label>
-								<input type='text' name='telefone' id='telefone' placeholder='Telefone' tabindex='2'>
+								<input type='text' name='telefone' id='telefone' placeholder='Telefone'>
+                                <small class='verificar' id='verificarTelefone'> Por favor, insira um telefone válido. </small>
 							</div>
 						</div>
 					</div>
 					<div class='row justify-content-end'>
 						<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-						<button type='submit' class='site-btn' onclick='saveData()' tabindex='3'>Adicionar</button>
+						<button type='submit' class='site-btn' id='addClient'>Adicionar</button>
 					</div>
 				</form>
 			</div>
@@ -392,6 +394,15 @@
                 //alert(verificarData());
                 verificarData() ? this.submit() : '';
             });
+        });
+
+        $('#cadastro1').submit(function(event){
+            if(!verificarTelefone()){
+                event.preventDefault();
+                return false;
+            }
+
+            $(this).submit();
         });
 
         function verificarData(){
