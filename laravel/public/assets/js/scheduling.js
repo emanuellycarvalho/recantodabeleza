@@ -161,33 +161,38 @@ function validarHora(){
     document.getElementById('fim').style.boxShadow = 'none';
     document.getElementById('inicio').style.boxShadow = 'none';
 
-    const horaInicio = document.getElementById('inicio').value;
-    const horaFim = document.getElementById('fim').value;
-    const inicio = '07:00';
-    const fim = '17:00';
+    if(condicoesValidarHora()){
+      $('.verificar').show();
+      document.getElementById('fim').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+      document.getElementById('inicio').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+    }
+}
 
-    var algoErrado = false;
-    
-    if(horaInicio > horaFim){
+function condicoesValidarHora(){
+  const horaInicio = parseInt(document.getElementById('inicio').value.replace(':', '')); 
+  const horaFim = parseInt(document.getElementById('fim').value.replace(':', ''));
+  const inicio = 700;
+  const fim = 1700;
+
+  console.clear();
+  console.log(horaInicio + ' ' + inicio);
+  console.log(horaFim + ' ' + fim);
+
+  
+  if(horaInicio > horaFim){
     document.getElementById('validarHora').innerHTML = 'O horário de término é menor que o de início.';
-    algoErrado = true;
-    }
-    
-    if(horaInicio == horaFim){
+    return true;
+  }
+  
+  if(horaInicio == horaFim){
     document.getElementById('validarHora').innerHTML = 'O horário de término é igual ao de início.';
-    algoErrado = true;
-    }
-    
-    if((horaInicio != '' || horaFim != '') || horaInicio < inicio || horaFim < inicio || horaInicio > fim || horaFim > fim){
+    return true;
+  }
+  
+  if(horaInicio < inicio || horaFim < inicio || horaInicio > fim || horaFim > fim){
     document.getElementById('validarHora').innerHTML = 'O estabelecimento funciona de 7:00 à 17:00';
-    algoErrado = true;
-    } 
-    
-    if(algoErrado){
-    $('.verificar').show();
-    document.getElementById('fim').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
-    document.getElementById('inicio').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
-    }
+    return true;
+  } 
 }
 
 window.cleanNotifications = function(divName){
