@@ -35,7 +35,8 @@
                                     <input type='hidden' name='servicos' id='servicos'>
                                     <input type='hidden' name='funcionarios' id='funcionarios'>
                                     <label for='data'>Data*</label> <br>
-                                    <input type='text' name='data' id='data'  value='{{$date ?? "" }}' autofocus> 
+                                    <input type='text' name='data' id='data'  value='{{$date ?? "" }}' autofocus>
+                                    <small class='verificar' id='verificarData'> Data anterior ao dia de hoje. Tente o agendamento.</small> 
                                 </div>
                             </div>  
                             
@@ -193,6 +194,7 @@
 							<div class='form-group'>
 								<label for='nmCliente'>Nome*</label>
 								<input type='text' name='nmCliente' id='nmCliente' placeholder='Nome'>
+                                <small class='verificar' id='verificarNome'> Por favor, preencha este campo. </small>
 							</div>
 						</div>
 						
@@ -200,12 +202,13 @@
 							<div class='form-group'>
 								<label for='telefone'>Telefone*</label>
 								<input type='text' name='telefone' id='telefone' placeholder='Telefone'>
+                                <small class='verificar' id='verificarTelefone'> Por favor, insira um telefone válido. </small>
 							</div>
 						</div>
 					</div>
 					<div class='row justify-content-end'>
 						<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Cancelar</button>
-						<button type='submit' class='site-btn' onclick='saveData()'>Adicionar</button>
+						<button type='submit' class='site-btn' id='addClient'>Adicionar</button>
 					</div>
 				</form>
 			</div>
@@ -223,6 +226,9 @@
     where `tbFuncionarioServico`.`cdServico` is null */
 
     $(document).ready(function(){
+
+        verificarData();
+        
         //N PRA M DE FUNCIONARIO SERVIÇO
         $('#select_service').on('change', function(event){
             const cdServico = $(this).val();
@@ -237,7 +243,34 @@
                 }
             });
         });
+
+        $('#data').on('input', function(event){
+            $('#verificarData').hide();
+            document.getElementById('data').style.boxShadow = 'none';
+            
+            verificarData();
+        });
+
+        $('#cadastro').submit(function(event){
+            verificarData();
+            if(document.getElementById('data').style.boxShadow == 'rgba(220, 53, 69, 0.25) 0px 0px 0px 0.2rem'){
+                event.preventDefault();
+                return false;
+            }
+
+            $(this).submit();
+        });
     });
+
+        function verificarData(){
+            const hoje = moment().format('L');
+            const input = $('#data').val();
+            
+            if(input < hoje){
+                document.getElementById('data').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+                $('#verificarData').show();
+            }
+        }
         //PREENCHER INPUTS
 		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/scheduling/create'){
 			document.getElementById('data').value = localStorage.getItem('data');
@@ -247,7 +280,7 @@
 			localStorage.clear();
 		}
 
-		function saveData(){
+		function addClient(){
 			localStorage.setItem('data', $('#data').val());
 			localStorage.setItem('inicio', $('#inicio').val());
 			localStorage.setItem('fim', $('#fim').val());

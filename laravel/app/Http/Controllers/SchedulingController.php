@@ -190,17 +190,18 @@ class SchedulingController extends Controller
 
     protected function getAtendentes(){
         $obj = $this->objEmployeeType->where('nmFuncao', 'Atendente')->first();
-        if($obj != null){
-            $etype = $this->objEmployeeType->where('cdTipoFuncionario', $obj->cdTipoFuncionario)->first();
+        if($obj == null){
+          throw new \Exception('Desculpe, ocorreu um erro ao recuperar os atendentes.');
         }
-        
+
+        $etype = $this->objEmployeeType->where('cdTipoFuncionario', $obj->cdTipoFuncionario)->first();
         $employees = $etype->relEmployee()->get();
         
-        if($employees != null){
-            return $employees;
+        if($employees == null){
+          throw new \Exception('Desculpe, ocorreu um erro ao recuperar os atendentes.');
         }        
 
-        throw new \Exception('Desculpe, ocorreu um erro ao recuperar os atendentes.');
+        return $employees;
     }
     
     protected function findClient($id){

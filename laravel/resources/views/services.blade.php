@@ -88,7 +88,7 @@
 			</div>
 			<div class='modal-body'>
 				<p>Tem certeza que deseja excluir esse registro?<br>
-				<b>Nome:</b> {{$svc->nmServico}}<br></p>
+				<b>Nome:</b> @if($svc = null) {{$svc->nmServico}} @endif<br></p>
 			</div>
 			<div class='modal-footer'>
 				<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>
