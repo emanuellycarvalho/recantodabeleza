@@ -24,6 +24,7 @@ $(document).ready(function(){
       cliente: 'required',
       inicio: 'required',
       fim: 'required',
+      foto:'required',
       senha2: 'required',
       senha: {
         required: true,

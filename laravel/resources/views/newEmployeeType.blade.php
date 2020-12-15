@@ -34,14 +34,14 @@
                     <div class='col-md-6 col-xs-12'>
                         <div class='form-group'>
                             <label for='nomeFuncao'>Função*</label>
-                            <input type='text' name='nomeFuncao' id='nomeFuncao' placeholder='Nome' value='{{$etype->nmFuncao ?? "" }}' autofocus>
+                            <input type='text' name='nomeFuncao' id='nomeFuncao' placeholder='Nome' required value='{{$etype->nmFuncao ?? "" }}' autofocus>
                         </div>
                     </div>
                     
                     <div class='col-md-6 col-xs-12'>
                         <div class='form-group'>
                             <label for='salarioBase'>Salário Base*</label>
-                            <input type='text' name='salarioBase' id='salarioBase' placeholder='R$ 0 000,00' @if(isset($etype)) value='{{$etype->salarioBase()}}' @endif>
+                            <input type='text' name='salarioBase' id='salarioBase' placeholder='R$ 0 000,00' required @if(isset($etype)) value='{{$etype->salarioBase()}}' @endif>
                         </div>
                     </div>
 					<div class='row justify-content-end'>

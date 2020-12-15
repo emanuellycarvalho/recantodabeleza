@@ -55,9 +55,11 @@ class ServiceController extends Controller
         
         $funcionarios = $request->employee_id;
         //dd($funcionarios);
-        for($i = 0; $i < sizeof($funcionarios); $i++){
-            $servico->relEmployee()->attach($funcionarios[$i]);
-        }
+            if($funcionarios != null) {
+                for($i = 0; $i < sizeof($funcionarios); $i++){
+                    $servico->relEmployee()->attach($funcionarios[$i]);
+                }
+            }
 
          return redirect('adm/service');
 

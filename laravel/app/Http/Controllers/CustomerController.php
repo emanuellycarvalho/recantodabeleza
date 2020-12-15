@@ -78,8 +78,22 @@ class CustomerController extends Controller
     public function show($id)
     {
         $customers = $this->objCustomer->where('cdCliente', $id)->first();
+        
+        $novaDtNasc = $this->formatarDtNasc($customers->dtNasc);
+        $customers->dtNasc = $novaDtNasc;
         return view('showCustomer', compact('customers'));
     }
+
+    public function formatarDtNasc($dtNasc){
+        if ($dtNasc != NULL){
+            $dtNasc = explode( '-' , $dtNasc);
+            $dtNasc = $dtNasc[2] . '/' . $dtNasc[1] . '/' . $dtNasc[0];
+            return $dtNasc;
+        } 
+
+        return "";
+    }
+
 
     /**
      * Show the form for editing the specified resource.

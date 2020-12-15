@@ -64,3 +64,7 @@ Route::get('/cep', function(){
      $data = $enderecoResponse->getCepModels();        
      return response()->json($data);
   });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

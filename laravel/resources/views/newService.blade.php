@@ -30,7 +30,7 @@
 					<div class='row'>
 						<div class='col-md-12 col-xs-12'>
 							<div class='form-group'>
-								<label for='nome'>Nome</label>
+								<label for='nome'>Nome*</label>
 								<input type='text' name='nmServico' id='nmServico' placeholder='Nome do serviço' value='{{$svc->nmServico ?? old("nmServico")}}' autofocus required>
 							</div>
 						</div>					
@@ -53,12 +53,14 @@
 					</div>
 					
 					<div class='row'>
+
 						<div class='col-md-12 col-xs-12'>
 							<div class='form-group'>
 								<label for='descricao'>Descrição</label>
-								<textarea name="descricao" id="descricao" cols="15" rows="5">{{$svc->descricao ?? old("descricao")}}</textarea>
+								<textarea name='descricao' id='descricao' placeholder='Descrição do serviço'>{{$svc->descricao ?? old("descricao")}}</textarea>
 							</div>
 						</div>
+
 					</div>
 
 					<div id='employees'>
