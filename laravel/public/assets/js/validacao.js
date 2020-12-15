@@ -24,7 +24,11 @@ $(document).ready(function(){
       cliente: 'required',
       inicio: 'required',
       fim: 'required',
+<<<<<<< HEAD
       preco: 'required',
+=======
+      foto:'required',
+>>>>>>> fernando
       senha2: 'required',
       senha: {
         required: true,

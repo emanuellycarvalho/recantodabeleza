@@ -152,7 +152,10 @@
 							</small>
 						</div>
 						@else 
-							<input type='hidden' name='senha' id='senha' value='{{$cust->senha}}' readonly>
+							<div class='col-md-6 col-xs-12'>
+								<label for='senha'>Senha</label>
+								<input type='password' name='senha' id='senha' value='{{$cust->senha}}'>
+							</div>
 						@endif
 						<div class='col-md-6 col-xs-12'>
 							<label for='senha2'>Confirmar senha*</label>
@@ -167,19 +170,12 @@
 							@endif
 						</div>
 
-						@if(isset($cust))
-							<div class="col-md-6 col-xs-12">
-									<label for="foto">Foto</label>
-									<input class="form-control" id="foto" name="foto" type="file" value='{{$cust->foto ?? "" }}' accept="image/png, image/jpeg">
+						<div class="col-md-12 col-xs-12">
+							<div class="form-group">
+								<label for="foto">Foto</label>
+								<input class="form-control" id="foto" name="foto" type="file" accept="image/png, image/jpeg">
 							</div>
-						@else
-							<div class="col-md-12 col-xs-12">
-								<div class="form-group">
-									<label for="foto">Foto</label>
-									<input class="form-control" id="foto" name="foto" type="file" accept="image/png, image/jpeg">
-								</div>
-							</div>
-						@endif
+						</div>
 
 					</div>
 													

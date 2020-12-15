@@ -48,21 +48,68 @@
 								<div class='border'>
 									<label for='sexo'>Sexo</label>
 									<div id='customRadio'>
-										<div class='custom-control custom-radio custom-control-inline'>
-											<input type='radio' class='custom-control-input' name='sexo' id='feminino' value='Feminino' >
-											<label class='custom-control-label' for='feminino'>Feminino</label>
-										</div>
-										<div class='custom-control custom-radio custom-control-inline'>
-											<input type='radio' class='custom-control-input' name='sexo' id='masculino' value='Masculino' >
-											<label class='custom-control-label' for='masculino'>Masculino</label>
-										</div>
-										<div class='custom-control custom-radio custom-control-inline'>
-											<input type='radio' class='custom-control-input' name='sexo' id='outro' value='Outro' >
-											<label class='custom-control-label' for='outro'>Outro</label>
-										</div>			
+									@if(isset($emp))
+										@switch($emp->sexo) 
+											@case ("Feminino")
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='feminino' value='Feminino' checked="yes">
+												<label class='custom-control-label' for='feminino'>Feminino</label>
+											</div>
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='masculino' value='Masculino' >
+												<label class='custom-control-label' for='masculino'>Masculino</label>
+											</div>
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='outro' value='Outro' >
+												<label class='custom-control-label' for='outro'>Outro</label>
+											</div>
+												@break
+											@case ("Masculino")
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='feminino' value='Feminino' >
+												<label class='custom-control-label' for='feminino'>Feminino</label>
+											</div>
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='masculino' value='Masculino' checked="yes">
+												<label class='custom-control-label' for='masculino'>Masculino</label>
+											</div>
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='outro' value='Outro' >
+												<label class='custom-control-label' for='outro'>Outro</label>
+											</div>
+												@break
+											@case ("Outro")
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='feminino' value='Feminino' >
+												<label class='custom-control-label' for='feminino'>Feminino</label>
+											</div>
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='masculino' value='Masculino' >
+												<label class='custom-control-label' for='masculino'>Masculino</label>
+											</div>
+											<div class='custom-control custom-radio custom-control-inline'>
+												<input type='radio' class='custom-control-input' name='sexo' id='outro' value='Outro' checked="yes">
+												<label class='custom-control-label' for='outro'>Outro</label>
+											</div>
+												@break												
+									@endswitch
+								@else
+									<div class='custom-control custom-radio custom-control-inline'>
+										<input type='radio' class='custom-control-input' name='sexo' id='feminino' value='Feminino' >
+										<label class='custom-control-label' for='feminino'>Feminino</label>
+									</div>
+									<div class='custom-control custom-radio custom-control-inline'>
+										<input type='radio' class='custom-control-input' name='sexo' id='masculino' value='Masculino' >
+										<label class='custom-control-label' for='masculino'>Masculino</label>
+									</div>
+									<div class='custom-control custom-radio custom-control-inline'>
+										<input type='radio' class='custom-control-input' name='sexo' id='outro' value='Outro'>
+										<label class='custom-control-label' for='outro'>Outro</label>
+									</div>
+								@endif
 									</div>						
 								</div>
-							</div> 
+							</div>
 						</div>
 		
 						<div class='col-md-5 col-xs-12'>
@@ -133,7 +180,8 @@
 						</div>
 						@else 
 						<div class='col-md-6 col-xs-12'>
-							<input type='hidden' name='senha' id='senha' value='{{$emp->senha}}' readonly>
+							<label for='senha'>Senha</label>
+							<input type='password' name='senha' id='senha' value='{{$emp->senha}}'>
 						</div>
 						@endif
 						<div class='col-md-6 col-xs-12'>

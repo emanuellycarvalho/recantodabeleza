@@ -48,9 +48,11 @@ class SupplierController extends Controller
             
             $produtos = $request->product_id;
             //dd($funcionarios);
-            for($i = 0; $i < sizeof($produtos); $i++){
-            $fornecedor->relProduct()->attach($produtos[$i]);
-        }
+            if($produtos != null) {
+                for($i = 0; $i < sizeof($produtos); $i++){
+                    $fornecedor->relProduct()->attach($produtos[$i]);
+                }
+            }
         
         return redirect('adm/supplier');
         

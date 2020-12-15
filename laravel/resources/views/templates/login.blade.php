@@ -82,19 +82,19 @@
                         <ul class='main-menu'>
                             <li><a href='{{url("/adm")}}'>Home</a></li>
                             <li><a href='#' class='none'>Atendimentos</a> 
-                                <ul class='sub-menu text-left'> 
+                                <ul class='sub-menu'> 
                                     <li><a href='{{url("adm/scheduling/create")}}'>Agendar</a></li>
                                     <li><a href='{{url("adm/attendance/create")}}'>Registrar</a></li>
                                 </ul>
                             </li>
                             <li><a href='#' class='none'>Pagamentos</a> 
-                                <ul class='sub-menu text-left'>
+                                <ul class='sub-menu'>
                                     <li><a href='{{url("adm/registerPayment")}}'>de Clientes</a></li>
                                     <li><a href='#'>de Despesas</a></li>
                                 </ul>
                             </li>
                             <li><a href='#' class='none'>Gerenciar</a> 
-                                <ul class='sub-menu text-left'>
+                                <ul class='sub-menu'>
                                     <li><a href='{{url("adm/customer")}}'>Clientes</a></li>
                                     <li><a href='{{url("adm/service")}}'>Serviços</a></li>
                                     <li><a href='{{url("adm/product")}}'>Produtos</a></li>
