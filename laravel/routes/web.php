@@ -23,6 +23,7 @@ Route::get('adm/registerPayment', 'AttendanceController@registerPaymentView');
 Route::get('getAttendances', 'AttendanceController@getAttendances')->name('getAttendances');
 Route::get('getUnpaidAttendances', 'AttendanceController@getUnpaidAttendances')->name('getUnpaidAttendances');
 Route::get('adm/payment/{id}', 'AttendanceController@showPayment');
+Route::get('adm/attendance/create/{date}', 'AttendanceController@newCreate');
 Route::post('adm/attendance/registerPayment', 'AttendanceController@registerPayment');
 Route::resource('adm/attendance', 'AttendanceController');
 

@@ -52,7 +52,7 @@
                                     <label for='data'>Data*</label> <br>
                                     <input type='text' name='data' id='data' class='calendar' placeholder='00/00/0000' value='{{$date ?? "" }}' autofocus> 
                                     <small id='verificarData' class='verificar'>
-									    Data posterior a hoje. Tente agendamento.
+									    Data posterior ao dia de hoje. Tente agendamento.
 								    </small>
                                 </div>
                             </div>  
@@ -331,7 +331,7 @@
                     <div class='row justify-content-end'> <!-- form footer -->
 
                         <div class='contact-form'> 
-                            <a onclick='window.history.back()' class='site-btn sb-dark' id='white'>Cancelar</a>
+                            <a onclick='window.history.back()' class='site-btn sb-dark' id='white'>Voltar</a>
                             <button type='submit' class='site-btn'>Salvar</button>
                         </div>
                     
@@ -407,13 +407,14 @@
             const data = document.getElementById('data').value;
             const hoje = moment().format('L');
 
+            console.log(data + ', ' + hoje);
             if(data >= hoje){
                 document.getElementById('data').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
                 $('#verificarData').show();
                 return false;
             }
 
-            if(data < moment().subtract(5, 'years').calendar()){
+            if(data < moment().subtract(5, 'years').format('L')){
                 document.getElementById('data').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
                 document.getElementById('verificarData').innerText = 'O limite de tempo para registrar é de 5 anos';
                 $('#verificarData').show();

@@ -40,10 +40,14 @@ class AttendanceController extends Controller
 
     public function create()
     {
+        return $this->newCreate(Carbon::now()->format('Y-m-d'));
+    }
+
+    public function newCreate($date)
+    {
         try{          
             
-            $date = Carbon::today()->setTimezone('America/Sao_Paulo')->format('d/m/Y');
-            
+            $date = Carbon::createFromFormat('Y-m-d', $date, 'America/Sao_Paulo')->format('d/m/Y');
             $clients = $this->objCustomer->orderBy('nmCliente')->get();
             $employees = $this->getAtendentes();
             $services = $this->objService->all();
