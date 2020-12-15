@@ -52,7 +52,7 @@
                                     <label for='data'>Data*</label> <br>
                                     <input type='text' name='data' id='data' class='calendar' placeholder='00/00/0000' value='{{$date ?? "" }}' autofocus> 
                                     <small id='verificarData' class='verificar'>
-									    A data deve ser igual ou anterior a hoje.
+									    Data posterior a hoje. Tente agendamento.
 								    </small>
                                 </div>
                             </div>  
@@ -96,7 +96,7 @@
 
                             <div class='col-md-2'>
                                 <label for='parcelas'>Parcelas</label>
-                                <input type='number' name='parcelas' id='parcelas' min='1' readonly>
+                                <input type='number' name='parcelas' id='parcelas' min='1' max='12' readonly>
                             </div>
 
                             <div class='col-md-6'>
@@ -387,6 +387,10 @@
             $('#data').on('blur', function(){verificarData()});
             $('#data').on('mouseleave', function(){verificarData()});
             
+            $('#data').on('input', function(){
+                verificarData();
+            });
+
             $('#cadastro').on('submit', function(){
                 event.preventDefault();
                 //alert(verificarData());
@@ -398,16 +402,22 @@
             document.getElementById('data').style.boxShadow = 'none';
             $('#verificarData').hide();
             
-            var data = document.getElementById('data').value;
-            let parts = data.split('/');
+            const data = document.getElementById('data').value;
+            const hoje = moment().format('L');
 
-            data = new Date(parts[2], parts[1] - 1, parts[0]); 
-
-            if(data >= new Date()){
+            if(data >= hoje){
                 document.getElementById('data').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
                 $('#verificarData').show();
                 return false;
             }
+
+            if(data < moment().subtract(5, 'years').calendar()){
+                document.getElementById('data').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+                document.getElementById('verificarData').innerText = 'O limite de tempo para registrar é de 5 anos';
+                $('#verificarData').show();
+                return false;
+            }
+
             return true;
         } 
 

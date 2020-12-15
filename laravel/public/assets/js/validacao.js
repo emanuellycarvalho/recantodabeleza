@@ -24,6 +24,7 @@ $(document).ready(function(){
       cliente: 'required',
       inicio: 'required',
       fim: 'required',
+      preco: 'required',
       senha2: 'required',
       senha: {
         required: true,
@@ -42,10 +43,14 @@ $(document).ready(function(){
         required: true,
         min: 1
       },
-      preco: 'required',
       email: {
         required: true,
         email: true
+      },
+      parcelas:{
+        required: true,
+        min: 1,
+        max: 12
       },
     },
     messages: {
