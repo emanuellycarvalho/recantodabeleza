@@ -51,9 +51,7 @@
                                 <div class='form-group'>
                                     <label for='data'>Data*</label> <br>
                                     <input type='text' name='data' id='data' class='calendar' placeholder='00/00/0000' value='{{$date ?? "" }}' autofocus> 
-                                    <small id='verificarData' class='verificar'>
-									    Data posterior ao dia de hoje. Tente agendamento.
-								    </small>
+                                    <small id='verificarData' class='verificar'></small>
                                 </div>
                             </div>  
 
@@ -404,17 +402,20 @@
             document.getElementById('data').style.boxShadow = 'none';
             $('#verificarData').hide();
             
-            const data = document.getElementById('data').value;
-            const hoje = moment().format('L');
+            const data = new Date(moment(document.getElementById('data').value, 'DD/MM/YYYY').add(1, 'days').format('YYYY-MM-DD'));
+            const hoje = new Date(moment().add(1, 'days').format('YYYY-MM-DD'));
 
-            console.log(data + ', ' + hoje);
-            if(data >= hoje){
+            if(data.getTime() > hoje.getTime()){
                 document.getElementById('data').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+                document.getElementById('verificarData').innerText = 'Data posterior ao dia de hoje. Tente agendamento.';
                 $('#verificarData').show();
                 return false;
             }
-
-            if(data < moment().subtract(5, 'years').format('L')){
+            
+            const fiveYears = new Date(moment().subtract(5, 'years').format('YYYY-MM-DD'));
+            
+            if(data.getTime() < fiveYears.getTime()){
+                console.log('5 anos');
                 document.getElementById('data').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
                 document.getElementById('verificarData').innerText = 'O limite de tempo para registrar é de 5 anos';
                 $('#verificarData').show();
