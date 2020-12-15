@@ -396,15 +396,6 @@
             });
         });
 
-        $('#cadastro1').submit(function(event){
-            if(!verificarTelefone()){
-                event.preventDefault();
-                return false;
-            }
-
-            $(this).submit();
-        });
-
         function verificarData(){
             document.getElementById('data').style.boxShadow = 'none';
             $('#verificarData').hide();

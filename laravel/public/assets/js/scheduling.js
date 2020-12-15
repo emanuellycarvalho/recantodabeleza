@@ -1,6 +1,16 @@
 $(document).ready(function () {
   
+  $('#cadastro1').submit(function(event){
+    if(!verificarTelefone()){
+        event.preventDefault();
+        return false;
+    }
+
+    $(this).submit();
+  });
+
   $('#select_service').on('change', function(){selectService()});
+  
   $('input[name="valor[]"]').on('input', function(){
       $(this).val('R$ ' + $(this).val());
   })
@@ -135,7 +145,8 @@ $(document).ready(function () {
       total += value;  
     }
 
-    document.getElementById('total').value = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    document.getElementById('total').value = total;
   }
 
     //VERIFICAR O HORARIO CHANGE
@@ -173,11 +184,6 @@ function condicoesValidarHora(){
   const horaFim = parseInt(document.getElementById('fim').value.replace(':', ''));
   const inicio = 700;
   const fim = 1700;
-
-  console.clear();
-  console.log(horaInicio + ' ' + inicio);
-  console.log(horaFim + ' ' + fim);
-
   
   if(horaInicio > horaFim){
     document.getElementById('validarHora').innerHTML = 'O horário de término é menor que o de início.';
