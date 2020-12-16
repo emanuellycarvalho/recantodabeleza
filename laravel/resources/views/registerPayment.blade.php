@@ -114,7 +114,7 @@
 
             $.ajax({ 
                 type: 'GET',
-                data: {client: cli},
+                data: {client: cli}, 
                 dataType: 'json',
                 url: '{{route("getUnpaidAttendances")}}',
                 success: function (data)

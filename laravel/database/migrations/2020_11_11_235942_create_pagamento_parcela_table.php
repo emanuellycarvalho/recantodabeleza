@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePagamentoParcelaTable extends Migration
+class CreateAtendimentoPagamentoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreatePagamentoParcelaTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbPagamentoParcela', function (Blueprint $table) {
+        Schema::create('tbAtendimentoPagamento', function (Blueprint $table) {
             $table->increments('cdParcela');
-            $table->unsignedBigInteger('cdPagamento')->references('cdPagamento')->on('tbPagamento')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('cdAtendimento')->references('cdAtendimento')->on('tbAtendimento')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('parcela');
             $table->double('valor', 10, 2);
             $table->string('situacao');
+            $table->date('dtVencimento');
+            $table->double('multas', 10, 2)->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreatePagamentoParcelaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbPagamentoParcela');
+        Schema::dropIfExists('tbAtendimentoPagamento');
     }
 }

@@ -13,7 +13,7 @@ use Carbon\Carbon;
 | contains the "web" middleware group. Now create something great!
 |
 */ 
-
+ 
 //OTHERS
 Route::resource('adm/product', 'ProductController');
 Route::resource('adm/service', 'ServiceController');

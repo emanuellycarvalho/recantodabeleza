@@ -399,9 +399,11 @@
         });
 
         function verificarData(){
+            //esconde as mensagens de erro
             document.getElementById('data').style.boxShadow = 'none';
             $('#verificarData').hide();
             
+            //formata e converte as datas pro mesmo objeto
             const data = new Date(moment(document.getElementById('data').value, 'DD/MM/YYYY').add(1, 'days').format('YYYY-MM-DD'));
             const hoje = new Date(moment().add(1, 'days').format('YYYY-MM-DD'));
 

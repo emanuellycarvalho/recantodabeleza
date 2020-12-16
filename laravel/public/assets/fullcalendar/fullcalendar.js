@@ -86,7 +86,24 @@
         }
         
         window.location = `adm/scheduling/create/${parameter}`;
-      }  
+      },
+      dayClick: function(date, allDay, jsEvent, view) {
+        var myDate = new Date();
+     
+        //How many days to add from today?
+        var daysToAdd = 15;
+     
+        myDate.setDate(myDate.getDate() + daysToAdd);
+     
+        if (date < myDate) {
+            //TRUE Clicked date smaller than today + daysToadd
+            alert("You cannot book on this day!");
+        } else {
+            //FLASE Clicked date larger than today + daysToadd
+            alert("Excellent choice! We can book today..");
+        }
+     
+     } 
         
     });
     calendar.render();
