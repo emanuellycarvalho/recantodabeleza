@@ -7,6 +7,7 @@ use App\Models\ModelClient;
 use App\Models\ModelService;
 use App\Models\ModelProduct;
 use App\Models\ModelEmployee;
+use App\Models\ModelPayment;
 use App\Models\ModelAttendance;
 use App\Models\ModelScheduling;
 use App\Models\ModelEmployeeType;
@@ -28,6 +29,7 @@ class AttendanceController extends Controller
         $this->objScheduling = new ModelScheduling();
         $this->objAttendance = new ModelAttendance();
         $this->objEmployee = new ModelEmployee();
+        $this->objPayment = new ModelPayment();
         $this->objService = new ModelService();
         $this->objProduct = new ModelProduct();
         $this->objCustomer = new ModelClient();
@@ -84,6 +86,9 @@ class AttendanceController extends Controller
                 'qtdParcelas' => $request->parcelas
            ]); 
 
+           if($att == null)
+            throw new \Exception('Desculpe, ocorreu um erro ao registrar o atendimento.');
+
            $servicos = explode(',', $request->servicos);
            $funcionarios = explode(',', $request->funcionarios);
            $valoresServicos = explode(',', $request->valoresServicos);
@@ -98,6 +103,36 @@ class AttendanceController extends Controller
 
             for($i = 1; $i < sizeof($produtos); $i++){
                 $att->relProduct()->attach($produtos[$i], ['quantidade'=> $quantidades[$i], 'valorCobrado' => $valoresProdutos[$i]]);
+            }
+
+            //pagamento
+            $valorParcela = floatval($att->valorTotal)/floatval($att->qtdParcelas);
+            $valorParcela = number_format($valorParcela, 2);
+            $dtAtendimento = Carbon::createFromFormat('Y-m-d H:i:s', $att->dtAtendimento, 'America/Sao_Paulo');
+
+            for($i = 1; $i <= $att->qtdParcelas; $i++){
+                
+                $situacao = 'P';
+                if($att->tipoPagamento == 'crediario' && $i != 1)
+                    $situacao = 'N';
+                
+                if($i == 1){
+                    $dtVencimento = $dtAtendimento->toDateTimeString();
+                } else {
+                    $days = 30 * ($i-1);
+                    $dtVencimento = $dtAtendimento->add($days, 'day')->toDateTimeString();
+                }
+
+                $payment = $this->objPayment->create([
+                    'cdAtendimento' => $att->cdAtentimento,
+                    'parcela' => $i,
+                    'valor' => $valorParcela,
+                    'situacao' => $situacao,
+                    'dtVencimento' => $dtVencimento
+                ]);
+
+                if($payment == null)
+                    throw new \Exception('Desculpe, ocorreu um erro ao registrar o pagamento do atendimento.');
             }
 
             return $this->index();
