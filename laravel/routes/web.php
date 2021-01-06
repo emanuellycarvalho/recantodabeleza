@@ -47,6 +47,9 @@ Route::resource('adm/supplier', 'SupplierController');
 Route::get('adm/scheduling/create/{date}', 'SchedulingController@newCreate');
 Route::resource('adm/scheduling', 'SchedulingController');
 
+//REPORTS
+Route::resource('adm/paymentReport', 'paymentReportController');
+
 //GENERAL
 Route::view('adm/more', 'more');
 Route::get('adm', 'FullCalendar@index');

@@ -24,11 +24,8 @@ $(document).ready(function(){
       cliente: 'required',
       inicio: 'required',
       fim: 'required',
-<<<<<<< HEAD
       preco: 'required',
-=======
       foto:'required',
->>>>>>> fernando
       senha2: 'required',
       senha: {
         required: true,
@@ -231,7 +228,9 @@ $(document).ready(function(){
         document.getElementById('dtNasc').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
         $('#verificarDtNasc').show();
         return;
-      } 
+      } else {
+        return false;
+      }
 
       document.getElementById('dtNasc').style.boxShadow = 'none';
       $('#verificarDtNasc').hide();
