@@ -131,10 +131,10 @@
                                 <td><center>${item.parcela}</center></td>
                                 <td><center>R$${item.valor}</center></td>
                                 <td><center>${date}</center></td>
-                                <td><form action="{{url('adm/attendance/registerPayment')}}">
+                                <td><center><form action="{{url('adm/attendance/registerPayment')}}">
                                     <input type="hidden" id="cdParcela" name="cdParcela" value="${item.cdParcela}">
                                     <button type="submit" class="confirm-payment">P</button>
-                                </form></td>
+                                </form></center></td>
                             </tr>`
                         $('tbody').append($newRow);
                     });
