@@ -27,8 +27,7 @@ $(document).ready(function () {
     
       const value = $('input[name="valor[]"]').val();
 
-       
-      if (verifyServiceData(service_id, employee_id, value.substring(3)) == null){
+      if (verifyServiceData(service_id, employee_id, value) == null){
           return;
       }
 
@@ -55,6 +54,7 @@ $(document).ready(function () {
 
 //verifica se os dois selects estão preenchidos
   window.verifyServiceData = function(service_id, employee_id, value){
+    alert(value);
     document.getElementById('service_error').innerHTML="";
     
     if(service_id == null || employee_id == null){

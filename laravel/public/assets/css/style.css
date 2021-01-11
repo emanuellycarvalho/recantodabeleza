@@ -241,6 +241,30 @@
 	background-color: #f51167;
 }
 
+button.confirm-payment{
+	aspect-ratio: 0; 
+	border:none;
+	padding:13px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	cursor: pointer;
+	text-decoration: none;
+	background:green;
+	color:#fff;
+	box-shadow:0 5px 0 #006000;
+}
+
+button.confirm-payment:hover{
+	background:#006000;
+	box-shadow:0 5px 0 #003f00;
+}
+
+button.confirm-payment:active{
+	position:relative;
+	top:5px;
+	box-shadow:none;
+}
+
 img.button-icon{
 	max-width: 35px;
 	height: auto;

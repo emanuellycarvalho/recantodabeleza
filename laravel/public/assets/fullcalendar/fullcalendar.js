@@ -71,6 +71,11 @@
       }, 
       dateClick: function(info) {
         const date = new Date(moment(info.dateStr, 'YYYY-MM-DD'));
+
+        //verifica se é domingo ou segunda, dias indisponíveis no calendário
+        if (date.getDay() == 0 || date.getDay() == 1) 
+            return; //faz nada 
+
         const today = new Date(moment().format('YYYY-MM-DD'));
 
         /*document.getElementById('oldDateFormat').innerHTML= date;
@@ -86,25 +91,7 @@
         }
         
         window.location = `adm/scheduling/create/${parameter}`;
-      },
-      dayClick: function(date, allDay, jsEvent, view) {
-        var myDate = new Date();
-     
-        //How many days to add from today?
-        var daysToAdd = 15;
-     
-        myDate.setDate(myDate.getDate() + daysToAdd);
-     
-        if (date < myDate) {
-            //TRUE Clicked date smaller than today + daysToadd
-            alert("You cannot book on this day!");
-        } else {
-            //FLASE Clicked date larger than today + daysToadd
-            alert("Excellent choice! We can book today..");
-        }
-     
-     } 
-        
+      }        
     });
     calendar.render();
 

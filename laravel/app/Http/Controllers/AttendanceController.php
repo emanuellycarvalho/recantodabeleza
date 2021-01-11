@@ -85,7 +85,6 @@ class AttendanceController extends Controller
                 'tipoPagamento' => $request->tipoPagamento,
                 'qtdParcelas' => $request->parcelas
            ]); 
-
            if($att == null)
             throw new \Exception('Desculpe, ocorreu um erro ao registrar o atendimento.');
 
@@ -119,12 +118,11 @@ class AttendanceController extends Controller
                 if($i == 1){
                     $dtVencimento = $dtAtendimento->toDateTimeString();
                 } else {
-                    $days = 30 * ($i-1);
-                    $dtVencimento = $dtAtendimento->add($days, 'day')->toDateTimeString();
+                    $dtVencimento = $dtAtendimento->add(30, 'day')->toDateTimeString();
                 }
-
+                
                 $payment = $this->objPayment->create([
-                    'cdAtendimento' => $att->cdAtentimento,
+                    'cdAtendimento' => $this->objAttendance->all()->last()->cdAtendimento,
                     'parcela' => $i,
                     'valor' => $valorParcela,
                     'situacao' => $situacao,
@@ -144,7 +142,14 @@ class AttendanceController extends Controller
     public function show($id)
     {
         $atdc = $this->objAttendance->where('cdAtendimento', $id)->first();
+        
+        if(is_null($atdc))
+            throw new \Exception('Desculpe, ocorreu um erro ao recuperar os dados do atendimento.');
+
         $cli = $this->objCustomer->where('cdCliente', $atdc->cdCliente)->first();
+
+        if(is_null($cli))
+            throw new \Exception('Desculpe, ocorreu um erro ao recuperar os dados do cliente.');
 
         return view ('showAttendance')->with(compact('atdc'))
                                       ->with(compact('cli'));
@@ -205,15 +210,8 @@ class AttendanceController extends Controller
     {
         //dd($request->pago);
         try{
-            /* if($request->pago == null)
-                throw new \Exception('Desculpe, ocorreu um erro ao recuperar os atendimentos não pagos.'); */
-                
-            $unpaidArray = $request->pago;
-            for($i = 0; $i < sizeof($unpaidArray); $i++){
-                $unpaid = $this->objAttendance->where('cdAtendimento', $unpaidArray[$i]);
-                if(!$unpaid->update(['situacao' => 'P']))
-                    throw new \Exception('Desculpe, ocorreu um erro ao atualizar a situação do(s) pagamento(s) selecionado(s).');
-            }            
+            if(!$this->objPayment->where('cdParcela', $request->cdParcela)->get()->first()->update(['situacao' => 'P']))
+                throw new \Exception('Desculpe, ocorreu um erro ao atualizar a situação do(s) pagamento(s) selecionado(s).');
 
             return $this->registerPaymentView();
 
@@ -232,7 +230,8 @@ class AttendanceController extends Controller
     }
 
     protected function getUnpaidAttendances(Request $request){
-        return $this->objAttendance->where('situacao', 'N')->where('cdCliente', $request->get('client'))->get();
+        $att = $this->objAttendance->where('situacao', 'N')->where('cdCliente', $request->get('client'))->get()->last();
+        return $this->objPayment->where('situacao', 'N')->where('cdAtendimento', $att->cdAtendimento)->get();        
     }
 
     protected function getSomeonesAttendances($id){

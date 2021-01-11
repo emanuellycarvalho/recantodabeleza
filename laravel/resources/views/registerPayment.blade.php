@@ -48,10 +48,10 @@
                                 <table id='table' class='tablesorter'>
                                 <thead>
                                     <tr>
-                                        <th class='quy-th'>Data</th>
-                                        <th class='quy-th'>Valor Total</th>
-                                        <th class='quy-th' id='none'>Visualizar</th>
-                                        <th class='quy-th' id='none'>Pago</th>
+                                        <th class='quy-th'>Parcela</th>
+                                        <th class='quy-th' id='none'>Valor</th>
+                                        <th class='quy-th'>Vencimento</th>
+                                        <th class='quy-th' id='none'>Situação</th>
                                     </tr>
                                 </thead>
                                 <tbody id='tbody'>
@@ -62,7 +62,7 @@
                                         <td class='quy-col'><center><a href='{{url("adm/attendance/cdAtendimento")}}' title='Visualizar Atendimento'><img class='responsive' src='{{url("/img/icons/seePayment.png")}}' height='35px'></a></center></td>
                                         <td class='quy-col'><center><a href='{{url("adm/attendance/cdAtendimento/edit")}}' title='Editar Atendimento'><img class='responsive' src='{{url("/img/icons/editattendance.png")}}' height='35px'></a></center></td>
                                     </tr> -->
-                                </tbody>
+                                </tbody> 
                                 </table>
                             
                         </div>
@@ -124,18 +124,19 @@
                     }
 
                     data.map(function(item){
-                        var action = `{{url("adm/attendance/registerPayment")}}`;
-                        var date = item.dtAtendimento;
+                        var date = item.dtVencimento;
                         date = date.split('-');
                         date = date[2] + '/' + date[1] + '/' + date[0];
                         $newRow = `<tr>
+                                <td><center>${item.parcela}</center></td>
+                                <td><center>R$${item.valor}</center></td>
                                 <td><center>${date}</center></td>
-                                <td><center>R$${item.valorTotal}</center></td>
-                                <td><center><a href='{{url("adm/payment/` + item.cdAtendimento +  `")}}' title='Visualizar Atendimento'><img class='responsive' src='{{url("/img/icons/seePayment.png")}}' height='35px'></a></center></td>
-                                <td><center><input type='checkbox' id='pago' name ='pago[]' value='` + item.cdAtendimento +  `'></center></td>
+                                <td><form action="{{url('adm/attendance/registerPayment')}}">
+                                    <input type="hidden" id="cdParcela" name="cdParcela" value="${item.cdParcela}">
+                                    <button type="submit" class="confirm-payment">P</button>
+                                </form></td>
                             </tr>`
                         $('tbody').append($newRow);
-                        $('#attendance').attr('action', action);
                     });
                 }
             });

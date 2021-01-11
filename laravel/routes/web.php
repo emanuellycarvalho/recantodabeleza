@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Carbon\Carbon;
 
+date_default_timezone_set ("America/Sao_Paulo");
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
