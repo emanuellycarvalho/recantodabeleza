@@ -1,7 +1,7 @@
 @extends('templates.adm')
 
 
-	@section('title') Pagamentos Atrasados - Relatório @endsection('title')
+	@section('title') Pagamentos Atrasados @endsection('title')
 	@section('icon') <img src='{{url("/img/icons/payment-light.png")}}' width='35px'> @endsection('icon')
 
 @section('content')
@@ -10,7 +10,7 @@
 <section class='contact-section'>
 		<div class='container'>
 			<div class='col-lg-10 offset-md-1'>
-	            <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/#")}}' enctype='multiform/form-data'>
+	            <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/paymentReport")}}' enctype='multiform/form-data'>
 					@csrf
 					<div class='col-md-12 col-xs-12'>
                         <div class='cf-title'><h4>Dados de Filtragem</h4></div>
@@ -18,17 +18,20 @@
                     </div>
 
 					<div class='row'>
-						<div class='col-md-6'>
-							<div class='form-group'>
-								<label for='valorServico'>Data Inicial*</label>
-								<input type='text' name='valorServico' id='valorServico' placeholder='00/00/0000' required>
-							</div>
+					<div class='col-md-6 col-xs-12'>
+						<div class='form-group'>
+							<label for='dtInicial'>Data Inicial</label>
+							<input type='text' name='dtInicial' id='dtInicial' placeholder='00/00/0000' value='' >
+							<small id='verificarDtRelatorios' class='verificar'>
+								A data inicial é maior do que a data final.
+							</small>
 						</div>
+					</div>
 
-						<div class='col-md-6'>
+					<div class='col-md-6 col-xs-12'>
 							<div class='form-group'>
-								<label for='comissao'>Data Final*</label>
-								<input type='text' name='comissao' id='comissao' placeholder='00/00/0000' required>
+								<label for='dtFinal'>Data Final</label>
+								<input type='text' name='dtFinal' id='dtFinal' placeholder='00/00/0000' value='<?php echo date('d/m/Y'); ?>' >
 							</div>
 						</div>		
 					</div>
@@ -55,17 +58,12 @@
 					</button>
 				</div>
 				<div class='modal-body'>
-				@if(isset($svc)) 
-					<h5>Deseja voltar para a tabela de serviços?</h5>
+					<h5>Deseja voltar para a página inicial?</h5>
 					Se confirmar, os dados alterados serão perdidos.
-				@else
-					<h5>Deseja voltar para a tabela de serviços?</h5>
-					Se confirmar vai perder todos os dados inseridos no formulário.
-				@endif
 				</div>
 				<div class='modal-footer'>
 					<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>
-					<a href='{{url("adm/service")}}' class='site-btn' id='white' name='confirmar'>Sim</a>
+					<a href='{{url("adm")}}' class='site-btn' id='white' name='confirmar'>Sim</a>
 				</div>
 			</div>
 		</div>
@@ -76,18 +74,15 @@
             if(verificarCampos()){
                 $('#confirmCancelModal').modal();
                 $('confirmar').on('click', function(){
-                    window.location.href= '{{url("/adm/service")}}';
+                    window.location.href= '{{url("/adm")}}';
                 });
             } else {
-                window.location.href= '{{url("/adm/service")}}';
+                window.location.href= '{{url("/adm")}}';
             }  
-        }
-
-        function verificarCampos(){
-			if ($('#nmServico').val() == '' || $('#nmServico').val() == null && 
-				$('#descricao').val() == '' || $('#descricao').val() == null && 
-				$('#valor').val() == '' || $('#valor').val() == null && 
-				$('#comissao').val() == '' || $('#comissao').val() == null)
+		}
+		
+		function verificarCampos(){
+            if ($('#dtInicial').val() == '' && $('#dtFinal').val() == '')
             {
                 return false;
             }

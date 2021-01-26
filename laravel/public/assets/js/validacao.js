@@ -27,6 +27,8 @@ $(document).ready(function(){
       preco: 'required',
       foto:'required',
       senha2: 'required',
+      dtInicial:'required',
+      dtFinal:'required',
       senha: {
         required: true,
         minlength: 6
@@ -237,6 +239,24 @@ $(document).ready(function(){
 
     });
 
+    //VERIFICAR DATAS DO RELATORIO
+    $('#dtInicial').on('input', function(){
+        if($(this).val() == null || $(this).val() == '')
+        return;
+
+      if(!verificarDtRelatorios($(this).val())){
+        document.getElementById('dtInicial').style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)';
+        $('#verificarDtRelatorios').show();
+        return;
+      } else {
+        return false;
+      }
+
+      document.getElementById('dtInicial').style.boxShadow = 'none';
+      $('#verificarDtRelatorios').hide();
+
+    });
+    
     //VERIFICAR PRECO ONINPUT
     $('#preco').on('input', function(){
 
@@ -485,6 +505,19 @@ $(document).ready(function(){
         return false;
     }
  }
+
+// VERIFICAR DATA RELATORIOS
+ function verificarDtRelatorios(dtInicial) {
+    var dataInicial = new Date(dtInicial.split('/').reverse().join('/'));
+    var dataFinal = new Date(document.getElementById("dtFinal").value.split('/').reverse().join('/')); 
+    
+    if(moment(dataInicial).isAfter(dataFinal)) {
+      return false;
+    } else {
+      return true;
+    }
+
+}
 
 // MENSAGENS PERSONALIZADAS
 jQuery.extend(jQuery.validator.messages, {

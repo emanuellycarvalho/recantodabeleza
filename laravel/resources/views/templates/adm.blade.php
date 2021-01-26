@@ -106,7 +106,7 @@
                             <li><a href='#'>Relatorios</a>
                                 <ul class='sub-menu text-left'>
                                     <li><a href='{{url("adm/paymentReport")}}'>Pagamentos em atraso</a></li>
-                                    <li><a href='{{url("adm/")}}'>Agendamentos realizados</a></li>
+                                    <li><a href='{{url("adm/schedulingReport")}}'>Agendamentos realizados</a></li>
                                     <li><a href='{{url("adm/")}}'>Histórico de atendimentos</a></li>
                                 </ul>
                             </li>
