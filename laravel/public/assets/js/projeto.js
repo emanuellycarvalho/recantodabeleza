@@ -9,7 +9,7 @@ $(document).ready(function(){
   $('#total').mask('00 000,00', {reverse: true});
   $('#cpf').mask('000.000.000-00', {reverse: true});
   $('#precoProduto').mask('AA 0 000,00', {reverse: true});
-  $('#valorServico').mask('AA 0 000,00', {reverse: true});
+  $('#valorServico').mask('0 000,00', {reverse: true});
   $('#salarioBase').mask('00 000,00', {reverse: true});
   $('#cnpj').mask('00.000.000/0000-00', {reverse: true});
   $('input[name="valor[]"]').mask('AA 0 000,00', {reverse: true});

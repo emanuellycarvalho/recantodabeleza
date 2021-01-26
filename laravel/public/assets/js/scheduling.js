@@ -11,9 +11,7 @@ $(document).ready(function () {
 
   $('#select_service').on('change', function(){selectService()});
   
-  $('input[name="valor[]"]').on('input', function(){
-      $(this).val('R$ ' + $(this).val());
-  })
+
 
   $('#addOnTable').on('click', function (event) {
       event.preventDefault();
@@ -46,15 +44,14 @@ $(document).ready(function () {
       var valor = option[0].value.replace('.', ',');
       
       if(document.querySelector('input[name="valor[]"]') != null){
-        document.querySelector('input[name="valor[]"]').value = 'R$ ' + valor;
+        document.querySelector('input[name="valor[]"]').value = valor + ",00";
         return;
       }
-      document.getElementById('valorServico').value = 'R$ ' + valor;
+      document.getElementById('valorServico').value = valor;
     }
 
 //verifica se os dois selects estão preenchidos
   window.verifyServiceData = function(service_id, employee_id, value){
-    alert(value);
     document.getElementById('service_error').innerHTML="";
     
     if(service_id == null || employee_id == null){
@@ -140,7 +137,7 @@ $(document).ready(function () {
     var total = 0;
 
     for(var input of inputs){
-      var value = input.value.substring(3); 
+      var value = input.value; 
       value = parseFloat(value.replace(',', '.'));
       total += value;  
     }
