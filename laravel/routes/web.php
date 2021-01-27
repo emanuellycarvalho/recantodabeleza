@@ -14,19 +14,19 @@ date_default_timezone_set ("America/Sao_Paulo");
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/ 
- 
+*/
+
 //OTHERS
 Route::resource('adm/product', 'ProductController');
 Route::resource('adm/service', 'ServiceController');
 
 //ATTENDANCE
-Route::get('adm/registerPayment', 'AttendanceController@registerPaymentView');
+Route::get('adm/registerPayment', 'AttendanceController@registerPaymentView')->name('registerPayment');
 Route::get('getAttendances', 'AttendanceController@getAttendances')->name('getAttendances');
 Route::get('getUnpaidAttendances', 'AttendanceController@getUnpaidAttendances')->name('getUnpaidAttendances');
 Route::get('adm/payment/{id}', 'AttendanceController@showPayment');
 Route::get('adm/attendance/create/{date}', 'AttendanceController@newCreate');
-Route::post('adm/attendance/registerPayment', 'AttendanceController@registerPayment');
+Route::post('adm/clientPayment', 'AttendanceController@pay')->name('pay');
 Route::resource('adm/attendance', 'AttendanceController');
 
 //CUSTOMER
@@ -62,10 +62,10 @@ Route::get('/cep', function(){
     $data = $cepResponse->getCepModel();
     return response()->json($data);
  });
- 
+
  Route::get('/endereco', function(){
      $enderecoResponse = endereco('sp','são paulo','ave');
-     $data = $enderecoResponse->getCepModels();        
+     $data = $enderecoResponse->getCepModels();
      return response()->json($data);
   });
 

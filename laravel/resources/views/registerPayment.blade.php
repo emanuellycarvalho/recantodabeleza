@@ -13,13 +13,13 @@
     <section class='cart-section spad'>
 		<div class='container'>
 			<div class='row justify-content-center'>
-				<div class='col-lg-9 offset-md-2'>  
+				<div class='col-lg-9 offset-md-2'>
 					<form class='contact-form' name='attendance' id='attendance' method='post' action=''>
 
                         <div class='row'>
 
                             <div class='form-group col-lg-6 offset-md-1'>
-                                
+
                                 <label for='cliente'>Cliente*</label>
                                 <select name='cliente' id='cliente'>
                                     <option value='0' disabled selected> Selecione um cliente </option>
@@ -34,7 +34,7 @@
                             </div>
 
                             <div class='form-group col-md-1' style='margin-top:19px;'>
-                                <button type='button' class='site-btn' id='search'>Exibir</button> 
+                                <button type='button' class='site-btn' id='search'>Exibir</button>
                             </div>
 
                         </div>
@@ -44,7 +44,7 @@
                             </div>
                             <div class='cart-table-warp'>
                                 @csrf
-                                
+
                                 <table id='table' class='tablesorter'>
                                 <thead>
                                     <tr>
@@ -62,15 +62,15 @@
                                         <td class='quy-col'><center><a href='{{url("adm/attendance/cdAtendimento")}}' title='Visualizar Atendimento'><img class='responsive' src='{{url("/img/icons/seePayment.png")}}' height='35px'></a></center></td>
                                         <td class='quy-col'><center><a href='{{url("adm/attendance/cdAtendimento/edit")}}' title='Editar Atendimento'><img class='responsive' src='{{url("/img/icons/editattendance.png")}}' height='35px'></a></center></td>
                                     </tr> -->
-                                </tbody> 
+                                </tbody>
                                 </table>
-                            
+
                         </div>
                         <div class='total-cost-free'>
 							<div class='row justify-content-end' id='pagination'>
 							</div>
 						</div>
-                    </div> 
+                    </div>
                     <div class='row'> . </div>
                     <div class='row justify-content-end'>
                         <button type='submit' class='site-btn'>Confirmar</button>
@@ -106,19 +106,28 @@
 
     <script>
 
+        // function changeValue(){
+        //     if($('#pago').val() == 'N'){
+        //         $('#pago').val('P');
+        //     } else {
+        //         $('#pago').val('N');
+        //     }
+        // }
+
         $('#search').on('click', function(event){
             event.preventDefault();
+            $("body").css("cursor", "progress");
             $('tbody').html('');
             document.getElementById('mensagem').innerText = '';
             const cli = $('#cliente').val();
 
-            $.ajax({ 
+            $.ajax({
                 type: 'GET',
-                data: {client: cli}, 
+                data: {client: cli},
                 dataType: 'json',
                 url: '{{route("getUnpaidAttendances")}}',
                 success: function (data)
-                {               
+                {
                     if(data.length < 1){
                         document.getElementById('mensagem').innerText = 'Nada para ver por aqui.'
                     }
@@ -131,24 +140,29 @@
                                 <td><center>${item.parcela}</center></td>
                                 <td><center>R$${item.valor}</center></td>
                                 <td><center>${date}</center></td>
-                                <td><center><form action="{{url('adm/attendance/registerPayment')}}">
-                                    <input type="hidden" id="cdParcela" name="cdParcela" value="${item.cdParcela}">
-                                    <button type="submit" class="confirm-payment">P</button>
-                                </form></center></td>
+                                <td><center><button class="confirm-payment" onclick="pay(${item.cdParcela})">P</button></center></td>
                             </tr>`
                         $('tbody').append($newRow);
                     });
+                    $("body").css("cursor", "default");
                 }
             });
         });
 
-        function changeValue(){
-            if($('#pago').val() == 'N'){
-                $('#pago').val('P');
-            } else {
-                $('#pago').val('N');
-            }
+        function pay(cdParcela){
+
+            $.ajax({
+
+                type: 'POST',
+                data: {cdParcela: cdParcela},
+                dataType: 'json',
+                url:"{{route('pay')}}",
+                success:function(data){
+                    alert('foi');
+                }
+            });
         }
+
 
     </script>
 
