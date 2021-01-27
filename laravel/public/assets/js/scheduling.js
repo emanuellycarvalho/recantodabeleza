@@ -24,7 +24,7 @@ $(document).ready(function () {
       const service_name = $('#select_service option:selected').html();
 
       const value = $('input[name="valor[]"]').val();
-      console.log(value); return;
+      console.log($('input[name="valor[]"]')); return;
       if (verifyServiceData(service_id, employee_id, value) == null){
           return;
       }
