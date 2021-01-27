@@ -5,14 +5,14 @@ $(document).ready(function(){
   $('#dtNasc').mask('00/00/0000');
   $('#telefone').mask('(00) 00000-0000');
   $('#cep').mask('00000-000', {reverse: true});
-  $('#valor').mask('0 000,00', {reverse: true});
+  $('#valor').mask('000,00', {reverse: true});
   $('#total').mask('00 000,00', {reverse: true});
   $('#cpf').mask('000.000.000-00', {reverse: true});
-  $('#precoProduto').mask('AA 0 000,00', {reverse: true});
-  $('#valorServico').mask('0 000,00', {reverse: true});
+  $('#precoProduto').mask('000,00', {reverse: true});
+  $('#valorServico').mask('000,00', {reverse: true});
   $('#salarioBase').mask('00 000,00', {reverse: true});
   $('#cnpj').mask('00.000.000/0000-00', {reverse: true});
-  $('input[name="valor[]"]').mask('AA 0 000,00', {reverse: true});
+  $('input[name="valor[]"]').mask('000,00', {reverse: true});
 });
 
 //CALENDÁRIO
@@ -31,7 +31,7 @@ $(function() {
   });
 });
 
-// FILTRO NA TABELA 
+// FILTRO NA TABELA
 $(document).ready(function(){
   $('input#search').quicksearch('table#table tbody tr');
 });

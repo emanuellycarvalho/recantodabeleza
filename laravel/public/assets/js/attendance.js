@@ -84,7 +84,7 @@
         cel2.innerHTML = service.id;
         cel3.innerHTML = `<center> ${employee.name} </center>`;
         cel4.innerHTML = employee.id;
-        cel5.innerHTML = `<center> R$ ${menageValueFormat(value)} </center>`;
+        cel5.innerHTML = `<center> R$ ${value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </center>`;
         cel7.innerHTML = `<center> <img class='addOnTable margin-off' src="../../img/icons/removeFromTable.png" title='Remover'> </center>`;
 
         $(cel7).on('click', function (event){
@@ -181,7 +181,8 @@
                 var row = tableRows[i];
                 var cells = row.querySelectorAll('td');
                 var value = cells[4].innerText.substring(3);
-                value = parseFloat(value.replace(',', '.'));
+                value = value.replace(',', '.');
+                value = parseFloat(value);
                 total += value;
             }
         }
@@ -256,9 +257,9 @@
 
         cel1.innerHTML = `${product.name.substring(0, 30)}`;
         cel2.innerHTML = product.id;
-        cel3.innerHTML = `<center> R$ ${value} </center>`;
+        cel3.innerHTML = `<center> R$ ${value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </center>`;
         cel5.innerHTML = `<center> ${product.amt} </center>`;
-        cel7.innerHTML = `<center> R$ ${menageValueFormat(finalValue)} </center>`;
+        cel7.innerHTML = `<center> R$ ${finalValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </center>`;
         cel9.innerHTML = `<center> <img class='addOnTable margin-off' src='../../img/icons/removeFromTable.png' title='Remover'> </center>`;
 
         $(cel9).on('click', function (event){
