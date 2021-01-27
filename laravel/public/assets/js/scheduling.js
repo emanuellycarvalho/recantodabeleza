@@ -55,7 +55,6 @@ $(document).ready(function () {
 
 //verifica se os dois selects estão preenchidos
   window.verifyServiceData = function(service_id, employee_id, value){
-        console.log(value); return;
     document.getElementById('service_error').innerHTML="";
 
     if(service_id == null || employee_id == null){
@@ -95,7 +94,7 @@ $(document).ready(function () {
     div.appendTo(row);
 
     div = $('<div>').addClass('col-md-1 col-xs-12');
-    $('<img>').attr({class: 'removeFromTable', src: 'http://localhost/BicJr/recantodabeleza/laravel/public/img/icons/removeFromTable.png'}).click(removeItem).appendTo(div);
+    $('<img>').attr({class: 'removeFromTable', src: '../../img/icons/removeFromTable.png'}).click(removeItem).appendTo(div);
     div.appendTo(row);
 
     row.prependTo('.services');
