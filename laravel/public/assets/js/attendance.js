@@ -9,15 +9,15 @@
             } else {
                 $('#parcelas').attr('readonly', 'readonly');
                 $('#parcelas').val(1);
-            }  
+            }
 
             if(paymentType == 'credito' || paymentType == 'debito'){
                 document.getElementById('nao_pago').disabled = true;
                 document.getElementById('pago').checked = true;
             } else {
                 document.getElementById('nao_pago').disabled = false;
-            } 
-        
+            }
+
         });
     });
 
@@ -33,12 +33,12 @@
             //armazena os dados dos selects preenchidos
             const employee_id = $('#select_employee').val();
             const employee_name = $('#select_employee option:selected').html();
-            
+
             const service_id = $('#select_service').val();
             const service_name = $('#select_service option:selected').html();
 
             const value = $('#valorServico').val().substring(3);
-            
+
             if (verifyServiceData(service_id, employee_id, value) == null)
                 return;
 
@@ -57,24 +57,24 @@
 
         // pega a primeira tabela
         const table = document.getElementsByTagName('table')[0];
-    
+
         // adiciona uma linha vazia à tabela
         // table.rows.length = final
         const newRow = table.insertRow(table.rows.length);
-    
+
         // adiciona células à nova linha
         const cel1 = newRow.insertCell(0); //servico
         const cel2 = newRow.insertCell(1); //id
         const cel3 = newRow.insertCell(2); //funcionario
         const cel4 = newRow.insertCell(3); //id
-        const cel5 = newRow.insertCell(4); //valor 
+        const cel5 = newRow.insertCell(4); //valor
         const cel6 = newRow.insertCell(5); //vazia
         const cel7 = newRow.insertCell(6); //excluir
         // esconde as célular de id
         cel2.style.visibility = 'hidden';
         cel4.style.visibility = 'hidden';
         cel6.style.visibility = 'hidden';
-    
+
         // preenche as células
         cel1.innerHTML = `${service.name}`;
         cel2.innerHTML = service.id;
@@ -86,7 +86,7 @@
         $(cel7).on('click', function (event){
           removeServiceItem(this);
         });
-        
+
         if(addToClassTotal('service', updateServiceTotal()) == 0){
             const alrt = 'Desculpe, ocorreu um erro com o valor.';
             $('#service_warning').append(alrt);
@@ -99,13 +99,13 @@
         } else {
             document.getElementById('servicos').value = service.id;
         }
-        
+
         const employees = document.getElementById('funcionarios').value;
         if(employees != '' || employees != null){
             document.getElementById('funcionarios').value = employees + ',' + employee.id;
         } else {
             document.getElementById('funcionarios').value = employee.id;
-        }        
+        }
 
         const values = document.getElementById('valoresServicos').value;
         if(values != null || values != ''){
@@ -116,10 +116,10 @@
     }
 
     function removeServiceItem(cel){
-    
+
         //pega a linha do botão que foi acionado
         const row = cel.parentNode;
-        
+
         const value = row.childNodes[4].innerText.substring(3);
         //console.log(value); return;
 
@@ -132,8 +132,8 @@
         //pega a tabela
         const table = document.getElementById('serviceTable');
 
-        //pega os valores do funcionário e serviço    
-        const service_name = row.childNodes[0].innerHTML; 
+        //pega os valores do funcionário e serviço
+        const service_name = row.childNodes[0].innerHTML;
         const service_id = row.childNodes[1].innerHTML;
 
         const employee_name = row.childNodes[2].innerHTML;
@@ -144,18 +144,18 @@
         const values = removeFromStringArray(document.getElementById('valoresServicos').value, employee_id);
 
         //console.log(services + ', ' + employees + ', ' + values);
-        
+
         if(services == 'lombrou' || employees == 'lombrou' || values == 'lombrou'){
             cleanNotifications('service');
             var alrt = 'Ocorreu um erro ao remover o serviço.';
             $('#service_warning').append(alrt);
             return;
-        } 
+        }
 
-        document.getElementById('servicos').value = services; 
-        document.getElementById('funcionarios').value = employees; 
-        document.getElementById('valoresServicos').value = values; 
-        
+        document.getElementById('servicos').value = services;
+        document.getElementById('funcionarios').value = employees;
+        document.getElementById('valoresServicos').value = values;
+
         //volta com eles pros primeiros selects
         $('#select_employee').append(`<option value="${employee_id}">${employee_name}</option>`);
         $('#select_service').append(`<option value="${service_id}">${service_name}</option>`);
@@ -174,7 +174,7 @@
                 value = parseFloat(value.replace(',', '.'));
                 total += value;
         }
-        
+
         return total;
     };
 
@@ -194,7 +194,7 @@
 
             const product_id = $('#select_product').val();
             const product_name = $('#select_product option:selected').html();
-            
+
             const amt = $('#qtd').val();
             const value = $('#precoProduto').val().substring(3);
 
@@ -225,9 +225,9 @@
         }
 
         const table = document.getElementsByTagName('table')[1];
-    
+
         const newRow = table.insertRow(table.rows.length);
-        
+
         const cel1 = newRow.insertCell(0); //produto
         const cel2 = newRow.insertCell(1); //id
         const cel3 = newRow.insertCell(2); //unitario
@@ -237,11 +237,11 @@
         const cel7 = newRow.insertCell(6); //qtd*valor
         const cel8 = newRow.insertCell(7); //vazia
         const cel9 = newRow.insertCell(8); //excluir
-     
+
         cel2.style.visibility = 'hidden';
         cel4.style.visibility = 'hidden';
         cel6.style.visibility = 'hidden';
-    
+
 
         cel1.innerHTML = `${product.name.substring(0, 30)}`;
         cel2.innerHTML = product.id;
@@ -277,9 +277,9 @@
     }
 
     function removeProductItem(cel){
-    
+
         const row = cel.parentNode;
-        
+
         const value = row.childNodes[4].innerText.substring(3);
 
         if(removeFromTotal('product', value) == 0){
@@ -300,10 +300,10 @@
             var alrt = 'Ocorreu um erro ao remover o produto.';
             $('#product_warning').append(alrt);
             return;
-        } 
+        }
 
-        document.getElementById('produtos').value = products; 
-        document.getElementById('valoresProdutos').value = values; 
+        document.getElementById('produtos').value = products;
+        document.getElementById('valoresProdutos').value = values;
 
         $('#select_product').append(`<option value="${product_id}">${product_name}</option>`);
 
@@ -319,7 +319,7 @@
             const divTotal = document.getElementById(`${divName}Total`);
 
             if(divTotal.innerHTML == ''){
-                valueDiv = $('<b>').attr({id:`${divName}Value`}).appendTo(divTotal);    
+                valueDiv = $('<b>').attr({id:`${divName}Value`}).appendTo(divTotal);
                 valueDiv.prevObject[0].innerText = value;
             } else {
                 valueDiv = document.getElementById(`${divName}Value`);
@@ -327,7 +327,7 @@
             }
 
             return updateTotalValue();
-        } 
+        }
 
         return 0;
     }
@@ -346,12 +346,12 @@
                 valueDiv.innerText = 0;
                 return 0;
             };
-            
+
             total = total.toString().replace('.', ',');
             valueDiv.innerText = menageValueFormat(total);
 
             return updateTotalValue();
-        } 
+        }
 
         return 0;
     }
@@ -372,22 +372,22 @@
         if (total == null){
             return 0;
         }
-        
+
         //console.log('total:' + total);
         document.getElementById('total').value = 'R$ ' + total;
         document.getElementById('valorFinal').value = total;
         return;
     }
-    
+
     function verifyProductData(product_id, amt, value){
         cleanNotifications('product');
-        
+
         if(product_id == null){
         var alrt = 'Você precisa selecionar um produto por vez.';
         $('#product_error').append(alrt);
         return;
         }
-    
+
         if(value <= 0 || value == null){
         var alrt = 'O valor do produto precisa ser maior que zero.';
         $('#product_error').append(alrt);
@@ -399,7 +399,7 @@
             $('#product_error').append(alrt);
             return;
         }
-    
+
         return 1;
     }
 
@@ -416,7 +416,7 @@
     }
 
     function removeOptionsSelectedService(service_id) {
-      
+
         $('#select_service option[value="' + service_id + '"]').each(function () {
           $(this).remove();
         });
@@ -432,20 +432,19 @@
         if(value != null){
             const index = value.indexOf(',');
             value = value.split('');
-            
+
             if(value[index+1] == null)
                 value[index+1] = 0;
-            
+
             if(value[index+2] == null)
                 value[index+2] = 0;
-    
+
             var final = value[0];
             for($i = 1; $i < index+3; $i ++){
                 final += value[$i];
             }
-    
+
             return final.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         }
         return null;
     }
-    

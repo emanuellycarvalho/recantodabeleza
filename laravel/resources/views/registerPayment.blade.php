@@ -116,7 +116,7 @@
 
         $('#search').on('click', function(event){
             event.preventDefault();
-            $("body").css("cursor", "progress");
+            $('body').css('cursor', 'progress');
             $('tbody').html('');
             document.getElementById('mensagem').innerText = '';
             const cli = $('#cliente').val();
@@ -144,23 +144,29 @@
                             </tr>`
                         $('tbody').append($newRow);
                     });
-                    $("body").css("cursor", "default");
+                    $('body').css('cursor', 'default');
                 }
             });
         });
 
         function pay(cdParcela){
+            $('body').css('cursor', 'progress');
+            const data = {"cdParcela": cdParcela};
+            const url = "{{route('pay')}}";
 
             $.ajax({
 
                 type: 'POST',
-                data: {cdParcela: cdParcela},
                 dataType: 'json',
-                url:"{{route('pay')}}",
+                data,
+                url,
                 success:function(data){
                     alert('foi');
                 }
             });
+
+            $('body').css('cursor', 'default');
+
         }
 
 

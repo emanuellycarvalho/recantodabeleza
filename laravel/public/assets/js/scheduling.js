@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  
+
   $('#cadastro1').submit(function(event){
     if(!verificarTelefone()){
         event.preventDefault();
@@ -9,8 +9,8 @@ $(document).ready(function () {
     $(this).submit();
   });
 
-  $('#select_service').on('change', function(){selectService()});
-  
+  $('#select_service').on('change', function(){selectService()}); //tudo certo
+
 
 
   $('#addOnTable').on('click', function (event) {
@@ -19,12 +19,12 @@ $(document).ready(function () {
       //armazena os dados dos selects preenchidos
       const employee_id = $('#select_employee').val();
       const employee_name = $('#select_employee option:selected').html();
-      
+
       const service_id = $('#select_service').val();
       const service_name = $('#select_service option:selected').html();
-    
-      const value = $('input[name="valor[]"]').val();
 
+      const value = $('input[name="valor[]"]').val();
+      console.log(value); return;
       if (verifyServiceData(service_id, employee_id, value) == null){
           return;
       }
@@ -42,9 +42,12 @@ $(document).ready(function () {
       const service_id = $('#select_service').val();
       var option = document.querySelectorAll('option[label="' + service_id + '"]');
       var valor = option[0].value.replace('.', ',');
-      
+      if(valor.indexOf(',') == -1){
+          valor += ',00';
+      }
+
       if(document.querySelector('input[name="valor[]"]') != null){
-        document.querySelector('input[name="valor[]"]').value = valor + ",00";
+        document.querySelector('input[name="valor[]"]').value = valor;
         return;
       }
       document.getElementById('valorServico').value = valor;
@@ -52,8 +55,9 @@ $(document).ready(function () {
 
 //verifica se os dois selects estão preenchidos
   window.verifyServiceData = function(service_id, employee_id, value){
+        console.log(value); return;
     document.getElementById('service_error').innerHTML="";
-    
+
     if(service_id == null || employee_id == null){
       var alrt = 'Você precisa selecionar um serviço e um funcionário por vez.';
       $('#service_error').append(alrt);
@@ -68,66 +72,66 @@ $(document).ready(function () {
 
     return 1;
   }
-  
+
   //cria os inputs com os valores selecionados numa nova div
   function createFields(employee, service, valor) {
-      
+
     var row = $('<div>').addClass('row selected');
     var div = $('<div>').addClass('col-md-4 col-xs-12');
-  
+
     $('<input>').attr({ name: 'service_id[]', value: service.id, type: 'hidden' }).appendTo(div);
     $('<input>').attr({ name: 'service_name[]', value: service.name, type: 'text', readonly: true }).appendTo(div);
     div.appendTo(row);
-    
+
     div = $('<div>').addClass('col-md-4 col-xs-12');
-  
+
     $('<input>').attr({ name: 'employee_id[]', value: employee.id, type: 'hidden' }).appendTo(div);
     $('<input>').attr({ name: 'employee_name[]', value: employee.name, type: 'text', readonly: true }).appendTo(div);
     div.appendTo(row);
-  
+
     div = $('<div>').addClass('col-md-3 col-xs-12');
-  
+
     $('<input>').attr({id:'valor', name: 'valor[]', value: valor, type: 'text', readonly: true }).appendTo(div);
     div.appendTo(row);
-  
+
     div = $('<div>').addClass('col-md-1 col-xs-12');
     $('<img>').attr({class: 'removeFromTable', src: 'http://localhost/BicJr/recantodabeleza/laravel/public/img/icons/removeFromTable.png'}).click(removeItem).appendTo(div);
     div.appendTo(row);
-  
+
     row.prependTo('.services');
     updateTotalValue();
   }
-  
+
   //remove do primeiro select as options que já foram selecionadas anteriormente
-  function removeOptionsSelected(service_id) {  
+  function removeOptionsSelected(service_id) {
     $('#select_service option[value="' + service_id + '"]').each(function () {
-      $(this).remove(); 
+      $(this).remove();
     });
   }
-  
+
   function removeItem(event) {
     event.preventDefault();
     document.getElementById('service_error').innerHTML="";
-    
+
     //armazena o botão que foi acionado
     const button = $(event.currentTarget);
-  
+
     //pega a div mais perto do botão que foi acionado
     const service_div = button.closest('.selected');
-  
+
     const service_id = service_div.find("[name='service_id[]']").val();
     const service_name = service_div.find("[name='service_name[]']").val();
-  
+
     var option = document.querySelectorAll('option[label="' + service_id + '"]');
-  
+
     for (var item of option) {
       var valor = item.value;
     }
-  
+
     //volta com eles pros primeiros selects
     $('#select_service').append(`<option value="${service_id}">${service_name}</option>`);
-  
-    //remove a div 
+
+    //remove a div
     service_div.remove();
     updateTotalValue();
   }
@@ -137,9 +141,9 @@ $(document).ready(function () {
     var total = 0;
 
     for(var input of inputs){
-      var value = input.value; 
+      var value = input.value;
       value = parseFloat(value.replace(',', '.'));
-      total += value;  
+      total += value;
     }
 
     total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -157,7 +161,7 @@ $(document).ready(function () {
     const inputFim = document.getElementById('fim');
     if (inputFim != null){
       inputFim.addEventListener('change', (event) => {
-          validarHora();      
+          validarHora();
       });
     }
 });
@@ -177,25 +181,25 @@ function validarHora(){
 }
 
 function condicoesValidarHora(){
-  const horaInicio = parseInt(document.getElementById('inicio').value.replace(':', '')); 
+  const horaInicio = parseInt(document.getElementById('inicio').value.replace(':', ''));
   const horaFim = parseInt(document.getElementById('fim').value.replace(':', ''));
   const inicio = 700;
   const fim = 1700;
-  
+
   if(horaInicio > horaFim){
     document.getElementById('validarHora').innerHTML = 'O horário de término é menor que o de início.';
     return true;
   }
-  
+
   if(horaInicio == horaFim){
     document.getElementById('validarHora').innerHTML = 'O horário de término é igual ao de início.';
     return true;
   }
-  
+
   if(horaInicio < inicio || horaFim < inicio || horaInicio > fim || horaFim > fim){
     document.getElementById('validarHora').innerHTML = 'O estabelecimento funciona de 7:00 à 17:00';
     return true;
-  } 
+  }
 }
 
 window.cleanNotifications = function(divName){
