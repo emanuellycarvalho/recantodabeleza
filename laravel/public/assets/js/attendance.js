@@ -127,12 +127,13 @@
         const row = cel.parentNode;
 
         //pega a célula em que está o valor e extrai o número apenas
-        const value = row.childNodes[4].innerText.substring(3);
+        const value = row.childNodes[4].innerText.substring(3).replace(',', '.');
 
         //atualiza o campo referente ao valor final
         if(removeFromTotal('service', value) < 0){
-            var alrt = 'Desculpe, ocorreu um erro com o valor.';
+            const alrt = 'Desculpe, ocorreu um erro com o valor.';
             $('#service_warning').append(alrt);
+            return;
         }
 
         //pega a tabela
@@ -146,7 +147,7 @@
 
         const services = removeFromStringArray(document.getElementById('servicos').value, service_id);
         const employees = removeFromStringArray(document.getElementById('funcionarios').value, employee_id);
-        const values = removeFromStringArray(document.getElementById('valoresServicos').value, employee_id);
+        const values = removeFromStringArray(document.getElementById('valoresServicos').value, value);
 
         if(services == 'lombrou' || employees == 'lombrou' || values == 'lombrou'){
             cleanNotifications('service');
@@ -199,9 +200,13 @@
     $(document).ready(function () {
 
         $('#select_product').on('change', function(event) {
-            const service_id = $('#select_product').val();
-            var option = document.querySelectorAll('option[label="' + service_id + '"]');
-            var value = option[1].value.replace('.', ',');
+            const product_id = $('#select_product').val();
+            var option = document.querySelectorAll('option[label="' + product_id + '"]');
+            var x = 1;
+            if(option[x] == null){
+                x = 0;
+            }
+            var value = option[x].value.replace('.', ',');
             if(value.indexOf(',') == -1){
                 value += ',00';
             }
@@ -300,22 +305,26 @@
         $('body').css('cursor', 'progress');
 
         const row = cel.parentNode;
-        const value = row.childNodes[6].innerText.substring(3);
+        const value = row.childNodes[6].innerText.substring(3).replace(',', '.');
 
         if(removeFromTotal('product', value) < 0){
-            var alrt = 'Desculpe, ocorreu um erro com o valor.';
-            $('#service_warning').append(alrt);
+            const alrt = 'Desculpe, ocorreu um erro com o valor.'; 
+            $('#product_warning').append(alrt);
+            return;
         }
 
         const table = document.getElementById('productTable');
 
         const product_name = row.childNodes[0].innerHTML;
         const product_id = row.childNodes[1].innerHTML;
+        
+        const amt = row.childNodes[4].innerHTML;
 
-        const products = removeFromStringArray(document.getElementById('servicos').value, product_id);
-        const values = removeFromStringArray(document.getElementById('valoresProdutos').value, employee_id);
+        const products = removeFromStringArray(document.getElementById('produtos').value, product_id);
+        const values = removeFromStringArray(document.getElementById('valoresProdutos').value, value);
+        const amts = removeFromStringArray(document.getElementById('quantidades').value, amt);
 
-        if(products == 'lombrou' || values == 'lombrou'){
+        if(products == 'lombrou' || values == 'lombrou' || amt == 'lombrou'){
             cleanNotifications('product');
             var alrt = 'Ocorreu um erro ao remover o produto.';
             $('#product_warning').append(alrt);
@@ -324,6 +333,7 @@
 
         document.getElementById('produtos').value = products;
         document.getElementById('valoresProdutos').value = values;
+        document.getElementById('quantidades').value = amts;
 
         $('#select_product').append(`<option value="${product_id}">${product_name}</option>`);
 
@@ -421,7 +431,6 @@
     function removeFromTotal(divName, value){
         cleanNotifications(divName);
         var valueDiv = document.getElementById(`${divName}Value`);
-        console.log(valueDiv);
 
         if(value != null && valueDiv != null && valueDiv.innerText != null){
             var total = valueDiv.innerText.substr(3).replace(',', '.');
@@ -433,11 +442,14 @@
                 return total;
             };
 
-            total = total.toString().toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            total = total.toString().replace('.', ',');
+            total = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
             if(total.indexOf(',') == -1){
                 total += ',00';
             }
 
+            total = total.substr(0, (total.indexOf(',') + 3));
             valueDiv.innerText = 'R$ ' + total;
 
             return updateTotalValue();
