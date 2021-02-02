@@ -134,7 +134,7 @@
 
                                 <div class='col-md-3 col-xs-12'>
                                     <label for='valor'>Valor</label>
-                                    <input name='valor[]' placeholder='00,00'>
+                                    <input name='valorBanco[]' id='valorBanco' placeholder='00,00'>
                                 </div>
 
                                 <div class='col-md-1 col-xs-12'>    

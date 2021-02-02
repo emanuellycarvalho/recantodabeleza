@@ -7,6 +7,7 @@ $(document).ready(function(){
   $('#cep').mask('00000-000', {reverse: true});
   $('#valor').mask('000,00', {reverse: true});
   $('#total').mask('00 000,00', {reverse: true});
+  $('#valorBanco').mask('000,00', {reverse: true});
   $('#cpf').mask('000.000.000-00', {reverse: true});
   $('#precoProduto').mask('000,00', {reverse: true});
   $('#valorServico').mask('000,00', {reverse: true});

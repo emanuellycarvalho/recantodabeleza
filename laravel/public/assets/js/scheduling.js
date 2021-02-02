@@ -23,8 +23,8 @@ $(document).ready(function () {
       const service_id = $('#select_service').val();
       const service_name = $('#select_service option:selected').html();
 
-      const value = $('input[name="valor[]"]').val();
-      console.log($('input[name="valor[]"]')); return;
+      const value = $('input[name="valorBanco[]"]').val();
+
       if (verifyServiceData(service_id, employee_id, value) == null){
           return;
       }
@@ -36,6 +36,7 @@ $(document).ready(function () {
       //coloca o primeiro select em sua posição original
       $('#select_employee').val(0);
       $('#select_service').val(0);
+      $('input[name="valorBanco[]"]').val('');
 });
 
     window.selectService = function (){
@@ -46,8 +47,8 @@ $(document).ready(function () {
           valor += ',00';
       }
 
-      if(document.querySelector('input[name="valor[]"]') != null){
-        document.querySelector('input[name="valor[]"]').value = valor;
+      if(document.querySelector('input[name="valorBanco[]"]') != null){
+        document.querySelector('input[name="valorBanco[]"]').value = valor;
         return;
       }
       document.getElementById('valorServico').value = valor;
@@ -63,7 +64,7 @@ $(document).ready(function () {
       return null;
     }
 
-    if(value.replace(',' , '.') <= 0 || value == null){
+    if(parseFloat(value.replace(',' , '.')) <= 0 || value == null){
       var alrt = 'O valor do serviço precisa ser maior que zero.';
       $('#service_error').append(alrt);
       return;
@@ -146,6 +147,10 @@ $(document).ready(function () {
     }
 
     total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    if(total.toString().indexOf(',') == -1){
+      total += ',00';
+    }
+
     document.getElementById('total').value = total;
   }
 
