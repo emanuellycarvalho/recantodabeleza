@@ -410,10 +410,14 @@
         }
 
         var total = (service+product).toString();
+
         if (total == null){
             return -1;
         }
+        
         total = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        total = total.replace('.', ',');
+
         if(total.indexOf(',') == -1){
             total += ',00';
         }
