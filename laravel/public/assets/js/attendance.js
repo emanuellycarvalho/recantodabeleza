@@ -142,7 +142,6 @@
         const service_name = row.childNodes[0].innerHTML;
         const service_id = row.childNodes[1].innerHTML;
 
-        const employee_name = row.childNodes[2].innerHTML;
         const employee_id = row.childNodes[3].innerHTML;
 
         const services = removeFromStringArray(document.getElementById('servicos').value, service_id);
@@ -161,14 +160,13 @@
         document.getElementById('valoresServicos').value = values;
 
         //volta com eles pros primeiros selects
-        // $('#select_employee').append(`<option value="${employee_id}">${employee_name}</option>`);
         $('#select_service').append(`<option value="${service_id}">${service_name}</option>`);
-
         table.deleteRow(row.rowIndex);
-
         updateServiceTotal();
 
         $('body').css('cursor', 'default');
+
+        return updateTotalValue();
 
     } //tudo certo
 
@@ -189,6 +187,13 @@
 
         return total;
     }; //tudo certo
+
+    function removeOptionsSelectedService(service_id) {
+
+        $('#select_service option[value="' + service_id + '"]').each(function () {
+          $(this).remove();
+        });
+      }
 
     //PRODUTO -----------------------------------------------------------------------------------------------------
 
@@ -329,6 +334,7 @@
         updateProductTotal();
 
         $('body').css('cursor', 'default');
+        return updateTotalValue();
     }
 
     function updateProductTotal(){
@@ -347,6 +353,37 @@
 
         return total;
     };
+
+    function verifyProductData(product_id, amt, value){
+        cleanNotifications('product');
+        value = parseFloat(value.replace(',', '.'));
+
+        if(product_id == null){
+            var alrt = 'Você precisa selecionar um produto por vez.';
+            $('#product_error').append(alrt);
+            return;
+        }
+
+        if(value <= 0 || value == null){
+            var alrt = 'O valor do produto precisa ser maior que zero.';
+            $('#product_error').append(alrt);
+            return;
+        }
+
+        if(amt <= 0 || amt == null){
+            var alrt = 'Você precisa adicionar um ou mais produtos.';
+            $('#product_error').append(alrt);
+            return;
+        }
+
+        return 1;
+    }
+
+    function removeOptionsSelected(product_id) {
+        $('#select_product option[value="' + product_id + '"]').each(function () {
+            $(this).remove();
+        });
+    }
 
     //GERAL -----------------------------------------------------------------------------------------------------
 
@@ -409,6 +446,14 @@
             product = parseFloat(document.getElementById('productValue').innerText.replace(',', '.').substring(3));
         }
 
+        if(isNaN(service)){
+            service = 0;
+        }
+
+        if(isNaN(product)){
+            product = 0;
+        }
+
         var total = (service+product).toString();
 
         if (total == null){
@@ -427,30 +472,7 @@
         return 1;
     }
 
-    function verifyProductData(product_id, amt, value){
-        cleanNotifications('product');
-        value = parseFloat(value.replace(',', '.'));
-
-        if(product_id == null){
-            var alrt = 'Você precisa selecionar um produto por vez.';
-            $('#product_error').append(alrt);
-            return;
-        }
-
-        if(value <= 0 || value == null){
-            var alrt = 'O valor do produto precisa ser maior que zero.';
-            $('#product_error').append(alrt);
-            return;
-        }
-
-        if(amt <= 0 || amt == null){
-            var alrt = 'Você precisa adicionar um ou mais produtos.';
-            $('#product_error').append(alrt);
-            return;
-        }
-
-        return 1;
-    }
+    //tudo certo
 
     function removeFromStringArray(string, element){
         if (string != null && element != null){
@@ -460,38 +482,4 @@
         }
 
         return 'lombrou';
-    }
-
-    function removeOptionsSelectedService(service_id) {
-
-        $('#select_service option[value="' + service_id + '"]').each(function () {
-          $(this).remove();
-        });
-      }
-
-    function removeOptionsSelected(product_id) {
-        $('#select_product option[value="' + product_id + '"]').each(function () {
-            $(this).remove();
-        });
-    }
-
-    function menageValueFormat(value){
-        if(value != null){
-            const index = value.indexOf(',');
-            value = value.split('');
-
-            if(value[index+1] == null)
-                value[index+1] = 0;
-
-            if(value[index+2] == null)
-                value[index+2] = 0;
-
-            var final = value[0];
-            for($i = 1; $i < index+3; $i ++){
-                final += value[$i];
-            }
-
-            return final.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        }
-        return null;
     }
