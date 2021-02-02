@@ -162,7 +162,6 @@
         //volta com eles pros primeiros selects
         $('#select_service').append(`<option value="${service_id}">${service_name}</option>`);
         table.deleteRow(row.rowIndex);
-        updateServiceTotal();
 
         $('body').css('cursor', 'default');
 
@@ -236,10 +235,8 @@
     });
     function createProductRow(product) {
         var value = parseFloat(product.value.replace(',', '.'));
-        var finalValue = (value * parseInt(product.amt)).toString();
-        finalValue = finalValue.substring(0, value.indexOf('.') + 3); //Coloca só dois lgarismos decimais
-        finalValue = finalValue.replace('.', ',');
-        value = value.replace('.', ',');
+        var finalValue = formatFinalValue(value, parseInt(product.amt));
+        value = value.toString().replace('.', ',');
 
         const table = document.getElementsByTagName('table')[1];
 
@@ -303,11 +300,11 @@
         $('body').css('cursor', 'progress');
 
         const row = cel.parentNode;
-        const value = row.childNodes[4].innerText.substring(3);
+        const value = row.childNodes[6].innerText.substring(3);
 
         if(removeFromTotal('product', value) < 0){
             var alrt = 'Desculpe, ocorreu um erro com o valor.';
-            $('#product_warning').append(alrt);
+            $('#service_warning').append(alrt);
         }
 
         const table = document.getElementById('productTable');
@@ -315,8 +312,8 @@
         const product_name = row.childNodes[0].innerHTML;
         const product_id = row.childNodes[1].innerHTML;
 
-        const products = removeFromStringArray(document.getElementById('produtos').value, product_id);
-        const values = removeFromStringArray(document.getElementById('valoresProdutos').value, product_id);
+        const products = removeFromStringArray(document.getElementById('servicos').value, product_id);
+        const values = removeFromStringArray(document.getElementById('valoresProdutos').value, employee_id);
 
         if(products == 'lombrou' || values == 'lombrou'){
             cleanNotifications('product');
@@ -345,14 +342,27 @@
             if(tableRows[i] != null){
                 var row = tableRows[i];
                 var cells = row.querySelectorAll('td');
-                var value = cells[4].innerText.substring(3);
-                value = parseFloat(value.replace(',', '.'));
+                var value = cells[6].innerText.substring(3);
+                value = value.replace(',', '.');
+                value = parseFloat(value);
                 total += value;
             }
         }
 
         return total;
     };
+
+    function formatFinalValue(value, amt){
+        var finalValue = (value * amt).toString();
+        finalValue = finalValue.replace('.', ',');
+        finalValue = finalValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        
+        if(finalValue.indexOf(',') == -1){
+            finalValue += ',00';
+        }
+
+        return finalValue;
+    }
 
     function verifyProductData(product_id, amt, value){
         cleanNotifications('product');
@@ -411,8 +421,9 @@
     function removeFromTotal(divName, value){
         cleanNotifications(divName);
         var valueDiv = document.getElementById(`${divName}Value`);
+        console.log(valueDiv);
 
-        if(value != null && valueDiv.innerText != null){
+        if(value != null && valueDiv != null && valueDiv.innerText != null){
             var total = valueDiv.innerText.substr(3).replace(',', '.');
             value = value.replace(',', '.');
             total = parseFloat(total) - parseFloat(value);
@@ -460,12 +471,12 @@
             return -1;
         }
         
-        total = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         total = total.replace('.', ',');
 
         if(total.indexOf(',') == -1){
             total += ',00';
         }
+        total = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
         document.getElementById('total').value = 'R$ ' + total;
         document.getElementById('valorFinal').value = total;
