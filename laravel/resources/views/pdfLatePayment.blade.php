@@ -14,10 +14,20 @@
         echo date('d/m/Y \à\s H:i:s');
     ?>
     <hr>
+        <?php
+            $atendimentos = $resultado[0];
+            $clientes = $resultado[1];
 
-        @foreach($customers as $cust)
-		    <p><b>{{$cust->nmCliente}}</b></p>
-			<p>{{$cust->telefone}}</p>
+        ?>
+
+        @foreach($clientes as $cl)
+            @foreach($atendimentos as $at)
+                @if ($cl->cdCliente == $at->cdCliente)
+                    <p><b>Cliente:</b> {{$cl->nmCliente}} | <b>Contato:</b> {{$cl->telefone}}</p>
+                    <p><b>Forma de pagamento:</b> {{$at->tipoPagamento}}</b> - R${{$at->valorTotal}}</p>
+                @endif
+            @endforeach
+            <hr>
         @endforeach
 
 </body>

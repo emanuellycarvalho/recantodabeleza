@@ -86,8 +86,6 @@
 			</div>
 			<div class='modal-body'>
 				<p>Tem certeza que deseja excluir esse registro?<br>
-				<b>Nome:</b> {{$cust->nmCliente}}
-				<br><b>Telefone:</b> {{$cust->telefone}}</p>
 			</div>
 			<div class='modal-footer'>
 				<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LatePaymentReportRequest;
 use App\Models\ModelCustomer;
+use App\Models\ModelAttendance;
+
 use PDF;
 
 class paymentReportController extends Controller
@@ -23,16 +25,40 @@ class paymentReportController extends Controller
             $dtFinal = explode( '/' , $request->dtFinal);
             $dtFinal = $dtFinal[2] . '-' . $dtFinal[1] . '-' . $dtFinal[0];
 
-            return $this->geraPdf();
+            return $this->geraPdf($dtInicial, $dtFinal);
         }
     }
 
-    public function geraPdf() {
-        $customers = ModelCustomer::all();
-
-        $pdf = PDF::loadView('pdfLatePayment', compact('customers'));
+    public function geraPdf($dtInicial, $dtFinal) {
+        $resultado = $this->filtrar($dtInicial, $dtFinal);
+        
+        $pdf = PDF::loadView('pdfLatePayment', compact('resultado'));
         
         return $pdf->setPaper('a4')->stream('Pagamentos Atrasados.pdf');
+    }
+
+    public function filtrar($dtInicial, $dtFinal) {
+        
+        $customers = ModelCustomer::all();
+        $attendance = ModelAttendance::all();
+        $atendimentos = array();
+        $clientes = array();
+        
+        foreach ($attendance as $att) {
+            if ($att->situacao == 'N' && $att->dtAtendimento >= $dtInicial && $att->dtAtendimento <= $dtFinal) {
+                dd($att->dtAtendimento, $dtInicial, $dtFinal);
+                $att->valorTotal = str_replace('.', ',', $att->valorTotal);
+                $att->valorTotal = str_replace(' ', '', $att->valorTotal);
+                $atendimentos[] = $att;
+                foreach ($customers as $cust) {
+                    if ($cust->cdCliente == $att->cdCliente) {
+                        $clientes[] = $cust;
+                    }
+                }
+            }
+        }
+        
+        return array($atendimentos, $clientes);
     }
 
 }
