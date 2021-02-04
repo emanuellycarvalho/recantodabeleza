@@ -1,8 +1,7 @@
-const { unique } = require("jquery");
 
     $(document).ready(function () {
 
-        $('#tipoPagamento').on('change', function (event){
+        $('#tipoPagamento').on('change', function (){
             const paymentType = document.getElementById('tipoPagamento').value;
 
             if(paymentType == 'crediario'){
