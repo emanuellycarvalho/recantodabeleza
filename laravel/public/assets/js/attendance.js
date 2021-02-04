@@ -1,25 +1,48 @@
+const { unique } = require("jquery");
 
     $(document).ready(function () {
 
         $('#tipoPagamento').on('change', function (event){
             const paymentType = document.getElementById('tipoPagamento').value;
 
-            if(paymentType == 'crediario' || paymentType == 'credito'){
-                $('#parcelas').removeAttr('readonly');
-            } else {
-                $('#parcelas').attr('readonly', 'readonly');
-                $('#parcelas').val(1);
+            if(paymentType == 'crediario'){
+                parcel();
+                unpaid();
             }
 
-            if(paymentType == 'credito' || paymentType == 'debito'){
-                document.getElementById('nao_pago').disabled = true;
-                document.getElementById('pago').checked = true;
-            } else {
-                document.getElementById('nao_pago').disabled = false;
+            if(paymentType == 'credito'){
+                parcel();
+                paid();
             }
 
+            if(paymentType == 'debito' || paymentType == 'dinheiro'){
+                uniqueParcel();
+                paid();
+            }
         });
     });
+
+    function paid(){
+        document.getElementById('pago').checked = true;
+        document.getElementById('nao_pago').disabled = true;
+        return;
+    }
+
+    function unpaid(){
+        document.getElementById('pago').disabled = true;
+        document.getElementById('nao_pago').checked = true;
+        return;
+    }
+
+    function parcel(){
+        $('#parcelas').removeAttr('readonly');
+        return;        
+    }
+
+    function uniqueParcel(){
+        $('#parcelas').val(1);
+        $('#parcelas').attr('readonly', 'readonly');
+    }
 
     //SERVICO -----------------------------------------------------------------------------------------------------
 
@@ -437,7 +460,7 @@
             value = value.replace(',', '.');
             total = parseFloat(total) - parseFloat(value);
 
-            if(total <= 0){
+            if(total <= 0 || isNaN(total)){
                 valueDiv.innerText = '';
                 return total;
             };
@@ -488,7 +511,9 @@
         if(total.indexOf(',') == -1){
             total += ',00';
         }
+
         total = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        total = total.substr(0, (total.indexOf(',') + 3));
 
         document.getElementById('total').value = 'R$ ' + total;
         document.getElementById('valorFinal').value = total;
