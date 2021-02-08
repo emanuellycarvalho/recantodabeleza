@@ -68,16 +68,30 @@
         generateModal(event, time);
 
         $('#eventModal').modal('show');
-      },
+      }, 
       dateClick: function(info) {
-        var date = info.dateStr;
+        const date = new Date(moment(info.dateStr, 'YYYY-MM-DD'));
+
+        //verifica se é domingo ou segunda, dias indisponíveis no calendário
+        if (date.getDay() == 0 || date.getDay() == 1) 
+            return; //faz nada 
+
+        const today = new Date(moment().format('YYYY-MM-DD'));
+
         /*document.getElementById('oldDateFormat').innerHTML= date;
         date = moment(date).format('L');
         document.getElementById('newEventDate').innerHTML= `<b> ${date}</b>`;
         $('#newEventModal').modal('show'); */
-        window.location = `adm/scheduling/create/${date}`
-      }  
+
+        const parameter = moment(date, "ddd MMM DD YYYY h:mm:ss").format('YYYY-MM-DD');
+
+        if(date < today){
+          window.location = `adm/attendance/create/${parameter}`;
+          return;
+        }
         
+        window.location = `adm/scheduling/create/${parameter}`;
+      }        
     });
     calendar.render();
 

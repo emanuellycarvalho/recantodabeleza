@@ -13,13 +13,13 @@
     <section class='cart-section spad'>
 		<div class='container'>
 			<div class='row justify-content-center'>
-				<div class='col-lg-9 offset-md-2'>  
+				<div class='col-lg-9 offset-md-2'>
 					<form class='contact-form' name='attendance' id='attendance' method='post' action=''>
 
                         <div class='row'>
 
                             <div class='form-group col-lg-6 offset-md-1'>
-                                
+
                                 <label for='cliente'>Cliente*</label>
                                 <select name='cliente' id='cliente'>
                                     <option value='0' disabled selected> Selecione um cliente </option>
@@ -34,7 +34,7 @@
                             </div>
 
                             <div class='form-group col-md-1' style='margin-top:19px;'>
-                                <button type='button' class='site-btn' id='search'>Exibir</button> 
+                                <button type='button' class='site-btn' id='search'>Exibir</button>
                             </div>
 
                         </div>
@@ -44,14 +44,14 @@
                             </div>
                             <div class='cart-table-warp'>
                                 @csrf
-                                
+
                                 <table id='table' class='tablesorter'>
                                 <thead>
                                     <tr>
-                                        <th class='quy-th'>Data</th>
-                                        <th class='quy-th'>Valor Total</th>
-                                        <th class='quy-th' id='none'>Visualizar</th>
-                                        <th class='quy-th' id='none'>Pago</th>
+                                        <th class='quy-th'>Parcela</th>
+                                        <th class='quy-th' id='none'>Valor</th>
+                                        <th class='quy-th'>Vencimento</th>
+                                        <th class='quy-th' id='none'>Situação</th>
                                     </tr>
                                 </thead>
                                 <tbody id='tbody'>
@@ -64,13 +64,13 @@
                                     </tr> -->
                                 </tbody>
                                 </table>
-                            
+
                         </div>
                         <div class='total-cost-free'>
 							<div class='row justify-content-end' id='pagination'>
 							</div>
 						</div>
-                    </div> 
+                    </div>
                     <div class='row'> . </div>
                     <div class='row justify-content-end'>
                         <button type='submit' class='site-btn'>Confirmar</button>
@@ -106,48 +106,69 @@
 
     <script>
 
+        // function changeValue(){
+        //     if($('#pago').val() == 'N'){
+        //         $('#pago').val('P');
+        //     } else {
+        //         $('#pago').val('N');
+        //     }
+        // }
+
         $('#search').on('click', function(event){
             event.preventDefault();
+            $('body').css('cursor', 'progress');
             $('tbody').html('');
             document.getElementById('mensagem').innerText = '';
             const cli = $('#cliente').val();
 
-            $.ajax({ 
+            $.ajax({
                 type: 'GET',
                 data: {client: cli},
                 dataType: 'json',
                 url: '{{route("getUnpaidAttendances")}}',
                 success: function (data)
-                {               
+                {
                     if(data.length < 1){
                         document.getElementById('mensagem').innerText = 'Nada para ver por aqui.'
                     }
 
                     data.map(function(item){
-                        var action = `{{url("adm/attendance/registerPayment")}}`;
-                        var date = item.dtAtendimento;
+                        var date = item.dtVencimento;
                         date = date.split('-');
                         date = date[2] + '/' + date[1] + '/' + date[0];
                         $newRow = `<tr>
+                                <td><center>${item.parcela}</center></td>
+                                <td><center>R$${item.valor}</center></td>
                                 <td><center>${date}</center></td>
-                                <td><center>R$${item.valorTotal}</center></td>
-                                <td><center><a href='{{url("adm/payment/` + item.cdAtendimento +  `")}}' title='Visualizar Atendimento'><img class='responsive' src='{{url("/img/icons/seePayment.png")}}' height='35px'></a></center></td>
-                                <td><center><input type='checkbox' id='pago' name ='pago[]' value='` + item.cdAtendimento +  `'></center></td>
+                                <td><center><button class="confirm-payment" onclick="pay(${item.cdParcela})">P</button></center></td>
                             </tr>`
                         $('tbody').append($newRow);
-                        $('#attendance').attr('action', action);
                     });
+                    $('body').css('cursor', 'default');
                 }
             });
         });
 
-        function changeValue(){
-            if($('#pago').val() == 'N'){
-                $('#pago').val('P');
-            } else {
-                $('#pago').val('N');
-            }
+        function pay(cdParcela){
+            $('body').css('cursor', 'progress');
+            const data = {"cdParcela": cdParcela};
+            const url = "{{route('pay')}}";
+
+            $.ajax({
+
+                type: 'POST',
+                dataType: 'json',
+                data,
+                url,
+                success:function(data){
+                    alert('foi');
+                }
+            });
+
+            $('body').css('cursor', 'default');
+
         }
+
 
     </script>
 

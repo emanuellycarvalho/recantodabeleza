@@ -15,20 +15,39 @@
     ?>
     <hr>
         <?php
-            $atendimentos = $resultado[0];
-            $clientes = $resultado[1];
-
+            $pagamentos = $resultado[0];
+            $atendimentos = $resultado[1];
+            $clientes = $resultado[2];
+            $i = 0;
         ?>
 
-        @foreach($clientes as $cl)
-            @foreach($atendimentos as $at)
-                @if ($cl->cdCliente == $at->cdCliente)
-                    <p><b>Cliente:</b> {{$cl->nmCliente}} | <b>Contato:</b> {{$cl->telefone}}</p>
-                    <p><b>Forma de pagamento:</b> {{$at->tipoPagamento}}</b> - R${{$at->valorTotal}}</p>
-                @endif
-            @endforeach
-            <hr>
+        @foreach ($atendimentos as $a)
+            @if ($a != null)
+                @foreach ($clientes as $c)
+                    @if ($c != null && $c->cdCliente == $a->cdCliente)
+                        <b>Cliente:</b> {{$c->nmCliente}} | <b>Telefone:</b> {{$c->telefone}}
+                        <br>
+                        <b>Forma de pagamento:</b> {{$a->tipoPagamento}}
+                        <br>
+                        ------------------------------------------------------------------------------------------------------------------------------------
+                        <br>
+                        <b>Subtotal</b>
+                        <br>
+                        @foreach ($pagamentos as $p)
+                            @if ($a->cdAtendimento == $p->cdAtendimento)
+                                Parcela {{$p->parcela}} - R${{$p->valor}}
+                                <br>
+                            @endif
+                        @endforeach
+                        ------------------------------------------------------------------------------------------------------------------------------------
+                        <br>
+                        <b>Total:</b> R${{$a->valorTotal}}
+                    @endif
+                @endforeach
+                <hr>
+            @endif
         @endforeach
+       
 
 </body>
 </html>

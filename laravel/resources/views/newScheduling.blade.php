@@ -169,7 +169,7 @@
     <!-- Suppliers section end -->
 
     @if(isset($rel))
-        <script>
+        <script> 
             @foreach($rel as $r) 
                 createFields({id: {{$r->cdFuncionario}}, name: '{{$r->nmFuncionario}}'}, {id: {{$r->cdServico}}, name: '{{$r->nmServico}}'});
             @endforeach

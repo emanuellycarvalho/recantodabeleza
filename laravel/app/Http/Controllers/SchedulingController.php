@@ -85,7 +85,9 @@ class SchedulingController extends Controller
             $valores = $request->valor;
             
             for($i = 0; $i < sizeof($servicos); $i++){
-                $agendamento->relService()->attach($servicos[$i], ['cdFuncionario' => $funcionarios[$i], 'valorCobrado' => $valores[$i+1]]);
+                $valor = $valores[$i+1];
+                $valor = str_replace(",", ".", $valor);
+                $agendamento->relService()->attach($servicos[$i], ['cdFuncionario' => $funcionarios[$i], 'valorCobrado' => $valor]);
             } 
             
             return redirect('adm/');
@@ -151,11 +153,13 @@ class SchedulingController extends Controller
             $this->agendamentoServico->where('cdAgendamento', $id)->delete();
 
             for($i = 0; $i < sizeof($servicos); $i++){
+                $valor = $valores[$i+1];
+                $valor = str_replace(",", ".", $valor);
                 $this->agendamentoServico->insert([
                     'cdAgendamento' => $id,
                     'cdServico' => $servicos[$i], 
                     'cdFuncionario' => $funcionarios[$i], 
-                    'valorCobrado' => $valores[$i+1],
+                    'valorCobrado' => $valor,
                     'created_at' => $agendamento->created_at,
                     'updated_at' => Carbon::now()
                 ]);

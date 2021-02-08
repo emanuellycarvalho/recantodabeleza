@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LatePaymentReportRequest;
 use App\Models\ModelCustomer;
 use App\Models\ModelAttendance;
+use App\Models\ModelPayment;
 
 use PDF;
 
@@ -41,24 +42,66 @@ class paymentReportController extends Controller
         
         $customers = ModelCustomer::all();
         $attendance = ModelAttendance::all();
+        $payment = ModelPayment::all();
         $atendimentos = array();
+        $pagamentos = array();
         $clientes = array();
-        
-        foreach ($attendance as $att) {
-            if ($att->situacao == 'N' && $att->dtAtendimento >= $dtInicial && $att->dtAtendimento <= $dtFinal) {
-                dd($att->dtAtendimento, $dtInicial, $dtFinal);
-                $att->valorTotal = str_replace('.', ',', $att->valorTotal);
-                $att->valorTotal = str_replace(' ', '', $att->valorTotal);
-                $atendimentos[] = $att;
-                foreach ($customers as $cust) {
-                    if ($cust->cdCliente == $att->cdCliente) {
-                        $clientes[] = $cust;
+        $dataHoje =  date('Y-m-d');
+        $cont = 0;
+        $i = 0;
+
+        foreach ($payment as $p) {
+            if ($p->situacao == 'N' && $dataHoje > $p->dtVencimento) {
+               $pagamentos[] = $p;
+               foreach ($attendance as $att) {
+                    if ($att->cdAtendimento == $p->cdAtendimento) {
+                        $atendimentos[] = $att;
+                        foreach ($customers as $cust) {
+                            if ($cust->cdCliente == $att->cdCliente) {
+                                $clientes[] = $cust;
+                            }
+                        }   
                     }
                 }
             }
         }
+
+        foreach ($clientes as $c) {
+            $i++;
+            foreach ($clientes as $c2) {
+                if ($c == $c2) {
+                    $cont++;
+                }
+
+                if ($cont > 1) {
+                    $clientes[$i] = null;
+                }
+
+            }
+            $cont = 0;
+        }
         
-        return array($atendimentos, $clientes);
+        $i = 0;
+
+        foreach ($atendimentos as $a) {
+            $i++;
+            foreach ($atendimentos as $a2) {
+                if ($a == $a2) {
+                    $cont++;
+                }
+
+                if ($cont > 1) {
+                    $atendimentos[$i] = null;
+                }
+
+            }
+            $cont = 0;
+        }
+
+        //        $att->valorTotal = str_replace('.', ',', $att->valorTotal);
+        //        $att->valorTotal = str_replace(' ', '', $att->valorTotal);
+        
+        return array($pagamentos, $atendimentos, $clientes);
     }
 
 }
