@@ -262,7 +262,7 @@
                             </div>
 
                             <div class='col-md-4 col-xs-12'>
-                                <label for='precoProduto'>Valor unitário*</label>
+                                <label for='precoProduto'>Valor unitário (R$)*</label>
                                 <input type='text' name='precoProduto' id='precoProduto' placeholder= '00,00'>
                             </div>
 

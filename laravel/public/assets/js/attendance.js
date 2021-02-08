@@ -1,25 +1,47 @@
 
     $(document).ready(function () {
 
-        $('#tipoPagamento').on('change', function (event){
+        $('#tipoPagamento').on('change', function (){
             const paymentType = document.getElementById('tipoPagamento').value;
 
-            if(paymentType == 'crediario' || paymentType == 'credito'){
-                $('#parcelas').removeAttr('readonly');
-            } else {
-                $('#parcelas').attr('readonly', 'readonly');
-                $('#parcelas').val(1);
+            if(paymentType == 'crediario'){
+                parcel();
+                unpaid();
             }
 
-            if(paymentType == 'credito' || paymentType == 'debito'){
-                document.getElementById('nao_pago').disabled = true;
-                document.getElementById('pago').checked = true;
-            } else {
-                document.getElementById('nao_pago').disabled = false;
+            if(paymentType == 'credito'){
+                parcel();
+                paid();
             }
 
+            if(paymentType == 'debito' || paymentType == 'dinheiro'){
+                uniqueParcel();
+                paid();
+            }
         });
     });
+
+    function paid(){
+        document.getElementById('pago').checked = true;
+        document.getElementById('nao_pago').disabled = true;
+        return;
+    }
+
+    function unpaid(){
+        document.getElementById('pago').disabled = true;
+        document.getElementById('nao_pago').checked = true;
+        return;
+    }
+
+    function parcel(){
+        $('#parcelas').removeAttr('readonly');
+        return;        
+    }
+
+    function uniqueParcel(){
+        $('#parcelas').val(1);
+        $('#parcelas').attr('readonly', 'readonly');
+    }
 
     //SERVICO -----------------------------------------------------------------------------------------------------
 
@@ -127,12 +149,13 @@
         const row = cel.parentNode;
 
         //pega a célula em que está o valor e extrai o número apenas
-        const value = row.childNodes[4].innerText.substring(3);
+        const value = row.childNodes[4].innerText.substring(3).replace(',', '.');
 
         //atualiza o campo referente ao valor final
         if(removeFromTotal('service', value) < 0){
-            var alrt = 'Desculpe, ocorreu um erro com o valor.';
+            const alrt = 'Desculpe, ocorreu um erro com o valor.';
             $('#service_warning').append(alrt);
+            return;
         }
 
         //pega a tabela
@@ -142,12 +165,11 @@
         const service_name = row.childNodes[0].innerHTML;
         const service_id = row.childNodes[1].innerHTML;
 
-        const employee_name = row.childNodes[2].innerHTML;
         const employee_id = row.childNodes[3].innerHTML;
 
         const services = removeFromStringArray(document.getElementById('servicos').value, service_id);
         const employees = removeFromStringArray(document.getElementById('funcionarios').value, employee_id);
-        const values = removeFromStringArray(document.getElementById('valoresServicos').value, employee_id);
+        const values = removeFromStringArray(document.getElementById('valoresServicos').value, value);
 
         if(services == 'lombrou' || employees == 'lombrou' || values == 'lombrou'){
             cleanNotifications('service');
@@ -161,14 +183,12 @@
         document.getElementById('valoresServicos').value = values;
 
         //volta com eles pros primeiros selects
-        // $('#select_employee').append(`<option value="${employee_id}">${employee_name}</option>`);
         $('#select_service').append(`<option value="${service_id}">${service_name}</option>`);
-
         table.deleteRow(row.rowIndex);
 
-        updateServiceTotal();
-
         $('body').css('cursor', 'default');
+
+        return updateTotalValue();
 
     } //tudo certo
 
@@ -190,14 +210,25 @@
         return total;
     }; //tudo certo
 
+    function removeOptionsSelectedService(service_id) {
+
+        $('#select_service option[value="' + service_id + '"]').each(function () {
+          $(this).remove();
+        });
+      }
+
     //PRODUTO -----------------------------------------------------------------------------------------------------
 
     $(document).ready(function () {
 
         $('#select_product').on('change', function(event) {
-            const service_id = $('#select_product').val();
-            var option = document.querySelectorAll('option[label="' + service_id + '"]');
-            var value = option[1].value.replace('.', ',');
+            const product_id = $('#select_product').val();
+            var option = document.querySelectorAll('option[label="' + product_id + '"]');
+            var x = 1;
+            if(option[x] == null){
+                x = 0;
+            }
+            var value = option[x].value.replace('.', ',');
             if(value.indexOf(',') == -1){
                 value += ',00';
             }
@@ -231,10 +262,8 @@
     });
     function createProductRow(product) {
         var value = parseFloat(product.value.replace(',', '.'));
-        var finalValue = (value * parseInt(product.amt)).toString();
-        finalValue = finalValue.substring(0, value.indexOf('.') + 3); //Coloca só dois lgarismos decimais
-        finalValue = finalValue.replace('.', ',');
-        value = value.replace('.', ',');
+        var finalValue = formatFinalValue(value, parseInt(product.amt));
+        value = value.toString().replace('.', ',');
 
         const table = document.getElementsByTagName('table')[1];
 
@@ -298,22 +327,26 @@
         $('body').css('cursor', 'progress');
 
         const row = cel.parentNode;
-        const value = row.childNodes[4].innerText.substring(3);
+        const value = row.childNodes[6].innerText.substring(3).replace(',', '.');
 
         if(removeFromTotal('product', value) < 0){
-            var alrt = 'Desculpe, ocorreu um erro com o valor.';
+            const alrt = 'Desculpe, ocorreu um erro com o valor.'; 
             $('#product_warning').append(alrt);
+            return;
         }
 
         const table = document.getElementById('productTable');
 
         const product_name = row.childNodes[0].innerHTML;
         const product_id = row.childNodes[1].innerHTML;
+        
+        const amt = row.childNodes[4].innerHTML;
 
         const products = removeFromStringArray(document.getElementById('produtos').value, product_id);
-        const values = removeFromStringArray(document.getElementById('valoresProdutos').value, product_id);
+        const values = removeFromStringArray(document.getElementById('valoresProdutos').value, value);
+        const amts = removeFromStringArray(document.getElementById('quantidades').value, amt);
 
-        if(products == 'lombrou' || values == 'lombrou'){
+        if(products == 'lombrou' || values == 'lombrou' || amt == 'lombrou'){
             cleanNotifications('product');
             var alrt = 'Ocorreu um erro ao remover o produto.';
             $('#product_warning').append(alrt);
@@ -322,6 +355,7 @@
 
         document.getElementById('produtos').value = products;
         document.getElementById('valoresProdutos').value = values;
+        document.getElementById('quantidades').value = amts;
 
         $('#select_product').append(`<option value="${product_id}">${product_name}</option>`);
 
@@ -329,6 +363,7 @@
         updateProductTotal();
 
         $('body').css('cursor', 'default');
+        return updateTotalValue();
     }
 
     function updateProductTotal(){
@@ -339,14 +374,58 @@
             if(tableRows[i] != null){
                 var row = tableRows[i];
                 var cells = row.querySelectorAll('td');
-                var value = cells[4].innerText.substring(3);
-                value = parseFloat(value.replace(',', '.'));
+                var value = cells[6].innerText.substring(3);
+                value = value.replace(',', '.');
+                value = parseFloat(value);
                 total += value;
             }
         }
 
         return total;
     };
+
+    function formatFinalValue(value, amt){
+        var finalValue = (value * amt).toString();
+        finalValue = finalValue.replace('.', ',');
+        finalValue = finalValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        
+        if(finalValue.indexOf(',') == -1){
+            finalValue += ',00';
+        }
+
+        return finalValue;
+    }
+
+    function verifyProductData(product_id, amt, value){
+        cleanNotifications('product');
+        value = parseFloat(value.replace(',', '.'));
+
+        if(product_id == null){
+            var alrt = 'Você precisa selecionar um produto por vez.';
+            $('#product_error').append(alrt);
+            return;
+        }
+
+        if(value <= 0 || value == null){
+            var alrt = 'O valor do produto precisa ser maior que zero.';
+            $('#product_error').append(alrt);
+            return;
+        }
+
+        if(amt <= 0 || amt == null){
+            var alrt = 'Você precisa adicionar um ou mais produtos.';
+            $('#product_error').append(alrt);
+            return;
+        }
+
+        return 1;
+    }
+
+    function removeOptionsSelected(product_id) {
+        $('#select_product option[value="' + product_id + '"]').each(function () {
+            $(this).remove();
+        });
+    }
 
     //GERAL -----------------------------------------------------------------------------------------------------
 
@@ -375,21 +454,24 @@
         cleanNotifications(divName);
         var valueDiv = document.getElementById(`${divName}Value`);
 
-        if(value != null && valueDiv.innerText != null){
+        if(value != null && valueDiv != null && valueDiv.innerText != null){
             var total = valueDiv.innerText.substr(3).replace(',', '.');
             value = value.replace(',', '.');
             total = parseFloat(total) - parseFloat(value);
 
-            if(total <= 0){
+            if(total <= 0 || isNaN(total)){
                 valueDiv.innerText = '';
                 return total;
             };
 
-            total = total.toString().toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            total = total.toString().replace('.', ',');
+            total = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
             if(total.indexOf(',') == -1){
                 total += ',00';
             }
 
+            total = total.substr(0, (total.indexOf(',') + 3));
             valueDiv.innerText = 'R$ ' + total;
 
             return updateTotalValue();
@@ -409,44 +491,35 @@
             product = parseFloat(document.getElementById('productValue').innerText.replace(',', '.').substring(3));
         }
 
+        if(isNaN(service)){
+            service = 0;
+        }
+
+        if(isNaN(product)){
+            product = 0;
+        }
+
         var total = (service+product).toString();
+
         if (total == null){
             return -1;
         }
-        total = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        
+        total = total.replace('.', ',');
+
         if(total.indexOf(',') == -1){
             total += ',00';
         }
+
+        total = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        total = total.substr(0, (total.indexOf(',') + 3));
 
         document.getElementById('total').value = 'R$ ' + total;
         document.getElementById('valorFinal').value = total;
         return 1;
     }
 
-    function verifyProductData(product_id, amt, value){
-        cleanNotifications('product');
-        value = parseFloat(value.replace(',', '.'));
-
-        if(product_id == null){
-            var alrt = 'Você precisa selecionar um produto por vez.';
-            $('#product_error').append(alrt);
-            return;
-        }
-
-        if(value <= 0 || value == null){
-            var alrt = 'O valor do produto precisa ser maior que zero.';
-            $('#product_error').append(alrt);
-            return;
-        }
-
-        if(amt <= 0 || amt == null){
-            var alrt = 'Você precisa adicionar um ou mais produtos.';
-            $('#product_error').append(alrt);
-            return;
-        }
-
-        return 1;
-    }
+    //tudo certo
 
     function removeFromStringArray(string, element){
         if (string != null && element != null){
@@ -456,38 +529,4 @@
         }
 
         return 'lombrou';
-    }
-
-    function removeOptionsSelectedService(service_id) {
-
-        $('#select_service option[value="' + service_id + '"]').each(function () {
-          $(this).remove();
-        });
-      }
-
-    function removeOptionsSelected(product_id) {
-        $('#select_product option[value="' + product_id + '"]').each(function () {
-            $(this).remove();
-        });
-    }
-
-    function menageValueFormat(value){
-        if(value != null){
-            const index = value.indexOf(',');
-            value = value.split('');
-
-            if(value[index+1] == null)
-                value[index+1] = 0;
-
-            if(value[index+2] == null)
-                value[index+2] = 0;
-
-            var final = value[0];
-            for($i = 1; $i < index+3; $i ++){
-                final += value[$i];
-            }
-
-            return final.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        }
-        return null;
     }
