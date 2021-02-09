@@ -214,7 +214,7 @@ class AttendanceController extends Controller
 
             return;
 
-        } catch(Excepcion $e){
+        } catch(Exception $e){
             abort(401, $e->getMessage());
         }
     }
