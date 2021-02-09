@@ -29,6 +29,7 @@ $(document).ready(function(){
       senha2: 'required',
       dtInicial:'required',
       dtFinal:'required',
+      valor:'required',
       senha: {
         required: true,
         minlength: 6
@@ -37,10 +38,6 @@ $(document).ready(function(){
         required: true,
         min: 0,
         max: 100
-      },
-      total:{
-        required: true,
-        min: 1
       },
       qtd:{
         required: true,
@@ -59,9 +56,6 @@ $(document).ready(function(){
     messages: {
       tipo: {
         min: 'Por favor, selecione uma opção.'
-      }, 
-      total: {
-        min: 'Valor inválido'
       }
     },
     errorElement: 'em',

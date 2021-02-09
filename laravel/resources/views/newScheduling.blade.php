@@ -230,7 +230,7 @@
         verificarData();
         
         //N PRA M DE FUNCIONARIO SERVIÇO
-        $('#select_service').on('change', function(event){
+        /* $('#select_service').on('change', function(event){
             const cdServico = $(this).val();
             $.ajax({
                 url: '{{route("getESRelationship")}}',
@@ -242,7 +242,7 @@
                 alert('foi');
                 }
             });
-        });
+        }); */
 
         $('#data').on('input', function(event){
             $('#verificarData').hide();
@@ -252,12 +252,14 @@
         });
 
         $('#cadastro').submit(function(event){
+            $('body').css('cursor', 'progress');
             verificarData();
             if(document.getElementById('data').style.boxShadow == 'rgba(220, 53, 69, 0.25) 0px 0px 0px 0.2rem'){
                 event.preventDefault();
+                $('body').css('cursor', 'default');
                 return false;
             }
-
+            $('body').css('cursor', 'default');
             $(this).submit();
         });
     });

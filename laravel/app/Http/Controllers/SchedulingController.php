@@ -56,7 +56,7 @@ class SchedulingController extends Controller
                                         ->with(compact('services'))
                                         ->with(compact('date'))
                                         ->with(compact('back')); 
-        }catch(Excepcion $e){
+        }catch(\Exception $e){
             abort(401, $e->getMessage());
         }    
     }
@@ -91,7 +91,7 @@ class SchedulingController extends Controller
             } 
             
             return redirect('adm/');
-        } catch (Exception $e){
+        } catch (\Exception $e){
             abort(401, $e->getMessage());
         }
     }
@@ -166,7 +166,7 @@ class SchedulingController extends Controller
             } 
                         
             return redirect('adm/');
-        } catch (Exception $e){
+        } catch (\Exception $e){
             abort(401, $e->getMessage());
         }
     }
@@ -175,7 +175,7 @@ class SchedulingController extends Controller
     {
         try{
             $this->objScheduling->where('cdAgendamento', $id)->delete();
-        } catch(Exception $e){
+        } catch(\Exception $e){
             abort(401, $e->getMessage());
         }
 

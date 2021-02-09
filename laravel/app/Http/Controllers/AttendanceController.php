@@ -62,7 +62,7 @@ class AttendanceController extends Controller
                                         ->with(compact('employees'));
 
 
-        }catch(Excepcion $e){
+        }catch(\Exception $e){
             abort(401, $e->getMessage());
         }
     }
@@ -134,7 +134,7 @@ class AttendanceController extends Controller
             }
 
             return $this->index();
-        } catch (Exception $e){
+        } catch (\Exception $e){
             abort(401, $e->getMessage());
         }
     }
@@ -200,7 +200,7 @@ class AttendanceController extends Controller
                                       ->with(compact('services'))
                                       ->with(compact('products'));
 
-        } catch(Exception $e){
+        } catch(\Exception $e){
             abort(401, $e->getMessage());
         }
 
@@ -214,7 +214,7 @@ class AttendanceController extends Controller
 
             return;
 
-        } catch(Exception $e){
+        } catch(\Exception $e){
             abort(401, $e->getMessage());
         }
     }
