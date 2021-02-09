@@ -172,7 +172,7 @@
 
 						<div class="col-md-12 col-xs-12">
 							<div class="form-group">
-								<label for="foto">Foto</label>
+								<label for="foto">Foto*</label>
 								<input class="form-control" id="foto" name="foto" type="file" accept="image/png, image/jpeg">
 							</div>
 						</div>

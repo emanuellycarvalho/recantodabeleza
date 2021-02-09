@@ -95,7 +95,7 @@
 			</div>
 			<div class='modal-body'>
 				<p>Tem certeza que deseja excluir esse registro?<br>
-				<b>Nome:</b>{{$prod->nmProduto}}</p>
+
 			</div>
 			<div class='modal-footer'>
 				<button type='button' class='site-btn sb-dark' data-dismiss='modal'>Não</button>

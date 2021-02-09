@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CustomerRequest extends FormRequest
+class SchedulingReportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class CustomerRequest extends FormRequest
     public function rules()
     {
         return [
-            'nmCliente'=>'required',
-            'telefone'=>'required'
+            'dtInicial'=>'required',
+            'dtFinal'=>'required'
         ];
     }
 }

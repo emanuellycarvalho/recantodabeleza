@@ -50,6 +50,13 @@ Route::resource('adm/supplier', 'SupplierController');
 Route::get('adm/scheduling/create/{date}', 'SchedulingController@newCreate');
 Route::resource('adm/scheduling', 'SchedulingController');
 
+//REPORTS
+Route::get('/pdfLatePayment', 'LatePaymentPdfController@geraPdf');
+Route::resource('adm/paymentReport', 'PaymentReportController');
+
+Route::get('/pdfScheduling', 'SchedulingPdfController@geraPdf');
+Route::resource('adm/schedulingReport', 'SchedulingReportController');
+
 //GENERAL
 Route::view('adm/more', 'more');
 Route::get('adm', 'FullCalendar@index');

@@ -161,6 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -229,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Cep' => Canducci\Cep\Facades\Cep::class,
         'Endereco' => Canducci\Cep\Facades\Endereco::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 
