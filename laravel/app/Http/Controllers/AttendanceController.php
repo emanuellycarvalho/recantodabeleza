@@ -208,12 +208,11 @@ class AttendanceController extends Controller
 
     public function pay(Request $request)
     {
-        dd($request);
         try{
-            if(!$this->objPayment->where('cdParcela', $request->cdParcela)->get()->first()->update(['situacao' => 'P']))
+            if(!$this->objPayment->where('cdParcela', $request->cdParcela)->update(['situacao' => 'P']))
                 throw new \Exception('Desculpe, ocorreu um erro ao atualizar a situação do(s) pagamento(s) selecionado(s).');
 
-            return $this->registerPaymentView();
+            return;
 
         } catch(Excepcion $e){
             abort(401, $e->getMessage());
