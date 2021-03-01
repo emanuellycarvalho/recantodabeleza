@@ -1,0 +1,22 @@
+#borda{
+	border: 2px solid black;
+	margin-top: 2%;
+}
+
+label{
+	font-size: 16px;
+}
+
+h3{
+	text-align: center;
+	margin-top: 2%;
+}
+
+ul{
+	margin-left: 3%;
+}
+
+#cancelar{
+	margin-top: 2%;
+	margin-right: 7.5%;
+}

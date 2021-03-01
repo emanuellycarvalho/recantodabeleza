@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Login Web - Guia de Estilo</title>
+  <link type="text/css" rel="stylesheet" href="../../estilo.css"/>
+  <link type="text/css" rel="stylesheet" href="../../bootstrap.css"/>
+  <link type="text/css" rel="stylesheet" href="../../menuWeb.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <!--<a class="ancora" id="topo"></a>-->
+  <script src="../../jquery-3.3.1.js"></script>
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="../../../index.html">Guia de Estilo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../../index.html">Início</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../Desktop/Desk.html">Desktop</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="Web.html">Web</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row" style="padding-bottom: 0;">
+      <div class="col-md-3">
+        <div class="sidenav">
+          <button class="dropdown-btn" style="outline: none;">Diretrizes Gerais 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LayoutWeb.html">Layout</a>
+            <a href="FonteWeb.html">Fonte (Letras)</a>
+          </div>
+          <button class="dropdown-btn" style="outline: none;">Componentes 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="JanelaWeb.html"> Janelas</a>
+            <a href="FormularioWeb.html">Formulários</a>
+            <a href="MenuWeb.html">Menus</a>
+            <a href="DialogoWeb.html"> Caixas de Diálogo</a>
+            <span class="seta"><a class="seta" href="CaixaWeb.html" style="margin-left: 3%;">&nbsp;&nbsp;Caixas de Mensagem</a></span>          
+          </div>
+          <button class="dropdown-btn aberto"  style="outline: none;">Modelos de Interface 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container stay-open">
+            <a href="LoginWeb.html"><strong>•Login</strong></a>
+            <a href="PrincipalWeb.html">Tela Principal</a>
+            <span class="seta"><a class="seta" href="PrincipalWebSecretaria.html" style="margin-left: 3%;">&nbsp;&nbsp;Tela Principal da secretária</a></span>
+            <a href="CrudWeb.html">CRUD</a>
+            <a href="Calendario.html">Calendário</a>
+            <a href="MestreDetalheWeb.html">Mestre Detalhe</a>
+            <a href="PagamentoWeb.html">Pagamento</a>
+            <a href="RelatorioWeb.html">Relatório</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9" id="principalMenu">
+        <h3>Diretrizes de Login</h3>
+        <label><a href="#orientacoes" class="scrollSuave"><span style="font-size: 25px;">No fim desta página</span></a>, há orientações referentes aos elementos de uma tela de <i>Login</i>: <!--Também é possível clicar em cada uma das setas.--></label>
+        <div id='imageContainer' style="text-align: center;">
+
+          <img src="../Prints/LoginWeb.png" 
+          usemap="#Map" 
+          id='imagem'
+          alt="Print da tela de Login" 
+          /><!--
+          <map name="Map" id="Map">
+            <area href="../index.html#orientacoes" 
+            shape="poly" coords="426,76,563,12,848,10,848,95,523,118" />
+            <area href="../index.html#orientacoes" 
+            shape="poly" coords="438,180,368,134,31,103,12,192,362,223" />
+            <area href="../index.html#orientacoes" 
+            shape="poly" coords="964,126,1078,76,1370,45,1401,132,1058,169" />
+            <area href="../index.html#orientacoes" 
+            shape="poly" coords="1149,376,1047,327,728,306,720,391,1078,416" />
+          </map>-->
+        </div>
+        <div style="text-align: center;"><label><i>Tela de Login do sistema.</i></label></div>
+        <div class="texto" style="width: 100%;">
+          <label><a id="orientacoes">A</a> tela de <i>Login</i> costuma ter a função de restringir o acesso ao sistema.</label><br>
+          <label>Utilizadas neste exemplo (válidas para WEB):</label>
+          <ul>
+            <li><strong>Recuperar Senha:</strong> lembre-se de permitir ao usuário de um <i>Sistema Web</i> poder recuperar a senha, caso ele venha a esquecer.
+            </li>
+          </ul>
+          <label>Utilizadas neste exemplo (válidas para WEB e DESKTOP):</label>
+          <ul>
+            <li><strong>Título:</strong> procure sempre identificar para o usuário qual tela esta sendo utilizada.
+            </li>
+            <li><strong>Formulário:</strong> a tela de login contém campos de preenchimento, consequentemente, as diretrizes referentes a formulários também se aplicam aqui.<ul>
+              <li>Por exemplo, as orientações de informar ao usuário sobre preenchimento dos campos e incluir rótulos.</li></ul>
+            </li>
+            <li><strong>Mensagem Genérica:</strong> em caso de login incorreto, não avise qual das informações fornecidas está errada. Em vez disso, diga que qualquer uma delas pode estar errada, para mais segurança.<ul>
+              <li>Veja como <i>"Usuário ou senha incorretos."</i> não diz nem se é o <i>e-mail do usuário</i>  e nem se é a <i>senha</i>.</li></ul>
+            </li>
+          </ul>
+          <label>Outras diretrizes:</label>
+          <ul>
+          <li><strong>Botão Cancelar:</strong> lembre-se de incluir sempre uma forma de sair de uma tela, mesmo que exista o botão padrão de fechar tela do sistema operacional.<ul>
+              <li>Em nosso padrão de cores de botão, o <i>Cancelar</i> tem cor azul que se optou como sendo a cor que indica uma ação negativamente realizada.</li></ul>
+            </li></ul>
+        </div>
+        <!--<div class="voltar">
+          <form>
+            <a class="btn btn-primary btn-lg scrollSuave" href="#topo">Voltar ao topo</a>
+          </form>
+        </div>-->
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../bootstrap.js"></script>
+<script src="../../menu.js"></script>
+<!--<script src="../../tamanho.js"></script>-->
+</html>

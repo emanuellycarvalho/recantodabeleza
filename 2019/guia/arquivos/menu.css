@@ -1,0 +1,103 @@
+.sidenav {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  /*background-color: #EEE9E9;*/
+  /*background-color: #8B4789;*/
+  background-color: #DCDCDC;
+  overflow-x: hidden;
+  margin-bottom: 10%;
+}
+
+.sidenav button{
+	margin-top: 5%;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  /*color: #818181;*/
+  color: #000000;
+  display: block;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  /*background-color: #A9A9A9;*/
+  background-color: #696969;
+}
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+.sidenav .active {
+  background-color: #4169E1;
+  color: black;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #B0C4DE;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+.table{
+  max-width: 0%;
+  margin-left: 20%;
+}
+
+.stay-open {
+  display:block !important;
+}
+
+/* Selected */
+.sidenav .selected {
+  /*background-color: #A9A9A9;*/
+  background-color: #696969;
+}
+
+/*.col-md-2 .sidenav {
+  position: fixed;
+  left: 0;
+  top: 12.5%;
+  width: 20em;
+  margin-top: -4%;
+}*/
+
+
+
+.aberto {
+  outline: none;
+  background-color: #4169E1;
+  color: black;
+}
+
+.selecionado {
+  outline: none;
+}
+
+.sidenav {
+  margin: 0;
+  margin-left: -5%;
+}

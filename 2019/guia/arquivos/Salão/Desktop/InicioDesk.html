@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Guia de Estilo - Principal - Desktop</title>
+  <link type="text/css" rel="stylesheet" href="../../estilo.css"/>
+  <link type="text/css" rel="stylesheet" href="../../bootstrap.css"/>
+  <link type="text/css" rel="stylesheet" href="../../material.css"/>
+  <link type="text/css" rel="stylesheet" href="../../menu.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+</head>
+
+<body>
+  <script src="../../jquery-3.3.1.js"></script>
+  
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="../../../index.html">Guia de Estilo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../../index.html">Início</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="Desk.html">Desktop<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Web/LoginWeb.html">Web</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2" style="margin-left: -1.1%;">
+        <div class="sidenav">
+          <button class="dropdown-btn" style="outline: none;">Gerenciar 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="Cidade.php">Cidades</a>
+            <a href="Cliente.php">Clientes</a>
+            <a href="#">Serviços</a>
+            <a href="#">Produtos</a>
+            <a href="Profissional.php">Profissionais</a>
+            <a href="#">Fornecedores</a>
+          </div>
+          <button class="dropdown-btn"  style="outline: none;">Atendimentos 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="AgendarAtendimento.php">Agendar</a>
+            <a href="RegistrarAtendimento.php">Registrar</a>
+          </div>
+          <button class="dropdown-btn"  style="outline: none;">Compras 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="#">Registrar</a>
+            <a href="#">Pedidos</a>
+            <a href="#">Vendas</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 col-sm-12" id="principalMenu">
+        <h3>Diretrizes de tela principal</h3>
+        <div id='imageContainer'>
+
+          <img src="InicioDesk.png" 
+          usemap="#Map" 
+          id='imagem'
+          alt="Print da Tela Principal" 
+          />
+          <map name="Map" id="Map">
+            <area href="DeskInicioDicaMenu.html" 
+            shape="poly" coords="640,2,687,3,686,59,493,59,490,76,427,46,488,13,645,18" />
+            <area href="DeskInicioDicaEspaco.html" 
+            shape="poly" coords="1013,35,1172,35,1170,9,1221,13,1226,80,1039,100,1037,122,960,103,1009,64" />
+            <area href="DeskInicioDicaAjuda.html" 
+            shape="poly" coords="1004,458,1070,431,1071,456,1261,479,1265,517,1227,543,1188,518,1063,516,1055,489" />
+            <area href="DeskInicioDicaLetras.html" 
+            shape="poly" coords="237,575,312,550,315,577,494,598,515,639,451,671,460,641,356,637,339,611,300,620" />
+          </map>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../tamanho.js"></script>
+<script src="../../bootstrap.js"></script>
+<script src="../../menu.js"></script>
+</html>

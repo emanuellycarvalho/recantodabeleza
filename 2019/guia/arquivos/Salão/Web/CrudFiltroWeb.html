@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CRUD Excluir - Guia de Estilo</title>
+  <link type="text/css" rel="stylesheet" href="../../estilo.css"/>
+  <link type="text/css" rel="stylesheet" href="../../bootstrap.css"/>
+</head>
+<body>
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="../../../index.html">Guia de Estilo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../../index.html">Início</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="../Desktop/Desk.html">Desktop</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="../Web/Web.html">Web<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row" style="margin-top: 10px; margin-left: 60px;">
+      <div class="col-md-11">
+        <div class="container-fluid" style="border: 2px solid black;">
+          <div class="row">
+            <div class="col-md-6">
+              <h1>Categoria: CRUD</h1>
+              <h2>Orientação: Filtrar</h2>
+              <label>Utilizadas neste exemplo (válidas para WEB):</label>
+              <ul>
+                <li>Lembre-se de observar as orientações de <a href="DialogoWeb.html">Caixas de Diálogo</a> ao construir uma tela de <i>Filtrar</i>;</li>
+                <li>Esta função permite reduzir os itens exibidos na lista ao filtrar, por campos previamente estabelecidos, todos os registros armazenados, diferenciando-se da funcionalidade de <i>Pesquisar</i>, que filtra apenas os registros que estão carregados na página que o usuário se encontra. Algumas orientações:
+                  <ul>
+                    <li>Ao filtrar, exiba o botão <i>Limpar</i> para permitir retornar para a exibição de todos os itens cadastrados;</li>
+                    <li>E também esconda o botão <i>Limpar</i> depois de ele ser acionado.</li>
+                    <li>A partir do preenchimento dos campos de filtro e acionamento do botão de <i>Aplicar</i>, o filtro fará a união ("ou") dos filtros preenchidos e o sistema carregará uma nova tabela que possui os registros dos filtros.</li>
+                      <ul>
+                        <li><strong>Atenção:</strong> no projeto exemplo, não se usa Banco de Dados. Com isso, o <i>Filtrar</i> só funciona se nos campos de filtro estivem preenchidos textos iguais aos armazenados. Ao se usar Banco de Dados, o <i>Filtrar</i> deve permitir que se filtre por partes dos textos armazenados. Por exemplo: se no campo <i>Nome</i> estiver preenchido "Maria", o retorno do <i>Filtrar</i> deve conter nomes como "Ana Maria" e "Maria Paula". Para isso, use, na SQL, <i>like '%Maria%'.</i></li>
+                      </ul>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6" style="text-align: center;"><img src="../Prints/Filtrar.png" style="margin-top: 10px; max-width: 100%; height: auto;"><label><i>Filtrar.</i></label></div>
+          </div></div></div>
+        </div>
+        <div class="voltar">
+          <form>
+            <a class="btn btn-primary btn-lg" href="CrudWeb.html">Voltar</a>
+          </form>
+        </div>
+      </body>
+      </html>

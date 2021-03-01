@@ -1,0 +1,45 @@
+form h2{
+	text-align: center;
+	margin-top: 2%;
+
+}
+
+form label{
+	margin-top: 7%;
+	margin-bottom: 0%;
+}
+
+#pesquisa button{
+	margin-top: 8%;
+}
+
+.table{
+	margin: 2% 0% 2% 1.5%;
+}
+
+.btn .btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.select2-container{
+  display: block;
+  height: 40%;
+}
+
+.select2-container .select2-selection--single{
+  height: 115%;
+}
+
+button{
+	background-color: transparent;
+}
+
+button#exibir{
+	margin-top: 37px;
+}
+
+#fechar{
+	background-color: black;
+	color: white;
+}

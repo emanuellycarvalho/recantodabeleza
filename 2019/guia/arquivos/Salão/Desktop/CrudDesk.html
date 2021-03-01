@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CRUD Desktop - Guia de Estilo</title>
+  <link type="text/css" rel="stylesheet" href="../../estilo.css"/>
+  <link type="text/css" rel="stylesheet" href="../../bootstrap.css"/>
+  <link type="text/css" rel="stylesheet" href="../../menu.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <!--<a class="ancora" id="topo"></a>-->
+  <script src="../../jquery-3.3.1.js"></script>
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="../../../index.html">Guia de Estilo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../../index.html">Início</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="Desk.html">Desktop<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../Web/Web.html">Web</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="sidenav">
+          <button class="dropdown-btn" style="outline: none;">Diretrizes Gerais 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LayoutDesk.html">Layout</a>
+            <a href="FonteDesk.html">Fonte (Letras)</a>
+          </div>
+          <button class="dropdown-btn" style="outline: none;">Componentes 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="JanelaDesk.html">Janelas</a>
+            <a href="FormularioDesk.html">Formulários</a>
+            <a href="DialogoDesk.html">Caixas de Diálogo</a>
+            <span class="seta"><a class="seta" href="CaixaDesk.html">&nbsp;&nbsp;Caixas de Mensagem</a></span>
+          </div>
+          <button class="dropdown-btn aberto" style="outline: none;">Modelos de Interface 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container stay-open">
+            <a href="LoginDesk.html">Login</a>
+            <a href="PrincipalDesk.html">Tela Principal</a>
+            <a href="CrudDesk.html"><strong>• CRUD</strong></a>
+            <a href="PesquisaDesk.html">Pesquisa</a>
+            <a href="MestreDetalheDesk.html">Mestre-Detalhe</a>
+            <a href="PagamentoDesk.html">Pagamento</a>
+            <a href="RelatorioDesk.html">Relatório</a>
+            <a href="GraficoDesk.html">Gráfico</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9" id="principalMenu">
+        <h3>Diretrizes de CRUD</h3>
+        <label><a href="#orientacoes" class="scrollSuave"><span style="font-size: 25px;">No fim desta página</span></a>, há orientações referentes aos elementos de um <i>CRUD</i>.<br>Você também pode clicar nas setas abaixo para receber orientações específicas de cada funcionalidade do CRUD.</label>
+        <div id='imageContainer' style="text-align: center;">
+
+          <img src="../Prints/CRUDDesk.png" 
+          usemap="#Map" 
+          id='imagem'
+          alt="Print da tela de CRUD de Cliente" 
+          />
+          <map name="Map" id="Map">
+            <area href="CrudNovoDesk.html"
+            shape="poly" coords="349,161,330,116,201,114,201,162" />
+            <area href="CrudVisualizarDesk.html"
+            shape="poly" coords="485,164,487,126,336,117,341,161" />
+            <area href="CrudEditarDesk.html"
+            shape="poly" coords="625,167,614,120,480,117,477,160" />
+            <area href="CrudExcluirDesk.html"
+            shape="poly" coords="766,172,762,126,612,115,615,164" />
+          </map>
+          <label><i>Tela Inicial do CRUD de Clientes com seu filtro e suas funções.</i></label>
+        </div>
+        <div class="texto" style="width: 100%;">
+          <label><a id="orientacoes">O</a> <i>CRUD</i> tem a função de mostrar e filtrar os itens de um gerenciamento, além de dar acesso às funcionalidades referentes a estes itens.</label>
+          <ul>
+            <label>Utilizadas neste exemplo (válidas para DESKTOP):</label>
+            <li><strong>Funções de CRUD:</strong> as funcionalidades comuns do CRUD:<ul>
+              <li>É interessante ao usuário poder visualizar um item ao fazer um duplo clique;</li>
+              <li>Habilite apenas os botões que manipulam os registros existentes enquanto um item estiver selecionado, portanto desabilite-os quando um filtro for adicionado ou removido.</li></ul>
+            </li>
+            <li><strong>Botão de Retorno:</strong> mantenha sempre uma forma de sair da tela além do botão fechar do sistema operacional:<ul>
+              <li>Posicione-o no mesmo local em que ficariam os botões <i>Cancelar</i> e <i>Salvar</i> de um Cadastro, para manter o padrão.</li>
+            </ul></li>
+          </ul>
+          <ul>
+            <label>Utilizadas neste exemplo (válidas para DESTKTOP e WEB):</label>
+            <li><strong>Filtro:</strong> esta função permite reduzir os itens exibidos na lista ao filtrar por campos previamente estabelecidos, algumas orientações:<ul>
+              <li>Habilite o botão <i>Filtrar</i> apenas enquanto os campos de filtragem estiverem preenchidos;</li>
+              <li>Ao filtrar, habilite o botão <i>Limpar</i> para permitir retornar para a exibição de todos os itens cadastrados;</li>
+              <li>E também desabilite o botão <i>Limpar</i> depois de ele ser acionado.</li>
+              <li>Preferimos unir todos os filtros possíveis (<i>Nome</i>, <i>Telefone</i> e <i>E-mail</i>) num único campo. Então, o sistema pesquisa itens compatíveis com pelo menos uma destas características.</li>
+            </ul></li>
+            <li><strong>Quantidade de Registros:</strong> defina uma quantidade máxima de itens exibidos na tabela, tanto ao abrir, quanto ao filtrar:<ul>
+              <li>Porque se houver muitos cadastros, o carregamento da tela será demorado;</li>
+              <li>Mostre quantos itens estão sendo exibidos no momento e qual é o total de itens (ou o total de cadastros compatíveis com o filtro.</li>
+            </ul></li>
+          </ul>
+        </div>
+        <!--<div class="voltar">
+          <form>
+            <a class="btn btn-primary btn-lg scrollSuave" href="#topo">Voltar ao topo</a>
+          </form>
+        </div>-->
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../bootstrap.js"></script>
+<script src="../../menu.js"></script>
+<!--<script src="../../tamanho.js"></script>-->
+</html>

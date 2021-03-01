@@ -1,0 +1,114 @@
+.error {
+  font-size: 10px;
+}
+
+#sexo-error{   
+  position:absolute; 
+  margin-left: -12%;
+  margin-top: 2%;
+  top: 100%;
+  width: 100%;
+}  
+
+.select2-container{
+  display: block;
+}
+
+.select2-container .select2-selection--single{
+  height: 35px;
+  /*width: 80%;*/
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"]{
+  height: 35px;
+}
+
+form#formularioCliente{
+  margin-top: 2%;
+  margin-bottom: 5%;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #FAFAFA;
+  padding-bottom: 10px;
+  
+}
+
+form#formularioCliente h2{
+  padding: 10px;
+  text-align: center;
+  color: black;
+  
+  font-family: sans-serif;
+}
+
+form#formularioCliente p{
+  padding-left: 2px;
+  padding-bottom: 20px;
+  text-align: left;
+  font-family: sans-serif;
+}
+
+form span{
+  color: red;
+}
+
+label{
+  margin-bottom: 0%;
+}
+
+label.error {
+    color: red;
+    font-weight: bold;
+    margin: 5px 0px 5px 0px;
+    width: 100%;
+    text-align: left;
+}
+
+.borda{
+  border-bottom: 1px solid black;
+}
+
+ fieldset.scheduler-border { 
+  border: solid 1px black !important; 
+  padding: 0 10px 3px 10px; 
+  border-bottom: none; 
+} 
+
+ legend.scheduler-border {
+  width: auto !important; 
+  border: none; 
+  font-size: 14px;
+  padding-top: 5px; 
+} 
+
+#tipo{
+  padding-right: 3px;
+}
+
+.btn-success {
+  float: right;
+  margin-left: 3%;
+  margin-right: 2%;
+}
+
+.btn-primary {
+  float: right;
+}
+
+.btn.crud{
+  background-color: transparent;
+}
+
+
+
+
+
+
+
+
+
+

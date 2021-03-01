@@ -1,0 +1,26 @@
+.btn-primary{
+	background-color: #FFDEAD;
+	color: black;
+	border-color: #FFDEAD;
+}
+
+.btn-primary:hover {
+  background-color: #FFB6C1;
+  border-color: #FFB6C1;
+  color: #8B4789;
+}
+
+table#tabelaFuncionario{
+	width: 75%;
+	margin-bottom: 10%; 
+	margin-left: 15%;
+}
+
+h5{
+	text-align: center;
+}
+
+#identificacao{
+	text-align:right;
+	margin-top: 1%; 
+}

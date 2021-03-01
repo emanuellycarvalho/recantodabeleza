@@ -1,0 +1,112 @@
+#msnErroCpf{
+	font-size: 10px;
+	color: red;
+}
+.container{
+	padding-top: 1rem;
+}
+
+/*select{
+	height: 35px;
+}*/
+
+.excluir{
+	color: #FFFFFF;
+}
+
+.filtrar{
+	color: #FFFFFF;
+	margin-left: 0%;
+}
+
+.atencao{
+	color: #FFFFFF;
+	background: #dc3545;
+}
+
+#areaTabela{
+	width: 100%;
+}
+
+#areaTabela h1{
+	text-align: center;
+}
+
+#tabelaCliente{
+	margin-left: 0%;
+	border: none; 
+	width: 100%;
+}
+
+
+#novaCidade{
+	background-color: gray;
+	margin-top: 22px;
+	border: 1px solid gray;
+	color: white;
+	height: 35px;
+}
+
+#tituloCad{
+	text-align: center;
+}
+
+#tituloEdit{
+	text-align: center;
+}
+
+#tituloVisu{
+	text-align: center;
+}
+
+#botaoExcluirModal{
+	color: white;
+}
+
+.modal-body form#insert_form{
+	margin-left: 5%;
+	width: 90%;
+}
+
+
+.modal-body label{
+	margin-left: 5%;
+}
+
+.modal-body input{
+	margin-left: 5%;
+	width: 90%;
+}
+
+.modal-body button{
+	margin-right: 5%;
+}
+
+#confirm-filtro input{
+	margin-bottom: 3%;
+}
+
+#mensagem{
+	clear: both;
+	float: left;
+	display: block;
+	position: fixed;
+	bottom: 5%;
+	left: 3%;
+	z-index: 2;
+}
+
+#obs{
+	font-size: 12px;
+	color: red;
+	margin: 0%;
+}
+
+
+/*.select2-container--default .select2-selection--single .select2-selection__arrow{
+	right: 20%;
+}*/
+
+
+
+

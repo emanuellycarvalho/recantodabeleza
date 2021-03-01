@@ -1,0 +1,134 @@
+.container{
+	width: 100vw;
+	height: 100vh;
+	background: #6C7A89;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.box{
+	width: 300px;
+	height: 300px;
+	background: #FFFFFF;
+}
+
+.dicas{
+	font-size: 50px;
+	display: inline-block;
+}
+
+.esquerda{
+	width: 10%;
+	display: inline;
+	border: 1px solid black;
+}
+
+.direita{
+	display: inline;
+	width: 90%;
+	border: 1px solid black;
+}
+
+.texto{
+	width: 75%;
+	padding: 10px;
+	margin-top: 1%;
+	margin-left: auto;
+	margin-right: auto;
+	border: 2px solid black;
+}
+
+.voltar{
+	font-size: 14px;
+	padding: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#principalForm{
+	width: 100%;
+	padding: 10px;
+	background-color: black;
+	text-align: justify;
+	color: white;
+	position: fixed;
+}
+
+#principalIni{
+	width: 99.5%;
+	padding: 0.5%;
+	margin: -0.3%;
+	background-color: white;
+	text-align: justify;
+	border: 3px solid black;
+	color: black;
+	position: fixed;
+}
+
+#imageContainer{
+	margin: auto;
+	overflow: hidden;
+	border: hidden;
+	outline: none;
+}
+
+area{
+	outline: none;
+}
+
+#meio {
+    margin-left: 0.12%;
+    margin-bottom: -0.5%;
+}
+
+
+.creditos{
+	width: 75%;
+	padding: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.creditos label {
+	width: 100%;
+}
+
+#principalMenu{
+	height: 100%;
+	padding: 0.5%;
+	color: black;
+}
+
+a {
+	outline: none;
+}
+
+.guia a:after {
+  content: url("Salão/Prints/Janela.png");
+}
+
+ a:hover img{
+  visibility: hidden;
+}
+
+.texto .textoPrincipal {
+	width: 100%;
+	text-align: justify;
+}
+
+.seta a:before{
+  content: url("Salão/Prints/setinha.png");
+}
+
+/*
+.logo a:hover img{
+	visibility: visible;
+}
+
+#mouse {
+	padding: 0;
+}*/

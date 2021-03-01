@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Fonte Web - Guia de Estilo</title>
+  <link type="text/css" rel="stylesheet" href="../../estilo.css"/>
+  <link type="text/css" rel="stylesheet" href="../../bootstrap.css"/>
+  <link type="text/css" rel="stylesheet" href="../../menuWeb.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <script src="../../jquery-3.3.1.js"></script>
+  
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="../../../index.html">Guia de Estilo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../../index.html">Início</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../Desktop/Desk.html">Desktop</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="Web.html">Web<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="sidenav">
+          <button class="dropdown-btn aberto" style="outline: none;">Diretrizes Gerais 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container stay-open">
+            <a href="LayoutWeb.html">Layout</a>
+            <a href="FonteWeb.html"><strong>• Fonte (Letras) </strong></a>
+          </div>
+          <button class="dropdown-btn" style="outline: none;">Componentes 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="JanelaWeb.html">Janelas</a>
+            <a href="FormularioWeb.html">Formulários</a>
+            <a href="MenuWeb.html">Menus</a>
+            <a href="DialogoWeb.html">Caixas de Diálogo</a>
+            <span class="seta"><a class="seta" href="CaixaWeb.html" style="margin-left: 3%;">&nbsp;&nbsp;Caixas de Mensagem</a></span>
+          </div>          
+          <button class="dropdown-btn"  style="outline: none;">Modelos de Interface 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LoginWeb.html">Login</a>
+            <a href="PrincipalWeb.html">Tela Principal</a>
+            <span class="seta"><a class="seta" href="PrincipalWebSecretaria.html" style="margin-left: 3%;">&nbsp;&nbsp;Tela Principal da secretária</a></span>
+            <a href="CrudWeb.html">CRUD</a>
+            <a href="Calendario.html">Calendário</a>
+            <a href="MestreDetalheWeb.html">Mestre Detalhe</a>
+            <a href="PagamentoWeb.html">Pagamento</a>
+            <a href="RelatorioWeb.html">Relatório</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9" id="principalMenu" style="padding-bottom: 0;">
+        <h3>Diretrizes de Fonte (Letras)</h3>
+        <label>Clique nas setas na tela abaixo para receber orientações sobre cada aspecto da fonte:</label>
+        <div id='imageContainer' style="text-align: center;" >
+
+          <img src="../Prints/FonteWeb.png" 
+          usemap="#Map" 
+          id='imagem'
+          alt="Print da Tela Registrar Atendimento"
+          />
+          <map name="Map" id="Map">
+            <area href="FonteDicaTitulo.html" 
+            shape="poly" coords="860,24,864,118,1158,58,1112,1" />
+            <area href="FonteDicaContraste.html" 
+            shape="poly" coords="1041,437,1040,506,1312,464,1276,394" />
+            <area href="FonteDicaTamanho.html" 
+            shape="poly" coords="1121,820,1115,926,1353,867,1350,788" />
+            <area href="FonteDicaEspaco.html" 
+            shape="poly" coords="2,214,5,301,247,326,264,266" />
+            <area href="FonteDicaTipo.html" 
+            shape="poly" coords="2,612,4,716,260,715,203,624" />
+          </map>
+          <label><i>Tela de Registrar Atendimento segue as diretrizes de fonte.</i></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../bootstrap.js"></script>
+<script src="../../menu.js"></script>
+<script src="../../tamanho.js"></script>
+</html>

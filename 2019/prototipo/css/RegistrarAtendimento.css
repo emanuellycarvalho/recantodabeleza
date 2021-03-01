@@ -1,0 +1,168 @@
+#msnErroCpf{
+	font-size: 10px;
+	color: red;
+}
+
+#mensagem{
+	clear: both;
+	float: left;
+	display: block;
+	position: fixed;
+	bottom: 5%;
+	left: 3%;
+	z-index: 2;
+}
+
+#areaRegistro form{
+	width: 100%;
+	margin-bottom: 0%;
+}
+
+#areaRegistro form h1 {
+	margin-top: 2%;
+	margin-bottom: 2%;
+	text-align: center;	
+}
+
+#areaRegistro input {
+	margin-bottom: 10%;
+}
+
+#areaRegistro h4{
+	margin-top: 5%;
+}
+
+.opcoes button{
+	height: 50%;
+	margin-top: 55%;
+}
+
+.opcoes2 button{
+	height: 52%;
+	margin-top: 38%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"]{
+	height: 35px;
+}
+
+table{
+	margin: 1%;
+	border:none;
+}
+
+table button img{
+	height: 30px;
+}
+
+.table th, .table td{
+	text-align: left;
+}
+
+.table td#quant{
+	padding-left: 4%;
+}
+
+#areaRegistro p{
+	font-size: 16px;
+	margin-bottom: 1%;
+	text-align: right;
+}
+
+.pers{
+	margin-left: 25%;
+}
+
+.cont{
+	width: 80%; 
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+label{
+	margin-bottom: 0%;
+}
+
+#areaRegistro h4{
+	margin-top: 0%;
+}
+
+.btn-success {
+  margin-left: 3%;
+}
+
+.table .table-striped{
+	padding: 0%;
+}
+
+.select2-container{
+	display: block;
+}
+
+.select2-container .select2-selection--single{
+	height: 35px;
+}
+
+#areaFormulario .select2-container .select2-selection--single{
+	height: 35px;
+}
+
+#adicionar{
+	height: 47%;
+}
+
+form#insert_form {
+	width: 100%;
+}
+
+#novaCidade{
+	background-color: gray;
+	border: 1px solid gray;
+	margin-top: 24px;
+}
+
+/*.modal-body form#insert_form{
+	margin-left: 5%;
+	width: 90%;
+}
+
+
+.modal-body label{
+	margin-left: 5%;
+}
+
+.modal-body input{
+	margin-left: 5%;
+	width: 90%;
+}
+
+.modal-body button{
+	margin-right: 5%;
+}*/
+
+form#detalhes{
+	margin: 0%;
+	width: 100%;
+}
+
+.excluir{
+	color: #FFFFFF;
+}
+
+.atencao{
+	color: #FFFFFF;
+	background: #dc3545;
+}
+
+#botaoExcluirModal{
+	color: white;
+}
+
+#botaoExcluirModal2{
+	color: white;
+}
+
+

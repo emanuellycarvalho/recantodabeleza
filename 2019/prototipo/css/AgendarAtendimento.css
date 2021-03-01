@@ -1,0 +1,147 @@
+#msnErroCpf{
+	font-size: 10px;
+	color: red;
+}
+
+#mensagem{
+	clear: both;
+	float: left;
+	display: block;
+	position: fixed;
+	bottom: 5%;
+	left: 3%;
+	z-index: 2;
+}
+
+#areaAgendamento{ 
+	width: 60%;
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+#areaAgendamento h2{
+	margin-top: 3%;
+	text-align: center;
+}
+
+form#formularioAgendamento{
+	width: 60%; 
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+#areaAgendamento input {
+	margin-bottom: 10%;
+}
+
+input#horaInicial{
+	width: 65%;
+	margin-left: 20%;
+}
+
+#divHoraInicial label{
+	margin-left: 20%;
+}
+
+#divServico{
+	padding-left: 0%;
+}
+
+input#horaFinal{
+	width: 90%;
+}
+
+input[type="time"]{
+	width: 90%;
+	height: 35px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"]{
+  height: 35px;
+}
+
+button#adicionar{
+	margin-top: 23px;
+	height: 35px;
+}
+
+.btnServico{
+	margin-top: 25px;
+	margin-left: 10%;
+	/*width: 40%;
+	height: 45%;*/
+}
+
+
+/*#addAgenda{
+	margin-top: 25px;
+	margin-left: 10%;
+	width: 30%;
+	height: 45%;
+}
+
+#delAgenda {
+	margin-top: 25px;
+	margin-left: 20%;
+	width: 30%;
+	height: 45%;
+}*/
+
+img.imgServico{
+	height: 95%;
+}
+
+/*img#tabelaInserir{
+	height: 95%;
+}
+
+img#tabelaRemover{
+	height: 95%;
+}*/
+
+
+#novaCidade{
+	background-color: gray;
+	border: 1px solid gray;
+	margin-top: 50%;
+	height: 35px;
+}
+
+form#insert_form {
+	width: 100%;
+}
+
+.excluir{
+	color: #FFFFFF;
+}
+
+.atencao{
+	color: #FFFFFF;
+	background: #dc3545;
+}
+
+#botaoExcluirModal{
+	color: white;
+}
+
+.modal-body form#insert_form{
+	margin-left: 5%;
+	width: 90%;
+}
+
+
+.modal-body label{
+	margin-left: 5%;
+}
+
+.modal-body input{
+	margin-left: 5%;
+	width: 90%;
+}
+
+.modal-body button{
+	margin-right: 5%;
+}

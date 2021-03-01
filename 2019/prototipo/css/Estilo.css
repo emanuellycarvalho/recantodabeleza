@@ -1,0 +1,326 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#areaSuperior {
+	height: 5%;
+	background-color: #FFA500;
+	text-align:right;
+}
+
+#areaSuperior a:link {
+	/*color:#8B4789;*/
+	color: black;
+	font-size: 14px;
+	text-decoration: none;
+	padding: 1%;
+	font-family: sans-serif;
+}
+
+#areaSuperior a:visited {
+	color:black;
+	text-decoration: none;
+} 
+
+header{
+	position: relative;
+	width: 100%;
+	height: 15%;
+	background: #FFEC8B;
+}
+
+header img{
+	width: 100%;
+	height: 80%;
+	margin: 7% 0% 7% 10%;
+}
+
+
+header h1 a:link{
+	font-size:80%;
+	text-align: left;
+	color: #8B4789;
+	margin-top: 25%;
+	text-decoration: none;
+}
+
+header h1 a:visited{
+	color: #8B4789;
+	text-decoration: none;
+}
+
+#imaginary_container{
+    margin-top:3%; /* Don't copy this */
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+
+.input-group-addon button{
+	height: 50px; 
+	border: 1px solid #BDBDBD; 
+	border-left: none;
+}
+ 
+
+header #minhaConta i{
+	font-size: 200%;
+	margin-left: 20%;
+}
+
+header #minhaConta{
+	margin-top: 2%;
+	float: left;
+
+}
+
+header #minhaConta a:link{
+	text-align: center;
+	font-family: sans-serif;
+	color:#8B4789;
+}
+
+header #minhaConta a:visited {
+	color: #8B4789;
+} 
+
+header #carrinho i{
+	font-size: 200%;
+	margin-left: 30%;
+}
+
+header #carrinho{
+	margin-top: 2%;
+	float: right;
+}
+
+header #carrinho a:link{
+	text-align: center;
+	font-family: sans-serif;
+	color:#8B4789;
+}
+
+header #carrinho a:visited {
+	color: #8B4789;
+}
+
+#area{
+	position: relative;
+	width: 100%;
+	background-color: #FFDEAD;
+}
+
+#area a:link{
+	text-align: center;
+	color:#8B4789;
+
+}
+
+#area a:visited {
+	color: #8B4789;
+	font-family: sans-serif;
+} 
+
+#area a:hover{
+	background-color: #FFB6C1;
+}
+
+.navbar{
+	padding: 0%;
+	height: 0%;
+
+}
+
+#slide{
+	margin-top: 10px;
+	width: 74%;
+	margin-left: 3%;
+}
+
+#oferta{
+	margin-left: 30%;
+	width: 90%;
+}
+
+#horario{
+	width: 90%;
+	margin-top: 10px;
+	height: 59%;
+	margin-left: 30%;
+	margin-bottom: 10%;
+}
+
+#anuncio1{
+	margin-top: 10px;
+	width: 82%;
+}
+
+#anuncio2{
+	margin-top: 10px;
+	width: 82%;
+}
+
+table{
+	align-items: center;
+}
+
+table th{
+	padding:1%;
+}
+
+div #destaque{
+	margin-top: 2%;
+}
+
+.destaques{
+	border: 2px solid #8B4789;
+}
+
+#d1{
+	margin-left: 6%;
+	margin-right: 9%;
+}
+
+#d2{
+	margin-right: 8%;
+}
+
+table #servicos{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table #depilacao{
+	margin-left: 5%;
+	padding-bottom: 7%;
+}
+
+.card-deck{
+	padding-bottom: 2%;
+}
+
+.card-deck #depilacao {
+	padding-bottom: 20%;
+}
+
+.card a:link {
+	color:black;
+	font-size: 16px;
+	font-family: sans-serif;
+}
+
+.card a:visited {
+	color:black;
+} 
+
+#tituloProdutos{
+	border-bottom: 3px solid #8B4789; 
+	margin: 3% 0% 2% 5%; 
+}
+
+.card p{
+	color: #8B4789;
+	font-family: sans-serif;
+}
+
+h3{
+	margin-top: 10%;
+	font-family: sans-serif;
+}
+
+footer{
+	position: relative;
+	width: 100%;
+	height: 10%;
+	background-color: #FFEC8B;
+	border-top: 1px solid black;
+	margin-top: 3%;
+}
+
+footer #network{
+	margin-top: auto;
+	margin-bottom: auto;
+	display: inline-block;
+	text-align: center;
+}
+
+footer #network #email{
+	text-align: center;
+}
+
+footer #network #imagens{
+	float:left;
+	text-align: center;
+}
+
+#network img{
+	width: 5%;
+	height: 5%;
+
+}
+
+footer p{
+	margin-top: 1%;
+	margin-bottom: 0%;
+	text-align: center;
+	font-family: sans-serif;
+}
+
+
+#contato{	
+	margin-top: auto; 
+	margin-bottom: auto; 
+	text-align: right;
+}
+
+#contato li{
+	list-style: none;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+}
+
+footer a:link {
+	color: black;
+	padding: 10px;
+	color: black;
+	font-size: 12px;
+	font-family: sans-serif;
+}
+
+/*Links vistados*/
+footer a:visited {
+	color: black;
+	padding: 10px;
+}
+
+#ajuda{
+	text-align: center;
+	font-family: sans-serif;
+}
+
+footer ul {
+    list-style-type:none
+}
+
+#subtitulo{
+	border: 1px solid purple; 
+	margin-bottom: 1%;
+}
+
+
+
+
