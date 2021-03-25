@@ -16,13 +16,13 @@
                             <div class='row'>
                             @if ($customers->foto)
                                 <div class='col-lg-3 order-2 order-lg-0 text-center'>
-                                    <img src="{{url("storage/{$customers->foto}")}}" width='130px'>
+                                    <img src="{{url('storage/{$customers->foto}')}}" width='130px'>
                                 </div>
                             @endif
                                 <div class='col-lg-7 order-2 order-lg-1'>
 								@if ($customers->dtNasc != null)
                                 	<b>Nasceu em </b> {{$customers->dtNasc}} <b class='pink'> |</b>
-                                @else
+                                @else   
                                     <b>Data de nascimento não informada</b>
                                 @endif
                                 	<b>RG: </b> {{$customers->rg}}

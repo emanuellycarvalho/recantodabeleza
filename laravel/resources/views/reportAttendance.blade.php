@@ -1,8 +1,8 @@
 @extends('templates.adm')
 
 
-	@section('title') Pagamentos Atrasados @endsection('title')
-	@section('icon') <img src='{{url("/img/icons/payment-light.png")}}' width='35px'> @endsection('icon')
+	@section('title') Atendimentos Realizados @endsection('title')
+	@section('icon') <img src='{{url("/img/icons/attendance-light.png")}}' width='35px'> @endsection('icon')
 
 @section('content')
 
@@ -10,7 +10,7 @@
 <section class='contact-section'>
 		<div class='container'>
 			<div class='col-lg-10 offset-md-1'>
-	            <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/paymentReport")}}' enctype='multiform/form-data'>
+	            <form class='contact-form' name='cadastro' id='cadastro' method='post' action='{{url("adm/attendanceReport")}}' enctype='multiform/form-data'>
 					@csrf
 					<div class='col-md-12 col-xs-12'>
                         <div class='cf-title'><h4>Dados de Filtragem</h4></div>
@@ -29,36 +29,20 @@
 					</div>
 
 					<div class='col-md-6 col-xs-12'>
-						<div class='form-group'>
-							<label for='dtFinal'>Data Final*</label>
-							<input type='text' name='dtFinal' id='dtFinal' placeholder='00/00/0000' value='<?php echo date('d/m/Y'); ?>' >
-						</div>
-					</div>		
-					
-					<div class='col-md-6 col-xs-12'>
-						<div class='form-group'>
-							<label for='clientes'>Cliente(s)</label>
-							<select name='clientes' id='clientes'>
-								<option value='0' selected> Todos os clientes </option>
-								@foreach($customers as $cust)
-									<option value='{{$cust->cdCliente}}'> {{$cust->nmCliente}}</option>
-								@endforeach
-							</select>
-						</div>
+							<div class='form-group'>
+								<label for='dtFinal'>Data Final*</label>
+								<input type='text' name='dtFinal' id='dtFinal' placeholder='00/00/0000' value='<?php echo date('d/m/Y'); ?>' >
+							</div>
+						</div>		
 					</div>
-	
-					<div class='col-md-6 col-xs-12'>
-						<div class='form-group'>
-							<label for='ordenacao'>Tipo de ordenação</label>
-							<select name='ordenacao' id='ordenacao'>
-								<option value='0' selected> Selecione uma opção </option>
-								<option value='1'> Ordem alfabética </option>
-								<option value='2'> Data de vencimento</option>
-							</select>
-						</div>
-					</div>
-
-				</div>
+                    
+				    <label for='clientes'>Cliente(s)</label>
+                    <select name='clientes' id='clientes'>
+						<option value='0' selected> Todos os clientes </option>
+						@foreach($customers as $cust)
+							<option value='{{$cust->cdCliente}}'> {{$cust->nmCliente}}</option>
+						@endforeach
+                	</select>
 
                     <div class='row justify-content-end mt-3 mb-4'>
 						<a onclick='confirmarCancelar()' class='site-btn sb-dark mr-3' id='white'>Cancelar</a>
@@ -115,4 +99,4 @@
     </script>
 @endsection('content')
 
-@section('del') latePaymentReport @endsection('del')
+@section('del') attendanceReport @endsection('del')

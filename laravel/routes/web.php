@@ -54,8 +54,8 @@ Route::resource('adm/scheduling', 'SchedulingController');
 Route::get('/pdfLatePayment', 'LatePaymentPdfController@geraPdf');
 Route::resource('adm/paymentReport', 'PaymentReportController');
 
-Route::get('/pdfScheduling', 'SchedulingPdfController@geraPdf');
-Route::resource('adm/schedulingReport', 'SchedulingReportController');
+Route::get('/pdfAttendance', 'AttendancePdfController@geraPdf');
+Route::resource('adm/attendanceReport', 'AttendanceReportController');
 
 //GENERAL
 Route::view('adm/more', 'more');

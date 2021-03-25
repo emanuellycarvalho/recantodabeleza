@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LatePaymentReportRequest;
+
 use App\Models\ModelCustomer;
 use App\Models\ModelAttendance;
 use App\Models\ModelPayment;
@@ -14,7 +15,8 @@ class paymentReportController extends Controller
 
     public function index()
     {
-        return view('reportLatePayment');
+        $customers = ModelCustomer::all();
+        return view('reportLatePayment', compact('customers'));
     }
 
     public function store(LatePaymentReportRequest $request)
@@ -26,19 +28,71 @@ class paymentReportController extends Controller
             $dtFinal = explode( '/' , $request->dtFinal);
             $dtFinal = $dtFinal[2] . '-' . $dtFinal[1] . '-' . $dtFinal[0];
 
-            return $this->geraPdf($dtInicial, $dtFinal);
+            if ($request->clientes == '0') {
+                return $this->geraPdf($dtInicial, $dtFinal, 0, $request->ordenacao);                
+            } else {
+                return $this->geraPdf($dtInicial, $dtFinal, $request->clientes, $request->ordenacao);
+            }
         }
     }
 
-    public function geraPdf($dtInicial, $dtFinal) {
-        $resultado = $this->filtrar($dtInicial, $dtFinal);
+    public function geraPdf($dtInicial, $dtFinal, $operacao, $ordenacao) {
+        if ($operacao == 0) {
+            $resultado = $this->filtrarTodosOsClientes($dtInicial, $dtFinal, $ordenacao);    
+        } else {
+            $resultado = $this->filtrarClienteEspecifico($dtInicial, $dtFinal, $operacao, $ordenacao);
+        }
         
         $pdf = PDF::loadView('pdfLatePayment', compact('resultado'));
         
         return $pdf->setPaper('a4')->stream('Pagamentos Atrasados.pdf');
     }
 
-    public function filtrar($dtInicial, $dtFinal) {
+    // O número da operação será exatamente o código do cliente recuperado do formulário
+
+    public function filtrarClienteEspecifico($dtInicial, $dtFinal, $cdCliente, $ordenacao) {
+        $customers = ModelCustomer::all();
+        $attendance = ModelAttendance::all();
+        $payment = ModelPayment::all();
+        $atendimentos = array();
+        $pagamentos = array();
+        $clientes = array();
+        $dataHoje =  date('Y-m-d');
+     
+        foreach ($customers as $cust) {
+            if ($cust->cdCliente == $cdCliente) {
+                $clientes[] = $cust;
+                foreach ($payment as $p) {
+                    if ($p->situacao == 'N' && $dataHoje > $p->dtVencimento) {
+                        $pagamentos[] = $p;
+                        foreach ($attendance as $att) {
+                            if ($att->cdAtendimento == $p->cdAtendimento && $cust->cdCliente == $att->cdCliente) {
+                                $atendimentos[] = $att;
+                            }
+                        }
+                    }
+                }                
+            }
+        }
+
+        $atendimentosResultado = array_unique($atendimentos);
+        $pagamentosResultado = array_unique($pagamentos);
+        $clientesResultado = array_unique($clientes);
+
+        foreach ($atendimentosResultado as $a) {
+            $a->dtAtendimento = explode( '-' , $a->dtAtendimento);
+            $a->dtAtendimento = $a->dtAtendimento[2] . '/' . $a->dtAtendimento[1] . '/' . $a->dtAtendimento[0];
+
+        }        
+        
+        if ($ordenacao == 2) {
+            sort($pagamentosResultado);
+        }
+
+        return array($pagamentosResultado, $atendimentosResultado, $clientesResultado, $ordenacao);
+    }
+
+    public function filtrarTodosOsClientes($dtInicial, $dtFinal, $ordenacao) {
         
         $customers = ModelCustomer::all();
         $attendance = ModelAttendance::all();
@@ -47,9 +101,7 @@ class paymentReportController extends Controller
         $pagamentos = array();
         $clientes = array();
         $dataHoje =  date('Y-m-d');
-        $cont = 0;
-        $i = 0;
-
+     
         foreach ($payment as $p) {
             if ($p->situacao == 'N' && $dataHoje > $p->dtVencimento) {
                $pagamentos[] = $p;
@@ -66,42 +118,31 @@ class paymentReportController extends Controller
             }
         }
 
-        foreach ($clientes as $c) {
-            $i++;
-            foreach ($clientes as $c2) {
-                if ($c == $c2) {
-                    $cont++;
-                }
+        $atendimentosResultado = array_unique($atendimentos);
+        $pagamentosResultado = array_unique($pagamentos);
+        $clientesResultado = array_unique($clientes);
 
-                if ($cont > 1) {
-                    $clientes[$i] = null;
-                }
+        foreach ($atendimentosResultado as $a) {
+            $a->dtAtendimento = explode( '-' , $a->dtAtendimento);
+            $a->dtAtendimento = $a->dtAtendimento[2] . '/' . $a->dtAtendimento[1] . '/' . $a->dtAtendimento[0];
 
+        }        
+
+        if ($ordenacao == 1) {
+            sort($clientesResultado);
+        } else {
+            if ($ordenacao == 2) {
+                sort($pagamentosResultado);
             }
-            $cont = 0;
         }
-        
-        $i = 0;
+     
+        foreach ($pagamentosResultado as $p) {
+            $p->dtVencimento = explode( '-' , $p->dtVencimento);
+            $p->dtVencimento = $p->dtVencimento[2] . '/' . $p->dtVencimento[1] . '/' . $p->dtVencimento[0];
 
-        foreach ($atendimentos as $a) {
-            $i++;
-            foreach ($atendimentos as $a2) {
-                if ($a == $a2) {
-                    $cont++;
-                }
-
-                if ($cont > 1) {
-                    $atendimentos[$i] = null;
-                }
-
-            }
-            $cont = 0;
         }
 
-        //        $att->valorTotal = str_replace('.', ',', $att->valorTotal);
-        //        $att->valorTotal = str_replace(' ', '', $att->valorTotal);
-        
-        return array($pagamentos, $atendimentos, $clientes);
+        return array($pagamentosResultado, $atendimentosResultado, $clientesResultado, $ordenacao);
     }
 
 }
