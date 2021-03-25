@@ -1,0 +1,52 @@
+<script type="text/javascript"> var larguraImg = document.getElementById('imagem').offsetWidth;
+
+var recalcZoom = function ()
+{
+  var larguraPai = $("#imageContainer").width();
+  
+  var zoom = larguraPai / larguraImg;
+  
+  console.log('larguraImg: ' + larguraImg);
+  console.log('larguraPai: ' + larguraPai);
+  console.log('zoom: ' + zoom);
+  
+  $("#imagem").css('zoom', zoom);
+  
+};
+
+$("#imageContainer").resize(function() {
+  recalcZoom();
+});
+
+$(window).resize(function() {
+  recalcZoom();
+});
+
+recalcZoom();
+
+</script>
+
+<style type="text/css">
+  #imageContainer {
+  overflow:hidden;
+  width:100%;
+  border:1px solid red;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<div id='imageContainer'>
+
+  <img src="http://s3.amazonaws.com/rapgenius/cats-animals-kittens-background.jpg" 
+       usemap="#Map" 
+       id='imagem'
+       />
+
+  <map name="Map" id="Map">
+    <area href="#" onClick="alert('Olho esquerdo');" 
+          shape="poly" coords="339,207,311,221,319,247,352,258,374,247,380,214,362,207" />
+    <area href="#" onClick="alert('Olho direito');" 
+          shape="poly" coords="369,305,327,320,325,350,338,382,357,383,384,369,395,343,389,314" />
+  </map>
+</div>

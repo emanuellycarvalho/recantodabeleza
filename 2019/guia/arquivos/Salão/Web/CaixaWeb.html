@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mensagens Desktop - Guia de Estilo</title>
+  <link type="text/css" rel="stylesheet" href="../../estilo.css"/>
+  <link type="text/css" rel="stylesheet" href="../../bootstrap.css"/>
+  <link type="text/css" rel="stylesheet" href="../../menuWeb.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <!--<a class="ancora" id="topo"></a>-->
+  <script src="../../jquery-3.3.1.js"></script>
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="../../../index.html">Guia de Estilo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../../index.html">Início</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../Desktop/Desk.html">Desktop</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="Web.html">Web<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row" style="padding-bottom: 0;">
+      <div class="col-md-3">
+        <div class="sidenav">
+          <button class="dropdown-btn" style="outline: none;">Diretrizes Gerais 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LayoutWeb.html">Layout</a>
+            <a href="FonteWeb.html">Fonte (Letras)</a>
+          </div>
+          <button class="dropdown-btn aberto" style="outline: none;">Componentes 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container stay-open">
+            <a href="JanelaWeb.html"> Janelas</a>
+            <a href="FormularioWeb.html">Formulários</a>
+            <a href="MenuWeb.html"> Menus</a>
+            <a href="DialogoWeb.html"> Caixas de Diálogo</a>
+            <span class="seta"><a class="seta" href="CaixaWeb.html" style="margin-left: 3%;">&nbsp;&nbsp;<strong>• Caixas de Mensagem</strong></a></span>          
+          </div>
+          <button class="dropdown-btn"  style="outline: none;">Modelos de Interface 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LoginWeb.html">Login</a>
+            <a href="PrincipalWeb.html">Tela Principal</a>
+            <span class="seta"><a class="seta" href="PrincipalWebSecretaria.html" style="margin-left: 3%;">&nbsp;&nbsp;Tela Principal da secretária</a></span>
+            <a href="CrudWeb.html">CRUD</a>
+            <a href="Calendario.html">Calendário</a>
+            <a href="MestreDetalheWeb.html">Mestre Detalhe</a>
+            <a href="PagamentoWeb.html">Pagamento</a>
+            <a href="RelatorioWeb.html">Relatório</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9" id="principalMenu">
+        <h3>Diretrizes de Caixas de Mensagem </h3>
+        <label><a href="#orientacoes" class="scrollSuave"><span style="font-size: 25px;">No fim desta página</span></a>, há orientações referentes a quaisquer <i>Caixas de Mensagem</i>.<br>Você também pode clicar nas setas abaixo para receber orientações específicas de cada caixa.</label>
+        <div id='imageContainer' style="text-align: center;">
+
+          <img src="../Prints/CaixasWeb.png" 
+          usemap="#Map" 
+          id='imagem'
+          alt="Print das telas de caixas de mensagem" 
+          />
+          <map name="Map" id="Map">
+            <area href="CaixaDicaErro.html" 
+            shape="poly" coords="319,186,317,244,555,197,498,146" />
+            <area href="CaixaDicaInformacao.html" 
+            shape="poly" coords="555,26,555,108,788,62,737,15" />
+            <area href="CaixaDicaAdvertencia.html" 
+            shape="poly" coords="102,398,70,446,279,490,300,410" />
+          </map>
+          <label><i>Caixas de Mensagem para várias situações.</i></label>
+        </div>
+        <div class="texto" style="width: 100%;">
+          <label><a class="ancora" id="orientacoes">As</a> <i>Caixas de Mensagem</i> são caixas de diálogo que apresentam informações sobre uma situação ou condição particular. Mensagens são uma parte importante da interface, quando elas são muito genéricas ou pobres de conteúdo o usuário sente-se frustrado.</label>
+          <label>Utilizadas neste exemplo (válidas para WEB E DESKTOP):</label>
+          <ul>
+            <li>Evite usar terminologia técnica ou frases complexas;</li>
+            <li>Apresente uma caixa de mensagem para cada condição específica;</li>
+            <li>A mensagem deve ser clara, concisa e utilizar termos do vocabulário do usuário;</li>
+            <li>Não confie em mensagens default do sistema de mensagens, tais como <i>ERROR 404;</i></li>
+            <li>Seja breve, porém completo, limite a mensagem a duas ou três linhas (mais ou menos 60 caracteres);</li>
+            <li>Se houver uma sequência de eventos, a ordem das palavras na frase deve corresponder a sequência temporal das ocorrências.</li>
+          </ul>
+          <label>Outras diretrizes:</label>
+          <ul>
+            <li>Quando maiores explicações forem necessárias e a tela já contém muitos dados, utilize um botão para mostrar mais detalhes;</li>
+          </ul>
+          <label>Bibliografia</label>
+          <ul>
+            <li>SCHUHMASCHER, V. R. N. <strong>Guia de estilos para seleção de objetos de interação</strong>. 37 páginas. Dissertação (Mestrado em Engenharia de Produção) - Universidade Federal de Santa Catarina, Florianópolis, 1998.</li>
+          </ul>
+        </div>
+        <!--<div class="voltar">
+          <form>
+            <a class="btn btn-primary btn-lg scrollSuave" href="#topo">Voltar ao topo</a>
+          </form>
+        </div>-->
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../bootstrap.js"></script>
+<script src="../../menu.js"></script>
+<!--<script src="../../tamanho.js"></script>-->
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Diálogo Web - Guia de Estilo</title>
+  <link type="text/css" rel="stylesheet" href="../../estilo.css"/>
+  <link type="text/css" rel="stylesheet" href="../../bootstrap.css"/>
+  <link type="text/css" rel="stylesheet" href="../../menuWeb.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <!--<a class="ancora" id="topo"></a>-->
+  <script src="../../jquery-3.3.1.js"></script>
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="../../../index.html">Guia de Estilo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../../index.html">Início</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../Desktop/Desk.html">Desktop</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="Web.html">Web<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row" style="padding-bottom: 0;">
+      <div class="col-md-3">
+        <div class="sidenav">
+          <button class="dropdown-btn" style="outline: none;">Diretrizes Gerais 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LayoutWeb.html">Layout</a>
+            <a href="FonteWeb.html">Fonte (Letras)</a>
+          </div>
+          <button class="dropdown-btn aberto" style="outline: none;">Componentes 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container stay-open">
+            <a href="JanelaWeb.html"> Janelas</a>
+            <a href="FormularioWeb.html">Formulários</a>
+            <a href="MenuWeb.html">Menus</a>
+            <a href="DialogoWeb.html"><strong>• Caixas de Diálogo</strong></a>
+            <span class="seta"><a class="seta" href="CaixaWeb.html" style="margin-left: 3%;">&nbsp;&nbsp;Caixas de Mensagem</a></span>          
+          </div>
+          <button class="dropdown-btn"  style="outline: none;">Modelos de Interface 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LoginWeb.html">Login</a>
+            <a href="PrincipalWeb.html">Tela Principal</a>
+            <span class="seta"><a class="seta" href="PrincipalWebSecretaria.html" style="margin-left: 3%;">&nbsp;&nbsp;Tela Principal da secretária</a></span>
+            <a href="CrudWeb.html">CRUD</a>
+            <a href="Calendario.html">Calendário</a>
+            <a href="MestreDetalheWeb.html">Mestre Detalhe</a>
+            <a href="PagamentoWeb.html">Pagamento</a>
+            <a href="RelatorioWeb.html">Relatório</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9" id="principalMenu" style="padding-bottom: 0;">
+        <h3>Diretrizes de Caixas de Diálogo em projeto para web</h3>
+        <label><a href="#orientacoes" class="scrollSuave"><span style="font-size: 25px;">No fim desta página</span></a>, há orientações referentes às <i>Caixas de Diálogo</i>:</label>
+        <div id='imageContainer' style="text-align: center;">
+
+          <img src="../Prints/CaixaDeDialogo.png" 
+          usemap="#Map" 
+          id='imagem'
+          alt="Print da tela de Adicionar Detalhes ao Serviço" 
+          />
+        </div>
+        <div style="text-align: center;"><label><i>Tela de Adicionar Detalhes ao Serviço.</i></label></div>
+        <div class="texto" style="width: 100%; margin-bottom: 10px;">
+          <label><a class="ancora" id="orientacoes"><i>Caixas de Diálogo</i></a> promovem uma troca de informações ou diálogo entre o usuário e a aplicação.</label>
+          <ul>
+            <li>Utilize <i>Caixas de Diálogo</i> para:<ul>
+              <li>Preencher formulários;</li>
+              <li>Realizar um número reduzido de tarefas;</li>
+              <li>Apresentação de informações adicionais como mensagens;</li>
+              <li>Obter informações adicionais necessárias à realização de um comando.</li></ul>
+            </li>
+          </ul>
+          <label>Utilizadas neste exemplo (válidas para WEB E DESKTOP):</label>
+          <ul>
+            <li>Existem dois tipos de caixa de diálogo:<ul>
+              <li><i>Modais:</i> exigem uma resposta imediata por parte do usuário. Nenhuma ação é realizada pelo sistema antes desta resposta;</li>
+              <li><i>Não Modais:</i> o usuário continua seu trabalho sobre uma outra janela ou caixa de diálogo, sem fornecer uma resposta imediata para a caixa não modal.</li></ul>
+              <ul>
+                <li><strong>Atenção:</strong> ao se levar em conta o sistema Web, usa-se, 
+                  majoritariamente, senão totalmente, as <i>Caixas de Diálogo</i> do tipo modal.</li></ul>
+            </li>
+            <li>Disponha os objetos de interação segundo uma ordem lógica e adequada, para minimizar a movimentação do cursor;</li>
+            <li>Utilize uma caixa de diálogo extensível quando informações ou opções de comando não podem ser apresentadas em uma mesma caixa de diálogo;</li>
+            <li>Use caixas de diálogo modais em situações em que informações adicionais são requeridas para completar o comando ou quando é importante prevenir que uma interação não aconteça sem que determinadas condições sejam satisfeitas.</li>
+          </ul>
+          <label>Bibliografia</label>
+          <ul>
+            <li>SCHUHMASCHER, V. R. N. <strong>Guia de estilos para seleção de objetos de interação</strong>. 37 páginas. Dissertação (Mestrado em Engenharia de Produção) - Universidade Federal de Santa Catarina, Florianópolis, 1998.</li>
+          </ul>
+        </div>
+        <!--<div class="voltar">
+          <form>
+            <a class="btn btn-primary btn-lg scrollSuave" href="#topo">Voltar ao topo</a>
+          </form>
+        </div>-->
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../bootstrap.js"></script>
+<script src="../../menu.js"></script>
+</html>

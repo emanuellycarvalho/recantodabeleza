@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Menu Web - Guia de Estilo</title>
+  <link type="text/css" rel="stylesheet" href="../../estilo.css"/>
+  <link type="text/css" rel="stylesheet" href="../../bootstrap.css"/>
+  <link type="text/css" rel="stylesheet" href="../../menuWeb.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <!--<a class="ancora" id="topo"></a>-->
+  <script src="../../jquery-3.3.1.js"></script>
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="../../../index.html">Guia de Estilo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../../index.html">Início</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../Desktop/Desk.html">Desktop</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="Web.html">Web<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row" style="padding-bottom: 0;">
+      <div class="col-md-3">
+        <div class="sidenav">
+          <button class="dropdown-btn" style="outline: none;">Diretrizes Gerais 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LayoutWeb.html">Layout</a>
+            <a href="FonteWeb.html">Fonte (Letras)</a>
+          </div>
+          <button class="dropdown-btn aberto" style="outline: none;">Componentes 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container stay-open">
+            <a href="JanelaWeb.html"> Janelas</a>
+            <a href="FormularioWeb.html">Formulários</a>
+            <a href="MenuWeb.html"><strong>• Menus</strong></a>
+            <a href="DialogoWeb.html">Caixas de Diálogo</a>
+            <span class="seta"><a class="seta" href="CaixaWeb.html" style="margin-left: 3%;">&nbsp;&nbsp;Caixas de Mensagem</a></span>          
+          </div>
+          <button class="dropdown-btn"  style="outline: none;">Modelos de Interface 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LoginWeb.html">Login</a>
+            <a href="PrincipalWeb.html">Tela Principal</a>
+            <span class="seta"><a class="seta" href="PrincipalWebSecretaria.html" style="margin-left: 3%;">&nbsp;&nbsp;Tela Principal da secretária</a></span>
+            <a href="CrudWeb.html">CRUD</a>
+            <a href="Calendario.html">Calendário</a>
+            <a href="MestreDetalheWeb.html">Mestre Detalhe</a>
+            <a href="PagamentoWeb.html">Pagamento</a>
+            <a href="RelatorioWeb.html">Relatório</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9" id="principalMenu" style="padding-bottom: 0;">
+        <h3>Diretrizes de Caixas de Diálogo</h3>
+        <label><a href="#orientacoes" class="scrollSuave"><span style="font-size: 25px;">No fim desta página</span></a>, há orientações referentes aos <i>Menus</i>:</label>
+        <div id='imageContainer' style="text-align: center;">
+
+          <img src="../Prints/MenuWeb.png" 
+          usemap="#Map" 
+          id='imagem'
+          alt="Print de vários menus" 
+          />
+        </div>
+        <div style="text-align: center;"><label><i>Menus</i> para várias situações</label></div>
+        <div class="texto" style="width: 100%; margin-bottom: 10px;">
+          <label><a class="ancora" id="orientacoes"><i>Menus</i></a> são listas de itens na qual uma ou mais seleções podem ser feitas pelo usuário. Eles fornecem escolhas aos usuários e promovem uma troca de informações ou diálogo entre o usuário e a aplicação.</label>
+          <ul>
+            <li> O uso de <i>Menus</i> reduz a necessidade de memorização pelos usuários, visto que ele seleciona itens de uma lista diretamente, o que reduz o número de erros possíveis.</li>
+          </ul>
+
+          <label>Utilizadas neste exemplo (válidas para WEB e DESKTOP):
+
+          <ul>
+            <li><strong>Menus Pull-down:</strong> somente o título do menu ocupa espaço permanente na tela. São utilizados para se acessar as funções mais importantes do sistema;</li>
+            <ul>
+              <li>Os títulos de menu representam todo o menu e devem, portanto, comunicar tão claro quanto possível o propósito de todos as opções;</li>
+              <ul>
+                <li>Sempre que possível, use apenas uma palavra, não composta e curta para os títulos de menu;</li>
+                <li>Utilize, na inicial do título, letra maiúscula;</li>
+              </ul>
+              <li> Quanto ao número de opções nos <i>Menus Pull-down</i>, restrinja a, no máximo, 8 (oito) itens;</li>
+              <li>Organize as funções em categorias segundo uma lógica:</li>
+              <ul>
+                <li>Por exemplo: os CRUDs em uma categoria, as funções de relatório em outra.</li>
+              </ul>
+              <li><strong>Atenção 1:</strong> neste projeto exemplo, optou-se por usar, no caso da secretária, um menu com sub-itens que somente ficam visíveis quando o usuário clica na setinha para baixo, devido à grande quantidade de sub-itens; se fosse organizado tal como o menu do cliente, com apenas o recuo do sub-item, o menu da secretária ficaria muito extenso, prejudicando a estética da interface.</li>
+              <li><strong>Atenção 2:</strong> esse tipo de menu, com essa disposição vertical, é mais comum em <i>Sistemas Web</i>. Em <i>Desktop</i>, os <i>Menus Pull-down</i> são dispostos mais horizontalmente, a exemplo da Barra de Menus:</li>
+            </ul>
+            <li><strong>Barra de Menus:</strong> esse tipo de menu é usado para exibir um conjunto de menus em uma linha horizontal, normalmente na parte superior de uma janela. Todas as regras do <i>Menu Pull-down</i> se aplicam a ele também.</li>
+          </ul>
+
+          <label>Outras diretrizes:</label>
+          <ul>
+            <li><strong>Menus Dinâmicos:</strong> tipo de menu que possui opções que se ativam ou desativam de acordo com o cenário:</li>
+            <ul>
+              <li>Exemplo: Os possíveis vôos entre duas cidades, que só pode ser determinado quando o usuário especifica as cidades origem e destino em tempo de execução.</li>
+            </ul>
+            <li><strong>Menus Pop-up:</strong> este tipo de menu contém funções referentes a um elemento específico:
+              <ul>
+                <li>Sua principal vantagem é relativa a utilização de espaço por não ser exibido permanentemente;</li>
+                <li>Além disso, ele pode aparecer em diferentes lugares na tela, determinado pela posição corrente do cursor, quando o usuário clica com um botão específico do mouse.</li>
+              </ul>
+            </li>
+            <li><strong>Menus de Alternativa (Toggle Menu):</strong> as possíveis escolhas são apresentadas uma de cada vez a cada acionamento do usuário.
+              <ul>
+                <li>Seu uso é indicado quando:
+                  <ul>
+                    <li>Há um pequeno número de opções, por exemplo, para escolhas binárias do tipo on/off;</li>
+                    <li>Há pouco espaço na tela, no entanto, as escolhas não podem ser todas visíveis simultaneamente.</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><strong>Menus de Cascata:</strong> quando o usuário seleciona uma opção num nível, surgem as opções do nível mais abaixo;
+              <ul>
+                <li>Eles aumentam a complexidade do software; por isso é recomendado que não se utilize mais de um.</li>
+              </ul>
+            </li>
+            <li><strong>Menus de Comando:</strong> as escolhas são distribuídas sobre botões separados e eles são visíveis a todo tempo em uma determinada janela. Aparecem em muitas interfaces por meio dos botões: <i> ok, sair, calcelar, ajuda </i> e comandos básicos específicos da aplicação. Algumas orientações:
+              <ul>
+                <li>O botão padrão tem aparência diferente dos outros e costuma ser a opção mais segura para o usuário. A posição dele deve ser a mais alta, se os mesmo estiverem dispostos verticalmente, e mais a esquerda, se estiverem dispostos horizontalmente;</li>
+                <li>Devem estar localizados preferencialmente na parte inferior da tela;</li>
+                <li>Se a mensagem requer do usuário uma escolha, inclua um botão de comando para cada escolha. A forma mais clara é apresentar ao usuário a mensagem em forma de pergunta e um botão para cada resposta;</li>
+                  <ul>
+                    <li>Exemplo: <i>Mensagem -</i> "Login ou senha inválidos!". <i>Botão -</i> "Ok".</li>
+                  </ul>
+                <!--<li>Se o usuário pode realizar o cancelamento do processo e a restauração do processo que deu origem a mensagem, nestas situações utilize o botão [Cancelar]. Se o processo não pode ser restaurado ao processo que deu origem a mensagem, então use o botão [Parar] para interromper ações. Se o diálogo de erro pode parar a interação do usuário com a aplicação, configure a caixa apresentando uma mensagem sucinta, um ícone simbolizando o erro e os botões de comando [ Ok, Cancela] ou [Ok, Cancela e Ajuda]. Se o diálogo de informação não interrompe a interação do usuário, configure a caixa apresentando uma mensagem, um ícone e os botões de comando [OK] ou [OK, Ajuda].</li>-->
+              </ul>
+            </li>
+            <li><strong>Menu de Acesso Rápido:</strong> é comum dar atalhos às funções mais frequentes por meio de um painel com botões para acesso rápido, algumas orientações:
+              <ul>
+                <li>Coloque de 3 (três) a 5 (cinco) botões;</li>
+                <li>Inclua ícones aos botões para melhor identificação.</li>
+              </ul>
+            </li>
+          </ul>
+          <label>Bibliografia</label>
+          <ul>
+            <li>SCHUHMASCHER, V. R. N. <strong>Guia de estilos para seleção de objetos de interação</strong>. 37 páginas. Dissertação (Mestrado em Engenharia de Produção) - Universidade Federal de Santa Catarina, Florianópolis, 1998.</li>
+          </ul>
+        </div>
+        <!--<div class="voltar">
+          <form>
+            <a class="btn btn-primary btn-lg scrollSuave" href="#topo">Voltar ao topo</a>
+          </form>
+        </div>-->
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../bootstrap.js"></script>
+<script src="../../menu.js"></script>
+</html>

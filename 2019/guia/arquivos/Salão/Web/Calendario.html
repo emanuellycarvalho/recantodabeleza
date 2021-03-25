@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Calendário - Guia de Estilo</title>
+  <link type="text/css" rel="stylesheet" href="../../estilo.css"/>
+  <link type="text/css" rel="stylesheet" href="../../bootstrap.css"/>
+  <link type="text/css" rel="stylesheet" href="../../menuWeb.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <!--<a class="ancora" id="topo"></a>-->
+  <script src="../../jquery-3.3.1.js"></script>
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="../../../index.html">Guia de Estilo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../../index.html">Início</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../Desktop/Desk.html">Desktop</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="Web.html">Web<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row" style="padding-bottom: 0;">
+      <div class="col-md-3">
+        <div class="sidenav">
+          <button class="dropdown-btn" style="outline: none;">Diretrizes Gerais 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LayoutWeb.html">Layout</a>
+            <a href="FonteWeb.html">Fonte (Letras)</a>
+          </div>
+          <button class="dropdown-btn" style="outline: none;">Componentes 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="JanelaWeb.html"> Janelas</a>
+            <a href="FormularioWeb.html">Formulários</a>
+            <a href="MenuWeb.html">Menus</a>
+            <a href="DialogoWeb.html"> Caixas de Diálogo</a>
+            <span class="seta"><a class="seta" href="CaixaWeb.html" style="margin-left: 3%;">&nbsp;&nbsp;Caixas de Mensagem</a></span>          
+          </div>
+          <button class="dropdown-btn aberto"  style="outline: none;">Modelos de Interface 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container stay-open">
+            <a href="LoginWeb.html">Login</a>
+            <a href="PrincipalWeb.html">Tela Principal</a>
+            <span class="seta"><a class="seta" href="PrincipalWebSecretaria.html" style="margin-left: 3%;">&nbsp;&nbsp;Tela Principal da secretária</a></span>
+            <a href="CrudWeb.html">CRUD</a>
+            <a href="Calendario.html"><strong>• Calendário</strong></a>
+            <a href="MestreDetalheWeb.html">Mestre Detalhe</a>
+            <a href="PagamentoWeb.html">Pagamento</a>
+            <a href="RelatorioWeb.html">Relatório</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9" id="principalMenu">
+        <h3>Diretrizes do Calendário </h3>
+        <label><a href="#orientacoes" class="scrollSuave"><span style="font-size: 25px;">No fim desta página</span></a>, há orientações referentes aos elementos de um <i>Calendário</i>.<br>Você também pode clicar nas setas abaixo para receber orientações específicas das funcionalidades do calendário.</label>
+        <div id='imageContainer' style="text-align: center;" class="col-12">
+
+          <img src="../Prints/Calendario.png" 
+          usemap="#Map" 
+          id='imagem'
+          alt="Print da tela de CRUD de Cliente" 
+          />
+          <map name="Map" id="Map">
+            <area href="CadastrarAgendamento.html"
+            shape="poly" coords="93,311,98,373,272,383,265,300" />
+            <area href="VisualizarAgendamento.html"
+            shape="poly" coords="62,58,57,135,292,141,193,64" />
+          </map>
+          <label><i>Calendário de Agendar Atendimento.</i></label>
+        </div>
+        <div class="texto" style="width: 100%;">
+          <label><a id="orientacoes">O <i>Calendário</i> é necessário quando se precisa reservar, alocar ou emprestar algum recurso e o a escolha da data e hora são fatores importantes na tomada de decisão.</label>
+          <label>Utilizadas neste exemplo (válidas para WEB):</label>
+          <ul>
+            <li>Sempre que se precisa compartilhar um recurso, seja ele um livro, um produto ou, como no caso desse projeto exemplo, serviços de salão de beleza, o uso do calendário é essencial, visto que a visualização prévia da disposição ou ocupação de dia e horário facilita o agendamento do recurso e evita que o usuário caia em uma situação de tentativa e erro na escolha de uma data/hora adequados.</li>
+            <li>O calendário é um recurso que possui vários formatos de visualização dos dados:  por dia, por semana ou por mês. Em todos os casos, isso contribui para uma maior entendimento daquilo do cenário de agendamentos e em muito facilita escolhas e tomadas de decisão.
+            	<ul>
+            		<li>No caso deste projeto exemplo, é de extrema importância para o administrador visualizar quantos serviços ele agendou no dia, na semana e no mês, a fim de controlar os serviços agendados.</li>
+            	</ul>
+            </li>
+            <li>É importante ressaltar que, neste projeto exemplo, o calendário é um item do cockpit da página principal do administrador por ser um recurso muito utilizado, contudo ele poderia estar em outros tipos de tela.</li>
+          </ul>
+        </div>
+        <!--<div class="voltar">
+          <form>
+            <a class="btn btn-primary btn-lg scrollSuave" href="#topo">Voltar ao topo</a>
+          </form>
+        </div>-->
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../bootstrap.js"></script>
+<script src="../../menu.js"></script>
+
+</html>
+
+
+
+
+
+
+

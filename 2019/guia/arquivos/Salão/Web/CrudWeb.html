@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CRUD Desktop - Guia de Estilo</title>
+  <link type="text/css" rel="stylesheet" href="../../estilo.css"/>
+  <link type="text/css" rel="stylesheet" href="../../bootstrap.css"/>
+  <link type="text/css" rel="stylesheet" href="../../menuWeb.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <!--<a class="ancora" id="topo"></a>-->
+  <script src="../../jquery-3.3.1.js"></script>
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="../../../index.html">Guia de Estilo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../../index.html">Início</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../Desktop/Desk.html">Desktop</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="Web.html">Web<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row" style="padding-bottom: 0;">
+      <div class="col-md-3">
+        <div class="sidenav">
+          <button class="dropdown-btn" style="outline: none;">Diretrizes Gerais 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LayoutWeb.html">Layout</a>
+            <a href="FonteWeb.html">Fonte (Letras)</a>
+          </div>
+          <button class="dropdown-btn" style="outline: none;">Componentes 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="JanelaWeb.html"> Janelas</a>
+            <a href="FormularioWeb.html">Formulários</a>
+            <a href="MenuWeb.html">Menus</a>
+            <a href="DialogoWeb.html"> Caixas de Diálogo</a>
+            <span class="seta"><a class="seta" href="CaixaWeb.html" style="margin-left: 3%;">&nbsp;&nbsp;Caixas de Mensagem</a></span>          
+          </div>
+          <button class="dropdown-btn aberto"  style="outline: none;">Modelos de Interface 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container stay-open">
+            <a href="LoginWeb.html">Login</a>
+            <a href="PrincipalWeb.html">Tela Principal</a>
+            <span class="seta"><a class="seta" href="PrincipalWebSecretaria.html" style="margin-left: 3%;">&nbsp;&nbsp;Tela Principal da secretária</a></span>
+            <a href="CrudWeb.html"><strong>•CRUD</strong></a>
+            <a href="Calendario.html">Calendário</a>
+            <a href="MestreDetalheWeb.html">Mestre Detalhe</a>
+            <a href="PagamentoWeb.html">Pagamento</a>
+            <a href="RelatorioWeb.html">Relatório</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9" id="principalMenu">
+        <h3>Diretrizes de CRUD </h3>
+        <label><a href="#orientacoes" class="scrollSuave"><span style="font-size: 25px;">No fim desta página</span></a>, há orientações referentes aos elementos de um <i>CRUD</i>.<br>Você também pode clicar nas setas abaixo para receber orientações específicas de cada funcionalidade do CRUD.</label>
+        <div id='imageContainer' style="text-align: center;">
+
+          <img src="../Prints/CRUDWEB.png" 
+          usemap="#Map" 
+          id='imagem'
+          alt="Print da tela de CRUD de Cliente" 
+          />
+          <map name="Map" id="Map">
+            <area href="CrudFiltroWeb.html"
+            shape="poly" coords="180,156,180,222,350,201,322,147" />
+            <area href="CrudNovoWeb.html"
+            shape="poly" coords="1021,170,1018,226,1171,226,1181,177" />
+            <area href="CrudVisualizarWeb.html"
+            shape="poly" coords="1182,531,1189,590,1344,580,1523,530" />
+            <area href="CrudEditarWeb.html"
+            shape="poly" coords="890,442,888,480,1065,480,996,442" />
+            <area href="CrudExcluirWeb.html"
+            shape="poly" coords="780,313,774,357,945,363,934,321" />
+          </map>
+          <label><i>Tela Inicial do CRUD de Clientes com seu filtro e suas funções.</i></label>
+        </div>
+        <div class="texto" style="width: 100%;">
+          <label><a id="orientacoes">O</a> <i>CRUD</i> tem a função de mostrar e filtrar os itens de um gerenciamento, além de dar acesso às funcionalidades referentes a estes itens.</label>
+          <label>Utilizadas neste exemplo (válidas para WEB):</label>
+          <ul>
+            <li><strong>Pesquisar:</strong> busca, dentre os registros mostrados na tela em qualquer campo presente na tabela, o texto escrito no campo de <i>Pesquisar</i> e carrega uma nova tabela que contém os registros com o texto pesquisado.</li>
+            <li><strong>Resultados por página:</strong> permite que o usuário escolha quantos registros deseja ver na página, assim, quando a quantidade de registros for grande, ele pode escolher ver resultados, por exemplo, e, quando tiver menos registros, ele pode escolher ver 10 resultados, por exemplo. Além disso, essa funcionalidade é importante porque, se a página sempre mostrar uma grande quantidade de registros, o carregamento da tela será demorado.</li>
+            <li><strong>Paginação:</strong> permite ao usuário ver em que página está, quantas páginas tem e permite que ele navegue nas páginas anterior e posterior com maior facilidade.</li>
+          </ul>
+          <label>Utilizadas neste exemplo (válidas para WEB e DESKTOP):</label>
+          <ul>
+            <li><strong>Quantidade de Registros:</strong> permite que o usuário tenha noção de quantos registros tem na página e quantos registros tem armazenado. Assim, ele pode fazer um maior controle dos dados.
+            </li>
+            <li><strong>Dica:</strong> também pode ser chamado de <i>Hint</i> ou <i>Bolha de Ajuda.
+              <ul>
+                <li>Utilize a <i>Dica</i> para:<ul>
+                  <li>Explicar ícones que não possuem rótulo ou considerações;</li></ul>
+                </li>
+                <li>Faça-a aparecer na tela depois de um curto espaço de tempo;</li>
+                <li>Apresente este elemento abaixo e à direita do cursor do mouse;</li>
+                <li>Remova-a quando o usuário clicar na opção ou mover o cursor dela;</li>
+                <li>Escolha uma mensagem concisa e objetiva que não ultrapasse 30 caracteres.</li>
+              </ul>
+            </li>
+            
+          </ul>
+          <label>Outras diretrizes:</label>
+          <ul>
+            <li><strong>Funções de CRUD:</strong> as funcionalidades comuns do CRUD:<ul>
+              <li>É interessante ao usuário poder visualizar um item ao fazer um duplo clique;</li>
+              <li>Habilite apenas os botões que manipulam os registros existentes enquanto um item estiver selecionado, portanto desabilite-os quando um filtro for adicionado ou removido.</li></ul>
+            </li>
+            <li><strong>Botão de Retorno:</strong> mantenha sempre uma forma de sair da tela além do botão fechar do sistema operacional:<ul>
+              <li>Posicione-o no mesmo local em que ficariam os botões <i>Cancelar</i> e <i>Salvar</i> de um Cadastro, para manter o padrão.</li>
+            </ul></li>
+          </ul>
+        </div>
+        <!--<div class="voltar">
+          <form>
+            <a class="btn btn-primary btn-lg scrollSuave" href="#topo">Voltar ao topo</a>
+          </form>
+        </div>-->
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../bootstrap.js"></script>
+<script src="../../menu.js"></script>
+<script src="../../tamanho.js"></script>
+</html>

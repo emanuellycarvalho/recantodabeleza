@@ -338,11 +338,14 @@
 			//DESABILITA O SUBMIT
 			$('#cadastro').submit(function(){
 				event.preventDefault();
+				$('body').css('cursor', 'progress');
+				
 				var erros = 0;
 				$('#cadastro input').each(function(){
 					$(this).css('boxShadow') == 'rgba(220, 53, 69, 0.25) 0px 0px 0px 3.2px' ? erros++ : '';
 				});
-				
+
+				$('body').css('cursor', 'default');
 				erros == 0 ? this.submit() : '';
 			});
 

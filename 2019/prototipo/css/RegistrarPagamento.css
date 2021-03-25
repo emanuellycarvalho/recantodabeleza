@@ -1,0 +1,34 @@
+#formularioPagamento h1{
+	text-align: center;
+	margin-top: 3%;
+}
+
+button#exibir.btn.btn-success{
+	margin-top: 28px;
+	height: 35px;
+}
+
+button#visu{
+	background-color: transparent;
+}
+
+.select2-container .select2-selection--single{
+	height: 35px;
+}
+
+#fechar {
+	margin-right: 3%;
+	background-color: black;
+	color: white;
+}
+
+
+#mensagem{
+	clear: both;
+	float: left;
+	display: block;
+	position: fixed;
+	top: 30%;
+	left: 40%;
+	z-index: 2;
+}

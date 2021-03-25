@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Fonte Desktop - Guia de Estilo</title>
+  <link type="text/css" rel="stylesheet" href="../../estilo.css"/>
+  <link type="text/css" rel="stylesheet" href="../../bootstrap.css"/>
+  <link type="text/css" rel="stylesheet" href="../../menu.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <script src="../../jquery-3.3.1.js"></script>
+  
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="../../../index.html">Guia de Estilo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../../index.html">Início</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="Desk.html">Desktop<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../Web/Web.html">Web</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="sidenav">
+          <button class="dropdown-btn aberto" style="outline: none;">Diretrizes Gerais 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container stay-open">
+            <a href="LayoutDesk.html">Layout</a>
+            <a href="FonteDesk.html"><strong>• Fonte (Letras)</strong></a>
+          </div>
+          <button class="dropdown-btn" style="outline: none;">Componentes 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="JanelaDesk.html">Janelas</a>
+            <a href="FormularioDesk.html">Formulários</a>
+            <a href="DialogoDesk.html">Caixas de Diálogo</a>
+            <span class="seta"><a class="seta" href="CaixaDesk.html">&nbsp;&nbsp;Caixas de Mensagem</a></span>
+          </div>
+          <button class="dropdown-btn" style="outline: none;">Modelos de Interface 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LoginDesk.html">Login</a>
+            <a href="PrincipalDesk.html">Tela Principal</a>
+            <a href="CrudDesk.html">CRUD</a>
+            <a href="PesquisaDesk.html">Pesquisa</a>
+            <a href="MestreDetalheDesk.html">Mestre-Detalhe</a>
+            <a href="PagamentoDesk.html">Pagamento</a>
+            <a href="RelatorioDesk.html">Relatório</a>
+            <a href="GraficoDesk.html">Gráfico</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9" id="principalMenu">
+        <h3>Diretrizes de Fonte (Letras)</h3>
+        <label>Clique nas setas na tela abaixo para receber orientações sobre cada aspecto da fonte:</label>
+        <div id='imageContainer' style="text-align: center;">
+
+          <img src="../Prints/FonteDesk.png" 
+          usemap="#Map" 
+          id='imagem'
+          alt="Print da Tela Sobre" 
+          />
+          <map name="Map" id="Map">
+            <area href="FonteDicaTitulo.html" 
+            shape="poly" coords="548,78,608,21,754,0,775,58,608,95" />
+            <area href="FonteDicaCor.html" 
+            shape="poly" coords="765,286,840,232,975,212,975,272,824,304" />
+            <area href="FonteDicaTamanho.html" 
+            shape="poly" coords="744,400,809,343,964,325,967,388,806,420" />
+            <area href="FonteDicaEspaco.html" 
+            shape="poly" coords="249,249,189,202,26,184,31,263,199,277" />
+            <area href="FonteDicaTipo.html" 
+            shape="poly" coords="228,378,160,343,1,319,1,385,161,404" />
+          </map>
+          <label><i>Tela de Sobre segue as diretrizes de fonte.</i></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../bootstrap.js"></script>
+<script src="../../menu.js"></script>
+<!--<script src="../../tamanho.js"></script>-->
+</html>

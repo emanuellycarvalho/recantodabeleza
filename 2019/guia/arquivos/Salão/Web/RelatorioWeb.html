@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Relatório Web - Guia de Estilo</title>
+  <link type="text/css" rel="stylesheet" href="../../estilo.css"/>
+  <link type="text/css" rel="stylesheet" href="../../bootstrap.css"/>
+  <link type="text/css" rel="stylesheet" href="../../menuWeb.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <!--<a class="ancora" id="topo"></a>-->
+  <script src="../../jquery-3.3.1.js"></script>
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="../../../index.html">Guia de Estilo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../../index.html">Início</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../Desktop/Desk.html">Desktop</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="Web.html">Web<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row" style="padding-bottom: 0;">
+      <div class="col-md-3">
+        <div class="sidenav">
+          <button class="dropdown-btn" style="outline: none;">Diretrizes Gerais 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LayoutWeb.html">Layout</a>
+            <a href="FonteWeb.html">Fonte (Letras)</a>
+          </div>
+          <button class="dropdown-btn" style="outline: none;">Componentes 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="JanelaWeb.html"> Janelas</a>
+            <a href="FormularioWeb.html">Formulários</a>
+            <a href="MenuWeb.html">Menus</a>
+            <a href="DialogoWeb.html"> Caixas de Diálogo</a>
+            <span class="seta"><a class="seta" href="CaixaWeb.html" style="margin-left: 3%;">&nbsp;&nbsp;Caixas de Mensagem</a></span>          
+          </div>
+          <button class="dropdown-btn aberto"  style="outline: none;">Modelos de Interface 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container stay-open">
+            <a href="LoginWeb.html">Login</a>
+            <a href="PrincipalWeb.html">Tela Principal</a>
+            <span class="seta"><a class="seta" href="PrincipalWebSecretaria.html" style="margin-left: 3%;">&nbsp;&nbsp;Tela Principal da secretária</a></span>
+            <a href="CrudWeb.html">CRUD</a>
+            <a href="Calendario.html">Calendário</a>
+            <a href="MestreDetalheWeb.html"> Mestre Detalhe</a>
+            <a href="PagamentoWeb.html"> Pagamento</a>
+            <a href="RelatorioWeb.html"><strong>• Relatório</strong></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9" id="principalMenu">
+        <h3>Diretrizes de Relatório</h3>
+        <label><a href="#orientacoes" class="scrollSuave"><span style="font-size: 25px;">No fim desta página</span></a>, há orientações referentes a uma tela de filtro para <i>Relatório</i>.<br>Você também pode clicar na seta abaixo para receber orientações específicas de um <i>Relatório (Documento) para Impressão</i>.</label>
+        <div id='imageContainer' style="text-align: center;">
+
+          <img src="../Prints/RelatorioClienteWeb.png" 
+          usemap="#Map" 
+          id='imagem'
+          alt="Print da tela de Gerar Relatório" 
+          />
+          <map name="Map" id="Map">
+            <area href="RelatorioDocumentoWeb.html"
+            shape="poly" coords="1045,352,1048,426,1281,487,1280,355," />
+          </map>
+          <label><i>Tela que filtra serviços e exibe esses itens para gerar um Documento de Relatório.</i></label>
+        </div>
+        <div class="texto" style="width: 100%;">
+          <label><a id="orientacoes">O filtro para</a> <i>Relatório</i> tem a função de flexibilizar a pesquisa a ser realizada pelo usuário.</label>
+          <label>Utilizadas neste exemplo (válidas para WEB):</label>
+          <ul>
+            <li>Permita ao usuário procurar objetos que podem ser facilmente confundidos, como Cliente, por meio de um <i>Campo de Seleção</i>, que traz mais de uma informação, sendo que uma delas necessariamente deve ser exclusiva de um cliente, como, no projeto exemplo, o número de telefone;</li>
+          </ul>
+          <label>Utilizadas neste exemplo (válidas para WEB e DESKTOP):</label>
+          <ul>
+            <li>Verifique quais <i>filtros</i> devem ser obrigatórios e quais não precisam ser:<ul>
+              <li>Cliente claramente será exigido, dado que todos os itens da lista dependem de qual cliente for selecionado;</li>
+              <li>No caso das datas, o desenvolvedor deve avaliar a necessidade de obrigar ou não o preechimento delas. Porém, note que permitir que nenhuma data seja preenchida pode causar lentidão ao sistema se houver muitos itens registrados.</li></ul>
+            </li>
+            <li>Prefira, no caso de datas, dar ao usuário a opção de preencher a data completa de início e fim:<ul>
+              <li>Isso porque liberá-lo apenas a opções como <i>Semanal</i> ou <i>Mensal</i> é demasiado limitante.</li></ul>
+            </li>
+            <li>Coloque as colunas da tabela iguais as colunas mostradas no relatório;</li>
+            <li>Inclua, no caso de objetos com informações adicionais, um botão para acessar essas informações em cada linha da tabela, como o botão com ícone de olho;</li>
+            <li>Insira um botão para retornar à tela anterior além do usado pelo fechar do sistema operacional. Neste caso, este é o botão <i>Cancelar</i>.</li>
+          </ul>
+          <label>Outras diretrizes:</label>
+          <ul>
+            <li>Habilite o botão <i>Exibir</i> apenas quando todos os campos obrigatórios forem preenchidos;</li>
+          </ul>
+        </div>
+        <!--<div class="voltar">
+          <form>
+            <a class="btn btn-primary btn-lg scrollSuave" href="#topo">Voltar ao topo</a>
+          </form>
+        </div>-->
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../bootstrap.js"></script>
+<script src="../../menu.js"></script>
+<script src="../../tamanho.js"></script>
+</html>

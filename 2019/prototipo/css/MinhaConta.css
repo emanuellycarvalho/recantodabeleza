@@ -1,0 +1,100 @@
+#menuLateral{
+	background-color: #FFDEAD;;
+	line-height: 100%;
+	margin-top: 14%;
+}
+
+#menuLateral a:link{
+	color: #8B4789;
+	text-decoration: none;
+	text-align: left;
+	margin: 1% 0% 0% 1%;
+	padding: 6px 8px 6px 16px;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    height: 100%;
+}
+
+#menuLateral a:visited {
+	color: #8B4789;
+	text-decoration: none;
+} 
+
+#menuLateral a:hover{
+	background-color: #CDB79E;
+}
+
+
+table{
+	border: 1px solid black;
+	margin-top: 0%;
+	
+}
+
+table h5{
+	margin-top: 3%;
+	margin-bottom: 3%;
+	margin-left: 1%;
+	line-height: 100%;
+}
+
+table p{
+	margin-left: 1%;
+	font-size: 12px;
+	line-height: 0%;
+}
+
+table button{
+	margin-top: 3%;
+	margin-bottom: 3%;
+	padding: 2% 2%;
+	width: auto;
+}
+
+.btn-primary{
+	background-color: #FFDEAD;
+	color: black;
+	border-color: #FFDEAD;
+}
+
+.btn-primary:hover {
+  background-color: #FFB6C1;
+  border-color: #FFB6C1;
+  color: #8B4789;
+}
+
+
+/*#titulo{
+	border-bottom: 3px solid #8B4789; 
+	margin: 2% 0% 2% 3%; 
+	margin-top: 0%;
+}*/
+
+li h5{
+	color: #8B4789;
+	margin-left: 4%;
+	border-bottom:1px solid #8B4789;
+	line-height: 180%;
+}
+
+.table{
+  max-width: 80%;
+  border: none;
+}
+
+#identificacao{
+	text-align:right;
+	margin-top: 1%; 
+}
+
+#id{
+	margin-right: 0%;
+}
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+h2{
+	text-align: center;
+	margin: 2% 0% 2% 0%;
+}
+.container{
+	width: 40%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 7%;
+}
+label{
+	margin-bottom: 0%;
+}
+
+label.error {
+	font-size: 10px;
+    color: red;
+    font-weight: bold;
+    margin: 5px 0px 5px 0px;
+    width: 100%;
+    text-align: left;
+}
+
+.btn-success{
+	width: 50%;
+	margin-left: 25%;
+	margin-top: 5%;
+}
+
+.novaSenha a:link{
+	margin-left: 65%;
+	font-size: 12px;
+}
+
+.novaSenha a:visited{
+	color: blue;
+}
+
+.cadastro a:link{
+	margin-left: 38%;
+	font-size: 16px;
+	color: black;
+}
+
+.cadastro a:visited{
+	color: black;
+}
+
+

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Pesquisa Desktop - Guia de Estilo</title>
+  <link type="text/css" rel="stylesheet" href="../../estilo.css"/>
+  <link type="text/css" rel="stylesheet" href="../../bootstrap.css"/>
+  <link type="text/css" rel="stylesheet" href="../../menu.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <!--<a class="ancora" id="topo"></a>-->
+  <script src="../../jquery-3.3.1.js"></script>
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="../../../index.html">Guia de Estilo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../../index.html">Início</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="Desk.html">Desktop<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../Web/Web.html">Web</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="sidenav">
+          <button class="dropdown-btn" style="outline: none;">Diretrizes Gerais 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LayoutDesk.html">Layout</a>
+            <a href="FonteDesk.html">Fonte (Letras)</a>
+          </div>
+          <button class="dropdown-btn" style="outline: none;">Componentes 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="JanelaDesk.html">Janelas</a>
+            <a href="FormularioDesk.html">Formulários</a>
+            <a href="DialogoDesk.html">Caixas de Diálogo</a>
+            <span class="seta"><a class="seta" href="CaixaDesk.html">&nbsp;&nbsp;Caixas de Mensagem</a></span>
+          </div>
+          <button class="dropdown-btn aberto" style="outline: none;">Modelos de Interface 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container stay-open">
+            <a href="LoginDesk.html">Login</a>
+            <a href="PrincipalDesk.html">Tela Principal</a>
+            <a href="CrudDesk.html">CRUD</a>
+            <a href="PesquisaDesk.html"><strong>• Pesquisa</strong></a>
+            <a href="MestreDetalheDesk.html">Mestre-Detalhe</a>
+            <a href="PagamentoDesk.html">Pagamento</a>
+            <a href="RelatorioDesk.html">Relatório</a>
+            <a href="GraficoDesk.html">Gráfico</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9" id="principalMenu">
+        <h3>Diretrizes de Pesquisa</h3>
+        <label><a href="#orientacoes" class="scrollSuave"><span style="font-size: 25px;">No fim desta página</span></a>, há orientações referentes à <i>Pesquisa</i>: <!--Também é possível clicar em cada uma das setas.--></label>
+        <div id='imageContainer' style="text-align: center;">
+
+          <img src="../Prints/PesquisaDesk.png" 
+          id='imagem'
+          alt="Campos de Pesquisa e Tela de Pesquisa" 
+          />
+          <label><i>Acima, os Campos referentes à pesquisa e, abaixo, a Tela de Pesquisa.</i></label>
+        </div>
+        <div class="texto" style="width: 100%;">
+          <label><a id="orientacoes">Em diversos sistemas, comumente há a necessidade de localizar um registro em uma lista — e tal lista geralmente é proveniente de um cadastro. Estes dois modelos para desktop mostram, de maneiras distintas, como fazer essa localização.</label>
+            <ul>
+              <label>Utilizadas neste exemplo (válidas para DESKTOP):</label>
+              <li><strong>Tela de Pesquisa:</strong> esta tela tem a função de procurar um item com mais precisão, caso não seja encontrado na busca pela própria caixa de seleção:<ul>
+                <li>Por exemplo, se houver dois ou mais clientes com o mesmo nome, pode-se tirar essa dúvida em uma janela que mostre dados com menos chance de ambiguidade, como <i>Telefone</i> e <i>E-mail</i>;</li>
+                <li>Procure utilizar a mesma tela sempre que for pesquisar a mesma categoria de objeto;</li>
+                <li>Siga as mesmas orientações de <strong>Filtro</strong> e <strong>Paginação</strong> de <a href="CrudDesk.html">CRUD</a>;</li>
+                <li>Apenas habilite o botão <i>Escolher</i> enquanto um item estiver selecionado e desabilite-o quando um novo filtro for adicionado ou removido, porque esta tela tem um fluxo simples: somente selecionar o cliente e fechar a tela logo depois;</li>
+                <li>Permita ao usuário sair desta tela com um botão específico além do Fechar do sistema operacional, neste projeto exemplo, ele se chama <i>Voltar</i>.</li></ul>
+              </li>
+            </ul>
+            <ul>
+              <label>Utilizadas neste exemplo (válidas para DESKTOP e WEB):</label>
+              <li><strong>Campos de Pesquisa:</strong> estes são os campos de texto e botões que permitirão adicionar um cliente àquela tela, algumas orientações:<ul>
+                <li>Mantenha um padrão destes campos em todas as telas;</li>
+                <li>Torne a caixa de seleção pesquisável a fim de facilitar a busca;</li>
+                <li>Insira um botão de <i>Pesquisar</i> para abrir uma janela própria para pesquisa;</li>
+                <li>Coloque um botão de <i>Novo</i> para fazer um cadastro, caso não seja encontrado o item procurado.</li></ul>
+              </li>
+            </ul>
+          </div>
+        <!--<div class="voltar">
+          <form>
+            <a class="btn btn-primary btn-lg scrollSuave" href="#topo">Voltar ao topo</a>
+          </form>
+        </div>-->
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../bootstrap.js"></script>
+<script src="../../menu.js"></script>
+<!--<script src="../../tamanho.js"></script>-->
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Janela Web - Guia de Estilo</title>
+  <link type="text/css" rel="stylesheet" href="../../estilo.css"/>
+  <link type="text/css" rel="stylesheet" href="../../bootstrap.css"/>
+  <link type="text/css" rel="stylesheet" href="../../menuWeb.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <!--<a class="ancora" id="topo"></a>-->
+  <script src="../../jquery-3.3.1.js"></script>
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="../../../index.html">Guia de Estilo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../../index.html">Início</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../Desktop/Desk.html">Desktop</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="Web.html">Web<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row" style="padding-bottom: 0;">
+      <div class="col-md-3">
+        <div class="sidenav">
+          <button class="dropdown-btn" style="outline: none;">Diretrizes Gerais 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LayoutWeb.html">Layout</a>
+            <a href="FonteWeb.html">Fonte (Letras)</a>
+          </div>
+          <button class="dropdown-btn aberto" style="outline: none;">Componentes 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container stay-open">
+            <a href="JanelaWeb.html"><strong>• Janelas</strong></a>
+            <a href="FormularioWeb.html">Formulários</a>
+            <a href="MenuWeb.html">Menus</a>
+            <a href="DialogoWeb.html">Caixas de Diálogo</a>
+            <span class="seta"><a class="seta" href="CaixaWeb.html" style="margin-left: 3%;">&nbsp;&nbsp;Caixas de Mensagem</a></span>          
+          </div>
+          <button class="dropdown-btn"  style="outline: none;">Modelos de Interface 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LoginWeb.html">Login</a>
+            <a href="PrincipalWeb.html">Tela Principal</a>
+            <span class="seta"><a class="seta" href="PrincipalWebSecretaria.html" style="margin-left: 3%;">&nbsp;&nbsp;Tela Principal da secretária</a></span>
+            <a href="CrudWeb.html">CRUD</a>
+            <a href="Calendario.html">Calendário</a>
+            <a href="MestreDetalheWeb.html">Mestre Detalhe</a>
+            <a href="PagamentoWeb.html">Pagamento</a>
+            <a href="RelatorioWeb.html">Relatório</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9" id="principalMenu" style="padding-bottom: 0;">
+        <h3>Diretrizes de Janelas</h3>
+        <label><a href="#orientacoes" class="scrollSuave"><span style="font-size: 25px;">No fim desta página</span></a>, há orientações referentes às <i>Janelas</i>:</label>
+        <div id='imageContainer' style="text-align: center;">
+
+          <img src="../Prints/HomePrincipal.png" 
+          usemap="#Map" 
+          id='imagem'
+          alt="Print da Tela Principal" 
+          />
+        </div>
+        <div style="text-align: center;"><label><i>Tela Principal do sistema, a janela mais importante.</i></label></div>
+        <div class="texto" style="width: 100%; margin-bottom: 10px;">
+          <label><a class="ancora" id="orientacoes"><i>Janelas</i></a> são áreas da tela nas quais são apresentados diferentes tipos de informação e o usuário pode realizar tanto entradas quanto comandos necessários para a execução de seus objetivos. Uma janela representa um cenário para a realização de diversas tarefas.</label>
+          <ul>
+            <li>Utilize <i>Janelas</i> em:<ul>
+              <li>Tarefas de edição gráfica ou textual;</li>
+              <li>Execução de tarefas associadas a opções de uma estrutura de menu.</li></ul>
+            </li>
+          </ul>
+
+          <label>Utilizadas neste exemplo (válidas para WEB e DESKTOP):</label>
+
+          <ul>
+            <li>Utilize áreas livres para separar grupos lógicos;</li>
+            <li>Organize o espaço de apresentação para a definição de zonas funcionais;</li>
+            <li>Minimize ao usuário a necessidade de lembrar dados exatos de uma tela para outra;</li>
+            <li>Diferencie visualmente os comandos e os controles das informações apresentadas na tela;</li>
+            <li>Mantenha a consistência, as caraterísticas e a organização em termos de localização de uma janela para outra;</li>
+            <li>Procure minimizar os movimentos oculares na leitura da janela por meio da distribuição dos controles na direção de leitura do usuário, da esquerda para direita e de cima para baixo.</li>
+          </ul>
+          <label>Bibliografia</label>
+          <ul>
+            <li>SCHUHMASCHER, V. R. N. <strong>Guia de estilos para seleção de objetos de interação</strong>. 37 páginas. Dissertação (Mestrado em Engenharia de Produção) - Universidade Federal de Santa Catarina, Florianópolis, 1998.</li>
+          </ul>
+        </div>
+        <!--<div class="voltar">
+          <form>
+            <a class="btn btn-primary btn-lg scrollSuave" href="#topo">Voltar ao topo</a>
+          </form>
+        </div>-->
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../bootstrap.js"></script>
+<script src="../../menu.js"></script>
+<script src="../../tamanho.js"></script>
+</html>

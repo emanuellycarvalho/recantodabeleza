@@ -62,7 +62,7 @@ class AttendanceController extends Controller
                                         ->with(compact('employees'));
 
 
-        }catch(Excepcion $e){
+        }catch(\Exception $e){
             abort(401, $e->getMessage());
         }
     }
@@ -134,7 +134,7 @@ class AttendanceController extends Controller
             }
 
             return $this->index();
-        } catch (Exception $e){
+        } catch (\Exception $e){
             abort(401, $e->getMessage());
         }
     }
@@ -200,7 +200,7 @@ class AttendanceController extends Controller
                                       ->with(compact('services'))
                                       ->with(compact('products'));
 
-        } catch(Exception $e){
+        } catch(\Exception $e){
             abort(401, $e->getMessage());
         }
 
@@ -208,14 +208,13 @@ class AttendanceController extends Controller
 
     public function pay(Request $request)
     {
-        dd($request);
         try{
-            if(!$this->objPayment->where('cdParcela', $request->cdParcela)->get()->first()->update(['situacao' => 'P']))
+            if(!$this->objPayment->where('cdParcela', $request->cdParcela)->update(['situacao' => 'P']))
                 throw new \Exception('Desculpe, ocorreu um erro ao atualizar a situação do(s) pagamento(s) selecionado(s).');
 
-            return $this->registerPaymentView();
+            return;
 
-        } catch(Excepcion $e){
+        } catch(\Exception $e){
             abort(401, $e->getMessage());
         }
     }

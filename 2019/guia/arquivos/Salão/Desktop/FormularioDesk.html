@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Formulários Desktop - Guia de Estilo</title>
+  <link type="text/css" rel="stylesheet" href="../../estilo.css"/>
+  <link type="text/css" rel="stylesheet" href="../../bootstrap.css"/>
+  <link type="text/css" rel="stylesheet" href="../../menu.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <!--<a class="ancora" id="topo"></a>-->
+  <script src="../../jquery-3.3.1.js"></script>
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="../../../index.html">Guia de Estilo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../../index.html">Início</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="Desk.html">Desktop<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../Web/Web.html">Web</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row" style="padding-bottom: 0;">
+      <div class="col-md-3">
+        <div class="sidenav">
+          <button class="dropdown-btn" style="outline: none;">Diretrizes Gerais 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LayoutDesk.html">Layout</a>
+            <a href="FonteDesk.html"> Fonte (Letras)</a>
+          </div>
+          <button class="dropdown-btn aberto" style="outline: none;">Componentes 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container stay-open">
+            <a href="JanelaDesk.html">Janelas</a>
+            <a href="FormularioDesk.html"><strong>• Formulários</strong></a>
+            <a href="DialogoDesk.html">Caixas de Diálogo</a>
+            <span class="seta"><a class="seta" href="CaixaDesk.html">&nbsp;&nbsp;Caixas de Mensagem</a></span>
+          </div>
+          <button class="dropdown-btn" style="outline: none;">Modelos de Interface 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="LoginDesk.html">Login</a>
+            <a href="PrincipalDesk.html">Tela Principal</a>
+            <a href="CrudDesk.html">CRUD</a>
+            <a href="PesquisaDesk.html">Pesquisa</a>
+            <a href="MestreDetalheDesk.html">Mestre-Detalhe</a>
+            <a href="PagamentoDesk.html">Pagamento</a>
+            <a href="RelatorioDesk.html">Relatório</a>
+            <a href="GraficoDesk.html">Gráfico</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9" id="principalMenu" style="padding-bottom: 0;">
+        <h3>Diretrizes de Formulários</h3>
+        <label><a href="#orientacoes" class="scrollSuave"><span style="font-size: 25px;">No fim desta página</span></a>, há orientações referentes a todo o <i>Formulário</i>.<br>Você também pode clicar nas setas abaixo para receber orientações específicas de cada componente.</label>
+        <div id='imageContainer' style="text-align: center;">
+
+          <img src="../Prints/FormularioDesk.png" 
+          usemap="#Map" 
+          id='imagem'
+          alt="Print do Formulário de Novo Cliente" 
+          />
+          <map name="Map" id="Map">
+            <area href="FormDicaRotulo.html" 
+            shape="poly" coords="274,132,171,71,8,44,9,132,216,159" />
+            <area href="FormDicaCampo.html" 
+            shape="poly" coords="270,387,241,328,18,301,7,378,208,417" />
+            <area href="FormDicaGrupo.html" 
+            shape="poly" coords="267,571,204,531,5,506,4,576,206,602" />
+            <area href="FormDicaRadio.html" 
+            shape="poly" coords="785,156,850,96,1026,80,1044,147,841,187" />
+            <area href="FormDicaCombo.html" 
+            shape="poly" coords="790,534,849,460,1072,460,1081,532,864,559" />
+            <area href="FormDicaAjuda.html" 
+            shape="poly" coords="956,645,1017,589,1201,549,1203,638,1021,663" />
+            <area href="FormDicaBotao.html" 
+            shape="poly" coords="812,811,908,750,1071,720,1069,801,881,830" />
+          </map>
+        </div>
+        <div style="text-align: center;"><label><i>Formulário de cadastrar cliente.</i></label></div>
+        <div class="texto" style="width: 100%; margin-bottom: 10px;">
+          <label><a class="ancora" id="orientacoes"><i>Formulário</i></a> é uma caixa de diálogo apropriada para tarefas onde são requeridas entradas ou modificações de um grande número de dados. Seu uso mais adequado ocorre em entradas de dados por meio do uso de documentos em papel como fonte de origem.</label>
+          <ul>
+          <label>Utilizadas neste exemplo (válidas para DESTKTOP e WEB):</label>
+            <li>Construa o formulário refletindo as necessidades do usuário;</li>
+            <li>Procure agrupar os campos por função ou nível de importância;</li>
+            <li>Destaque visualmente itens selecionados para acionamento;<ul>
+              <li>Foi utilizado contorno <i>azul</i> nos componentes para isso;</li></ul>
+            </li>
+            <li>Forneça ao usuário o recurso da navegação por meio da tecla TAB;</li>
+            <li>Diferencie claramente dados opcionais de dados obrigatórios:<ul>
+              <li>No exemplo, um rótulo diz ser o <i>*</i> um indicador de obrigatoriedade;</li>
+              <li>Também é possível acrescentar a palavra <i>Obrigatório</i> em cada rótulo.</li></ul>
+            </li>
+            <li>Mantenha o usuário sempre informado sobre o sucesso ou insucesso do tratamento do formulário;</li>
+            <li>Faça uma diferenciação visual para representar campos de entrada, valores default e dados entrados previamente;</li>
+            <li><i>Campos de Texto</i> obrigatórios devem estar antes de campos opcionais, a não ser que esta ordem seja inapropriada;</li>
+            <li>Informe o usuário imediatamente de erros ocorridos na digitação, por meio de mensagens e do realce do campo em questão.</li>
+          </ul>
+          <label>Bibliografia</label>
+          <ul>
+            <li>SCHUHMASCHER, V. R. N. <strong>Guia de estilos para seleção de objetos de interação</strong>. 37 páginas. Dissertação (Mestrado em Engenharia de Produção) - Universidade Federal de Santa Catarina, Florianópolis, 1998.</li>
+          </ul>
+        </div>
+        <!--<div class="voltar">
+          <form>
+            <a class="btn btn-primary btn-lg scrollSuave" href="#topo">Voltar ao topo</a>
+          </form>
+        </div>-->
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../bootstrap.js"></script>
+<script src="../../menu.js"></script>
+<script src="../../tamanho.js"></script>
+</html>

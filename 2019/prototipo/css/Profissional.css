@@ -1,0 +1,104 @@
+.crud{
+	background-color: transparent;
+}
+
+.error {
+    color: red;
+	font-size: 10px;
+}
+
+.container{
+	padding-top: 1rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+	height: 35px;
+}
+
+select{
+	height: 35px;
+}
+
+.excluir{
+	color: #FFFFFF;
+}
+
+.filtrar{
+	color: #FFFFFF;
+}
+
+.atencao{
+	color: #FFFFFF;
+	background: #dc3545;
+}
+
+#areaTabela{
+	width: 100%;
+}
+
+#areaTabela h1{
+	text-align: center;
+}
+
+#tabelaCidade{
+	margin-left: 0%;
+	border: none; 
+	width: 100%;
+}
+
+#areaFormulario{
+	margin-top: 3%;
+	margin-left: 13%;
+}
+
+#areaFormulario h1{
+	text-align: center;
+	margin-right: 20%;
+}
+
+#formularioProfissional span{
+	color:red;
+}
+
+.salvar{
+	margin-left: 3%;
+	margin-right: 17%;
+}
+
+#tituloCad{
+	text-align: center;
+}
+
+#tituloEdit{
+	text-align: center;
+}
+
+#tituloVisu{
+	text-align: center;
+}
+
+#mensagem{
+	clear: both;
+	float: left;
+	display: block;
+	position: fixed;
+	bottom: 5%;
+	left: 3%;
+	z-index: 2;
+}
+
+#botaoExcluirModal{
+	color: white;
+}
+
+#obs{
+  font-size: 12px;
+  color: red;
+  margin-left: 17%;
+}
+
+
+
+
