@@ -501,7 +501,7 @@ $(document).ready(function(){
  }
 
 // VERIFICAR DATA RELATORIOS
- function verificarDtRelatorios(dtInicial) {
+function verificarDtRelatorios(dtInicial) {
     var dataInicial = new Date(dtInicial.split('/').reverse().join('/'));
     var dataFinal = new Date(document.getElementById("dtFinal").value.split('/').reverse().join('/')); 
     

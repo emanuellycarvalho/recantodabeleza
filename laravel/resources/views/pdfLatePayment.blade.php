@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagamentos Atrasados</title>
+    
+    <style>
+        @page { margin: 100px 50px; }
+        #header { position: fixed; left: 0px; top: -180px; right: 0px; height: 150px; background-color: orange; text-align: center; }
+        #footer { position: fixed; left: 0px; bottom: -180px; right: 0px; height: 150px; text-align: right; }
+        #footer .page:after { content: counter(page, decimal); }
+    </style>
 
 </head>
 <body>
 
-    <style>
-    .pagenum:before {content: counter(page);}
-    footer .pagenum:before {content: counter(page);}
-    </style>
 
     <img style="width:650px" src="img\logo-relatorio.png">
     <hr style="color:pink; background-color:#C71585; height:3px">
@@ -34,6 +37,8 @@
             $valorMultas = 0;
             $cont = 0;
         ?>
+        
+        <div id="content">
         @if (count($clientes) >= 1 && $operacao == 1)
             @foreach ($clientes as $c)
                 @if ($c != null)
@@ -80,7 +85,10 @@
                     <b>Valor total:</b> R${{$total}}
                     <br>
                     <br>
-                    <hr style="color:pink; background-color:#C71585; height:2px">
+                    <hr style="color:pink; background-color:#C71585; height:2px;">
+                    <div id="footer">
+                        <p class="page">Página <?php $PAGE_NUM ?></p>
+                    </div>
                 @endif
                 @php
                     $total = 0;
@@ -109,7 +117,12 @@
                                     <b>Devedor:</b> {{$c->nmCliente}} | <b>Telefone:</b> {{$c->telefone}}
                                     <br>
                                     <b>Atendimento do dia</b> {{$a->dtAtendimento}}
-                                        <hr>
+                                    <br>
+                                    <br>
+                                    <hr>
+                                    <div id="footer">
+                                        <p class="page">Página <?php $PAGE_NUM ?></p>
+                                    </div>
                                 @endif
                             @endforeach 
                         @endif
@@ -159,16 +172,15 @@
                     <hr>
                     <b>Valor total: R${{$total}}</b>
                     <hr>
+                    <div id="footer">
+                        <p class="page">Página <?php $PAGE_NUM ?></p>
+                    </div>
                 @endif
                 @php
                     $total = 0;
                 @endphp
             @endforeach
         @endif
-
-<footer>
-<div style="text-align:right" class="pagenum-container">Página <span class="pagenum"></span></div>
-</footer>
 
 </body>
 </html>

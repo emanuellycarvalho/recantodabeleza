@@ -43,7 +43,7 @@ class attendanceReportController extends Controller
         if ($operacao == 0) {
             $resultado = $this->filtrarTodosOsAtendimentos($dtInicial, $dtFinal);    
         } else {
-            $resultado = $this->filtrarAtendimentoEspecifico($dtInicial, $dtFinal, $operacao);
+            $resultado = $this->filtrarAtendimentosDeUmCliente($dtInicial, $dtFinal, $operacao);
         }
 
         $pdf = PDF::loadView('pdfAttendance', compact('resultado'));
@@ -51,7 +51,7 @@ class attendanceReportController extends Controller
         return $pdf->setPaper('a4')->stream('Atendimentos Realizados.pdf');
     }
 
-    public function filtrarAtendimentoEspecifico($dtInicial, $dtFinal, $cdCliente) {
+    public function filtrarAtendimentosDeUmCliente($dtInicial, $dtFinal, $cdCliente) {
         $customers = ModelCustomer::all();
         $attendance = ModelAttendance::all();
         $employees = ModelEmployee::all();
@@ -94,7 +94,8 @@ class attendanceReportController extends Controller
         $atendimentosResultado = array_unique($atendimentos);
         $clientesResultado = array_unique($clientes);
         $servicosResultado = array_unique($servicos);
-        $funcionariosResultado = array_unique($funcionarios);
+        $funcionariosResultado = ($funcionarios);
+        $servicoAtendimentoResultado = ($servicoAtendimento);
 
         foreach ($atendimentosResultado as $a) {
             $a->dtAtendimento = explode( '-' , $a->dtAtendimento);
@@ -102,10 +103,11 @@ class attendanceReportController extends Controller
 
         }        
         
-        return array($servicosResultado, $atendimentosResultado, $clientesResultado, $funcionariosResultado);
+        return array($servicosResultado, $atendimentosResultado, $clientesResultado, $funcionariosResultado, $servicoAtendimentoResultado);
     }
 
     public function filtrarTodosOsAtendimentos($dtInicial, $dtFinal) {
+        
         $customers = ModelCustomer::all();
         $attendance = ModelAttendance::all();
         $employees = ModelEmployee::all();
@@ -118,7 +120,7 @@ class attendanceReportController extends Controller
         $clientes = array();
         
         $dataHoje = date('Y-m-d');
-     
+        
         foreach ($attendance as $att) {
             if($att != null && $dtFinal >= $att->dtAtendimento && $dtInicial <= $att->dtAtendimento) {
                 $atendimentos[] = $att;
@@ -129,7 +131,17 @@ class attendanceReportController extends Controller
                     foreach ($services as $svc) {
                         foreach ($servicoAtendimento as $svcAtt) {
                             if ($svc->cdServico == $svcAtt->cdServico && $att->cdAtendimento == $svcAtt->cdAtendimento) {
-                                $services[] = $svc;
+                                $servicos[] = $svc;
+                            }
+                        }
+                    
+                    }
+
+                    foreach ($employees as $emp) {
+                        foreach ($servicoAtendimento as $funcAtt) {
+                            if ($emp->cdFuncionario == $svcAtt->cdFuncionario && $att->cdAtendimento == $svcAtt->cdAtendimento) {
+                            
+                                $funcionarios[] = $emp;
                             }
                         }
                     }
@@ -140,15 +152,16 @@ class attendanceReportController extends Controller
         $atendimentosResultado = array_unique($atendimentos);
         $clientesResultado = array_unique($clientes);
         $servicosResultado = array_unique($servicos);
-        $funcionariosResultado = array_unique($funcionarios);
+        $funcionariosResultado = ($funcionarios);
+        $servicoAtendimentoResultado = ($servicoAtendimento);
 
         foreach ($atendimentosResultado as $a) {
             $a->dtAtendimento = explode( '-' , $a->dtAtendimento);
             $a->dtAtendimento = $a->dtAtendimento[2] . '/' . $a->dtAtendimento[1] . '/' . $a->dtAtendimento[0];
 
-        }        
-        
-        return array($servicosResultado, $atendimentosResultado, $clientesResultado, $funcionariosResultado);
+        }           
+
+        return array($servicosResultado, $atendimentosResultado, $clientesResultado, $funcionariosResultado, $servicoAtendimentoResultado);
     }
 
 }

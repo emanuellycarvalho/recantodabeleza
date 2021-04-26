@@ -26,7 +26,7 @@ Route::get('getAttendances', 'AttendanceController@getAttendances')->name('getAt
 Route::get('getUnpaidAttendances', 'AttendanceController@getUnpaidAttendances')->name('getUnpaidAttendances');
 Route::get('adm/payment/{id}', 'AttendanceController@showPayment');
 Route::get('adm/attendance/create/{date}', 'AttendanceController@newCreate');
-Route::head('adm/clientPayment/{id}', 'AttendanceController@pay')->name('pay');
+// Route::head('adm/clientPayment/{id}', 'AttendanceController@pay')->name('pay');
 Route::resource('adm/attendance', 'AttendanceController');
 
 //CUSTOMER

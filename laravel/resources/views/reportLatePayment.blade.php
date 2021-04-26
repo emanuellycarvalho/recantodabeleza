@@ -21,7 +21,7 @@
 					<div class='col-md-6 col-xs-12'>
 						<div class='form-group'>
 							<label for='dtInicial'>Data Inicial*</label>
-							<input type='text' name='dtInicial' id='dtInicial' placeholder='00/00/0000' value='' >
+							<input type='text' name='dtInicial' id='dtInicial' placeholder='00/00/0000' value='' required>
 							<small id='verificarDtRelatorios' class='verificar'>
 								A data inicial é maior do que a data final.
 							</small>
@@ -31,7 +31,7 @@
 					<div class='col-md-6 col-xs-12'>
 						<div class='form-group'>
 							<label for='dtFinal'>Data Final*</label>
-							<input type='text' name='dtFinal' id='dtFinal' placeholder='00/00/0000' value='<?php echo date('d/m/Y'); ?>' >
+							<input type='text' name='dtFinal' id='dtFinal' placeholder='00/00/0000' value='<?php echo date('d/m/Y'); ?>' required>
 						</div>
 					</div>		
 					
@@ -49,9 +49,9 @@
 	
 					<div class='col-md-6 col-xs-12'>
 						<div class='form-group'>
-							<label for='ordenacao'>Tipo de ordenação</label>
-							<select name='ordenacao' id='ordenacao'>
-								<option value='0' selected> Selecione uma opção </option>
+							<label for='ordenacao'>Tipo de ordenação*</label>
+							<select name='ordenacao' id='ordenacao' required>
+								<option value='0' selected disabled> Selecione uma opção </option>
 								<option value='1'> Ordem alfabética </option>
 								<option value='2'> Data de vencimento</option>
 							</select>
