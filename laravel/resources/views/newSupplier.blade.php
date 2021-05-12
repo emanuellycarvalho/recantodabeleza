@@ -107,15 +107,57 @@
 					</div>
 
 					<div class='products'>
+							@if(isset($rel))
+									@foreach ($rel as $r)
+									<script type='text/javascript'>
+										function createFields(product) {
+												var row = $('<div>').addClass('row selected');
+												var div = $('<div>').addClass('col-md-11 col-xs-12');
+												$('<input>').attr({ name: 'product_id[]', value: product.id, type: 'hidden' }).appendTo(div);
+												$('<input>').attr({ name: 'product_name[]', value: product.name, type: 'text', readonly: true }).appendTo(div);
+												div.appendTo(row);
+												div = $('<div>').addClass('col-md-3 col-xs-12');
+											
+												div = $('<div>').addClass('col-md-1 col-xs-12');
+												$('<img>').attr({class: 'removeFromTable', src: 'http://localhost/BicJr/recantodabeleza/laravel/public/img/icons/deleteproduct.png'}).click(removeItem).appendTo(div);
+												div.appendTo(row);
+											
+												row.prependTo('.products');
+												removeOptionsSelected(product.id);
+										}
 
-					</div>
-					@if(isset($rel))
-						<script scr='{{url("assets/js/product.js")}}'>
-							@foreach($rel as $r) 
-								createFields({id: {{$r->cdProduto}}, name: '{{$r->nmProduto}}'});
-							@endforeach
-						</script>
-					@endif
+										function removeItem(event) {
+											event.preventDefault();
+											document.getElementById('product_error').innerHTML="";
+											
+											//armazena o botão que foi acionado
+											const button = $(event.currentTarget);
+											
+											//pega a div mais perto do botão que foi acionado
+											const product_div = button.closest('.selected');
+											
+											//pega os valores do funcionário e serviço
+											const product_id = product_div.find("[name='product_id[]']").val();
+											const product_name = product_div.find("[name='product_name[]']").val();
+											
+											//volta com eles pros primeiros selects
+											$('#select_product').append(`<option value="${product_id}">${product_name}</option>`);
+											
+											//remove a div 
+											product_div.remove();
+										}
+
+										function removeOptionsSelected(product_id) {
+											$('#select_product option[value="' + product_id + '"]').each(function () {
+												$(this).remove();
+											});
+										}
+									</script>
+
+									<iframe hidden="true" onload="createFields({id: '{{$r->cdProduto}}', name: '{{$r->nmProduto}}'})"></iframe>
+									@endforeach
+							@endif
+						</div>
 										
 					<div class='col-md-12'>
 						<div class='row'><p><br></p></div>
@@ -259,7 +301,7 @@
             return true;
         }
 
-		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/employee/create'){
+		if (document.referrer == 'http://localhost/BicJr/recantodabeleza/laravel/public/adm/supplier/create'){
 			document.getElementById('nome').value = localStorage.getItem('nome');
 			document.getElementById('telefone').value = localStorage.getItem('telefone');
 			document.getElementById('cnpj').value = localStorage.getItem('cnpj');

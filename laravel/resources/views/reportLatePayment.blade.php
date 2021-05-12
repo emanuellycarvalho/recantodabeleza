@@ -19,13 +19,13 @@
 
 					<div class='row'>
 					<div class='col-md-6 col-xs-12'>
-						<div class='form-group'>
+					<div class='form-group'>
 							<label for='dtInicial'>Data Inicial*</label>
 							<input type='text' name='dtInicial' id='dtInicial' placeholder='00/00/0000' value='' required>
-							<small id='verificarDtRelatorios' class='verificar'>
-								A data inicial é maior do que a data final.
-							</small>
+							<small class='verificar' id='ValidaData'>A data inserida é inválida.</small> 
+						
 						</div>
+
 					</div>
 
 					<div class='col-md-6 col-xs-12'>
@@ -62,7 +62,7 @@
 
                     <div class='row justify-content-end mt-3 mb-4'>
 						<a onclick='confirmarCancelar()' class='site-btn sb-dark mr-3' id='white'>Cancelar</a>
-						<button type='submit' class='site-btn'>Gerar</button>
+						<button type='submit' class='site-btn' onclick='verificarCampos()'>Gerar</button>
 					</div>
 
             </form>	
@@ -106,10 +106,11 @@
 		}
 		
 		function verificarCampos(){
-            if ($('#dtInicial').val() == '' && $('#dtFinal').val() == '')
+			if (!ValidaData())
             {
-                return false;
-            }
+                event.returnValue = false;
+				return false;
+        	}
             return true;
         }
     </script>

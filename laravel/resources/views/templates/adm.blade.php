@@ -57,7 +57,6 @@
 	<script src='{{url("/assets/js/validacao.js")}}'></script>
     <script src='{{asset("assets/fullcalendar/script.js")}}'></script>
     
-
 </head>
 <body>
     <!-- Page Preloder -->

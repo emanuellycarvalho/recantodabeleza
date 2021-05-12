@@ -1,7 +1,7 @@
 $(document).ready(function () {
-    $('#addOnTable').on('click', function (event) {
+
+  $('#addOnTable').on('click', function (event) {
         event.preventDefault();
-        console.log('teste');
         //armazena os dados dos selects preenchidos
         const product_id = $('#select_product').val();
         const product_name = $('#select_product option:selected').html();
@@ -36,11 +36,10 @@ $(document).ready(function () {
       $('<input>').attr({ name: 'product_id[]', value: product.id, type: 'hidden' }).appendTo(div);
       $('<input>').attr({ name: 'product_name[]', value: product.name, type: 'text', readonly: true }).appendTo(div);
       div.appendTo(row);
-      console.log(product);
       div = $('<div>').addClass('col-md-3 col-xs-12');
     
       div = $('<div>').addClass('col-md-1 col-xs-12');
-      $('<img>').attr({class: 'removeFromTable', src: 'http://localhost/estagio/recantodabeleza/laravel/public/img/icons/deleteProduct.png'}).click(removeItem).appendTo(div);
+      $('<img>').attr({class: 'removeFromTable', src: 'http://localhost/BicJr/recantodabeleza/laravel/public/img/icons/deleteProduct.png'}).click(removeItem).appendTo(div);
       div.appendTo(row);
     
       row.prependTo('.products');

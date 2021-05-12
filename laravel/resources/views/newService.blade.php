@@ -94,7 +94,7 @@
                                     </select>
                                 </div>
 
-                                <div class='col-md-1 col-xs-12'>    
+                                <div class='col-md-1 col-xs-12'>
                                     <img class='addOnTable' src='{{url("img/icons/newEmployee.png")}}' title='Adicionar' id='addOnTable'>
                                 </div>
 
@@ -103,15 +103,57 @@
                         </div>
 
 						<div class='employees'>
+							@if(isset($rel))
+									@foreach ($rel as $r)
+									<script type='text/javascript'>
+										function createFields(employee) {
+												var row = $('<div>').addClass('row selected');
+												var div = $('<div>').addClass('col-md-11 col-xs-12');
+												$('<input>').attr({ name: 'employee_id[]', value: employee.id, type: 'hidden' }).appendTo(div);
+												$('<input>').attr({ name: 'employee_name[]', value: employee.name, type: 'text', readonly: true }).appendTo(div);
+												div.appendTo(row);
+												div = $('<div>').addClass('col-md-3 col-xs-12');
+											
+												div = $('<div>').addClass('col-md-1 col-xs-12');
+												$('<img>').attr({class: 'removeFromTable', src: 'http://localhost/BicJr/recantodabeleza/laravel/public/img/icons/deleteEmployee.png'}).click(removeItem).appendTo(div);
+												div.appendTo(row);
+											
+												row.prependTo('.employees');
+												removeOptionsSelected(employee.id);
+										}
 
+										function removeItem(event) {
+											event.preventDefault();
+											document.getElementById('employee_error').innerHTML="";
+											
+											//armazena o botão que foi acionado
+											const button = $(event.currentTarget);
+											
+											//pega a div mais perto do botão que foi acionado
+											const service_div = button.closest('.selected');
+											
+											//pega os valores do funcionário e serviço
+											const employee_id = service_div.find("[name='employee_id[]']").val();
+											const employee_name = service_div.find("[name='employee_name[]']").val();
+											
+											//volta com eles pros primeiros selects
+											$('#select_employee').append(`<option value="${employee_id}">${employee_name}</option>`);
+											
+											//remove a div 
+											service_div.remove();
+										}
+
+										function removeOptionsSelected(employee_id) {
+											$('#select_employee option[value="' + employee_id + '"]').each(function () {
+												$(this).remove();
+											});
+										}
+									</script>
+
+									<iframe hidden="true" onload="createFields({id: '{{$r->cdFuncionario}}', name: '{{$r->nmFuncionario}}'})"></iframe>
+									@endforeach
+							@endif
 						</div>
-						@if(isset($rel))
-							<script scr='{{url("assets/js/service.js")}}'>
-								@foreach($rel as $r) 
-									createFields({id: {{$r->cdFuncionario}}, name: '{{$r->nmFuncionario}}'});
-								@endforeach
-							</script>
-   						@endif
 					<div class='row justify-content-end mt-3 mb-4'>
 						<a onclick='confirmarCancelar()' class='site-btn sb-dark' id='white'>Cancelar</a>
 						<button type='submit' class='site-btn'>Salvar</button>
@@ -172,4 +214,5 @@
             return true;
         }
     </script>
+
 @endsection('content')

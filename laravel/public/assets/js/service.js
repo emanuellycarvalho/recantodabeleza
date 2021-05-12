@@ -1,12 +1,12 @@
 $(document).ready(function () {
+
     $('#addOnTable').on('click', function (event) {
         event.preventDefault();
-        console.log('teste');
         //armazena os dados dos selects preenchidos
         const employee_id = $('#select_employee').val();
         const employee_name = $('#select_employee option:selected').html();
-        
-        if (verifyServiceData(employee_id) == null){
+          
+        if (verifyEmployeeData(employee_id) == null){
             return;
         }
   
@@ -19,9 +19,8 @@ $(document).ready(function () {
     });
   
   //verifica se o select está preenchido
-    function verifyServiceData(employee_id){
+    function verifyEmployeeData(employee_id){
       document.getElementById('employee_error').innerHTML="";
-      console.log('teste2');
       if(employee_id == null){
         var alrt = 'Por Favor, selecione um funcionário.';
         $('#employee_error').append(alrt);
@@ -31,22 +30,20 @@ $(document).ready(function () {
     }
     
     //cria os inputs com os valores selecionados numa nova div
-    function createFields(employee) {
-      console.log('teste3');
-      var row = $('<div>').addClass('row selected');
-      var div = $('<div>').addClass('col-md-11 col-xs-12');
-      $('<input>').attr({ name: 'employee_id[]', value: employee.id, type: 'hidden' }).appendTo(div);
-      $('<input>').attr({ name: 'employee_name[]', value: employee.name, type: 'text', readonly: true }).appendTo(div);
-      div.appendTo(row);
-      console.log(employee);
-      div = $('<div>').addClass('col-md-3 col-xs-12');
-    
-      div = $('<div>').addClass('col-md-1 col-xs-12');
-      $('<img>').attr({class: 'removeFromTable', src: 'http://localhost/estagio/recantodabeleza/laravel/public/img/icons/deleteEmployee.png'}).click(removeItem).appendTo(div);
-      div.appendTo(row);
-    
-      row.prependTo('.employees');
-    }
+      function createFields(employee) {
+        var row = $('<div>').addClass('row selected');
+        var div = $('<div>').addClass('col-md-11 col-xs-12');
+        $('<input>').attr({ name: 'employee_id[]', value: employee.id, type: 'hidden' }).appendTo(div);
+        $('<input>').attr({ name: 'employee_name[]', value: employee.name, type: 'text', readonly: true }).appendTo(div);
+        div.appendTo(row);
+        div = $('<div>').addClass('col-md-3 col-xs-12');
+      
+        div = $('<div>').addClass('col-md-1 col-xs-12');
+        $('<img>').attr({class: 'removeFromTable', src: 'http://localhost/BicJr/recantodabeleza/laravel/public/img/icons/deleteEmployee.png'}).click(removeItem).appendTo(div);
+        div.appendTo(row);
+      
+        row.prependTo('.employees');
+      }
     
     //remove do primeiro select as options que já foram selecionadas anteriormente
     function removeOptionsSelected(employee_id, service_id) {
